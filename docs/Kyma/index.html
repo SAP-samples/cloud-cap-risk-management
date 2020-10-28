@@ -1,0 +1,1761 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/Kyma/">
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Run a CAP Application on Kyma - SAP Cloud Platform "Risk Management" Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../styles/additonal.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.4.8/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#run-a-cap-application-on-kyma" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://github.com/SAP-samples/cloud-cap-risk-management" title="SAP Cloud Platform &#34;Risk Management&#34; Tutorial" class="md-header-nav__button md-logo" aria-label="SAP Cloud Platform "Risk Management" Tutorial">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            SAP Cloud Platform "Risk Management" Tutorial
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Run a CAP Application on Kyma
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://github.com/SAP-samples/cloud-cap-risk-management" title="SAP Cloud Platform &#34;Risk Management&#34; Tutorial" class="md-nav__button md-logo" aria-label="SAP Cloud Platform "Risk Management" Tutorial">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    SAP Cloud Platform "Risk Management" Tutorial
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Run a CAP Application on Kyma
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Run a CAP Application on Kyma
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preface" class="md-nav__link">
+    Preface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preconditions" class="md-nav__link">
+    Preconditions
+  </a>
+  
+    <nav class="md-nav" aria-label="Preconditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cap-risk-management-example-application" class="md-nav__link">
+    CAP Risk Management Example Application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-software" class="md-nav__link">
+    Local Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sap-cloud-platform-subaccount" class="md-nav__link">
+    SAP Cloud Platform Subaccount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-kyma" class="md-nav__link">
+    Enable Kyma
+  </a>
+  
+    <nav class="md-nav" aria-label="Enable Kyma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-your-own-sap-cloud-platform-trial-account" class="md-nav__link">
+    Create Your Own SAP Cloud Platform Trial account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-an-existing-sap-cloud-platform-subaccount" class="md-nav__link">
+    Use an Existing SAP Cloud Platform Subaccount
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-cloud-foundry" class="md-nav__link">
+    Enable Cloud Foundry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-cloud-foundry-cli" class="md-nav__link">
+    Install the Cloud Foundry CLI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-cap-application-in-a-docker-container-locally" class="md-nav__link">
+    Run the CAP Application in a Docker Container Locally
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the CAP Application in a Docker Container Locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-a-docker-container" class="md-nav__link">
+    Build a Docker Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-docker-container" class="md-nav__link">
+    Run the Docker Container
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the Docker Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-content-of-the-docker-container" class="md-nav__link">
+    Check the Content of the Docker Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-your-cap-service" class="md-nav__link">
+    Run Your CAP Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-sap-fiori-ui" class="md-nav__link">
+    Add SAP Fiori UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-to-kyma" class="md-nav__link">
+    Deploy to Kyma
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy to Kyma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-in-to-kyma-kubernetes-cluster" class="md-nav__link">
+    Log In to Kyma (Kubernetes Cluster)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-the-docker-registry" class="md-nav__link">
+    Prepare the Docker Registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-docker-image" class="md-nav__link">
+    Push Docker Image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-cap-application" class="md-nav__link">
+    Deploy the CAP Application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expose-cap-application-to-the-public-internet" class="md-nav__link">
+    Expose CAP Application to the Public Internet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-sap-hana-cloud" class="md-nav__link">
+    Add SAP HANA Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="Add SAP HANA Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prepare-cap-application-for-sap-hana-cloud" class="md-nav__link">
+    Prepare CAP Application for SAP HANA Cloud
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-deploy-sap-hana-hdi-container" class="md-nav__link">
+    Create and Deploy SAP HANA HDI Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workaround-use-hdi-deployer-in-docker-container" class="md-nav__link">
+    Workaround: Use HDI Deployer in Docker Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-sap-hana-hdi-container-credentials" class="md-nav__link">
+    Add SAP HANA HDI Container Credentials
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-secret-for-sap-hana-hdi-container-credentials" class="md-nav__link">
+    Create a Secret for SAP HANA HDI Container Credentials
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Secret for SAP HANA HDI Container Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-cap-application-to-the-sap-hana-hdi-container" class="md-nav__link">
+    Connect CAP Application to the SAP HANA HDI Container
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-applications-log" class="md-nav__link">
+    Viewing the Application's Log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute-commands-in-the-applications-container" class="md-nav__link">
+    Execute Commands in the Application's Container
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    Teardown
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preface" class="md-nav__link">
+    Preface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preconditions" class="md-nav__link">
+    Preconditions
+  </a>
+  
+    <nav class="md-nav" aria-label="Preconditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cap-risk-management-example-application" class="md-nav__link">
+    CAP Risk Management Example Application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-software" class="md-nav__link">
+    Local Software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sap-cloud-platform-subaccount" class="md-nav__link">
+    SAP Cloud Platform Subaccount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-kyma" class="md-nav__link">
+    Enable Kyma
+  </a>
+  
+    <nav class="md-nav" aria-label="Enable Kyma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-your-own-sap-cloud-platform-trial-account" class="md-nav__link">
+    Create Your Own SAP Cloud Platform Trial account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-an-existing-sap-cloud-platform-subaccount" class="md-nav__link">
+    Use an Existing SAP Cloud Platform Subaccount
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-cloud-foundry" class="md-nav__link">
+    Enable Cloud Foundry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-cloud-foundry-cli" class="md-nav__link">
+    Install the Cloud Foundry CLI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-cap-application-in-a-docker-container-locally" class="md-nav__link">
+    Run the CAP Application in a Docker Container Locally
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the CAP Application in a Docker Container Locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-a-docker-container" class="md-nav__link">
+    Build a Docker Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-docker-container" class="md-nav__link">
+    Run the Docker Container
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the Docker Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-content-of-the-docker-container" class="md-nav__link">
+    Check the Content of the Docker Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-your-cap-service" class="md-nav__link">
+    Run Your CAP Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-sap-fiori-ui" class="md-nav__link">
+    Add SAP Fiori UI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-to-kyma" class="md-nav__link">
+    Deploy to Kyma
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy to Kyma">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-in-to-kyma-kubernetes-cluster" class="md-nav__link">
+    Log In to Kyma (Kubernetes Cluster)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-the-docker-registry" class="md-nav__link">
+    Prepare the Docker Registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-docker-image" class="md-nav__link">
+    Push Docker Image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-the-cap-application" class="md-nav__link">
+    Deploy the CAP Application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expose-cap-application-to-the-public-internet" class="md-nav__link">
+    Expose CAP Application to the Public Internet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-sap-hana-cloud" class="md-nav__link">
+    Add SAP HANA Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="Add SAP HANA Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prepare-cap-application-for-sap-hana-cloud" class="md-nav__link">
+    Prepare CAP Application for SAP HANA Cloud
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-deploy-sap-hana-hdi-container" class="md-nav__link">
+    Create and Deploy SAP HANA HDI Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workaround-use-hdi-deployer-in-docker-container" class="md-nav__link">
+    Workaround: Use HDI Deployer in Docker Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-sap-hana-hdi-container-credentials" class="md-nav__link">
+    Add SAP HANA HDI Container Credentials
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-secret-for-sap-hana-hdi-container-credentials" class="md-nav__link">
+    Create a Secret for SAP HANA HDI Container Credentials
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a Secret for SAP HANA HDI Container Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-cap-application-to-the-sap-hana-hdi-container" class="md-nav__link">
+    Connect CAP Application to the SAP HANA HDI Container
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-applications-log" class="md-nav__link">
+    Viewing the Application's Log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute-commands-in-the-applications-container" class="md-nav__link">
+    Execute Commands in the Application's Container
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    Teardown
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/Kyma.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="run-a-cap-application-on-kyma">Run a CAP Application on Kyma</h1>
+<h2 id="preface">Preface</h2>
+<p>SAP recently released the <a href="https://blogs.sap.com/2020/05/12/get-a-fully-managed-runtime-based-on-kyma-and-kubernetes/">SAP Cloud Platform, Kyma runtime</a>, a managed Kubernetes offering with Kyma.</p>
+<p>Kyma is much about extending existing applications, but you also get a full-blown Kubernetes cluster including Istio service mesh that you can use to build a standalone cloud application.</p>
+<p>In this tutorial, you deploy an application built with the SAP Cloud Application Programming Model (CAP) to an <em>SAP Cloud Platform, Kyma runtime</em> cluster. The CAP application has an OData service, SAP Fiori UI and uses SAP HANA as a database.</p>
+<p>The <a href="https://github.com/SAP-samples/cloud-cap-risk-management">CAP Risk Management Example</a> is used as starting point.</p>
+<p>The tutorial can be also done with any other Kyma installation, but you need an SAP HANA database and an HDI container and you then need to do the part with HANA credentials differently.</p>
+<p>The CAP part is probably the smallest in the tutorial: Frankly speaking, just package it into a docker container and run it. But the tutorial also describes how to get a small docker registry running. If you're experienced with Kubernetes, you can skip some sections.</p>
+<p>Since SAP HANA Cloud isn’t yet available for Kyma, you take it from Cloud Foundry. It's a bit tricky to copy the credentials, but at the end it's just copying and pasting values. Scripts are provided to help you here ( :-) ). So, please don't get distracted by this.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>Please note, that this tutorial is intended to give an introduction in the topic and not for deploying productive applications.</p>
+<p>The SAP Cloud Platform Programming Model (CAP) does not officially support <em>Kubernetes</em> and <em>Kyma</em> as a platform right now.</p>
+<h2 id="preconditions">Preconditions</h2>
+<p>These are preconditions to do this tutorial:</p>
+<h3 id="cap-risk-management-example-application">CAP Risk Management Example Application</h3>
+<p>You can find the starting point of this tutorial in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/freestyle-ui5-app">cap/freestyle</a> branch:</p>
+<ol>
+<li>Goto the directory where you want to create the example</li>
+<li>
+<p>Create a folder for your example</p>
+<p>e.g.:</p>
+<div class="highlight"><pre><span></span><code>mkdir cap-kyma-app
+</code></pre></div>
+</li>
+<li>
+<p>Clone the example git repository and checkout the example branch</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/SAP-samples/cloud-cap-risk-management
+<span class="nb">cd</span> cloud-cap-risk-management
+git checkout cap/freestyle-ui5-app
+</code></pre></div>
+</li>
+<li>
+<p>Copy the all files from the example to your folder, except git <code>.git</code> folder</p>
+<p>e.g.:</p>
+<div class="highlight"><pre><span></span><code>cp -r .gitignore <span class="k">$(</span>ls -1A <span class="p">|</span> grep -v .git<span class="k">)</span> ../cap-kyma-app
+</code></pre></div>
+</li>
+<li>
+<p>Open a new project in your source editor for the folder <code>cap-kyma-app</code></p>
+<p>for Visual Studio Code:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../cap-kyma-app
+code .
+</code></pre></div>
+</li>
+</ol>
+<p>The final code is in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/kyma/app">kyma/app</a> branch.</p>
+<h3 id="local-software">Local Software</h3>
+<p>The following local software is required:</p>
+<ul>
+<li><code>node</code> (NodeJS 12.x is recommended)</li>
+<li><code>docker</code> (for example, Docker Desktop for Mac or Windows)</li>
+<li>A source code editor (<em>Visual Studio Code</em> is recommended)</li>
+<li><code>bash</code> or <code>zsh</code> shell to run the command snippets (for example, Anyway there on Mac or Linux, Git Bash should do for Windows or you can use MinGW, Cygwin).</li>
+<li><code>kubectl</code> (Kubernetes Command Line)</li>
+<li><code>helm</code> (Helm Chart Command Line, not needed if you use an existing docker registry)</li>
+<li><code>cf</code> (Cloud Foundry Command Line)</li>
+</ul>
+<p>If you have a Mac, many of the commands can be installed using Homebrew (<code>brew install ...</code>). For Windows, there is a similar offering called Chocolatey. Please refer to the binary installers of the components otherwise.</p>
+<h3 id="sap-cloud-platform-subaccount">SAP Cloud Platform Subaccount</h3>
+<p>You need an SAP Cloud Platform Subaccount with consumption-based model (that is, Cloud Credits). Kyma is currently supported on Azure landscapes only, as of September 2020.</p>
+<h3 id="enable-kyma">Enable Kyma</h3>
+<p>Although Kyma is needed at a later point in the tutorial, it’s recommended to start with this step, because the Kyma provisioning may take some time.</p>
+<p>You can either create your own SAP Cloud Platform Trial account or add Kyma to an existing Subaccount.</p>
+<h4 id="create-your-own-sap-cloud-platform-trial-account">Create Your Own SAP Cloud Platform Trial account</h4>
+<ol>
+<li><a href="https://cockpit.eu10.hana.ondemand.com/trial/#/home/trial">https://cockpit.eu10.hana.ondemand.com/trial/#/home/trial</a></li>
+<li>Choose <em>Enter Your Trial Account</em></li>
+<li>If you don't have a user you need to register</li>
+<li>Wait for the completion of the on-boarding</li>
+<li>You should land on the <em>Subaccounts</em> page of your trial <em>Global Account</em></li>
+<li>Choose on <em>trial</em></li>
+<li>Choose <em>Enable Kyma</em></li>
+</ol>
+<p>This will take a while. You can start the tutorial in the meantime.</p>
+<p>If you already have an older trial account, then you might not see the <em>Enable Kyma</em> button. In that case goto <em>Entitlements</em> and add the <em>Kyma Runtime</em> <em>Service Plan</em>.</p>
+<h4 id="use-an-existing-sap-cloud-platform-subaccount">Use an Existing SAP Cloud Platform Subaccount</h4>
+<p>Please follow the steps "Enabling the Kyma runtime" and "Provide Authorization to access Kyma runtime" in this blog post:
+* <a href="https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/">https://blogs.sap.com/2020/05/13/sap-cloud-platform-extension-factory-kyma-runtime-how-to-get-started/</a></p>
+<h3 id="enable-cloud-foundry">Enable Cloud Foundry</h3>
+<p>To use the SAP HANA Cloud service, you can either enable Cloud Foundry for the same subaccount or use a different subaccount, for example, an already existing or trial subaccount.</p>
+<h3 id="install-the-cloud-foundry-cli">Install the Cloud Foundry CLI</h3>
+<p>Later in this tutorial, you need to log on to Cloud Foundry using the command line. Therefore, it's necessary to install the Cloud Foundry CLI. Please check the <a href="https://docs.cloudfoundry.org/cf-cli/install-go-cli.html">Cloud Foundry documentation</a> for detailed steps on how to do that.</p>
+<h2 id="run-the-cap-application-in-a-docker-container-locally">Run the CAP Application in a Docker Container Locally</h2>
+<p>In the first part of this tutorial, you prepare your application to be run on Kyma.</p>
+<h3 id="build-a-docker-container">Build a Docker Container</h3>
+<p>Since all applications in Kubernetes as in Kyma are docker containers, you need to create a docker image for the CAP application. For that, you need to define a file <code>Dockerfile</code> that describes, how to build up the image and what to do when the docker image is run. The file starts with the <code>FROM</code> directive that names the base image that you want to use since you don't want to start from scratch. Here, you use a public image that already contains the NodeJS 12.x installation. Additionally install <code>openssl</code>, which is required by the HANA client and carry out <code>npm install</code>.</p>
+<p>You then declare that the CAP default port <code>4004</code> is exposed to the outside and run the CAP server with <code>npm start</code>.</p>
+<ol>
+<li>
+<p>Navigate to the root folder of your app.</p>
+<div class="highlight"><pre><span></span><code>cd cpapp
+</code></pre></div>
+</li>
+<li>
+<p>Create a file named <code>Dockerfile</code> and add the following lines to it:</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim</span>
+
+<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
+<span class="k">COPY</span> gen/srv .
+<span class="k">RUN</span> npm install
+
+<span class="k">EXPOSE</span><span class="s"> 4004</span>
+<span class="k">USER</span><span class="s"> node</span>
+<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
+</code></pre></div>
+3. Add <code>sqlite3</code> as project dependency, so you can try out the scenario without an external database service.</p>
+<p><div class="highlight"><pre><span></span><code>npm install --save sqlite3
+</code></pre></div>
+4. Add the following snippet to the <code>package.json</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
+  <span class="err">...</span>
+<span class="hll">  <span class="nt">&quot;cds&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nt">&quot;requires&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">      <span class="nt">&quot;db&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span>
+</span><span class="hll">      <span class="p">}</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="p">}</span>
+</code></pre></div>
+<p>This tells CAP to use SQLite in dev and HANA in productive mode.</p>
+</li>
+<li>
+<p>Before you can build the image, run the <code>cds build</code>, because the image takes the build results from the <code>gen/srv</code> folder. You can also do this in the docker build, but that would require additional steps that you skip for now.</p>
+<div class="highlight"><pre><span></span><code>cds build
+</code></pre></div>
+</li>
+<li>
+<p>Build the docker image locally.</p>
+<div class="admonition info">
+<p class="admonition-title">Make sure that the docker daemon is running (e.g. Docker Desktop for Mac or Windows)</p>
+</div>
+<div class="highlight"><pre><span></span><code>docker build -t cpapp .
+</code></pre></div>
+<p>This builds the docker image specified in <code>Dockerfile</code> from the current directory (<code>.</code> argument). The image is tagged with the name <code>cpapp</code>. Without giving a tag a random tag will be added.</p>
+<p>You should see an output similar like:</p>
+<div class="highlight"><pre><span></span><code>...
+Removing intermediate container 4f451017d70f
+---&gt; 948523646f60
+Step <span class="m">5</span>/6 : EXPOSE <span class="m">4004</span>
+---&gt; Running in 1a2b7a0ec606
+Removing intermediate container 1a2b7a0ec606
+---&gt; be849ff002e1
+Step <span class="m">6</span>/6 : CMD <span class="o">[</span> <span class="s2">&quot;npm&quot;</span>, <span class="s2">&quot;start&quot;</span> <span class="o">]</span>
+---&gt; Running in cb0b32163709
+Removing intermediate container cb0b32163709
+---&gt; 1e0c26b94ac6
+<span class="hll">Successfully built 1e0c26b94ac6
+</span><span class="hll">Successfully tagged cpapp:latest
+</span></code></pre></div>
+</li>
+</ol>
+<p>Docker images consist of several "filesystem layers". The <em>base image</em> is a layer and your own docker image is a layer on top. Each layer can add or remove files. This is convenient because it saves storage because your custom images contain only the delta of files added or removed. To be more precise an image consists of multiple layers. The <code>docker build</code> will automatically decide when to create a new layer. You can see the different layers in the <code>docker build</code> output, for example: <code>---&gt; 365313c4290e</code></p>
+<h3 id="run-the-docker-container">Run the Docker Container</h3>
+<h4 id="check-the-content-of-the-docker-container">Check the Content of the Docker Container</h4>
+<ol>
+<li>
+<p>You can run the docker container and look inside its contents.</p>
+<div class="highlight"><pre><span></span><code>docker run -i -t cpapp /bin/bash
+</code></pre></div>
+<p>This starts a docker container with your image (<code>-t cpapp</code>) and starts the bash shell (<code>/bin/bash</code>) that happens to be part of your base image in an interactive (<code>-i</code>) mode.</p>
+</li>
+<li>
+<p>Look inside the contents using the <code>ls</code> command.</p>
+<div class="highlight"><pre><span></span><code>node@a5a0b8115eb5:/usr/src/app# ls
+manifest.yaml  node_modules  package-lock.json  package.json  srv
+</code></pre></div>
+</li>
+<li>
+<p>Exit the container using <code>exit</code> (Pro-Tip: <code>Ctrl+D</code> :-))</p>
+</li>
+</ol>
+<h4 id="run-your-cap-service">Run Your CAP Service</h4>
+<p>Now it's time to run your CAP service. So lets do this.</p>
+<ol>
+<li>
+<p>Run the container.
+    <div class="highlight"><pre><span></span><code>docker run -t cpapp
+</code></pre></div></p>
+<p>Without specifying the command, it runs the default command, that is <code>npm start</code>.
+You can try to access the service on <a href="http://localhost:4004">http://localhost:4004</a>, but it doesn't work. It shows a similar error message to this:</p>
+<div class="highlight"><pre><span></span><code>This site can’t be reached
+
+localhost refused to connect.
+</code></pre></div>
+<p>Although the docker container exposes port 4004, the "host" of the container, that is your PC or Mac, doesn't make it accessible. You need to declare it in the docker command line.</p>
+</li>
+<li>
+<p>Stop the service with <code>Ctrl+C</code>.</p>
+</li>
+<li>
+<p>Run the container again with the publish parameter.</p>
+<div class="highlight"><pre><span></span><code>docker run -p <span class="m">4004</span>:4004 -t cpapp
+</code></pre></div>
+<p>This tells docker to expose the port <code>4004</code> of the docker container to the port <code>4004</code> of the host. You could also use a different port of the host, but let's keep it simple.</p>
+<p>Now, you can access the CAP service on <a href="http://localhost:4004">http://localhost:4004</a>.</p>
+<p>You can click on the <em>Risks</em> (<a href="http://localhost:4004/service/risk/Risks">http://localhost:4004/service/risk/Risks</a>) or <em>Mitigations</em> (<a href="http://localhost:4004/service/risk/Risks">http://localhost:4004/service/risk/Risks</a>) link that returns an empty OData response.</p>
+</li>
+</ol>
+<h3 id="add-sap-fiori-ui">Add SAP Fiori UI</h3>
+<p>There's already a Fiori Elements UI for <em>Risks</em> and a SAPUI5 Freestyle UI for <em>Mitigations</em> in the project. We could think of several ways to deploy it to the cloud. For the sake of simplicity, you can use the CAP service's capability to serve static resources from the <code>app</code> folder. After the <code>cds build</code> the <code>app</code> folder isn’t part of the service. You can copy it in, but you need to remove the <code>*.cds</code> files because they’re already copied from <code>app</code> to <code>srv</code> and duplicating these files confuses CAP.</p>
+<p>You can automize this in the docker build by modifying the <code>Dockerfile</code>.</p>
+<ol>
+<li>
+<p>Add the highlighted lines to the file <code>Dockerfile</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim</span>
+
+<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
+<span class="k">COPY</span> gen/srv .
+<span class="k">RUN</span> npm install
+<span class="hll"><span class="k">COPY</span> app app/
+</span><span class="hll"><span class="k">RUN</span> find app -name <span class="s1">&#39;*.cds&#39;</span> <span class="p">|</span> xargs rm -f
+</span>
+<span class="k">EXPOSE</span><span class="s"> 4004</span>
+<span class="k">USER</span><span class="s"> node</span>
+<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Rebuild the docker image:</p>
+<div class="highlight"><pre><span></span><code>cds build
+docker build -t cpapp .
+</code></pre></div>
+</li>
+<li>
+<p>Run it locally:</p>
+<div class="highlight"><pre><span></span><code>docker run -p <span class="m">4004</span>:4004 -t cpapp
+</code></pre></div>
+</li>
+<li>
+<p>Try it out by navigating to: <a href="http://localhost:4004/launchpage.html">http://localhost:4004/launchpage.html</a></p>
+</li>
+</ol>
+<h2 id="deploy-to-kyma">Deploy to Kyma</h2>
+<p>In this part of the tutorial, you deploy the dockerized CAP application to Kyma.</p>
+<h3 id="log-in-to-kyma-kubernetes-cluster">Log In to Kyma (Kubernetes Cluster)</h3>
+<p>The first step is to log in to Kyma using the <em>Kyma Console</em> and configure the local <code>kubectl</code> command to connect to the Kyma Kubernetes cluster.</p>
+<ol>
+<li>Open the <em>SAP Cloud Platform Cockpit</em>.</li>
+<li>Choose your global account.</li>
+<li>Choose your subaccount.</li>
+<li>On the <em>Overview</em> page, under <em>Kyma Environment</em>, choose <strong>Link to dashboard</strong>.</li>
+<li>Log in to Kyma.</li>
+<li>Choose the account Icon in the upper right corner.</li>
+<li>
+<p>Choose <strong>Get Kubeconfig</strong>.</p>
+<p><img alt="Kubeconfig Download" src="../markdown/images/kubeconfig_download.png" /></p>
+<p>A file download should be triggered. If no download is triggered, see the troubleshooting info.</p>
+<details class="info"><summary>Troubleshooting: If no download is triggered</summary><p>It can happen, that no download is triggered. In this case follow these steps:</p>
+<ol>
+<li>Open your browser's developer tools.</li>
+<li>Navigate to the network tab.</li>
+<li>Choose the <strong>Get Kubeconfig</strong> button again.</li>
+<li>Locate the response of the <code>kubeconfig</code> file.</li>
+<li>Look at the response.</li>
+</ol>
+<p><img alt="response" src="../markdown/images/kube_config.png" /></p>
+<ol>
+<li>Copy the response, you will need it in the next steps.</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Navigate to your home folder</p>
+<p>The config for the default cluster is stored in <code>.kube/config</code> in your home directory.</p>
+</li>
+<li>
+<p>Navigate to the <code>.kube</code> folder.</p>
+</li>
+<li>
+<p>Create a file named <code>cap-kyma-app-config</code> to avoid overwriting the existing configuration.</p>
+</li>
+<li>
+<p>Copy the content of the downloaded <code>kubeconfig.yml</code> into the file <code>cap-kyma-app-config</code>.</p>
+</li>
+<li>
+<p>Set the new config file for the running shell process:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>~/.kube/cap-kyma-app-config
+</code></pre></div>
+<p>Now, you can access your kubernetes cluster.</p>
+</li>
+<li>
+<p>Check if you can access your kubernetes cluster.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
+<p>The command should run without an error message, but it doesn't output any pods if you have a newly created cluster.</p>
+<p>If you want to use <code>kubectl</code> in another shell session, then rerun the <code>export</code> statement.
+The authentication session will expire after some hours. You then need to download the <code>kubeconfig.yml</code> file again and replace the value of the token parameter in your <code>cap-kyma-app-config</code> file with the one from the newly downloaded <code>kubeconfig.yml</code> file.</p>
+</li>
+</ol>
+<h3 id="prepare-the-docker-registry">Prepare the Docker Registry</h3>
+<p>Kubernetes needs a docker registry that can be accessed from the cluster's network. This could be any public or private registry. To keep this tutorial self-contained, you use a slightly different approach, which isn’t recommended for productive use: You deploy your own docker registry to the cluster.</p>
+<p>If you want to use a different docker registry, then you need to adjust the <code>docker push</code> commands and the URLs for the docker images.</p>
+<p>In the approach with the cluster's own docker registry, a <em>Helm Chart</em> is used to install it on the cluster.</p>
+<ol>
+<li>
+<p>Add the stable Helm Chart repository to the <code>helm</code> CLI:</p>
+<div class="highlight"><pre><span></span><code>helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+</code></pre></div>
+</li>
+<li>
+<p>Install the Helm Chart for a docker registry:</p>
+<div class="highlight"><pre><span></span><code>helm install docker-registry stable/docker-registry
+</code></pre></div>
+</li>
+<li>
+<p>You need to make the docker registry available on the public internet. The details to this step are explained later. Run the following commands:</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f - <span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: gateway.kyma-project.io/v1alpha1</span>
+<span class="s">kind: APIRule</span>
+<span class="s">metadata:</span>
+<span class="s">  labels:</span>
+<span class="s">    app: docker-registry</span>
+<span class="s">  name: docker-registry</span>
+<span class="s">spec:</span>
+<span class="s">  service:</span>
+<span class="s">    host: docker-registry</span>
+<span class="s">    name: docker-registry</span>
+<span class="s">    port: 5000</span>
+<span class="s">  gateway: kyma-gateway.kyma-system.svc.cluster.local</span>
+<span class="s">  rules:</span>
+<span class="s">    - path: /.*</span>
+<span class="s">      methods: [&quot;GET&quot;, &quot;HEAD&quot; ]</span>
+<span class="s">      accessStrategies:</span>
+<span class="s">        - handler: noop</span>
+<span class="s">      mutators: []</span>
+<span class="s">EOF</span>
+</code></pre></div>
+</li>
+<li>
+<p>To be able to push docker images via HTTP, you need to add it as an "insecure registry" (not using secure socker communication) to your Docker config.</p>
+<ol>
+<li>Open your Docker Desktop.</li>
+<li>Choose <strong>Preferences</strong>.</li>
+<li>Choose <strong>Docker Engine</strong>.</li>
+<li>
+<p>Add the following line:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="err">...</span>
+<span class="hll">  <span class="nt">&quot;insecure-registries&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0.0.0.0:5000&quot;</span><span class="p">]</span>
+</span><span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Choose <strong>Apply and Restart</strong>.</p>
+</li>
+<li>Wait for the startup to be completed.</li>
+</ol>
+</li>
+</ol>
+<h3 id="push-docker-image">Push Docker Image</h3>
+<ol>
+<li>
+<p>Since the docker registry isn’t exposed to the open internet (and you don't want to), you need to establish a tunnel from your localhost to the registry:</p>
+<div class="highlight"><pre><span></span><code>kubectl port-forward deployment/docker-registry <span class="m">5000</span>:5000 <span class="p">&amp;</span>
+</code></pre></div>
+<p>The <code>&amp;</code> causes the process to run in the background. You need to keep it running until you finished pushing docker images. You may need to start it newly in case the "docker push" doesn't work anymore.</p>
+<p>You should see the following output that tells you that the tunning is established:</p>
+<div class="highlight"><pre><span></span><code>Forwarding from 127.0.0.1:5000 -&gt; 5000
+Forwarding from [::1]:5000 -&gt; 5000
+</code></pre></div>
+</li>
+<li>
+<p>Your docker image needs an additional tag to declare it part of your <code>forwarded</code> docker registry. Otherwise you can't push it.</p>
+<div class="highlight"><pre><span></span><code>docker tag cpapp <span class="m">0</span>.0.0.0:5000/cpapp
+</code></pre></div>
+</li>
+<li>
+<p>Push it, using the new tag.</p>
+<div class="highlight"><pre><span></span><code>docker push <span class="m">0</span>.0.0.0:5000/cpapp
+</code></pre></div>
+<p>The output mixes the <code>docker push</code> output with the <code>kubectl port-forward</code> output. Anyhow it should finish with a line like:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">```</span>
+<span class="n">latest</span><span class="p">:</span> <span class="n">digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="mi">4054</span><span class="n">dd60ee4f9889d58aa97295cb3b1430a5c1549e602b6c619d7c4ed7d04ad0</span> <span class="k">size</span><span class="p">:</span> <span class="mi">2412</span>
+<span class="o">```</span>
+</code></pre></div>
+
+</li>
+</ol>
+<h3 id="deploy-the-cap-application">Deploy the CAP Application</h3>
+<p>Now, you can deploy your CAP service to Kubernetes. You use the <code>Deployment</code> resource of Kubernetes to describe the application. It contains a description of the container and manages its creation and takes care that the instance keeps running.</p>
+<ol>
+<li>
+<p>Create a directory to store your deployment YAML files:</p>
+<div class="highlight"><pre><span></span><code>mkdir deployment
+</code></pre></div>
+</li>
+<li>
+<p>Create a file <code>deployment/deployment.yaml</code> with the following contents:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+    <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">replicas</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">matchLabels</span><span class="p">:</span>
+      <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+      <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+  <span class="nt">template</span><span class="p">:</span>
+    <span class="nt">metadata</span><span class="p">:</span>
+      <span class="nt">labels</span><span class="p">:</span>
+        <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+        <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">containers</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker-registry.{{CLUSTER_DOMAIN}}/cpapp</span>
+        <span class="nt">imagePullPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Always</span>
+        <span class="nt">ports</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
+</code></pre></div>
+<p>The file contains a placeholder <code>{{CLUSER_DOMAIN}}</code> that you need to replace with your cluster's domain. Either in the file or replacing it when applying the file.</p>
+<p>You can find your cluster's domain, for example, for the URL of the Kyma Console. If your console URL is for example <code>https://console.c-abcd123.kyma.shoot.live.k8s-hana.ondemand.com/</code>, the cluster's domain is <code>c-abcd123.kyma.shoot.live.k8s-hana.ondemand.com</code>, just without the leading <code>console.</code></p>
+</li>
+<li>
+<p>Apply the new configuration.</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f deployment/deployment.yaml
+</code></pre></div>
+<p>Or you can take it from the current <code>kubectl</code> configuration and replace it on deployment, like this:</p>
+<div class="highlight"><pre><span></span><code>sed &lt;deployment/deployment.yaml <span class="s2">&quot;s/{{CLUSTER_DOMAIN}}/</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">/&quot;</span> <span class="p">|</span> kubectl apply -f -
+</code></pre></div>
+</li>
+<li>
+<p>Check the state of the deployment using:</p>
+<div class="highlight"><pre><span></span><code>kubectl get deployments
+</code></pre></div>
+<p>Initially it looks like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">```</span>
+<span class="n">NAME</span>              <span class="n">READY</span>   <span class="n">UP</span><span class="o">-</span><span class="k">TO</span><span class="o">-</span><span class="nb">DATE</span>   <span class="n">AVAILABLE</span>   <span class="n">AGE</span>
+<span class="n">cpapp</span>             <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="mi">1</span>            <span class="mi">0</span>           <span class="mi">5</span><span class="n">s</span>
+<span class="o">```</span>
+</code></pre></div>
+
+<p>If all goes well, it turns to:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">```</span>
+<span class="n">NAME</span>              <span class="n">READY</span>   <span class="n">UP</span><span class="o">-</span><span class="k">TO</span><span class="o">-</span><span class="nb">DATE</span>   <span class="n">AVAILABLE</span>   <span class="n">AGE</span>
+<span class="n">cpapp</span>             <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="mi">1</span>            <span class="mi">1</span>           <span class="mi">14</span><span class="n">m</span>
+<span class="o">```</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Since you haven't exposed the app to the public internet, you can only access it with a tunnel. So lets create another tunnel.</p>
+<div class="highlight"><pre><span></span><code>kubectl port-forward deployment/cpapp <span class="m">4004</span>:4004
+</code></pre></div>
+</li>
+<li>
+<p>Open the CAP service in the browser: <a href="http://localhost:4004">http://localhost:4004</a></p>
+<p>Your Service is now running through kubernetes.</p>
+</li>
+<li>
+<p>Press <code>Ctrl+C</code> to stop the tunnel.</p>
+</li>
+</ol>
+<h3 id="expose-cap-application-to-the-public-internet">Expose CAP Application to the Public Internet</h3>
+<ol>
+<li>
+<p>Create a new file <code>deployment/apirule.yaml</code> with following content:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+    <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">ports</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gateway.kyma-project.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">APIRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">service</span><span class="p">:</span>
+    <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
+  <span class="nt">gateway</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kyma-gateway.kyma-system.svc.cluster.local</span>
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/.*</span>
+      <span class="nt">methods</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PUT&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;POST&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;HEAD&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PATCH&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;DELETE&quot;</span> <span class="p p-Indicator">]</span>
+      <span class="nt">accessStrategies</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">noop</span>
+      <span class="nt">mutators</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Apply with:</p>
+<div class="highlight"><pre><span></span><code>kubectl apply -f deployment/apirule.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Look up your CAP service URL.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;https://cpapp.</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>The console outputs your CAP service URL, for example <code>https://cpapp.example.kyma.live.k8s-hana.ondemand.com/</code>.</p>
+</li>
+<li>
+<p>Check if you can access your service via your URL.</p>
+<p>You can also add entries to the <em>Risks</em> application.</p>
+</li>
+</ol>
+<h2 id="add-sap-hana-cloud">Add SAP HANA Cloud</h2>
+<p>Your application runs on Kyma and is accessible from public internet now. Still it works like the local development version (<code>cds watch</code>) without a real database persistence. In this step, you add support for HANA. As already said, you need to provision it from Cloud Foundry and add the credentials manually.</p>
+<p>To keep the latency between the CAP service and HANA low, it makes sense to provision the HANA Cloud database on the same SAP Cloud Platform region as the Kyma cluster. But to try it out you can also use an SAP HANA Cloud instance from your Trial account.</p>
+<h3 id="prepare-cap-application-for-sap-hana-cloud">Prepare CAP Application for SAP HANA Cloud</h3>
+<p>The <code>hdb</code> module needs to be added to your <code>package.json</code> to enable CAP to talk to an SAP HANA DB.</p>
+<ol>
+<li>
+<p>Install the <code>hdb</code> module.
+    <div class="highlight"><pre><span></span><code>npm install --save hdb
+</code></pre></div></p>
+</li>
+<li>
+<p>Open the <code>package.json</code> file.</p>
+</li>
+<li>
+<p>Add the following snippet for HANA of the CAP application.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
+  <span class="err">...</span>
+  <span class="nt">&quot;cds&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;requires&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;db&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span>
+      <span class="p">}</span>
+<span class="hll">    <span class="p">},</span>
+</span><span class="hll">    <span class="nt">&quot;hana&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">      <span class="nt">&quot;deploy-format&quot;</span><span class="p">:</span> <span class="s2">&quot;hdbtable&quot;</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="hll">  <span class="err">...</span>
+</span><span class="hll"><span class="p">}</span>
+</span></code></pre></div>
+<p>With <code>requires.db.kind</code>: <code>sql</code> you tell CAP to use SQLite in dev and HANA in productive mode. The setting <code>hana.deploy-format</code>: <code>hdbtable</code> is required for HANA Cloud since it supports only the <code>hdbtable</code> and <code>hdbview</code> files for deployment.</p>
+</li>
+<li>
+<p>You now need to tell the CAP service to run in the productive mode. To do that, edit the <code>Dockerfile</code> and add the highlighted statement.</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim</span>
+
+<span class="hll"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production
+</span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
+<span class="k">COPY</span> gen/srv .
+<span class="k">RUN</span> npm install
+<span class="k">COPY</span> app app/
+<span class="k">RUN</span> find app -name <span class="s1">&#39;*.cds&#39;</span> <span class="p">|</span> xargs rm -f
+
+<span class="k">EXPOSE</span><span class="s"> 4004</span>
+<span class="k">USER</span><span class="s"> node</span>
+<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
+</code></pre></div>
+</li>
+<li>
+<p>Rebuild the CAP project and the docker image for production.</p>
+<div class="highlight"><pre><span></span><code>cds build --production
+docker build -t 0.0.0.0:5000/cpapp .
+docker push 0.0.0.0:5000/cpapp
+</code></pre></div>
+<p>The command <code>cds build</code> uses the <code>--production</code> argument to build the HANA artifacts. <code>npm</code> and <code>node</code> uses the environment variable <code>NODE_ENV=production</code>. Without that CAP falls back to "development mode" settings and tries to use SQLite.</p>
+</li>
+</ol>
+<h3 id="create-and-deploy-sap-hana-hdi-container">Create and Deploy SAP HANA HDI Container</h3>
+<p>You use the <code>cds deploy</code> command to create an HDI container on CF and deploy the database schema to the container.</p>
+<p>Make sure that you're logged in to a Cloud Foundry account where an SAP HANA Cloud instance and entitlement for the service plan <code>hana</code> <code>hdi-shared</code> is available or you use an SAP CP Trial account, just run:</p>
+<ol>
+<li>
+<p>Set the Cloud Foundry API endpoint.</p>
+<div class="highlight"><pre><span></span><code>cf api &lt;api-endpoint&gt;
+</code></pre></div>
+<p>You can find the API Endpoint URL in the overview page of your subaccount.</p>
+</li>
+<li>
+<p>Log on to your Cloud Foundry account.</p>
+<div class="highlight"><pre><span></span><code>cf login
+</code></pre></div>
+</li>
+<li>
+<p>Run the following line to create an HDI container.</p>
+<div class="highlight"><pre><span></span><code>cds deploy --to hana:cpapp-kyma-hdi
+</code></pre></div>
+<p>The suffix <code>:cpapp-kyma-hdi</code> tells <code>cds deploy</code> to create an HDI container with name <code>cpapp-kyma-hdi</code>. It also creates a service key with the name <code>cpapp-kyma-hdi-key</code> that you use to access the database in the next section.</p>
+<p>Then it deploys the database tables and the test content.</p>
+<p>It should end with something like:</p>
+<div class="highlight"><pre><span></span><code>  Finalizing...
+  Finalizing... ok  (0s 96ms)
+  Make succeeded (0 warnings): 14 files deployed (effective 22), 0 files undeployed (effective 0), 0 dependent files redeployed
+  Making... ok  (1s 597ms)
+  Enabling table replication for the container schema &quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;...
+  Enabling table replication for the container schema &quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;... ok  (0s 63ms)
+Starting make in the container &quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot; with 14 files to deploy, 0 files to undeploy... ok  (1s 756ms)
+Deploying to the container &quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;... ok (2s 211ms)
+No default-access-role handling needed; global role &quot;C5DF44CB9C08482D821F5BC3BE344FCF::access_role&quot; will not be adapted
+Unlocking the container &quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;...
+Unlocking the container &quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;... ok (0s 0ms)
+Deployment to container C5DF44CB9C08482D821F5BC3BE344FCF done [Deployment ID: none].
+(4s 499ms)
+Application can be stopped.
+</code></pre></div>
+<p>If it's missing, then there's probably a problem with the HDI deployer on your Operating System. It can be worked around by putting the HDI deployer in a docker container:</p>
+</li>
+</ol>
+<h3 id="workaround-use-hdi-deployer-in-docker-container">Workaround: Use HDI Deployer in Docker Container</h3>
+<p>Create a file <code>Dockerfile.hdi-deploy</code> with the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim AS build</span>
+
+<span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production
+<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
+<span class="k">RUN</span> apt-get update
+<span class="k">RUN</span> apt-get install -y openssl python make g++
+<span class="k">COPY</span> gen/db/package.json .
+<span class="k">RUN</span> npm install
+<span class="k">COPY</span> gen/db .
+
+<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;--exit&quot;</span> <span class="p">]</span>
+</code></pre></div>
+<p>Execute the following commands and check if the output gets right this time:</p>
+<div class="highlight"><pre><span></span><code>docker build -t cpapp-hdi-deployer -f Dockerfile.hdi-deploy .
+docker run --env <span class="nv">VCAP_SERVICES</span><span class="o">=</span><span class="s1">&#39;{&quot;hana&quot;:[{&quot;credentials&quot;: &#39;</span><span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key <span class="p">|</span> sed 1d <span class="k">)</span><span class="s2">&quot;</span><span class="s1">&#39;, &quot;name&quot;: &quot;hana&quot;,&quot;label&quot;:&quot;hana&quot;,&quot;plan&quot;:&quot;hdi-shared&quot;,&quot;tags&quot;:[&quot;hana&quot;]}]}&#39;</span> -t cpapp-hdi-deployer
+</code></pre></div>
+<h3 id="add-sap-hana-hdi-container-credentials">Add SAP HANA HDI Container Credentials</h3>
+<p>You need to somehow inject the HANA credentials into the CAP application. On Cloud Foundry that is done using an env var called <code>VCAP_SERVICES</code> that takes the credentials for all bound services. Kubernetes takes a slightly different approach, it uses secrets, that can be injected into applications as env vars. But as individual env vars for each value. Luckily, CAP supports both.</p>
+<p>On Kyma the service credentials for HANA would look like this:</p>
+<div class="highlight"><pre><span></span><code>driver=com.sap.db.jdbc.Driver
+hdi_password=dsdssdfdfdsfds...
+hdi_user=DE44345...
+host=1d468818-87ad-4f9a-b762-a642b9070869.hana.eu10.hanacloud.ondemand.com
+password=Vt1jo...
+port=443
+schema=DE6922EF2F3449E984E2E794456B7CBE
+url=jdbc:sap://1d468818-87ad-4f9a-b762-a642b9070869.hana.eu10.hanacloud.ondemand.com:443?encrypt=true&amp;validateCertificate=true&amp;currentschema=DE6922EF2F3449E984E2E794456B7CBE
+user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
+</code></pre></div>
+<p>However, since you need to take the HANA credentials from CF, it’s easier to stick to the <code>VCAP_SERVICES</code> approach for now.</p>
+<p>So let's have a look at the credentials that have been created by <code>cds deploy</code>:</p>
+<div class="highlight"><pre><span></span><code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key
+</code></pre></div>
+<p>The output looks like this:
+<div class="highlight"><pre><span></span><code><span class="err">Getting</span> <span class="err">key</span> <span class="err">cpapp-kyma-hdi-key</span> <span class="err">for</span> <span class="err">service</span> <span class="err">instance</span> <span class="err">cpapp-kyma-hdi</span> <span class="err">as</span> <span class="err">MySelf...</span>
+
+<span class="p">{</span>
+ <span class="nt">&quot;certificate&quot;</span><span class="p">:</span> <span class="s2">&quot;-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\nQTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB\nCSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97\nnh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt\n43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P\nT19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4\ngdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO\nBgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR\nTLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw\nDQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr\nhMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg\n06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF\nPnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls\nYSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk\nCAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=\n-----END CERTIFICATE-----&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;driver&quot;</span><span class="p">:</span> <span class="s2">&quot;com.sap.db.jdbc.Driver&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;hdi_password&quot;</span><span class="p">:</span> <span class="s2">&quot;Ee8lLp3O7aIPv51kOQ38vV6lCx3Tvm6WpGL9i7PRgMZlcuJygN9IPLW0GBVofz7GKsU6m3QNbADJvmRtVEp_ceEAo0iFT8Y6QtZojKOrMONeGTNcelnbUJw.uVb-3c.R&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;hdi_user&quot;</span><span class="p">:</span> <span class="s2">&quot;C5DF44CB9C08482D821F5BC3BE344FCF_7Y4VQVS7NK0VAVT1O6B01Q5XZ_DT&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;1d468818-87ad-4f9a-b762-a642b9070869.hana.eu10.hanacloud.ondemand.com&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;Jj4eS040K.2Z.88Y73c7MbANyvSCVhv0C7EYl6a71oW_3BmoRH6SN91_BAw3Y4cDbli.j2ebCnho0jCyYTghPnL9x8y59mb8CTNv0LvY2CvehYiw9ky7zVdRZJcOPY1s&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;jdbc:sap://1d468818-87ad-4f9a-b762-a642b9070869.hana.eu10.hanacloud.ondemand.com:443?encrypt=true\u0026validateCertificate=true\u0026currentschema=C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;C5DF44CB9C08482D821F5BC3BE344FCF_7Y4VQVS7NK0VAVT1O6B01Q5XZ_RT&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="create-a-secret-for-sap-hana-hdi-container-credentials">Create a Secret for SAP HANA HDI Container Credentials</h2>
+<p>As a first step, you need to upload the HANA HDI container credentials from the CF service key to a Kubernetes secret.</p>
+<p>You build the file <code>gen/hdi-secret.yaml</code> with the next steps.</p>
+<ol>
+<li>
+<p>Create the file <code>gen/hdi-secret.yaml</code> with the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-hdi-secret</span>
+<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opaque</span>
+<span class="nt">stringData</span><span class="p">:</span>
+  <span class="nt">VCAP_SERVICES</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
+    <span class="no">{</span>
+        <span class="no">&quot;hana&quot;: [</span>
+            <span class="no">{</span>
+            <span class="no">&quot;binding_name&quot;: null,</span>
+            <span class="no">&quot;credentials&quot;: {{CREDENTIALS}},</span>
+            <span class="no">&quot;instance_name&quot;: &quot;hana&quot;,</span>
+            <span class="no">&quot;label&quot;: &quot;hana&quot;,</span>
+            <span class="no">&quot;name&quot;: &quot;hana&quot;,</span>
+            <span class="no">&quot;plan&quot;: &quot;hdi-shared&quot;,</span>
+            <span class="no">&quot;provider&quot;: null,</span>
+            <span class="no">&quot;syslog_drain_url&quot;: null,</span>
+            <span class="no">&quot;tags&quot;: [</span>
+              <span class="no">&quot;hana&quot;,</span>
+              <span class="no">&quot;database&quot;,</span>
+              <span class="no">&quot;relational&quot;</span>
+            <span class="no">],</span>
+            <span class="no">&quot;volume_mounts&quot;: []</span>
+            <span class="no">}</span>
+        <span class="no">]</span>
+    <span class="no">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Replace the <code>{{CREDENTIALS}}</code> variable.</p>
+<ul>
+<li>Option A:<ol>
+<li>Replace <code>{{CREDENTIALS}}</code> with the JSON output of <code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key</code> (without the initial line).</li>
+<li>Create the secret on Kubernetes
+  <div class="highlight"><pre><span></span><code>kubectl apply -f gen/hdi-secret.yaml
+</code></pre></div></li>
+</ol>
+</li>
+<li>Option B:
+  <div class="highlight"><pre><span></span><code>node -e <span class="s1">&#39;console.log(process.argv[1].replace(&quot;{{CREDENTIALS}}&quot;, process.argv[2]))&#39;</span> <span class="s2">&quot;</span><span class="k">$(</span>cat gen/hdi-secret.yaml<span class="k">)</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key <span class="p">|</span> sed 1d <span class="p">|</span> sed <span class="s1">&#39;s/^/    /&#39;</span><span class="k">)</span><span class="s2">&quot;</span> <span class="p">|</span> kubectl apply -f -
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Look at your uploaded secret:</p>
+<div class="highlight"><pre><span></span><code>kubectl describe secret cpapp-kyma-hdi-secret
+</code></pre></div>
+<p>It should be similar to the following output:</p>
+<div class="highlight"><pre><span></span><code>NAME                                    TYPE                                  DATA   AGE
+
+
+Name:         cpapp-kyma-hdi-secret
+Namespace:    docker-registry
+Labels:       &lt;none&gt;
+Annotations:
+Type:         opaque
+
+Data
+====
+VCAP_SERVICES:  2602 bytes
+</code></pre></div>
+</li>
+</ol>
+<h3 id="connect-cap-application-to-the-sap-hana-hdi-container">Connect CAP Application to the SAP HANA HDI Container</h3>
+<p>Now you need to inject the secret's value as env var into your CAP application.</p>
+<ol>
+<li>
+<p>Add the highlighted lines to your <code>deployment/deployment.yaml</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+    <span class="nt">spec</span><span class="p">:</span>
+      <span class="nt">containers</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
+        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker-registry.{{CLUSTER_DOMAIN}}/cpapp</span>
+        <span class="nt">imagePullPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Always</span>
+        <span class="nt">ports</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
+<span class="hll">        <span class="nt">envFrom</span><span class="p">:</span>
+</span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">secretRef</span><span class="p">:</span>
+</span><span class="hll">              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-hdi-secret</span>
+</span></code></pre></div>
+<p>This adds all name value pairs in the secret, currently only <code>VCAP_SERVICES</code>, as env vars to the container of the deployment.</p>
+</li>
+<li>
+<p>Update the Kubernetes cluster with the deployment file.</p>
+<ul>
+<li>
+<p>Option A (if you replaced <code>{{CLUSTER_DOMAIN}}</code> in the <code>deployment/deployment.yaml</code> file):
+<div class="highlight"><pre><span></span><code>kubectl apply -f deployment/deployment.yaml
+</code></pre></div></p>
+</li>
+<li>
+<p>Option B:
+<div class="highlight"><pre><span></span><code>sed &lt;deployment/deployment.yaml <span class="s2">&quot;s/{{CLUSTER_DOMAIN}}/</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">/&quot;</span> <span class="p">|</span> kubectl apply -f -
+</code></pre></div></p>
+</li>
+</ul>
+<p>Through the deployment, you see temporarily two pods. The old pod will be deleted after the new was launched.</p>
+</li>
+<li>
+<p>Check the pods.</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>NAME                                 READY   STATUS     RESTARTS   AGE
+cpapp-566fcb5f9b-8dfjb               2/2     Running    0          26m
+cpapp-66b5cb4876-hx5l6               0/2     Init:0/1   0          2s
+</code></pre></div>
+<p>Rerun the command <code>kubectl get pods</code> until there’s only one <code>Running</code> pod for the application.</p>
+</li>
+<li>
+<p>Get the URL of your application.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;https://cpapp.</span><span class="k">$(</span>kubectl config current-context<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Open the URL to your application.</p>
+<p>Now, you can create some entries in the Risks application, which are stored in the HANA database.</p>
+</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>In the tutorial, you’ve learned how to deploy a CAP application on Kyma. When the SAP HANA Cloud service is available for Kyma (Disclaimer: This isn’t an SAP product commitment), it will be much easier.</p>
+<p>You can find the final code in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/kyma/app">kyma/app</a> branch.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="viewing-the-applications-log">Viewing the Application's Log</h3>
+<p>You can use the following command to view the latest logs of your app.</p>
+<div class="highlight"><pre><span></span><code>kubectl logs $(kubectl get pods -l app=cpapp -o jsonpath=&#39;{.items[0].metadata.name}&#39;) cpapp
+</code></pre></div>
+<p>The log-level of the CAP application can be increased, by adding the env variable <code>DEBUG</code> to the <code>deployment/deployment.yaml</code> file and apply the file again with <code>kubectl</code>:</p>
+<div class="highlight"><pre><span></span><code>        env:
+          - name: DEBUG
+            value: &quot;y&quot;
+</code></pre></div>
+<p>Make sure that <code>env</code> has the same indent as <code>envFrom</code>.</p>
+<h3 id="execute-commands-in-the-applications-container">Execute Commands in the Application's Container</h3>
+<p>With the following command, you can "ssh" to your container and start a bash shell:</p>
+<div class="highlight"><pre><span></span><code>kubectl exec $(kubectl get pods -l app=cpapp -o jsonpath=&#39;{.items[0].metadata.name}&#39;) -t -i /bin/bash
+</code></pre></div>
+<h2 id="teardown">Teardown</h2>
+<p>If want to quickly delete all artifacts created in this tutorial, execute the following commands:</p>
+<div class="highlight"><pre><span></span><code>cf delete-service-key cpapp-kyma-hdi cpapp-kyma-hdi-key  -f
+cf delete-service cpapp-kyma-hdi -f
+
+<span class="k">for</span> i in deployment/*.yaml<span class="p">;</span> <span class="k">do</span>
+    kubectl delete -f <span class="nv">$i</span>
+<span class="k">done</span>
+
+kubectl delete secret cpapp-kyma-hdi-secret
+
+helm uninstall docker-registry
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Welcome
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
