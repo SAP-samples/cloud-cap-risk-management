@@ -2,22 +2,22 @@
 
 ## Description
 
-Welcome to the SAP Cloud Platform "Risk Management" example application and tutorial.
+Welcome to the **SAP BTP Application Development** example application and tutorial.
 
-Use this example to learn how to develop an application based on SAP Cloud Application Programming Model (CAP) and how to deploy it on SAP Cloud Platform step by step. It is planned to provide multiple lessons that are built upon each other. You can start the tutorial with the first lesson, or start in between, because the source code for every tutorial lesson is provided in this repository.
+Use this example to learn how to develop an application based on SAP Cloud Application Programming Model (CAP) and how to deploy it on SAP Business Technology Platform (BTP) step by step. It's planned to provide multiple lessons that are built upon each other. You can start the tutorial with the first lesson, or start in between, because the source code for every tutorial lesson is provided in this repository.
 
-This first version of the tutorial, contains an example CAP application with a Fiori Elements and SAPUI5 Freestyle UI, and based on that a tutorial that shows how to deploy that application to Kyma.
+This first version of the tutorial, contains an example CAP application with an SAP Fiori Elements and SAPUI5 Freestyle UI, and based on that a tutorial that shows how to deploy that application to Kyma runtime.
 
-Watch out for new lessons.
+Sty tuned for new lessons.
 
 ## Contents
 
-* The `master` branch contains the [tutorial](http://sap-samples.github.io/cloud-cap-risk-management) that describes how to build the examples and how to deploy it to SAP Cloud Platform.
+* The `master` branch contains the [tutorial](http://sap-samples.github.io/cloud-cap-risk-management) that describes how to build the examples and how to deploy it to SAP BTP.
 * All other branches contain the resulting source code of a tutorial lesson.
 
 ## Requirements
 
-The requirements are described in the [tutorial](http://sap-samples.github.io/cloud-cap-risk-management).
+The requirements are described in this [tutorial](http://sap-samples.github.io/cloud-cap-risk-management).
 
 ## Download and Installation
 
@@ -31,33 +31,29 @@ checkout <branch>
 
 ## Known Issues
 
-You can find the known issues here: [Cloud CAP Risk Management Issues](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
+You can find the known issues [here](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
 
 ## How to Obtain Support
 
-Check out the documentation:
+Check out the documentation for:
 
-* [CAP Documentation "Capire"](https://cap.cloud.sap)
-* [SAP Cloud Platform Documentation](https://help.sap.com/viewer/product/CP/Cloud/)
+* [CAP aka "capire"](https://cap.cloud.sap)
+* [SAP BTP](https://help.sap.com/viewer/product/CP/Cloud/)
 
-In case you have a question, find a bug, or otherwise need support to use SAP products, please use:
+In case you've a question, find a bug, or otherwise need support to use SAP products, use:
 
 * [CAP Community](https://answers.sap.com/tags/9f13aee1-834c-4105-8e43-ee442775e5ce)
 * [SAP Community](https://community.sap.com/)
-* [SAP Cloud Platform Support Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/08d1103928fb42f3a73b3f425e00e13c.html)
+* [SAP BTP Support Components](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/08d1103928fb42f3a73b3f425e00e13c.html)
 
-If you face a problem with the example application or the description, please feel free to create an issue here:
-
-* [Cloud CAP Risk Management Issues](https://github.com/SAP-samples/cloud-cap-risk-management/issues)
+If you face a problem with the example application or the description, feel free to create an [issue](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
 
 ## Contributing
 
-If you have suggestions on how to improve the tutorial, you're welcome to post it in a issue here:
-
-* [Cloud CAP Risk Management Issues](https://github.com/SAP-samples/cloud-cap-risk-management/issues)
+If you've suggestions on how to improve the tutorial, you're welcome to provide your input [here](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
 
 ## License
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-cap-risk-management)](https://api.reuse.software/info/github.com/SAP-samples/cloud-cap-risk-management)
 
-Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
