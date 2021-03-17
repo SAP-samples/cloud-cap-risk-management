@@ -1,0 +1,904 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/Logging/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>Add the Application Logging Service - SAP BTP Application Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../styles/additonal.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.4.8/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#add-the-application-logging-service" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SAP BTP Application Development" class="md-header__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SAP BTP Application Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Add the Application Logging Service
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SAP BTP Application Development" class="md-nav__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    SAP BTP Application Development
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sources/" class="md-nav__link">
+        Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial_Overview/" class="md-nav__link">
+        Tutorial Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Create a CAP Service and SAP Fiori UI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Create a CAP Service and SAP Fiori UI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Create a CAP Service and SAP Fiori UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Service/" class="md-nav__link">
+        Create a CAP-Based Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FE/" class="md-nav__link">
+        Create an SAP Fiori Elements-Based Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Business_Logic/" class="md-nav__link">
+        Add Business Logic to Your Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Freestyle_UI5/" class="md-nav__link">
+        Create a Freestyle UI5 Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Launchpage/" class="md-nav__link">
+        Add More Than One Application to the Launch Page
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Roles_CAP/" class="md-nav__link">
+        Implement Roles and Authorization Checks in CAP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_SAP_CP_and_CF/" class="md-nav__link">
+        Prepare SAP BTP and Cloud Foundry
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HANA_Setup/" class="md-nav__link">
+        Set Up the SAP HANA Cloud Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_XSUAA/" class="md-nav__link">
+        Prepare User Authentication and Authorization (XSUAA) Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CF_Push_Deployment/" class="md-nav__link">
+        Deploy Your Application Using cf push
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MTA_Deployment/" class="md-nav__link">
+        Deploy Your Application Using MultiApps (MTA)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
+        Assign a Role Collection to User
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Add the Application Logging Service
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Add the Application Logging Service
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#access-logs" class="md-nav__link">
+    Access Logs
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-logs-from-terminal" class="md-nav__link">
+    Access Logs from Terminal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-logs-from-sap-btp-cockpit" class="md-nav__link">
+    Access Logs from SAP BTP Cockpit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze-logs-via-kibana" class="md-nav__link">
+    Analyze Logs via Kibana
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-service" class="md-nav__link">
+    Logging Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-it" class="md-nav__link">
+    Test It
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Undeploy_CF/" class="md-nav__link">
+        Undeploy Your Cloud Foundry Application
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kyma/" class="md-nav__link">
+        Run a CAP Application on Kyma
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#access-logs" class="md-nav__link">
+    Access Logs
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-logs-from-terminal" class="md-nav__link">
+    Access Logs from Terminal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-logs-from-sap-btp-cockpit" class="md-nav__link">
+    Access Logs from SAP BTP Cockpit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze-logs-via-kibana" class="md-nav__link">
+    Analyze Logs via Kibana
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-service" class="md-nav__link">
+    Logging Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-it" class="md-nav__link">
+    Test It
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/Logging.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="add-the-application-logging-service">Add the Application Logging Service</h1>
+<details class="note"><summary>Additional Documentation</summary><ul>
+<li><a href="https://help.sap.com/viewer/ee8e8a203e024bbb8c8c2d03fce527dc/Cloud/en-US/68454d44ad41458788959485a24305e2.html">Application Logging for the Cloud Foundry Environment (SAP Help)</a></li>
+</ul>
+</details>
+<h2 id="access-logs">Access Logs</h2>
+<h3 id="access-logs-from-terminal">Access Logs from Terminal</h3>
+<p>Display recent logs:</p>
+<div class="highlight"><pre><span></span><code>cf logs --recent &lt;appname&gt;
+</code></pre></div>
+<p>Follow logs live:</p>
+<div class="highlight"><pre><span></span><code>cf logs &lt;appname&gt;
+</code></pre></div>
+<p>(Choose <strong>Ctrl</strong>+<strong>C</strong> to quit.)</p>
+<h3 id="access-logs-from-sap-btp-cockpit">Access Logs from SAP BTP Cockpit</h3>
+<ol>
+<li>Go to your subaccount in <strong>SAP BTP cockpit</strong>.</li>
+<li>Choose <strong>Spaces</strong>.</li>
+<li>Choose you Cloud Foundry space.</li>
+<li>Choose on the application whose logs you want to access.</li>
+<li>Choose <strong>Logs</strong>. <!-- @TODO: add screenshot --></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Only the recent logs are displayed.</p>
+</div>
+<h3 id="analyze-logs-via-kibana">Analyze Logs via Kibana</h3>
+<ol>
+<li>Go to your subaccount in <strong>SAP BTP cockpit</strong>.</li>
+<li>Choose <strong>Spaces</strong>.</li>
+<li>Choose you Cloud Foundry space.</li>
+<li>Choose on the application whose logs you want to access.</li>
+<li>Choose <strong>Logs</strong>.</li>
+<li>Choose <strong>Open Kibana Dashboard</strong>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Kibana shows all logs</p>
+<p>Although the <em>Open Kibana Dashboard</em> link is placed on the logs view of a particular application, it will give you access to the logs of all spaces where you have the required permission.</p>
+</div>
+<h2 id="logging-service">Logging Service</h2>
+<p>Logs will only kept for a short period and won't be visible in Kibana without the Logging Service. By binding the Logging Service to your application logs will be kept for longer and will be available for further analysis via Kibana.</p>
+<p>It's suggested to enable the logging service for all applications, so that error analysis will be possible even some hours after the incident.</p>
+<p>In our experience, the <code>development</code> plan wasn't sufficient for test scenarios. Probably, its ok for personal development spaces. However, this tutorial uses the <code>standard</code> plan to be on the safe side.</p>
+<p>Add an instance for the logging service to the <code>resources</code> section of your <code>mta.yaml</code>:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Trial</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="nn">...</span>
+<span class="hll"><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+</span><span class="hll">  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">org.cloudfoundry.managed-service</span>
+</span><span class="hll">  <span class="nt">parameters</span><span class="p">:</span>
+</span><span class="hll">    <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application-logs</span>
+</span><span class="hll">    <span class="nt">service-plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lite</span>
+</span></code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">AWS Canary or Live</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="nn">...</span>
+<span class="hll"><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+</span><span class="hll">  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">org.cloudfoundry.managed-service</span>
+</span><span class="hll">  <span class="nt">parameters</span><span class="p">:</span>
+</span><span class="hll">    <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application-logs</span>
+</span><span class="hll">    <span class="nt">service-plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">standard</span>
+</span></code></pre></div>
+</div>
+</div>
+<p>Bind the logging service instance to all <code>modules</code> of the <code>mta.yaml</code>:</p>
+<!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-approuter")] -->
+<div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
+<span class="nn">...</span>
+<span class="nt">modules</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-approuter</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nodejs</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">approuter</span>
+    <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-uaa</span>
+<span class="hll">      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+</span>      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">srv-api</span>
+        <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">destinations</span>
+        <span class="nt">properties</span><span class="p">:</span>
+          <span class="nt">forwardAuthToken</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+          <span class="nt">strictSSL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">srv-api</span>
+          <span class="nt">url</span><span class="p">:</span> <span class="s">&#39;~{srv-url}&#39;</span>
+  <span class=" -Error">  </span><span class="nt">build-parameters</span><span class="p">:</span>
+      <span class="nt">requires</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-app</span>
+          <span class="nt">artifacts</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./*</span>
+          <span class="nt">target-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resources</span>
+</code></pre></div>
+<!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-srv")].requires[?(@.name=="cpapp-logs")] -->
+<div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
+<span class="nn">...</span>
+<span class="nt">modules</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-srv</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="hll">    <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
+</span><span class="hll">      <span class="l l-Scalar l-Scalar-Plain">...</span>
+</span><span class="hll">      <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+</span></code></pre></div>
+<!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-db-deployer")] -->
+<div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
+<span class="nn">...</span>
+<span class="nt">modules</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db-deployer</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hdb</span>
+    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gen/db</span>
+    <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+      <span class="nt">buildpack</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nodejs_buildpack</span>
+  <span class=" -Error">  </span><span class="nt">requires</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-uaa</span>
+<span class="hll">      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+</span></code></pre></div>
+<h3 id="test-it">Test It</h3>
+<ol>
+<li>
+<p>Build the MTAR file and deploy it to your Cloud Foundry space:</p>
+<div class="highlight"><pre><span></span><code>mbt build -t ./
+cf deploy cpapp_1.0.0.mtar 
+</code></pre></div>
+</li>
+<li>
+<p>Open Kibana after successful deployment. Your org should now be visible in the Kibana dashboard:</p>
+<p><img alt="Kibana: Filter Org" src="../markdown/images/kibana_filter_org.png" /></p>
+</li>
+<li>
+<p>Choose on the ( &#x2B; ) icon to filter for it.</p>
+</li>
+<li>The filter is gets added to the filter bar on the top of the screen and gets applied on the dashboard.</li>
+<li>
+<p>You should see your newly applied applications:</p>
+<p><img alt="Kibana: Components" src="../markdown/images/kibana_components.png" /></p>
+</li>
+</ol>
+<p>You can also browse all logs using the <em>Discover</em> button (compass icon) on the left navigation bar.
+The available fields are displayed on the left side of the screen. You can add fields to the message display or quickly filter for any of the top values.</p>
+<p>The time filter is on the right top of the screen. Don't forget to press the <em>Refresh</em> button.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../SAP_CP_Role_Assignment/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Assign a Role Collection to User
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Undeploy_CF/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Undeploy Your Cloud Foundry Application
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

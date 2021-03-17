@@ -1,0 +1,851 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/HANA_Setup/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>Set Up the SAP HANA Cloud Service - SAP BTP Application Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../styles/additonal.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.4.8/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#set-up-the-sap-hana-cloud-service" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SAP BTP Application Development" class="md-header__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SAP BTP Application Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Set Up the SAP HANA Cloud Service
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SAP BTP Application Development" class="md-nav__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    SAP BTP Application Development
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sources/" class="md-nav__link">
+        Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial_Overview/" class="md-nav__link">
+        Tutorial Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Create a CAP Service and SAP Fiori UI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Create a CAP Service and SAP Fiori UI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Create a CAP Service and SAP Fiori UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Service/" class="md-nav__link">
+        Create a CAP-Based Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FE/" class="md-nav__link">
+        Create an SAP Fiori Elements-Based Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Business_Logic/" class="md-nav__link">
+        Add Business Logic to Your Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Freestyle_UI5/" class="md-nav__link">
+        Create a Freestyle UI5 Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Launchpage/" class="md-nav__link">
+        Add More Than One Application to the Launch Page
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Roles_CAP/" class="md-nav__link">
+        Implement Roles and Authorization Checks in CAP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_SAP_CP_and_CF/" class="md-nav__link">
+        Prepare SAP BTP and Cloud Foundry
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Set Up the SAP HANA Cloud Service
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Set Up the SAP HANA Cloud Service
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-sap-hana-client-to-project" class="md-nav__link">
+    Add SAP HANA Client to Project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-to-hdbtable-deployment" class="md-nav__link">
+    Switch to hdbtable Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-use-an-existing-sap-hana-cloud-service-instance" class="md-nav__link">
+    Option 2: Use an Existing SAP HANA Cloud Service Instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-3-create-an-sap-hana-cloud-service-instance" class="md-nav__link">
+    Option 3: Create an SAP HANA Cloud Service Instance
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_XSUAA/" class="md-nav__link">
+        Prepare User Authentication and Authorization (XSUAA) Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CF_Push_Deployment/" class="md-nav__link">
+        Deploy Your Application Using cf push
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MTA_Deployment/" class="md-nav__link">
+        Deploy Your Application Using MultiApps (MTA)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
+        Assign a Role Collection to User
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logging/" class="md-nav__link">
+        Add the Application Logging Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Undeploy_CF/" class="md-nav__link">
+        Undeploy Your Cloud Foundry Application
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kyma/" class="md-nav__link">
+        Run a CAP Application on Kyma
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-sap-hana-client-to-project" class="md-nav__link">
+    Add SAP HANA Client to Project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-to-hdbtable-deployment" class="md-nav__link">
+    Switch to hdbtable Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-use-an-existing-sap-hana-cloud-service-instance" class="md-nav__link">
+    Option 2: Use an Existing SAP HANA Cloud Service Instance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-3-create-an-sap-hana-cloud-service-instance" class="md-nav__link">
+    Option 3: Create an SAP HANA Cloud Service Instance
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/HANA_Setup.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="set-up-the-sap-hana-cloud-service">Set Up the SAP HANA Cloud Service</h1>
+<details class="note"><summary>Additional Documentation</summary><ul>
+<li><strong>TODO</strong></li>
+</ul>
+</details>
+<h2 id="add-sap-hana-client-to-project">Add SAP HANA Client to Project</h2>
+<p>The SAP HANA <code>hdb</code> npm module needs to be added to our package in order to support SAP HANA.</p>
+<div class="highlight"><pre><span></span><code>npm install hdb --save
+</code></pre></div>
+<p>The CAP application will still use SQLite in-memory database for local testing, while the SAP HANA database should be used "productively" in the cloud.</p>
+<h2 id="switch-to-hdbtable-deployment">Switch to <code>hdbtable</code> Deployment</h2>
+<p>By default, the deployment uses the <code>hdbcds</code> as deployment format. However, this isn’t supported for SAP HANA Cloud and the configuration needs to be changed to use the <code>hdbtable</code> and <code>hdbview</code> format.</p>
+<ol>
+<li>
+<p>Add the following snippet at the end of your <code>package.json</code>:</p>
+<p><!-- cpes-file package.json:$.cds -->
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
+  <span class="err">...</span>
+<span class="hll">  <span class="nt">&quot;cds&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nt">&quot;requires&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">      <span class="nt">&quot;db&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span>
+</span><span class="hll">      <span class="p">}</span>
+</span><span class="hll">    <span class="p">},</span>
+</span><span class="hll">    <span class="nt">&quot;hana&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">      <span class="nt">&quot;deploy-format&quot;</span><span class="p">:</span> <span class="s2">&quot;hdbtable&quot;</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="p">}</span>
+</code></pre></div></p>
+<p><em>See also:</em></p>
+<ul>
+<li><a href="https://cap.cloud.sap/docs/guides/databases#get-hana">Using Databases (CAP)</a></li>
+<li><a href="https://cap.cloud.sap/docs/node.js/cds-env">CAP Configuration (CAP)</a></li>
+</ul>
+</li>
+<li>
+<p>Run <code>cds watch</code> and check that your app still works locally as it used to work before.</p>
+</li>
+</ol>
+<details class="info"><summary>SAP HANA Cloud Documentation</summary><p>Please read the documentation for further information:</p>
+<ul>
+<li><a href="https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/cloud/en-US/d0aa0ec935c1401e8deb3be35d49730b.html">SAP HANA Cloud Getting Started Guide
+  (SAP Help)</a></li>
+<li><a href="https://help.sap.com/viewer/f9c5015e72e04fffa14d7d4f7267d897/cloud/en-US/5b35402c47b344d882ac13c661aff1c0.html">SAP HANA Cloud Administrator DBADMIN (SAP Help)
+  </a></li>
+</ul>
+</details>
+<p><strong>There are three options to continue:</strong></p>
+<p><strong>Option 1:</strong> You already have an SAP HANA Cloud service instance in your Cloud Foundry space <strong>&rarr;</strong> You're set. Nothing to do.</p>
+<p><strong>Option 2:</strong> You want to use an SAP HANA Cloud service instance from a different Cloud Foundry org or space, but in the same landscape <strong>&rarr;</strong> continue with <a href="#option-2-use-an-existing-sap-hana-cloud-service-instance">Option 2: Use an existing SAP HANA Cloud Service Instance</a>.</p>
+<p><strong>Option 3:</strong> You want to create a new SAP HANA Cloud service instance <strong>&rarr;</strong> continue with <a href="#option-3-create-an-sap-hana-cloud-service-instance">Option 3: Create an SAP HANA Cloud Service Instance</a>.</p>
+<h2 id="option-2-use-an-existing-sap-hana-cloud-service-instance">Option 2: Use an Existing SAP HANA Cloud Service Instance</h2>
+<!-- @todo: navigation is different for trial and AWS Live-->
+<ol>
+<li>
+<p>Go to your SAP BTP cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Trial</label><div class="tabbed-content">
+<p><a href="https://cockpit.hanatrial.ondemand.com/">https://cockpit.hanatrial.ondemand.com/</a></p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">AWS Live EU 10</label><div class="tabbed-content">
+<p><a href="https://account.hana.ondemand.com/">https://account.hana.ondemand.com/</a></p>
+</div>
+</div>
+</li>
+<li>
+<p>Choose the <strong>Global Account</strong>.</p>
+</li>
+<li>Navigate to the <strong>Subaccount</strong>.</li>
+<li>Choose <strong>Cloud Foundry</strong> <strong>&rarr;</strong> <strong>Spaces</strong> in the left-hand pane.</li>
+<li>Choose the <strong>Space</strong>.</li>
+<li>Choose <strong>SAP HANA Cloud</strong> in the left-hand pane.</li>
+<li>
+<p>Choose <strong>Manage SAP HANA Cloud</strong> in the upper right corner.</p>
+<p>The SAP HANA cockpit opens. <!-- @todo: sing in is required --></p>
+</li>
+<li>
+<p>Choose your service instance.</p>
+</li>
+<li>Choose <strong>Create Mapping</strong>.</li>
+<li>Choose the <strong>Org ID</strong> and <strong>Space ID</strong> where you want to deploy the application.</li>
+<li>Choose <strong>Add</strong>.</li>
+</ol>
+<h2 id="option-3-create-an-sap-hana-cloud-service-instance">Option 3: Create an SAP HANA Cloud Service Instance</h2>
+<ol>
+<li>
+<p>Go to your SAP BTP cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Trial</label><div class="tabbed-content">
+<p><a href="https://cockpit.hanatrial.ondemand.com/">https://cockpit.hanatrial.ondemand.com/</a></p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">AWS Live EU 10</label><div class="tabbed-content">
+<p><a href="https://account.hana.ondemand.com/">https://account.hana.ondemand.com/</a></p>
+</div>
+</div>
+</li>
+<li>
+<p>Choose your <strong>Global Account</strong>.</p>
+</li>
+<li>Navigate to your <strong>Subaccount</strong>.</li>
+<li>Choose <strong>Cloud Foundry</strong> <strong>&rarr;</strong> <strong>Spaces</strong> in the left-hand pane.</li>
+<li>Choose the <strong>Space</strong> that you want to deploy to.</li>
+<li>
+<p>Choose <strong>SAP HANA Cloud</strong> in the left-hand pane.</p>
+<p><img alt="SAP HANA Cloud" src="../markdown/images/hana_cloud_empty.png" /></p>
+</li>
+<li>
+<p>Choose <strong>Create</strong>.</p>
+</li>
+<li>The <strong>Organization</strong> and <strong>Space</strong> will be selected.</li>
+<li>
+<p>Enter the <strong>Instance Name</strong>: <code>cpapp</code>.</p>
+<p><img alt="Create SAP HANA Cloud: Step 1a" src="../markdown/images/hana_cloud_create_1a.png" /></p>
+</li>
+<li>
+<p>Paste the password for <em>DBADMIN</em> in <strong>Administrator Password</strong> and <strong>Confirm Administrator Password</strong>.</p>
+<p><img alt="Create SAP HANA Cloud: Step 1b" src="../markdown/images/hana_cloud_create_1b.png" /></p>
+</li>
+<li>
+<p>Choose <strong>Step 2</strong>.</p>
+</li>
+<li>
+<p>The default settings should be sufficient for the tutorial application.</p>
+<p><img alt="Create SAP HANA Cloud: Step 2" src="../markdown/images/hana_cloud_create_2.png" /></p>
+</li>
+<li>
+<p>Choose <strong>Step 3</strong>.</p>
+</li>
+<li>
+<p>Choose <code>Deny all IP addresses (except Business Technology Platform)</code>.</p>
+<p><img alt="Create SAP HANA Cloud: Step 3" src="../markdown/images/hana_cloud_create_3.png" /></p>
+</li>
+<li>
+<p>Choose <strong>Create Instance</strong>. <!-- @todo: there is a step for <a href="https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/cloud/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html#loiof7febb16072b41f7ac90abf5ea1d4b86__step_datalake_params">Data Lake</a> --></p>
+<p>The creation of the database instance can take some minutes to complete. The final result looks like this in the SAP BTP cockpit:</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Trial</label><div class="tabbed-content"></div>
+</div>
+<p>Your SAP HANA Cloud instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day, before you start working with your trial.</p>
+<p><img alt="SAP HANA Cloud Instance Created" src="../markdown/images/hana_cloud_created.png" /></p>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Prepare_SAP_CP_and_CF/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Prepare SAP BTP and Cloud Foundry
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Prepare_XSUAA/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Prepare User Authentication and Authorization (XSUAA) Setup
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

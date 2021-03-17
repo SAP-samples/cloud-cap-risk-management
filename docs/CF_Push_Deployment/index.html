@@ -1,0 +1,1039 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/CF_Push_Deployment/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>Deploy Your Application Using cf push - SAP BTP Application Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../styles/additonal.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.4.8/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-your-application-using-cf-push" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SAP BTP Application Development" class="md-header__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SAP BTP Application Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploy Your Application Using cf push
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SAP BTP Application Development" class="md-nav__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    SAP BTP Application Development
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sources/" class="md-nav__link">
+        Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial_Overview/" class="md-nav__link">
+        Tutorial Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Create a CAP Service and SAP Fiori UI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Create a CAP Service and SAP Fiori UI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Create a CAP Service and SAP Fiori UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Service/" class="md-nav__link">
+        Create a CAP-Based Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FE/" class="md-nav__link">
+        Create an SAP Fiori Elements-Based Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Business_Logic/" class="md-nav__link">
+        Add Business Logic to Your Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Freestyle_UI5/" class="md-nav__link">
+        Create a Freestyle UI5 Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Launchpage/" class="md-nav__link">
+        Add More Than One Application to the Launch Page
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Roles_CAP/" class="md-nav__link">
+        Implement Roles and Authorization Checks in CAP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_SAP_CP_and_CF/" class="md-nav__link">
+        Prepare SAP BTP and Cloud Foundry
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HANA_Setup/" class="md-nav__link">
+        Set Up the SAP HANA Cloud Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_XSUAA/" class="md-nav__link">
+        Prepare User Authentication and Authorization (XSUAA) Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Deploy Your Application Using cf push
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Deploy Your Application Using cf push
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#log-on-to-cloud-foundry" class="md-nav__link">
+    Log on to Cloud Foundry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-services-on-cloud-foundry" class="md-nav__link">
+    Create Services on Cloud Foundry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-cap-service-to-cloud-foundry" class="md-nav__link">
+    Deploy CAP Service to Cloud Foundry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-application-router" class="md-nav__link">
+    Add the Application Router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-placeholder-on-deployment" class="md-nav__link">
+    Replacing placeholder on deployment
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MTA_Deployment/" class="md-nav__link">
+        Deploy Your Application Using MultiApps (MTA)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
+        Assign a Role Collection to User
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logging/" class="md-nav__link">
+        Add the Application Logging Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Undeploy_CF/" class="md-nav__link">
+        Undeploy Your Cloud Foundry Application
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kyma/" class="md-nav__link">
+        Run a CAP Application on Kyma
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#log-on-to-cloud-foundry" class="md-nav__link">
+    Log on to Cloud Foundry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-services-on-cloud-foundry" class="md-nav__link">
+    Create Services on Cloud Foundry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-cap-service-to-cloud-foundry" class="md-nav__link">
+    Deploy CAP Service to Cloud Foundry
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-application-router" class="md-nav__link">
+    Add the Application Router
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-placeholder-on-deployment" class="md-nav__link">
+    Replacing placeholder on deployment
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/CF_Push_Deployment.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="deploy-your-application-using-cf-push">Deploy Your Application Using cf push</h1>
+<details class="info"><summary>Prerequisites</summary><ul>
+<li><a href="../Prepare_SAP_CP_and_CF">Prepare SAP BTP</a></li>
+<li><a href="../Roles_CAP">Roles and Authorization Checks</a></li>
+</ul>
+</details>
+<details class="note"><summary>Additional Documentation</summary><ul>
+<li><a href="https://cap.cloud.sap/docs/advanced/deploy-to-cloud#cfpush">Official CAP documentation</a></li>
+<li><a href="https://developers.sap.com/tutorials/cap-service-deploy.html">Deploy a CAP Business Application to SAP BTP</a></li>
+</ul>
+</details>
+<p>This module describes the deployment of the application to Cloud Foundry with the built-in <code>cf push</code> command using <code>manifest.yml</code> files. This is an alternative approach to the <a href="../MTA_Deployment">MTA deployment</a>. However, the next modules of this tutorial are based on the MTA deployment. You can still use <code>cf push</code> but need then to translate the changes in the modules back to what it means for the <code>cf push</code> approach. It's recommended to skip this module and continue with the <a href="../MTA_Deployment">MTA deployment</a>.</p>
+<h2 id="log-on-to-cloud-foundry">Log on to Cloud Foundry</h2>
+<p>If you're not logged on to Cloud Foundry from an earlier section or you simply don't know, follow the steps in the tip.</p>
+<!-- @todo: what should appear in the output ?-->
+
+<h2 id="create-services-on-cloud-foundry">Create Services on Cloud Foundry</h2>
+<p>See <a href="https://cap.cloud.sap/docs/advanced/deploy-to-cloud#deploy-using-cf-push">CAP Deployment documentation</a>.</p>
+<ol>
+<li>
+<p>Open a terminal.</p>
+</li>
+<li>
+<p>Create Cloud Foundry manifest files:</p>
+<div class="highlight"><pre><span></span><code>cds add cf-manifest
+</code></pre></div>
+<p>This command creates two files:</p>
+<ul>
+<li><code>manifest.yml</code> - Manifest of applications to be deployed.</li>
+<li><code>services-manifest.yml</code> - Manifest of services to be created.</li>
+</ul>
+</li>
+<li>
+<p>Install Cloud Foundry plugin for service manifest push:</p>
+<div class="highlight"><pre><span></span><code>cf install-plugin Create-Service-Push
+</code></pre></div>
+<p>The plugin makes it easier to create and update services. The service information is maintained in file <code>services-manifest.yml</code> and can be updated with one call instead of manually calling <code>cf create-service</code> and <code>cf update-service</code>.</p>
+</li>
+<li>
+<p>Adjustment for Trial landscape:</p>
+<p>If you use the <em>Trial</em> landscape, then you need to change the broker name from <code>hana</code> to <code>hanatrial</code> in the file <code>services-manifest.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">create-services</span><span class="p">:</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="hll">  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span>   <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
+</span>    <span class="nt">broker</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hanatrial</span>
+    <span class="nt">plan</span><span class="p">:</span> <span class="s">&quot;hdi-shared&quot;</span>
+<span class="nn">...</span>
+</code></pre></div>
+</li>
+<li>
+<p>Add <code>xs-security.json</code> configuration file for XSUAA service to the <code>services-manifest.yml</code> file and enable update:</p>
+<p><!-- cpes-file services-manifest.yml:$["create-services"][?(@.name=="cpapp-uaa")] -->
+<div class="highlight"><pre><span></span><code><span class="nt">create-services</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-uaa</span>
+    <span class="l l-Scalar l-Scalar-Plain">broker</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">xsuaa</span>
+    <span class="l l-Scalar l-Scalar-Plain">plan</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">broker</span>
+<span class="hll">    <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">xs-security.json</span>
+</span><span class="hll">    <span class="l l-Scalar l-Scalar-Plain">updateService</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Add role collections to the <code>xs-security.json</code> file, which frees you from manually creating them.</p>
+<div class="admonition note">
+<p class="admonition-title">The <code>xs-security.json</code> file that was introduced <a href="../Prepare_XSUAA/#roles">here</a>.</p>
+</div>
+<p><!-- cpes-file xs-security.json:$["role-collections"] -->
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;xsappname&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
+  <span class="err">...</span>
+<span class="hll">  <span class="nt">&quot;role-collections&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class="hll">    <span class="p">{</span>
+</span><span class="hll">      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;RiskManager&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Manage Risks&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;role-template-references&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class="hll">        <span class="s2">&quot;$XSAPPNAME.RiskManager&quot;</span>
+</span><span class="hll">      <span class="p">]</span>
+</span><span class="hll">    <span class="p">},</span>
+</span><span class="hll">    <span class="p">{</span>
+</span><span class="hll">      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;RiskViewer&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;View Risks&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;role-template-references&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class="hll">        <span class="s2">&quot;$XSAPPNAME.RiskViewer&quot;</span>
+</span><span class="hll">      <span class="p">]</span>
+</span><span class="hll">    <span class="p">}</span>
+</span><span class="hll">  <span class="p">]</span>
+</span><span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Create services:</p>
+<div class="highlight"><pre><span></span><code>cf create-service-push --no-push
+</code></pre></div>
+<p>The command will create the services if they don't yet exists and update all services with the <code>updateService: true</code> flag, as we've set it for the XSUAA service.</p>
+<div class="admonition info">
+<p class="admonition-title">The command without <code>--no-push</code> will push the applications as well. However, there's an issue with the newer manifest files.</p>
+</div>
+</li>
+<li>
+<p>Assign a Role Collections to User by following the steps described in <a href="../SAP_CP_Role_Assignment/">Assign a Role Collection to User</a> to get your user the permission to access the application.</p>
+</li>
+</ol>
+<h2 id="deploy-cap-service-to-cloud-foundry">Deploy CAP Service to Cloud Foundry</h2>
+<ol>
+<li>
+<p>Add services and route to bind the created service instances to your <code>cpapp-srv</code> application and define the URL to access the service ("route"), add the following lines to the generated file <code>manifest.yml</code>:</p>
+<p><!-- cpes-file manifest.yml:$.applications[?(@.name=="cpapp-srv")] -->
+<div class="highlight"><pre><span></span><code><span class="nt">applications</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-srv</span>
+    <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gen/srv</span>
+    <span class="nt">memory</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">256M</span>
+    <span class="nt">buildpack</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nodejs_buildpack</span>
+<span class="hll">    <span class="nt">routes</span><span class="p">:</span>
+</span><span class="hll">      <span class="p p-Indicator">-</span> <span class="nt">route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-srv-((org))-((space)).((domain))</span>
+</span>    <span class="nt">services</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-uaa</span>
+</code></pre></div></p>
+<p>Switch off the dynamic route generation, by removing the line:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">random-route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>  <span class="c1"># for development only</span>
+</code></pre></div>
+<p>The application route is a "full qualified domain name" that needs to be unique. In this example org and space names are used to build the hostname to ensure this constraint.</p>
+<p>Replace <code>((org))</code>, <code>((space))</code> and <code>((domain))</code> with the respective values.</p>
+<p>You can run the command <code>cf target</code> to get the values for <code>((org))</code> and <code>((space))</code>.</p>
+<p><em>For example:</em></p>
+<div class="highlight"><pre><span></span><code>api endpoint:   https://api.cf.sap.hana.ondemand.com
+api version:    <span class="m">2</span>.156.0
+user:           your-email@your-mail.com
+<span class="hll">org:            your-org
+</span><span class="hll">space:          your-space
+</span></code></pre></div>
+<p>Use the <code>cf domains</code> command to get the list of allowed domains. Just pick the first one.</p>
+</li>
+<li>
+<p>Build the CDS artifacts for deployment:</p>
+<div class="highlight"><pre><span></span><code>cds build --production
+</code></pre></div>
+<p>This creates a new folder <code>gen</code> in your project, it contains everything that needs to be deployed of your data model and service from the <code>db</code> and <code>srv</code> folders in your project. The <code>manifest.yml</code> file already refers to these generated folders.</p>
+</li>
+<li>
+<p>Deploy the application:</p>
+<div class="highlight"><pre><span></span><code>cf push
+</code></pre></div>
+<p>This will take a while.</p>
+<p>In the deploy log, find the URL for the CAP service in the routes line at the very end:</p>
+<div class="highlight"><pre><span></span><code>name:              cpapp-srv
+requested state:   started
+routes:            cpapp-srv-***-***.cfapps.eu10.hana.ondemand.com
+</code></pre></div>
+</li>
+</ol>
+<h2 id="add-the-application-router">Add the Application Router</h2>
+<p>You now need to add three additional files to the <code>app</code> folder. All of them are needed for the so-called <a href="https://github.wdf.sap.corp/xs2/approuter.js">approuter</a>. The approuter in a nutshell is a component that provides the entry point of all the requests for an application. Whether the requests, in our case, all issued by a browser, are for static UI resources like the SAPUI5 controls, views, and controllers of our Fiori Elements application or requests for our risks service in the CAP backend, all these requests pass through the approuter. As its name implies, it routes all these requests to the different locations, the CAP ones go a different route than the UI ones. In case of the CAP requests, security also comes into play, only users that have the authorizations that we just set up, get access to the service.</p>
+<ol>
+<li>
+<p>Add a new file <code>app/xs-app.json</code>:</p>
+<p><!-- cpes-file app/xs-app.json -->
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;welcomeFile&quot;</span><span class="p">:</span> <span class="s2">&quot;./launchpage.html&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logout&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;logoutEndpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/do/logout&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;routes&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;^/service/(.*)$&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;xsuaa&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;cacheControl&quot;</span><span class="p">:</span> <span class="s2">&quot;no-cache, no-store, must-revalidate&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;^/(.*)$&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/$1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;localDir&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;xsuaa&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>The configurations in <code>app/xs-app.json</code> routes the CAP requests (all of them have <code>risk</code> as part of their URL) to a so-called destination <code>backend</code>. You can see the routes in the next steps, where this destination is defined. These request all need to be authenticated by the XSUAA. The rest of the requests are all requests for static resources of the UI, they're all passed through as they are, no authorization and routing to a destination is needed.</p>
+</li>
+<li>
+<p>Add a new file <code>app/package.json</code>:</p>
+<p><!-- cpes-file app/xs-app.json -->
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;welcomeFile&quot;</span><span class="p">:</span> <span class="s2">&quot;./launchpage.html&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;logout&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;logoutEndpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/do/logout&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;routes&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;^/service/(.*)$&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;destination&quot;</span><span class="p">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;xsuaa&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;cacheControl&quot;</span><span class="p">:</span> <span class="s2">&quot;no-cache, no-store, must-revalidate&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;^/(.*)$&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/$1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;localDir&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;authenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;xsuaa&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>This is creating an instance of the approuter service on Cloud Foundry and starting it when it's deployed.</p>
+</li>
+</ol>
+<p>41 Add an application <code>cpapp-app</code> to the file <code>manifest.yml</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;!</span><span class="c1">-- cpes-file manifest.yml:$.applications[?(@.name==&quot;cpapp-app&quot;)] --&gt;</span>
+<span class="ss">```yaml</span>
+<span class="ss">applications:</span>
+<span class="ss">  ...</span>
+<span class="ss">  - name: cpapp-app</span>
+<span class="ss">    path: app</span>
+<span class="ss">    memory: 128M</span>
+<span class="ss">    buildpacks:</span>
+<span class="ss">      - nodejs_buildpack</span>
+<span class="ss">    env:</span>
+<span class="ss">      destinations: |</span>
+<span class="ss">        [</span>
+<span class="ss">          {&quot;name&quot;:&quot;backend&quot;,&quot;url&quot;:&quot;https://cpapp-srv-((org))-((space)).((domain))&quot;,&quot;forwardAuthToken&quot;:true}</span>
+<span class="ss">        ]</span>
+<span class="ss">    routes:</span>
+<span class="ss">      - route: cpapp-app-((org))-((space)).((domain))</span>
+<span class="ss">    services:</span>
+<span class="ss">      - cpapp-uaa</span>
+<span class="ss">```</span>
+
+<span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">creation</span> <span class="n">of</span> <span class="n">our</span> <span class="n">UI</span> <span class="n">application</span><span class="p">.</span> <span class="n">It</span> <span class="n">has</span> <span class="n">the</span> <span class="n">static</span> <span class="n">UI</span> <span class="nf">resources</span> <span class="p">(</span><span class="k">as</span> <span class="n">we</span> <span class="n">are</span> <span class="k">in</span> <span class="n">the</span> <span class="ss">```app```</span> <span class="n">folder</span><span class="p">,</span> <span class="n">the</span> <span class="n">path</span> <span class="ss">```./```</span> <span class="n">means</span> <span class="n">that</span> <span class="n">everything</span> <span class="k">in</span> <span class="n">this</span> <span class="n">folder</span> <span class="k">is</span> <span class="n">deployed</span><span class="p">)</span> <span class="k">as</span> <span class="n">well</span> <span class="k">as</span> <span class="n">the</span> <span class="n">approuter</span><span class="p">.</span> <span class="n">Here</span> <span class="n">the</span> <span class="n">destination</span> <span class="ss">```backend```</span> <span class="n">that</span> <span class="n">we</span> <span class="n">used</span> <span class="k">in</span> <span class="n">the</span> <span class="n">approuter</span> <span class="n">config</span> <span class="k">from</span> <span class="ss">```xs-app.json```</span> <span class="n">above</span> <span class="k">is</span> <span class="n">also</span> <span class="n">defined</span><span class="p">.</span> <span class="n">It</span> <span class="n">routes</span> <span class="k">all</span> <span class="n">the</span> <span class="n">CAP</span> <span class="n">requests</span> <span class="k">to</span> <span class="n">the</span> <span class="ss">`capp-srv`</span> <span class="n">app</span><span class="p">,</span> <span class="k">where</span> <span class="n">the</span> <span class="n">service</span> <span class="s2">&quot;lives&quot;</span> <span class="n">since</span> <span class="n">our</span> <span class="n">deployment</span> <span class="k">using</span> <span class="ss">```cf push -f gen/srv```</span><span class="p">.</span> <span class="n">It</span> <span class="n">binds</span> <span class="k">to</span> <span class="n">the</span> <span class="n">XSUAA</span> <span class="n">service</span> <span class="n">instance</span> <span class="n">we</span> <span class="n">deployed</span> <span class="n">earlier</span><span class="p">.</span>
+
+<span class="k">Replace</span> <span class="n">the</span> <span class="n">placeholders</span> <span class="ss">`((org))`</span><span class="p">,</span> <span class="ss">`((space))`</span> <span class="k">and</span> <span class="ss">``</span><span class="p">((</span><span class="n">domain</span><span class="p">))</span><span class="ss">``</span> <span class="k">with</span> <span class="n">their</span> <span class="n">respective</span> <span class="k">values</span><span class="p">.</span>
+</code></pre></div>
+
+<ol>
+<li>
+<p>Use the <code>cf push</code> command to push just the new UI application <code>cpapp-app</code> to Cloud Foundry:</p>
+<div class="highlight"><pre><span></span><code>cf push cpapp-srv
+</code></pre></div>
+<p>It takes again about a minute for the deployment.</p>
+<p>In the deploy log, find the application URL in the routes line at the very end:</p>
+<div class="highlight"><pre><span></span><code>name:              cpapp-app
+requested state:   started
+routes:            cpapp-app-***-***.cfapps.eu10.hana.ondemand.com
+</code></pre></div>
+</li>
+<li>
+<p>Open the URL in the browser.</p>
+</li>
+</ol>
+<details class="failure"><summary>@TODO</summary><ul>
+<li>Link and a more appropriate description for XSUAA</li>
+<li>Link and explanation for Scopes, Roles, Role-Templates, Role-Collections</li>
+</ul>
+</details>
+<details class="warning"><summary>@TODO: Check with CAP Team</summary><p>3 Different ways of deploying using CF push:</p>
+<ul>
+<li>Deploying using Cloud Foundry <a href="https://github.wdf.sap.corp/pages/cap/advanced/deploy-to-cloud#deploy-using-cf-push">push</a>.</li>
+</ul>
+<p>After deployment there is no initial data.
+Only when this is added in <code>package.json</code></p>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;cds&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;requires&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;db&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;kind&quot;</span><span class="o">:</span> <span class="s2">&quot;sql&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>@TODO: Missing step?</p>
+<p>Also, in case there is security needed for the new service, a reference to the xsuaa service needs to be manually added to <code>gen/srv/manifest.yml</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">xsuaa_for_cpapp</span>
+</code></pre></div>
+<ul>
+<li>Replaying the <code>cds deploy --to hana</code> using the individual <a href="https://github.wdf.sap.corp/pages/cap/guides/databases#alternative-deploying-manually">steps</a>.</li>
+</ul>
+<p>mentions binding of service keys</p>
+<div class="highlight"><pre><span></span><code>cf create-service-key cpapp-db-hdi-container cpapp-db-hdi-container-key -c &#39;{&quot;permissions&quot;: &quot;development&quot;}&#39;
+cf service-key cpapp-db-hdi-container cpapp-db-hdi-container-key
+</code></pre></div>
+<p>and then subsequently copying the service key data to the <code>default-env.json</code> file
+Non of the steps seem to be needed though, the push works also if the steps are not carried out</p>
+<p>Documentation also mentions:</p>
+<p>In the db/ folder of the project, call:</p>
+<div class="highlight"><pre><span></span><code>npm install         # invokes CDS build to generate SAP HANA files
+npm start -- --exit # deploys to the configured HDI container
+</code></pre></div>
+<p>This is different to cf push -f gen/db</p>
+<p>In the db folder there is no package.json, so why <code>npm i</code> there?</p>
+<ul>
+<li>Using <code>cds deploy --to hana</code> <a href="https://github.wdf.sap.corp/pages/cap/guides/databases#cds-deploy-hana">deploy-to-hana</a></li>
+</ul>
+<p>works however:</p>
+<ul>
+<li>compiles only db folder</li>
+<li><code>cds build</code> as well as <code>cf push -f gen/src</code> still needs to be carried out, but nowhere mentioned</li>
+<li>When <code>cds deploy --to hana</code> is carried out, there is no <code>cpaap-db</code> in CF, however using the alternative (<code>cf push -f gen/db</code> creates such an app). When is it needed and when it is not?</li>
+</ul>
+</details>
+<h2 id="replacing-placeholder-on-deployment">Replacing placeholder on deployment</h2>
+<p>Instead of putting the final values in, you can keep the placeholders <code>((org))</code>, <code>((space))</code>, and <code>((domain))</code> in the <code>manifest.yml</code> file and do the replacement on deployment.</p>
+<div class="highlight"><pre><span></span><code>cf push <span class="se">\</span>
+  --var <span class="nv">org</span><span class="o">=</span>...
+  --var <span class="nv">space</span><span class="o">=</span>...
+  --var <span class="nv">domain</span><span class="o">=</span>...
+</code></pre></div>
+<p>The advantage of this approach is that you can use the same manifest file for deployment to different landscapes, for example test and productive.</p>
+<p>You can use this for a sophisticated solution to set the values dynamically based on your current Cloud Foundry target:</p>
+<div class="highlight"><pre><span></span><code>cf push <span class="se">\</span>
+  --var <span class="nv">org</span><span class="o">=</span><span class="k">$(</span>jq -r .SpaceFields.Name ~/.cf/config.json <span class="p">|</span> sed s/<span class="o">[</span>^a-z0-9<span class="o">]</span>/-/ig<span class="k">)</span> <span class="se">\</span>
+  --var <span class="nv">space</span><span class="o">=</span><span class="k">$(</span>jq -r .OrganizationFields.Name ~/.cf/config.json <span class="p">|</span> sed s/<span class="o">[</span>^a-z0-9<span class="o">]</span>/-/ig<span class="k">)</span> <span class="se">\</span>
+  --var <span class="nv">domain</span><span class="o">=</span><span class="k">$(</span>cf curl /v3/organizations/<span class="k">$(</span>jq -r .OrganizationFields.GUID ~/.cf/config.json<span class="k">)</span>/domains/default <span class="p">|</span> jq -r .name<span class="k">)</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Prepare_XSUAA/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Prepare User Authentication and Authorization (XSUAA) Setup
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../MTA_Deployment/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Deploy Your Application Using MultiApps (MTA)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

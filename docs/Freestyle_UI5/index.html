@@ -1,0 +1,1067 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/Freestyle_UI5/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.6">
+    
+    
+      
+        <title>Create a Freestyle UI5 Application - SAP BTP Application Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2c0c5eaf.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../styles/additonal.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.4.8/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#create-a-freestyle-ui5-application" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SAP BTP Application Development" class="md-header__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SAP BTP Application Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Create a Freestyle UI5 Application
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SAP BTP Application Development" class="md-nav__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    SAP BTP Application Development
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sources/" class="md-nav__link">
+        Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial_Overview/" class="md-nav__link">
+        Tutorial Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Create a CAP Service and SAP Fiori UI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Create a CAP Service and SAP Fiori UI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Create a CAP Service and SAP Fiori UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Service/" class="md-nav__link">
+        Create a CAP-Based Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FE/" class="md-nav__link">
+        Create an SAP Fiori Elements-Based Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Business_Logic/" class="md-nav__link">
+        Add Business Logic to Your Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Create a Freestyle UI5 Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Create a Freestyle UI5 Application
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sap-fiori-elements-application-vs-freestyle-ui5-application" class="md-nav__link">
+    SAP Fiori Elements Application vs. Freestyle UI5 Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-application" class="md-nav__link">
+    Creating the Application
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating the Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-application" class="md-nav__link">
+    Starting the Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sapui5-serve" class="md-nav__link">
+    SAPUI5 Serve
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Launchpage/" class="md-nav__link">
+        Add More Than One Application to the Launch Page
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Roles_CAP/" class="md-nav__link">
+        Implement Roles and Authorization Checks in CAP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_SAP_CP_and_CF/" class="md-nav__link">
+        Prepare SAP BTP and Cloud Foundry
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HANA_Setup/" class="md-nav__link">
+        Set Up the SAP HANA Cloud Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_XSUAA/" class="md-nav__link">
+        Prepare User Authentication and Authorization (XSUAA) Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CF_Push_Deployment/" class="md-nav__link">
+        Deploy Your Application Using cf push
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MTA_Deployment/" class="md-nav__link">
+        Deploy Your Application Using MultiApps (MTA)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
+        Assign a Role Collection to User
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logging/" class="md-nav__link">
+        Add the Application Logging Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Undeploy_CF/" class="md-nav__link">
+        Undeploy Your Cloud Foundry Application
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kyma/" class="md-nav__link">
+        Run a CAP Application on Kyma
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sap-fiori-elements-application-vs-freestyle-ui5-application" class="md-nav__link">
+    SAP Fiori Elements Application vs. Freestyle UI5 Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-application" class="md-nav__link">
+    Creating the Application
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating the Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-application" class="md-nav__link">
+    Starting the Application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sapui5-serve" class="md-nav__link">
+    SAPUI5 Serve
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/Freestyle_UI5.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="create-a-freestyle-ui5-application">Create a Freestyle UI5 Application</h1>
+<details class="info"><summary>Prerequisites</summary><ul>
+<li><a href="../Sources">Get Started</a></li>
+<li><a href="../CAP_Service">Create a CAP-Based Service</a></li>
+<li><a href="../FE">Create an SAP Fiori Elements-Based Applicaton</a></li>
+<li><a href="../CAP_Business_Logic">Add Business Logic to Your Application</a></li>
+</ul>
+<p>The results of the previous module <strong>Add Business Logic to Your Application</strong> can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/business-logic">here</a>.</p>
+</details>
+<details class="note"><summary>Additional Documentation</summary><ul>
+<li><em>TODO</em></li>
+</ul>
+</details>
+<p>In this section, you create a Freestyle UI5 app on top of your CAP service.</p>
+<h2 id="sap-fiori-elements-application-vs-freestyle-ui5-application">SAP Fiori Elements Application vs. Freestyle UI5 Application</h2>
+<p>What is the difference to an SAP Fiori elements (FE) based application that you have already built in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section? As mentioned, both the freestyle app and the FE app are based on SAPUI5.</p>
+<p>An FE app can be thought of like a giant player built with SAPUI5 where most of the code resides outside your own development project in central components and where much of its logic comes out of the box and is controlled by metadata from your OData service.</p>
+<p>A freestyle UI5 application, on the other hand, lives mainly in your own project - all the views and controllers are in it. It still comes with all the features of SAPUI5 (super rich SAP Fiori compliant <a href="https://sapui5.hana.ondemand.com/#/controls">set of UI controls</a>, <a href="https://sapui5.hana.ondemand.com/#/topic/e5310932a71f42daa41f3a6143efca9c">data binding</a>, <a href="https://sapui5.hana.ondemand.com/#/topic/91f233476f4d1014b6dd926db0e91070">model view controller</a>, and so on), but if you want to, for example, program a screen where a user can edit data, you’ve to program it yourself. Whereas, in FE it comes already out of the box. With the greater amount of work for standard use cases, however, also comes the greater freedom. In a freestyle app, you can do what you need to do using SAPUI5 or even using third party / open-source components. While there are also options in FE to adjust your application outside of the possibilities given you via metadata (annotations) using the so-called "Flexible Programming Model", in a freestyle UI5 app, the sky is the limit with respect to freedom and optimization.</p>
+<p>Fortunately, also for freestyle UI5, you've a choice of several templates that get your application kick started. They copy the initial code into your project and any change necessary for the app can be done manually by you in the code.</p>
+<h2 id="creating-the-application">Creating the Application</h2>
+<p>In the next steps, you build an application using the <code>mitigations</code> part of our CAP-based service.</p>
+<ol>
+<li>
+<p>Make sure that you’ve installed the SAPUI5 templates as described in section <a href="../installation/#ui5-freestyle-app-templates">Installation</a>.</p>
+</li>
+<li>
+<p>Open a terminal in VS Code via <strong>Terminal</strong> <strong>&rarr;</strong> <strong>New Terminal</strong>.</p>
+</li>
+<li>
+<p>Navigate to your project folder.</p>
+</li>
+<li>
+<p>Navigate to the <code>app</code> folder:</p>
+<div class="highlight"><pre><span></span><code>cd app
+</code></pre></div>
+</li>
+<li>
+<p>Create a new <code>mitigations</code> folder for the new app:</p>
+<div class="highlight"><pre><span></span><code>mkdir mitigations
+</code></pre></div>
+</li>
+<li>
+<p>Navigate to the <code>mitigations</code> folder:</p>
+<div class="highlight"><pre><span></span><code>cd mitigations
+</code></pre></div>
+</li>
+<li>
+<p>Create a freestyle UI5 application:</p>
+<p><div class="highlight"><pre><span></span><code>yo @sapui5/sapui5-templates
+</code></pre></div>
+A creation wizard starts.</p>
+</li>
+<li>
+<p>Follow the creation wizard and use the following values:</p>
+<div class="highlight"><pre><span></span><code><span class="o">-</span> <span class="s2">&quot;Provide the module name&quot;</span> <span class="nx">mitigations</span>
+<span class="o">-</span> <span class="s2">&quot;Provide the module namespace&quot;</span> <span class="nx">ns</span>
+<span class="o">-</span> <span class="s2">&quot;Select a template&quot;</span> <span class="nx">SAP</span> <span class="nx">Fiori</span> <span class="nx">Worklist</span> <span class="nx">Application</span> <span class="nx">OData</span> <span class="nx">V4</span>
+<span class="o">-</span> <span class="s2">&quot;Title&quot;</span> <span class="nx">Mitigations</span>
+<span class="o">-</span> <span class="s2">&quot;Description&quot;</span> <span class="nx">Mitigations</span>
+<span class="o">-</span> <span class="s2">&quot;Choose if your app should run in SAP Fiori Launchpad or standalone&quot;</span> <span class="nx">Standalone</span> <span class="nx">App</span> <span class="p">(</span><span class="nx">optimized</span> <span class="k">for</span> <span class="nx">individual</span> <span class="nx">deployment</span><span class="p">)</span>
+<span class="o">-</span> <span class="s2">&quot;Select batch mode corresponding to selected OData Service&quot;</span> <span class="nx">Auto</span><span class="o">:</span> <span class="nx">Requests</span> <span class="nx">are</span> <span class="nx">grouped</span> <span class="k">in</span> <span class="nx">one</span> <span class="nx">batch</span> <span class="nx">request</span>
+<span class="o">-</span> <span class="s2">&quot;Service Base URI&quot;</span> <span class="nx">http</span><span class="o">:</span><span class="c1">//localhost:4004/service/risk</span>
+<span class="o">-</span> <span class="s2">&quot;Datasource URL&quot;</span> <span class="o">/</span><span class="nx">service</span><span class="o">/</span><span class="nx">risk</span>
+<span class="o">-</span> <span class="s2">&quot;Object Collection&quot;</span> <span class="nx">Mitigations</span>
+<span class="o">-</span> <span class="s2">&quot;Object Collection ID&quot;</span> <span class="nx">ID</span>
+<span class="o">-</span> <span class="s2">&quot;Object Title&quot;</span> <span class="nx">ID</span>
+<span class="o">-</span> <span class="s2">&quot;Object Numeric Attribute&quot;</span><span class="o">:</span> <span class="nx">Leave</span> <span class="nx">Empty</span>
+<span class="o">-</span> <span class="s2">&quot;Object Unit of Measure&quot;</span><span class="o">:</span> <span class="nx">Leave</span> <span class="nx">Empty</span>
+</code></pre></div>
+</li>
+<li>
+<p>Open the newly created file <code>manifest.json</code> in your <code>cpapp/app/mitigations/webapp</code> folder.</p>
+</li>
+<li>
+<p>Add a <code>/</code> to the beginning of the value of the <code>uri</code> parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">&quot;sap.app&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;dataSources&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;mainService&quot;</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/service/risk/&quot;</span><span class="p">,</span>
+</span>                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;OData&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;odataVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;4.0&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;localUri&quot;</span><span class="o">:</span> <span class="s2">&quot;localService/metadata.xml&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+</code></pre></div>
+</li>
+</ol>
+<h3 id="summary">Summary</h3>
+<p>What happened here? (You can skip this and carry on with <a href="#starting-the-application">Starting the Application</a> if you aren't keen to know.)</p>
+<p>First, you created a new application from the work list template with a detail page based on a V4 OData service (the CAP service is V4). The result is a similar application layout like the one you've already chosen in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section. There are other templates available (a Worklist Application and a Master Detail one, both for V2 services).</p>
+<p>You choose to be able to run this app standalone, so without necessarily having to have an SAP Fiori launchpad to host it. On a technical level, you choose to send all the OData requests from the app using batches. A batch is a kind of a wrapper for requests. You can wrap multiple requests into one with a batch. Even when there’s only one request, a batch is better for security reasons, as not all the data of the request is exposed in the URL. So, in essence, for performance and security reasons, it's always a good idea to choose batch.</p>
+<p>Then there’s the section about the service base URI and the data source URL. It prepares your project for the optional use of more <a href="https://sap.github.io/ui5-tooling/">SAPUI5 Tooling</a> for development. It ensures that the requests for the OData service from the application (all for our <code>risk</code> service, so starting with <code>/risk</code>) are mapped to the backend service, which is our CAP service, running under <code>http://localhost:4004/service/risk</code>.</p>
+<details class="info"><summary>Why is a mapping needed?</summary><p>You might ask yourself why you've to specify this here, when in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section you didn't. The answer is that the SAP Fiori Elements case was streamlined to a CAP service already (you even told the app generator to get the service from a CAP project). Freestyle SAPUI5 templates don’t have the special treatment of CAP yet and instead make no assumption where the OData service comes from, it could be a remote one based on another framework. To make the connection, the above mapping is needed. SAPUI5 has a so-called middleware that proxies to the remote service. You can see this by opening the <code>ui5.yaml</code> file under <code>cpapp/app/mitigations</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span>
+<span class="nt">server</span><span class="p">:</span>
+    <span class="nt">customMiddleware</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ui5-middleware-simpleproxy</span>
+        <span class="l l-Scalar l-Scalar-Plain">mountPath</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/risk</span>
+        <span class="l l-Scalar l-Scalar-Plain">afterMiddleware</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">compression</span>
+        <span class="l l-Scalar l-Scalar-Plain">configuration</span><span class="p p-Indicator">:</span>
+        <span class="nt">baseUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://localhost:4004/service/risk</span>
+</code></pre></div>
+</details>
+<p>The change in the <code>manifest.yaml</code> is to make sure that the data requests are used with an absolute URL at <code>/risk</code>. The original entry for the URI was <code>risk</code>. This would have triggered SAPUI5 to issue any data request relative to the path of the application itself, but we want the requests to be absolute to risk.</p>
+<h2 id="starting-the-application">Starting the Application</h2>
+<ol>
+<li>
+<p>Make sure <code>cds watch</code> is still running in the project root folder:</p>
+<div class="highlight"><pre><span></span><code>cds watch
+</code></pre></div>
+</li>
+<li>
+<p>Open the URL <a href="http://localhost:4004/">http://localhost:4004/</a>.</p>
+<p>You now see two new HTML pages.</p>
+<p><img alt="UI5 App" src="../markdown/images/freestylelaunch.png" title="UI5 App" /></p>
+</li>
+<li>
+<p>Choose the <code>/mitigations/webapp/index.html</code> entry.</p>
+<p><img alt="UI5 App IDs" src="../markdown/images/freestyleguidids.png" title="UI5 App IDs" /></p>
+<p>As a result, you can see a list but you can only see the IDs of the mitigations both in the list view and on the detail page. This is because the freestyle template only got the information from you that the <code>Object Collection ID</code> is the <code>ID</code> property of the <code>mitigations</code> service. You now need to add additional SAPUI5 controls that are bound to additional properties of the <code>mitigations</code> service.</p>
+</li>
+<li>
+<p>Open the view of the work list <code>cpapp/app/mitigations/webapp/view/Worklist.view.xml</code>  and add the following code, removing the <code>ID</code> column and instead adding <code>Description</code>, <code>Owner</code> and <code>Timeline</code> columns:</p>
+<div class="highlight"><pre><span></span><code>    <span class="nt">&lt;columns&gt;</span>
+<span class="hll">        <span class="nt">&lt;Column</span> <span class="na">id=</span><span class="s">&quot;DescriptionColumn&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll">            <span class="nt">&lt;Text</span> <span class="na">text=</span><span class="s">&quot;Description&quot;</span> <span class="na">id=</span><span class="s">&quot;DescriptionColumnTitle&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll">        <span class="nt">&lt;/Column&gt;</span>
+</span><span class="hll">        <span class="nt">&lt;Column</span> <span class="na">id=</span><span class="s">&quot;OwnerColumn&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll">            <span class="nt">&lt;Text</span> <span class="na">text=</span><span class="s">&quot;Owner&quot;</span> <span class="na">id=</span><span class="s">&quot;OwnerColumnTitle&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll">        <span class="nt">&lt;/Column&gt;</span>
+</span><span class="hll">        <span class="nt">&lt;Column</span> <span class="na">id=</span><span class="s">&quot;TimelineColumn&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll">            <span class="nt">&lt;Text</span> <span class="na">text=</span><span class="s">&quot;Timeline&quot;</span> <span class="na">id=</span><span class="s">&quot;TimelineColumnTitle&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll">        <span class="nt">&lt;/Column&gt;</span>
+</span>    <span class="nt">&lt;/columns&gt;</span>
+
+    <span class="nt">&lt;items&gt;</span>
+        <span class="nt">&lt;ColumnListItem</span>
+            <span class="na">type=</span><span class="s">&quot;Navigation&quot;</span>
+            <span class="na">press=</span><span class="s">&quot;.onPress&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;cells&gt;</span>
+                <span class="nt">&lt;ObjectIdentifier</span>
+<span class="hll">                    <span class="na">text=</span><span class="s">&quot;{description}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="hll">                <span class="nt">&lt;Text</span>
+</span><span class="hll">                    <span class="na">text=</span><span class="s">&quot;{owner}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="hll">                <span class="nt">&lt;Text</span>
+</span><span class="hll">                    <span class="na">text=</span><span class="s">&quot;{timeline}&quot;</span> <span class="nt">/&gt;</span>
+</span>            <span class="nt">&lt;/cells&gt;</span>
+        <span class="nt">&lt;/ColumnListItem&gt;</span>
+    <span class="nt">&lt;/items&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Open the view of the object <code>cpapp/app/mitigations/webapp/view/Object.view.xml</code> and also replace <code>ID</code> and add <code>Description</code>, <code>Owner</code>, and <code>Timeline</code> using SAPUI5 controls like <code>ObjectStatus</code> (you can copy the whole code and replace the existing code in the file):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;mvc:View</span>
+    <span class="na">controllerName=</span><span class="s">&quot;ns.mitigations.controller.Object&quot;</span>
+    <span class="na">xmlns=</span><span class="s">&quot;sap.m&quot;</span>
+<span class="hll">    <span class="na">xmlns:l=</span><span class="s">&quot;sap.ui.layout&quot;</span>
+</span>    <span class="na">xmlns:mvc=</span><span class="s">&quot;sap.ui.core.mvc&quot;</span>
+    <span class="na">xmlns:semantic=</span><span class="s">&quot;sap.f.semantic&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;semantic:SemanticPage</span>
+        <span class="na">id=</span><span class="s">&quot;page&quot;</span>
+        <span class="na">headerPinnable=</span><span class="s">&quot;false&quot;</span>
+        <span class="na">toggleHeaderOnTitleClick=</span><span class="s">&quot;false&quot;</span>
+        <span class="na">busy=</span><span class="s">&quot;{objectView&gt;/busy}&quot;</span>
+        <span class="na">busyIndicatorDelay=</span><span class="s">&quot;{objectView&gt;/delay}&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;semantic:titleHeading&gt;</span>
+<span class="hll">            <span class="nt">&lt;Title</span> <span class="na">text=</span><span class="s">&quot;{description}&quot;</span> <span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/semantic:titleHeading&gt;</span>
+
+        <span class="nt">&lt;semantic:headerContent&gt;</span>
+            <span class="nt">&lt;ObjectNumber</span>
+            <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/semantic:headerContent&gt;</span>
+
+        <span class="nt">&lt;semantic:sendEmailAction&gt;</span>
+            <span class="nt">&lt;semantic:SendEmailAction</span> <span class="na">id=</span><span class="s">&quot;shareEmail&quot;</span> <span class="na">press=</span><span class="s">&quot;.onShareEmailPress&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/semantic:sendEmailAction&gt;</span>
+
+<span class="hll">        <span class="nt">&lt;semantic:content&gt;</span>
+</span><span class="hll">            <span class="nt">&lt;l:VerticalLayout&gt;</span>
+</span><span class="hll">                <span class="nt">&lt;ObjectStatus</span> <span class="na">title=</span><span class="s">&quot;Description&quot;</span> <span class="na">text=</span><span class="s">&quot;{description}&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll">                <span class="nt">&lt;ObjectStatus</span> <span class="na">title=</span><span class="s">&quot;Owner&quot;</span> <span class="na">text=</span><span class="s">&quot;{owner}&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll">                <span class="nt">&lt;ObjectStatus</span> <span class="na">title=</span><span class="s">&quot;Timeline&quot;</span> <span class="na">text=</span><span class="s">&quot;{timeline}&quot;</span><span class="nt">/&gt;</span>
+</span><span class="hll">            <span class="nt">&lt;/l:VerticalLayout&gt;</span>
+</span><span class="hll">        <span class="nt">&lt;/semantic:content&gt;</span>
+</span>
+
+    <span class="nt">&lt;/semantic:SemanticPage&gt;</span>
+
+<span class="nt">&lt;/mvc:View&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Refresh the <code>mitigations</code> application in your browser.</p>
+<p>You can now see the new content in the work list, as well as in the detail object page.</p>
+<p><img alt="SAPUI5 App List" src="../markdown/images/freestyleui5list.png" title="UI5 App List" /></p>
+<p><img alt="SAPUI5 App Object" src="../markdown/images/freestyleui5object.png" title="UI5 App Object" /></p>
+</li>
+</ol>
+<h2 id="sapui5-serve">SAPUI5 Serve</h2>
+<p>While <code>cds watch</code> comes in handy for serving even the SAPUI5 based apps directly in your CAP projects, there’s also an additional alternative, again from the SAPUI5 tools. They also provide a development server that can be used in any pure SAPUI5 project. So, you can use the SAPUI5 development server when there’s no CAP service around and/or the service is provided by a different technology. Here are some advantages of the SAPUI5 development server compared to <code>cds watch</code>, depending on how deep you want to be involved in SAPUI5 freestyle programming.</p>
+<ul>
+<li>You can run multiple servers at a time (cds watch can only run once).</li>
+<li>A live reload (that is, automatic browser refresh on saving) of all the UI changes.</li>
+<li>Loading local SAPUI5 resources from dependencies.</li>
+<li>Serve middleware.<ul>
+<li>Proxy for backend service</li>
+<li>Cache behavior for SAPUI5 resources</li>
+<li>Theme Build on-the-fly for library development</li>
+<li>Transpiling middleware</li>
+</ul>
+</li>
+</ul>
+<p>If none of these is of interest to you, you can go on using <code>cds watch</code> and skip the rest of the section.</p>
+<p>You now add the capability of live reloading to the configuration of the SAPUI5 tools. After enabling this, every time you save a file in your <code>mitigations</code> app, the browser window will automatically reload the new sources and show them.</p>
+<ol>
+<li>
+<p>Open the <code>package.json</code> file in your <code>cpapp/app/mitigations</code> folder.</p>
+</li>
+<li>
+<p>Add the following lines to add the live reload module:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="err">...</span>
+    <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@ui5/cli&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.14.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ui5-middleware-simpleproxy&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.2.1&quot;</span><span class="p">,</span>
+<span class="hll">        <span class="nt">&quot;ui5-middleware-livereload&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.1.10&quot;</span>
+</span>    <span class="p">},</span>
+    <span class="nt">&quot;ui5&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;ui5-middleware-simpleproxy&quot;</span><span class="p">,</span>
+<span class="hll">            <span class="s2">&quot;ui5-middleware-livereload&quot;</span>
+</span>        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Open the <code>ui5.yaml</code> file in your <code>cpapp/app/mitigations</code> folder.</p>
+</li>
+<li>
+<p>Add the following lines to configure SAPUI5 tools to use the live reload module:</p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="l l-Scalar l-Scalar-Plain">server</span><span class="p p-Indicator">:</span>
+      <span class="nt">customMiddleware</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ui5-middleware-simpleproxy</span>
+        <span class="nt">mountPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/service/risk</span>
+        <span class="nt">afterMiddleware</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">compression</span>
+        <span class="nt">configuration</span><span class="p">:</span>
+          <span class="nt">baseUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://localhost:4004/service/risk</span>
+<span class="hll">      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ui5-middleware-livereload</span>
+</span><span class="hll">        <span class="nt">afterMiddleware</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">compression</span>
+</span><span class="hll">        <span class="nt">configuration</span><span class="p">:</span>
+</span><span class="hll">          <span class="nt">debug</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span class="hll">          <span class="nt">ext</span><span class="p">:</span> <span class="s">&quot;xml,json,properties&quot;</span>
+</span><span class="hll">          <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">35729</span>
+</span><span class="hll">          <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;webapp&quot;</span>
+</span></code></pre></div>
+<details class="info"><summary>Additional documentation</summary><p>In a projects <code>ui5.yaml file</code>, you can define additional server middleware modules that will be executed when the request is received by the server. This configuration exclusively affects the server started in this project. See <a href="https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/">UI5 Tooling</a> documentation for more details.    </p>
+</details>
+</li>
+<li>
+<p>From your <code>cpapp</code> folder, navigate to your <code>mitigations</code> folder:</p>
+<div class="highlight"><pre><span></span><code>cd app/mitigations/
+</code></pre></div>
+</li>
+<li>
+<p>Check if a (hidden) file called <code>.npmrc</code> exists:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">macOS/Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>ls -a
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
+<p><div class="highlight"><pre><span></span><code>Get-ChildItem -Hidden
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>dir
+</code></pre></div></p>
+</div>
+</div>
+</li>
+<li>
+<p>(Optional) Delete the file <code>.npmrc</code> if it exists:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">macOS/Linux</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>rm .npmrc
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>del .npmrc
+</code></pre></div>
+</div>
+</div>
+</li>
+<li>
+<p>Install the npm packages:</p>
+<div class="highlight"><pre><span></span><code>npm install
+</code></pre></div>
+</li>
+<li>
+<p>Start the application. Make sure that <code>cds watch</code> is running in another terminal:</p>
+<div class="highlight"><pre><span></span><code>ui5 serve
+</code></pre></div>
+</li>
+<li>
+<p>Open the new URL <a href="http://localhost:8080/index.html">http://localhost:8080/index.html</a>.</p>
+<p>You now see the mitigations.</p>
+</li>
+</ol>
+<details class="info"><summary>Prepare deployment on SAP BTP</summary><p>If you want to deploy your application on the SAP BTP later, it's necessary to build a package of your project for an easier upload.</p>
+<ol>
+<li>
+<p>Navigate to the <code>mitigations</code> folder:</p>
+<div class="highlight"><pre><span></span><code>cd cpapp/app/mitigations
+</code></pre></div>
+</li>
+<li>
+<p>Build the application:</p>
+<div class="highlight"><pre><span></span><code>ui5 build  --clean-dest --dest ../../gen/app/mitigations
+</code></pre></div>
+<p>You can find the package in the folder <code>cpapp/gen/app/mitigations</code>.</p>
+</li>
+</ol>
+</details>
+<p>The result of these steps can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/freestyle-ui5-app">here</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../CAP_Business_Logic/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Add Business Logic to Your Application
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Launchpage/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Add More Than One Application to the Launch Page
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1c7c35e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

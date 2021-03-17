@@ -1,14 +1,12 @@
 # Welcome
 
-## Description
+Welcome to this tutorial for application development on SAP Business Technology Platform (SAP BTP). We provide information and examples on how to develop and deploy an application based on [SAP Cloud Application Programming Model (CAP)](https://cap.cloud.sap/) on SAP Business Technology Platform (SAP BTP) using different tools and services step by step.
 
-Welcome to the **SAP BTP Application Development** example application and tutorial.
-
-Use this example to learn how to develop an application based on SAP Cloud Application Programming Model (CAP) and how to deploy it on SAP Business Technology Platform (BTP) step by step. It's planned to provide multiple lessons that are built upon each other. You can start the tutorial with the first lesson, or start in between, because the source code for every tutorial lesson is provided in this repository.
+It's planned to provide multiple lessons that are built upon each other. You can start the tutorial with the first lesson, or start in between, because the source code for every tutorial lesson is provided in this repository.
 
 This first version of the tutorial, contains an example CAP application with an SAP Fiori Elements and SAPUI5 Freestyle UI, and based on that a tutorial that shows how to deploy that application to Kyma runtime.
 
-Sty tuned for new lessons.
+Stay tuned for new lessons.
 
 ## Contents
 
@@ -37,7 +35,7 @@ You can find the known issues [here](https://github.com/SAP-samples/cloud-cap-ri
 
 Check out the documentation for:
 
-* [CAP aka "capire"](https://cap.cloud.sap)
+* [CAP aka "capire"](https://cap.cloud.sap/docs/advanced/troubleshooting)
 * [SAP BTP](https://help.sap.com/viewer/product/CP/Cloud/)
 
 In case you've a question, find a bug, or otherwise need support to use SAP products, use:
@@ -50,7 +48,7 @@ If you face a problem with the example application or the description, feel free
 
 ## Contributing
 
-If you've suggestions on how to improve the tutorial, you're welcome to provide your input [here](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
+If you have suggestions on how to improve the tutorial, you're welcome to provide your input [here](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
 
 ## License
 
