@@ -1010,6 +1010,49 @@
 </ol>
 <h2 id="log-on-to-cloud-foundry-from-the-command-line">Log on to Cloud Foundry from the Command Line</h2>
 <p>Prepare for the next steps by logging on to Cloud Foundry and targetting your space in the account.</p>
+<p>If you don't know whether you’re logged on to Cloud Foundry or if you're wondering to which Cloud Foundry org and space are you logged on, you can always use <code>cf target</code> in a terminal to find out. If you aren't logged on already, go to your SAP BTP Cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Trial</label><div class="tabbed-content">
+<p><a href="https://cockpit.hanatrial.ondemand.com/">https://cockpit.hanatrial.ondemand.com/</a></p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">AWS Live EU 10</label><div class="tabbed-content">
+<p><a href="https://account.hana.ondemand.com/">https://account.hana.ondemand.com/</a></p>
+</div>
+</div>
+<ol>
+<li>
+<p>Select your <strong>Global Account</strong> and then the <strong>Subaccount</strong> to which you want to deploy you service and application.</p>
+</li>
+<li>
+<p>On the subaccount page, gather all the data to log in to Cloud Foundry (CF):</p>
+<ul>
+<li>the <code>API Endpoint</code></li>
+<li>the <code>Org Name</code></li>
+<li>the <code>Space Name</code></li>
+</ul>
+<p><img alt="CF Data in BTP Cockpit" src="../markdown/images/cfdatacloudcockpit.png" title="CF Data in BTP Cockpit" /></p>
+<p>For your convenience, these are the API Endpoints for the different landscapes:</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Trial</label><div class="tabbed-content">
+<p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com</a></p>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">AWS Live EU 10</label><div class="tabbed-content">
+<p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com </a></p>
+</div>
+</div>
+</li>
+<li>
+<p>Open up a terminal.</p>
+</li>
+<li>
+<p>Set the Cloud Foundry API endpoint:</p>
+<div class="highlight"><pre><span></span><code>cf api &lt;API Endpoint of your landscape&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Log in to your Cloud Foundry account, using your SAP BTP credentials:</p>
+<div class="highlight"><pre><span></span><code>cf login
+</code></pre></div>
+</li>
+</ol>
 <h2 id="log-on-to-cloud-foundry-in-sap-business-application-studio">Log on to Cloud Foundry in SAP Business Application Studio</h2>
 <ol>
 <li>Choose the icon for <strong>Cloud Foundry: Targets</strong> on the left navigation bar to select the <strong>Cloud Foundry: Targets</strong> panel.</li>
@@ -1024,10 +1067,10 @@
 <li>
 <p>Enter the <strong>Cloud Foundry</strong> endpoint in the popup and confirm with <strong>Enter</strong>.</p>
 <p>For your convenience, these are the API Endpoints for the different landscapes:</p>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Trial</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Trial</label><div class="tabbed-content">
 <p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com</a></p>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">AWS Live EU 10</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">AWS Live EU 10</label><div class="tabbed-content">
 <p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com </a></p>
 </div>
 </div>
