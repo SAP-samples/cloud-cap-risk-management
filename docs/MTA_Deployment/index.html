@@ -428,7 +428,7 @@
   
     <li class="md-nav__item">
       <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using cf push
+        Deploy Your Application Using `cf push`
       </a>
     </li>
   
@@ -620,7 +620,7 @@
   
     <li class="md-nav__item">
       <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
-        Assign a Role Collection to User
+        Assign a Role Collection to a User
       </a>
     </li>
   
@@ -855,7 +855,16 @@
 </ul>
 </details>
 <p>This section describes the recommended approach for deployment. As an alternative, you can use the <a href="../CF_Push_Deployment">cf push</a> method.</p>
-<p>As a result of this section, you've a running application in the cloud based on SAP HANA. The deployment is based on MTA (<em>Multi Target Application</em> sometimes also called <em>MultiApps</em>) technology. The MTA is a SAP-proprietary way to do deployments consisting of multiple modules that can be implemented in different technologies. Advantages compared to the <code>cf push</code> method are a build tool, automatically created service instances, service keys, destinations, content deployment (HTML5, workflow, ...), and blue-green deployment.</p>
+<p>As a result of this section, you've a running application in the cloud based on SAP HANA. The deployment is based on MTA (<em>Multi Target Application</em>, sometimes also called <em>MultiApps</em>) technology. The MTA is an SAP-proprietary way to do deployments that consist of multiple modules. The modules can be implemented in different technologies. </p>
+<details class="info"><summary>Advantages compared to the <code>cf push</code> method</summary><ul>
+<li>a build tool</li>
+<li>automatically created service instances</li>
+<li>service keys</li>
+<li>destinations</li>
+<li>content deployment (HTML5, workflow, ...)</li>
+<li>blue-green deployment</li>
+</ul>
+</details>
 <h2 id="build-and-deploy-multiapps-mta">Build and Deploy MultiApps (MTA)</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <h4 id="install-the-mta-build-tool-mbt">Install the MTA Build Tool <code>mbt</code></h4>
@@ -880,10 +889,12 @@
 <li>Go to <a href="http://gnuwin32.sourceforge.net/packages/make.htm">http://gnuwin32.sourceforge.net/packages/make.htm</a>.</li>
 <li>Choose the download with the description <strong>Complete package, except sources</strong>.</li>
 <li>Run the installer.</li>
-<li>Enter <strong>Systems Environment Variables</strong> in the Windows search box (Windows icon in the task bar).</li>
+<li>Enter <strong>Edit the System Environment Variables</strong> in the Windows search box (Windows icon in the task bar). The <strong>System Properties</strong> dialog is opened.</li>
 <li>Choose <strong>Environment Variables...</strong>.</li>
-<li>Add GNU make to your <code>PATH</code> env variable (usually <code>C:\Program Files (x86)\GnuWin32\bin</code>).</li>
-<li>Restart Visual Studio Code to make the change effective.</li>
+<li>Choose your <code>Path</code> env variable under <em>User Variables for <code>&lt;your_user_name&gt;</code></em> and choose <strong>Edit</strong>.</li>
+<li>Choose <strong>Browse</strong> and navigate to <em>GNU make</em> (usually <code>C:\Program Files (x86)\GnuWin32\bin</code>).</li>
+<li>Click <strong>OK</strong> to add <em>GNU make</em> to your <code>Path</code> env variable.</li>
+<li>Restart VS Code to make the change effective.</li>
 </ol>
 <h4 id="install-the-multiapps-cloud-foundry-cli-plugin">Install the <code>MultiApps</code> Cloud Foundry CLI Plugin</h4>
 <p>The <code>MultiApps</code> plugin is required to deploy an MTA archive. It needs to be available in your Cloud Foundry landscape's Cloud Foundry plugin repository.</p>
@@ -909,19 +920,21 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 <div class="highlight"><pre><span></span><code>cds add mta
 </code></pre></div>
 <p>The <code>cds</code> CLI has generated the file based on your previously created settings in the <code>package.json</code> file.</p>
-<p>The <code>mta.yaml</code> file consists of different modules, that are Cloud Foundry apps, and resources, that are Cloud Foundry services.</p>
+<p>The <code>mta.yaml</code> file consists of different modules (Cloud Foundry apps) and resources (Cloud Foundry services).</p>
 <p><em>Modules:</em></p>
 <ul>
 <li><code>cpapp-srv</code> - OData service</li>
-<li><code>db</code> - Deploy CAP schema and data (CSV files) to database</li>
+<li><code>cpapp-db-deployer</code> - Deploy CAP schema and data (CSV files) to database</li>
 </ul>
+<!-- Renamed the module `db` to `cpapp-db-deployer`. -->
+
 <p><em>Resources:</em></p>
 <p>The resources are generated from the <code>requires</code> section of <code>cds</code> in the <code>package.json</code>.</p>
 <ul>
 <li><code>cpapp-db</code> - SAP HANA DB HDMI container</li>
 <li><code>cpapp-uaa</code> - XSUAA service</li>
 </ul>
-<p>The resources are Cloud Foundry service instances, that are automatically created and updated during the MTA deployment.</p>
+<p>The resources are Cloud Foundry service instances that are automatically created and updated during the MTA deployment.</p>
 <h3 id="ensure-the-right-service-plan-for-hdi-container">Ensure the Right Service Plan for HDI Container</h3>
 <p>Different service plans are required for Trial and productive SAP BTP accounts. Make sure that the right plan is set in the <code>mta.yaml</code> file:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Trial</label><div class="tabbed-content">
@@ -957,7 +970,7 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 <p class="admonition-title">Test files should never be deployed to a HANA database as table data.</p>
 <p>This can cause the deletion of all files of the affected database table with a change of a data file, even if the data file for the affected table has been removed before. HANA remembers all data files that have ever been deployed to the table and might restore it. Only data files that contain data, which are defined by the application developer and can't be changed by the application should be delivered in this way. Delivering files for tables with customer data already caused data loss in productive scenarios!</p>
 </div>
-<p>To avoid any loss of data, you change the MTA build to remove all the <code>csv</code> files and the <code>hdbtabledata</code> that are generated by the CAP build out of these:</p>
+<p>To avoid any loss of data, you change the MTA build parameters to remove all the <code>CSV</code> files and the <code>hdbtabledata</code> that is generated by the CAP server out of the <code>CSV</code> files. Add the following lines to the <code>mta.yaml</code> file:</p>
 <!-- cpes-file mta.yaml:$['build-parameters'] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
@@ -974,10 +987,10 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 <div class="highlight"><pre><span></span><code>  ! -name &lt;filename&gt;
 </code></pre></div>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>      - bash -c &quot;find gen -type f -name &#39;*.csv&#39; ! -name &#39;CodeList.csv&#39; | xargs rm -f&quot;
+<div class="highlight"><pre><span></span><code>      - bash -c &#39;find gen -type f -name &#39;*.csv&#39; ! -name &#39;CodeList.csv&#39; | xargs rm -f&#39;
 </code></pre></div>
 <h2 id="add-authorization-and-trust-management-service-xsuaa">Add Authorization and Trust Management Service (XSUAA)</h2>
-<p>The next step is to add the Authorization and Trust Management service to mta.yaml allow user login, authorization, and authentication checks.</p>
+<p>The next step is to add the Authorization and Trust Management service to <code>mta.yaml</code> to allow user login, authorization, and authentication checks.</p>
 <!-- cpes-file mta.yaml:$.resources[?(@.name=="cpapp-uaa")] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
@@ -1002,7 +1015,7 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 </span><span class="hll">            <span class="nt">role-template-references</span><span class="p">:</span>
 </span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$XSAPPNAME.RiskViewer</span>
 </span></code></pre></div>
-<p>The configuration for XSUAA is read from the <code>xs-security.json</code> file that was created a step before.</p>
+<p>The configuration for XSUAA is read from the <code>xs-security.json</code> file that was created in <a href="../Prepare_XSUAA#xsuaa-security-configuration">XSUAA Security Configuration</a>.</p>
 <p>But in the <code>config</code> element, values can be added and overwritten.</p>
 <p>The value <code>xsappname</code> gets overwritten with a space-dependent value. The name has to be unique within a subaccount.</p>
 <p>This allows multiple deployments of this tutorial in different spaces of the same subaccount. For example, different people of a team that want to try it out and don't want to create a new subaccount for each team member.</p>
@@ -1010,7 +1023,7 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 <p>Further, you can add role collections using the <code>xs-security.json</code> file. Since role collections need to be unique in a Subaccount like the <code>xsappname</code>, you can add it here and use the <code>${space}</code> variable to make them unique like for the <code>xsappname</code>.</p>
 <p>Alternatively, role collections can be manually added in the SAP BTP cockpit.</p>
 <h2 id="add-ui-application-using-the-sap-application-router">Add UI Application Using the SAP Application Router</h2>
-<p>Although you can run your application with a UI locally, you're not able to use the UI on the cloud since it's not deployed yet. This is provided by another application (<code>module</code> in the MTA context). This application is a so-called AppRouter application that contains all our static UI files and allows access to the CAP service from the UI.</p>
+<p>Although you can run your application with a UI locally, you're not able to use the UI in the cloud since it's not deployed yet. This is provided by another application (<code>module</code> in the MTA context). This application is a so-called AppRouter application that contains all our static UI files and allows access to the CAP service from the UI.</p>
 <h3 id="create-the-approuter-npm-module">Create the AppRouter NPM Module</h3>
 <ol>
 <li>
@@ -1028,9 +1041,14 @@ npm install @sap/approuter
 </li>
 <li>
 <p>Check the required Node.js version for AppRouter.</p>
-<p>This is declared in the <code>package.json</code> file the AppRouter. You can check it, for example,  with this script:</p>
-<div class="highlight"><pre><span></span><code>cat node_modules/@sap/approuter/package.json <span class="p">|</span> grep <span class="s1">&#39;&quot;node&quot;&#39;</span>
-</code></pre></div>
+<p>This is declared in the <code>package.json</code> file of the AppRouter. You can check it, for example, with this script:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">macOS/Linux</label><div class="tabbed-content">
+<p><code>cat node_modules/@sap/approuter/package.json | grep '"node"'</code></p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Windows</label><div class="tabbed-content">
+<p><code>cat node_modules/@sap/approuter/package.json | findstr '"node"'</code></p>
+</div>
+</div>
 <p>It outputs something like:</p>
 <div class="highlight"><pre><span></span><code>&quot;node&quot;: &quot;^12.0.0 || ^14.0.0&quot;
 </code></pre></div>
@@ -1043,10 +1061,10 @@ npm install @sap/approuter
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;approuter&quot;</span><span class="p">,</span>
   <span class="err">...</span>
-  <span class="nt">&quot;engines&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;node&quot;</span><span class="p">:</span> <span class="s2">&quot;^12.0.0&quot;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="hll">  <span class="nt">&quot;engines&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nt">&quot;node&quot;</span><span class="p">:</span> <span class="s2">&quot;^12.0.0&quot;</span>
+</span><span class="hll">  <span class="p">}</span>
+</span><span class="p">}</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -1056,8 +1074,8 @@ npm install @sap/approuter
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;approuter&quot;</span><span class="p">,</span>
   <span class="err">...</span>
   <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;node node_modules/@sap/approuter/approuter.js&quot;</span>
-  <span class="p">}</span>
+<span class="hll">    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;node node_modules/@sap/approuter/approuter.js&quot;</span>
+</span>  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
 </li>
@@ -1091,11 +1109,11 @@ npm install @sap/approuter
 <p>Most importantly, you've to tell the AppRouter how to respond to requests in the <code>routes</code> array:</p>
 <ul>
 <li>The files in the <code>resources</code> folder will be served for all requests to <code>/app</code>. Later, there’s an explanation how you get the "app" files into this resource folder.</li>
-<li>All requests starting with <code>/service</code> will be forwarded to the CAP service based on the URL we configured in the MTA using the destination <code>srv_app</code>. Remember, the risk service is reachable via <code>/service/risk</code>. Further services are automatically routed as long as they start with <code>/service/</code> as well.</li>
+<li>All requests starting with <code>/service</code> will be forwarded to the CAP service based on the URL we configured in the MTA using the destination <code>srv_app</code>. Remember, the <code>risk</code> service is reachable via <code>/service/risk</code>. Further, services are automatically routed as long as they start with <code>/service/</code> as well.</li>
 </ul>
 <p>Further, the AppRouter will automatically redirect to the <code>/app/launchpage.html</code> when accessed without a path, which will then serve the file <code>resources/launchpage.html</code>.</p>
 <h3 id="build-sapui5-files">Build SAPUI5 Files</h3>
-<p>The resources for the AppRouter origin come from the <code>app</code> folder. Add another module <code>cpapp-app</code> in mta.yaml to build these resources for use in the AppRouter:</p>
+<p>The resources for the AppRouter origin come from the <code>app</code> folder. Add another module <code>cpapp-app</code> in <code>mta.yaml</code> to build these resources for use in the AppRouter:</p>
 <!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-app")] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
@@ -1110,7 +1128,7 @@ npm install @sap/approuter
 </span><span class="hll">      <span class="nt">supported-platforms</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
 </span><span class="hll">      <span class="nt">build-result</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dist</span>
 </span></code></pre></div>
-<p>This will call the script <code>build.sh</code> in the <code>app</code> folder and expects the build result in <code>app/dist</code>. By providing an empty list of , it’s ensured that this "module" isn't deployed to the cloud. It’s only needed to build the SAPUI5 apps.</p>
+<p>This will call the script <code>build.sh</code> in the <code>app</code> folder and expects the build result in <code>app/dist</code>. By providing an empty list of supported platforms, it’s ensured that this "module" isn't deployed to the cloud. It’s only needed to build the SAPUI5 apps.</p>
 <h3 id="add-build">Add Build</h3>
 <p>Add the script <code>app/build.sh</code> to execute the SAPUI5 build:</p>
 <!-- cpes-file app/build.sh -->
@@ -1150,9 +1168,9 @@ cp launchpage.html dist
 <!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-approuter")] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
-<span class="hll"><span class="nt">modules</span><span class="p">:</span>
-</span><span class="hll">  <span class="l l-Scalar l-Scalar-Plain">...</span>
-</span><span class="hll">  <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-approuter</span>
+<span class="nt">modules</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="hll">  <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-approuter</span>
 </span><span class="hll">    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nodejs</span>
 </span><span class="hll">    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">approuter</span>
 </span><span class="hll">    <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
@@ -1172,7 +1190,7 @@ cp launchpage.html dist
 </span><span class="hll">          <span class="nt">target-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resources</span>
 </span></code></pre></div>
 <p>The AppRouter takes the SAPUI5 build results from the <code>cpapp-app</code> and puts it in the <code>resources</code> directory. This is where the <code>xs-app.json</code> looks for the files requested for <code>/app/...</code>.</p>
-<p>The <code>cpapp-uaa</code> binding adds our already existing the XSUAA service instance to the AppRouter, which makes login and logout possible. By this the AppRouter forwards requests with the authentication token (<code>Authorization: Bearer &lt;jwt-token&gt;</code>) to the CAP service. The CAP service then uses it for authentication and authorization checks.</p>
+<p>The <code>cpapp-uaa</code> binding adds our already existing XSUAA service instance to the AppRouter, which makes login and logout possible. By this, the AppRouter forwards requests with the authentication token (<code>Authorization: Bearer &lt;jwt-token&gt;</code>) to the CAP service. The CAP service then uses it for authentication and authorization checks.</p>
 <p>The <code>srv-binding</code> creates an environment variable <code>destinations</code> that contains a JSON array with one object containing the "destination" to the CAP service. This is required to forward requests to the CAP service.</p>
 <p>The generated environment variable looks like this:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">destinations</span><span class="o">=</span><span class="err">&#39;</span><span class="o">[{</span> <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;srv-biding&quot;</span>, <span class="s2">&quot;forwardAuthToken&quot;</span>: true, <span class="s2">&quot;strictSSL&quot;</span>: true, url: <span class="s2">&quot;https://...&quot;</span> <span class="o">}]</span>
@@ -1196,7 +1214,8 @@ cp launchpage.html dist
         <span class="nt">properties</span><span class="p">:</span>
           <span class="nt">srv-url</span><span class="p">:</span> <span class="s">&#39;${default-url}&#39;</span>
 </code></pre></div>
-<p>Besides exporting the CAP service's URL as <code>srv-url</code> property, the XSUAA service instance, that is required for authentication and authorization checks, is added here.</p>
+<!-- The current state of the module `cpapp-srv` in the file mta.yaml before this step is the same as shown in this sample code. Hence, this step doesn't provide any changes. -->
+<p>Besides exporting the CAP service's URL as <code>srv-url</code> property, the XSUAA service instance that is required for authentication and authorization checks is added here.</p>
 <h3 id="build-deploy-and-test-mtar-file">Build, Deploy, and Test <code>mtar</code> File</h3>
 <ol>
 <li>
@@ -1204,6 +1223,9 @@ cp launchpage.html dist
 <div class="highlight"><pre><span></span><code>mbt build -t ./
 </code></pre></div>
 <p>This creates a <code>mtar</code> file <code>cpapp_1.0.0.mtar</code> in the current folder (option: <code>-t ./</code>).</p>
+<div class="admonition caution">
+<p class="admonition-title">If you get an error <code>Mapping values are not allowed in this context</code>, make sure to doublecheck spacing of code snippets copied from the previous steps.</p>
+</div>
 </li>
 <li>
 <p>Deploy the module to your current Cloud Foundry space:</p>
@@ -1225,13 +1247,13 @@ After successful deployment, you should see the following services in your space
 </li>
 <li>
 <p>Open the AppRouter URL in the browser.</p>
-<p>In the screenshot example <code>sap-cpes-refapps-dev-cpapp-approuter.cfapps.sap.hana.ondemand.com</code>.</p>
+<p>In the screenshot example <code>bbc6e25btrial-dev-cpapp-approuter.cfapps.eu10.hana.ondemand.com</code>.</p>
 </li>
 <li>
 <p>Log on with your SAP user name and password. <!-- @todo: check how this works externally --></p>
-<p>You now see the tile with the Risk application. If you choose the tile, the application is started and the content is available.</p>
+<p>You now see the tile with the <code>Risks</code> application. If you choose the tile, the application is started and the content is available.</p>
 <p><img alt="app router home" src="../markdown/images/mta_apps_approuter_image.png" /></p>
-<p>You receive an error if you try to start the <em>Risks</em> application, because your user doesn't have the <code>RiskRead</code> role. The required steps are explained in the next module.</p>
+<p>You receive an error if you try to start the <code>Risks</code> application, because your user doesn't have the <code>RiskRead</code> role. The required steps are explained in the next module.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can also deploy a single module using <code>-m &lt;module-name&gt;</code> command line parameter.</p>
@@ -1264,7 +1286,7 @@ After successful deployment, you should see the following services in your space
               <span class="md-footer__direction">
                 Previous
               </span>
-              Deploy Your Application Using cf push
+              Deploy Your Application Using `cf push`
             </div>
           </div>
         </a>
@@ -1276,7 +1298,7 @@ After successful deployment, you should see the following services in your space
               <span class="md-footer__direction">
                 Next
               </span>
-              Assign a Role Collection to User
+              Assign a Role Collection to a User
             </div>
           </div>
           <div class="md-footer__button md-icon">

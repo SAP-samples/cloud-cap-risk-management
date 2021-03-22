@@ -16,7 +16,7 @@
     
     
       
-        <title>Deploy Your Application Using cf push - SAP BTP Application Development</title>
+        <title>Deploy Your Application Using `cf push` - SAP BTP Application Development</title>
       
     
     
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deploy Your Application Using cf push
+              Deploy Your Application Using `cf push`
             
           </span>
         </div>
@@ -436,12 +436,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Deploy Your Application Using cf push
+          Deploy Your Application Using `cf push`
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Deploy Your Application Using cf push
+        Deploy Your Application Using `cf push`
       </a>
       
         
@@ -518,7 +518,7 @@
   
     <li class="md-nav__item">
       <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
-        Assign a Role Collection to User
+        Assign a Role Collection to a User
       </a>
     </li>
   
@@ -645,7 +645,7 @@
                   </a>
                 
                 
-                <h1 id="deploy-your-application-using-cf-push">Deploy Your Application Using cf push</h1>
+                <h1 id="deploy-your-application-using-cf-push">Deploy Your Application Using <code>cf push</code></h1>
 <details class="info"><summary>Prerequisites</summary><ul>
 <li><a href="../Prepare_SAP_CP_and_CF">Prepare SAP BTP</a></li>
 <li><a href="../Roles_CAP">Roles and Authorization Checks</a></li>
@@ -656,54 +656,18 @@
 <li><a href="https://developers.sap.com/tutorials/cap-service-deploy.html">Deploy a CAP Business Application to SAP BTP</a></li>
 </ul>
 </details>
-<p>This module describes the deployment of the application to Cloud Foundry with the built-in <code>cf push</code> command using <code>manifest.yml</code> files. This is an alternative approach to the <a href="../MTA_Deployment">MTA deployment</a>. However, the next modules of this tutorial are based on the MTA deployment. You can still use <code>cf push</code> but need then to translate the changes in the modules back to what it means for the <code>cf push</code> approach. It's recommended to skip this module and continue with the <a href="../MTA_Deployment">MTA deployment</a>.</p>
-<h2 id="log-on-to-cloud-foundry">Log on to Cloud Foundry</h2>
-<p>If you're not logged on to Cloud Foundry from an earlier section or you simply don't know, follow the steps in the tip.</p>
-<p>If you don't know whether you’re logged on to Cloud Foundry or if you're wondering to which Cloud Foundry org and space are you logged on, you can always use <code>cf target</code> in a terminal to find out. If you aren't logged on already, go to your SAP BTP Cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Trial</label><div class="tabbed-content">
-<p><a href="https://cockpit.hanatrial.ondemand.com/">https://cockpit.hanatrial.ondemand.com/</a></p>
+<p>This module is an alternative to the <a href="../MTA_Deployment">Deploy Your Application Using MultiApps (MTA)</a> module. If you're more interested in successfully completing the tutorial than how it works with <code>cf push</code> specifically, then you can skip this module and continue with <a href="../MTA_Deployment">Deploy Your Application Using MultiApps (MTA)</a>.</p>
+<div class="admonition caution">
+<p class="admonition-title">The next modules of this tutorial are based on the <a href="../MTA_Deployment">Deploy Your Application Using MultiApps (MTA)</a> module. You can still use <code>cf push</code>, but you'll have to translate the changes in the modules back to what they mean for the <code>cf push</code> approach.</p>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">AWS Live EU 10</label><div class="tabbed-content">
-<p><a href="https://account.hana.ondemand.com/">https://account.hana.ondemand.com/</a></p>
-</div>
-</div>
-<ol>
-<li>
-<p>Select your <strong>Global Account</strong> and then the <strong>Subaccount</strong> to which you want to deploy you service and application.</p>
-</li>
-<li>
-<p>On the subaccount page, gather all the data to log in to Cloud Foundry (CF):</p>
-<ul>
-<li>the <code>API Endpoint</code></li>
-<li>the <code>Org Name</code></li>
-<li>the <code>Space Name</code></li>
+<p>The instructions below describe the deployment to Cloud Foundry with the built-in <code>cf push</code> command using <code>manifest.yml</code> files. This is intended for those specifically interested in how this works with "native" cf tools.</p>
+<details class="info"><summary>Useful cf links</summary><ul>
+<li><a href="https://docs.cloudfoundry.org/devguide/push.html"><code>cf push</code></a></li>
+<li><a href="https://docs.cloudfoundry.org/cf-cli/getting-started.html#push">Push an App</a></li>
 </ul>
-<p><img alt="CF Data in BTP Cockpit" src="../markdown/images/cfdatacloudcockpit.png" title="CF Data in BTP Cockpit" /></p>
-<p>For your convenience, these are the API Endpoints for the different landscapes:</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Trial</label><div class="tabbed-content">
-<p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com</a></p>
-</div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">AWS Live EU 10</label><div class="tabbed-content">
-<p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com </a></p>
-</div>
-</div>
-</li>
-<li>
-<p>Open up a terminal.</p>
-</li>
-<li>
-<p>Set the Cloud Foundry API endpoint:</p>
-<div class="highlight"><pre><span></span><code>cf api &lt;API Endpoint of your landscape&gt;
-</code></pre></div>
-</li>
-<li>
-<p>Log in to your Cloud Foundry account, using your SAP BTP credentials:</p>
-<div class="highlight"><pre><span></span><code>cf login
-</code></pre></div>
-</li>
-</ol>
-<!-- @todo: what should appear in the output ?-->
-
+</details>
+<h2 id="log-on-to-cloud-foundry">Log on to Cloud Foundry</h2>
+<p>If you're not logged on to Cloud Foundry from an earlier section or you simply don't know, follow the steps in <a href="../Prepare_SAP_CP_and_CF/#log-on-to-cloud-foundry-from-the-command-line">Log on to Cloud Foundry</a>.</p>
 <h2 id="create-services-on-cloud-foundry">Create Services on Cloud Foundry</h2>
 <p>See <a href="https://cap.cloud.sap/docs/advanced/deploy-to-cloud#deploy-using-cf-push">CAP Deployment documentation</a>.</p>
 <ol>
@@ -904,8 +868,7 @@ routes:            cpapp-srv-***-***.cfapps.eu10.hana.ondemand.com
 <span class="ss">  - name: cpapp-app</span>
 <span class="ss">    path: app</span>
 <span class="ss">    memory: 128M</span>
-<span class="ss">    buildpacks:</span>
-<span class="ss">      - nodejs_buildpack</span>
+<span class="ss">    buildpack: nodejs_buildpack</span>
 <span class="ss">    env:</span>
 <span class="ss">      destinations: |</span>
 <span class="ss">        [</span>

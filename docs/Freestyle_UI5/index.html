@@ -500,7 +500,7 @@
   
     <li class="md-nav__item">
       <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using cf push
+        Deploy Your Application Using `cf push`
       </a>
     </li>
   
@@ -524,7 +524,7 @@
   
     <li class="md-nav__item">
       <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
-        Assign a Role Collection to User
+        Assign a Role Collection to a User
       </a>
     </li>
   
@@ -723,8 +723,8 @@ A creation wizard starts.</p>
 <span class="o">-</span> <span class="s2">&quot;Object Collection&quot;</span> <span class="nx">Mitigations</span>
 <span class="o">-</span> <span class="s2">&quot;Object Collection ID&quot;</span> <span class="nx">ID</span>
 <span class="o">-</span> <span class="s2">&quot;Object Title&quot;</span> <span class="nx">ID</span>
-<span class="o">-</span> <span class="s2">&quot;Object Numeric Attribute&quot;</span><span class="o">:</span> <span class="nx">Leave</span> <span class="nx">Empty</span>
-<span class="o">-</span> <span class="s2">&quot;Object Unit of Measure&quot;</span><span class="o">:</span> <span class="nx">Leave</span> <span class="nx">Empty</span>
+<span class="o">-</span> <span class="s2">&quot;Object Numeric Attribute&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">leave</span> <span class="nx">empty</span><span class="o">&gt;</span>
+<span class="o">-</span> <span class="s2">&quot;Object Unit of Measure&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">leave</span> <span class="nx">empty</span><span class="o">&gt;</span>
 </code></pre></div>
 </li>
 <li>
@@ -867,7 +867,7 @@ A creation wizard starts.</p>
 <h2 id="sapui5-serve">SAPUI5 Serve</h2>
 <p>While <code>cds watch</code> comes in handy for serving even the SAPUI5 based apps directly in your CAP projects, there’s also an additional alternative, again from the SAPUI5 tools. They also provide a development server that can be used in any pure SAPUI5 project. So, you can use the SAPUI5 development server when there’s no CAP service around and/or the service is provided by a different technology. Here are some advantages of the SAPUI5 development server compared to <code>cds watch</code>, depending on how deep you want to be involved in SAPUI5 freestyle programming.</p>
 <ul>
-<li>You can run multiple servers at a time (cds watch can only run once).</li>
+<li>You can run multiple servers at a time (<code>cds watch</code> can only run once).</li>
 <li>A live reload (that is, automatic browser refresh on saving) of all the UI changes.</li>
 <li>Loading local SAPUI5 resources from dependencies.</li>
 <li>Serve middleware.<ul>
@@ -923,7 +923,7 @@ A creation wizard starts.</p>
 </span><span class="hll">          <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">35729</span>
 </span><span class="hll">          <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;webapp&quot;</span>
 </span></code></pre></div>
-<details class="info"><summary>Additional documentation</summary><p>In a projects <code>ui5.yaml file</code>, you can define additional server middleware modules that will be executed when the request is received by the server. This configuration exclusively affects the server started in this project. See <a href="https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/">UI5 Tooling</a> documentation for more details.    </p>
+<details class="info"><summary>Additional documentation</summary><p>In a projects <code>ui5.yaml</code> file, you can define additional server middleware modules that will be executed when the request is received by the server. This configuration exclusively affects the server started in this project. See <a href="https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/">UI5 Tooling</a> documentation for more details.    </p>
 </details>
 </li>
 <li>
@@ -946,7 +946,7 @@ A creation wizard starts.</p>
 </div>
 </li>
 <li>
-<p>(Optional) Delete the file <code>.npmrc</code> if it exists:</p>
+<p>Delete the file <code>.npmrc</code> if it exists:</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">macOS/Linux</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code>rm .npmrc
 </code></pre></div>
@@ -972,21 +972,21 @@ A creation wizard starts.</p>
 <p>You now see the mitigations.</p>
 </li>
 </ol>
-<details class="info"><summary>Prepare deployment on SAP BTP</summary><p>If you want to deploy your application on the SAP BTP later, it's necessary to build a package of your project for an easier upload.</p>
-<ol>
-<li>
-<p>Navigate to the <code>mitigations</code> folder:</p>
-<div class="highlight"><pre><span></span><code>cd cpapp/app/mitigations
+<!-- ??? info "Prepare deployment on SAP BTP"
+    If you want to deploy your application on the SAP BTP later, it's necessary to build a package of your project for an easier upload.
+
+    1.  Navigate to the `mitigations` folder:
+
+        <div class="highlight"><pre><span></span><code>cd cpapp/app/mitigations
 </code></pre></div>
-</li>
-<li>
-<p>Build the application:</p>
-<div class="highlight"><pre><span></span><code>ui5 build  --clean-dest --dest ../../gen/app/mitigations
+
+    2. Build the application:
+
+        <div class="highlight"><pre><span></span><code>ui5 build  --clean-dest --dest ../../gen/app/mitigations
 </code></pre></div>
-<p>You can find the package in the folder <code>cpapp/gen/app/mitigations</code>.</p>
-</li>
-</ol>
-</details>
+
+        You can find the package in the folder `cpapp/gen/app/mitigations`. @TODO; Uwe will clarify if we need this or if we can delete it-->
+
 <p>The result of these steps can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/freestyle-ui5-app">here</a>.</p>
                 
               

@@ -405,8 +405,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-the-risk-application-with-a-user-and-a-password" class="md-nav__link">
-    Access the Risk Application with a User and a Password
+  <a href="#access-the-risks-application-with-a-user-and-a-password" class="md-nav__link">
+    Access the Risks Application with a User and a Password
   </a>
   
 </li>
@@ -485,7 +485,7 @@
   
     <li class="md-nav__item">
       <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using cf push
+        Deploy Your Application Using `cf push`
       </a>
     </li>
   
@@ -509,7 +509,7 @@
   
     <li class="md-nav__item">
       <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
-        Assign a Role Collection to User
+        Assign a Role Collection to a User
       </a>
     </li>
   
@@ -606,8 +606,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-the-risk-application-with-a-user-and-a-password" class="md-nav__link">
-    Access the Risk Application with a User and a Password
+  <a href="#access-the-risks-application-with-a-user-and-a-password" class="md-nav__link">
+    Access the Risks Application with a User and a Password
   </a>
   
 </li>
@@ -638,11 +638,11 @@
 </ul>
 </details>
 <details class="note"><summary>Additional Documentation</summary><ul>
-<li><strong>TODO</strong></li>
+<li><a href="https://cap.cloud.sap/docs/node.js/authentication#mocked">Authentication for CAP Node.js SDK</a></li>
 </ul>
 </details>
 <h2 id="enable-authentication-support">Enable Authentication Support</h2>
-<p>To enable authentication support in CAP, the <code>passport</code> module needs to be installed.</p>
+<p>To enable authentication support in CAP, the <a href="https://www.npmjs.com/package/passport"><code>passport</code></a> module needs to be installed. Passport is Express-compatible authentication middleware for Node.js.</p>
 <ol>
 <li>
 <p>Navigate to your project folder.</p>
@@ -707,13 +707,13 @@ service RiskService {
 <p>Let's look at the <code>risk.manager@tester.sap.com</code> example:</p>
 <p><!-- cpes-file .cdsrc.json:$.*.*.*.users[?(@.ID=="risk.manager@tester.sap.com")] -->
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;[development]&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;auth&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">      <span class="nt">&quot;passport&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">        <span class="nt">&quot;strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;mock&quot;</span><span class="p">,</span>
-</span><span class="hll">        <span class="nt">&quot;users&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">          <span class="nt">&quot;risk.viewer@tester.sap.com&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
-</span><span class="hll">          <span class="nt">&quot;risk.manager@tester.sap.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;[development]&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;auth&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;passport&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;mock&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;users&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;risk.viewer@tester.sap.com&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="hll">          <span class="nt">&quot;risk.manager@tester.sap.com&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">            <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;initial&quot;</span><span class="p">,</span>
 </span><span class="hll">            <span class="nt">&quot;ID&quot;</span><span class="p">:</span> <span class="s2">&quot;risk.manager@tester.sap.com&quot;</span><span class="p">,</span>
 </span><span class="hll">            <span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -723,20 +723,20 @@ service RiskService {
 </span><span class="hll">              <span class="s2">&quot;RiskManager&quot;</span>
 </span><span class="hll">            <span class="p">]</span>
 </span><span class="hll">          <span class="p">}</span>
-</span><span class="hll">        <span class="p">}</span>
-</span><span class="hll">      <span class="p">}</span>
-</span><span class="hll">    <span class="p">}</span>
-</span><span class="hll">  <span class="p">}</span>
-</span><span class="p">}</span>
+</span>        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></p>
-<p>The user is defined by their <code>ID</code>, which happens to be the email address here, but it could also be a user id. The user has an <code>email</code>, a <code>password</code> parameter, and a <code>roles</code> parameter. Keep in mind that the CAP roles and the Cloud Foundry roles and scopes are not the same thing.</p>
+<p>The user is defined by their <code>ID</code>, which happens to be the email address here, but it could also be a user ID. The user has an <code>email</code>, a <code>password</code> parameter, and a <code>roles</code> parameter. Keep in mind that the CAP roles and the Cloud Foundry roles and scopes are not the same thing.</p>
 </li>
 </ol>
-<h2 id="access-the-risk-application-with-a-user-and-a-password">Access the Risk Application with a User and a Password</h2>
-<p>When accessing the <code>Mitigations</code> service in the browser, you get a basic auth popup now, asking for your user and password. You can use the two users to log in and see that it works.</p>
+<h2 id="access-the-risks-application-with-a-user-and-a-password">Access the Risks Application with a User and a Password</h2>
+<p>When accessing the <code>Risks</code> service in the browser, you get a basic auth popup now, asking for your user and password. You can use the two users to log in and see that it works.</p>
 <ol>
 <li>
-<p>Go to <a href="http://localhost:4004/launchpage.html">http://localhost:4004/launchpage.html</a></p>
+<p>With <code>cds watch</code> running, go to <a href="http://localhost:4004/launchpage.html">http://localhost:4004/launchpage.html</a>.</p>
 </li>
 <li>
 <p>Choose <strong>Risks</strong> and choose <strong>Go</strong>.</p>
@@ -746,10 +746,12 @@ service RiskService {
 </li>
 <li>
 <p>Enter <em>Password</em>: <code>initial</code>.</p>
-<p>You can now access the <code>Risks</code> application.</p>
 </li>
 </ol>
-<p>Unfortunately, there’s no logout functionality. However, you can clear your browser's cache or simply close all browser windows to get rid of the basic auth login data in the browser.</p>
+<p><img alt="Sign In Risk Application" src="../markdown/images/role_risks_management.png" /></p>
+<p>You can now access the <code>Risks</code> application.</p>
+<p><img alt="Access Risk Application" src="../markdown/images/risks_management_application.png" />  </p>
+<details class="note"><summary>Unfortunately, there’s no logout functionality. You can clear your browser's cache or simply close all browser windows to get rid of the basic auth login data in the browser. <!-- todo: check: cache cleaning w/o any effect ... --></summary></details>
                 
               
               

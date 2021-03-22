@@ -473,7 +473,7 @@
   
     <li class="md-nav__item">
       <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using cf push
+        Deploy Your Application Using `cf push`
       </a>
     </li>
   
@@ -497,7 +497,7 @@
   
     <li class="md-nav__item">
       <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
-        Assign a Role Collection to User
+        Assign a Role Collection to a User
       </a>
     </li>
   
@@ -650,6 +650,11 @@
 <p>A new terminal opens in the lower right part of the VS Code screen.</p>
 </li>
 <li>
+<p>In the VS Code terminal, run:</p>
+<div class="highlight"><pre><span></span><code>npm install
+</code></pre></div>
+</li>
+<li>
 <p>In the VS Code terminal, start a CAP server:</p>
 <div class="highlight"><pre><span></span><code>cds watch
 </code></pre></div>
@@ -747,6 +752,9 @@ You might wonder why the service itself is called <code>risk</code> even though 
 </code></pre></div>
 <p>The first line contains all the properties from your <code>Risks</code> entity. While the other ones are straight forward, consider the <code>miti_id</code> property. In your entity, you only have a <code>miti</code> property, so where does this come from? <code>miti</code> is an association to <code>Mitigations</code>, as <code>Mitigations</code> could have several key properties, the association on the database needs to point to all of these, therefore the CAP server creates a property <code>&lt;AssociationProperty&gt;_&lt;AssociatedEntityKey&gt;</code> for each key.</p>
 <p>As always, the CAP server has noticed the change.</p>
+<div class="admonition info">
+<p class="admonition-title">You may have to stop and restart the <code>cds watch</code> command.</p>
+</div>
 </li>
 <li>
 <p>Revisit the <code>Risks</code> entity <a href="http://localhost:4004/service/risk/Risks">http://localhost:4004/service/risk/Risks</a> in your browser, you now see the data exposed:</p>
