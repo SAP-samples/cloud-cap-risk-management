@@ -479,8 +479,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -491,8 +491,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -629,7 +629,7 @@
 </ul>
 </details>
 <p>In this section, you create an SAP Fiori Elements (FE) app on top of your previously created CAP service.</p>
-<p>An FE app is an application that leverages UI5, UI5 controls, and UI5 model view controller (MVC) concepts. In a plain UI5 or a freestyle UI5 app all the views and controllers are part of your project. In contrast, in an FE app most of the code is outside of the project, managed centrally by the FE team. The code inside your project only references these central components. They take care of creating the UI according to the latest SAP Fiori design guidelines and cover all the controller logic for you out of the box. The UI can be influenced by OData annotations. They determine, for example, which properties of an OData service make up the columns of a table that displays the content of the service.</p>
+<p>An FE app is an application that leverages UI5, UI5 controls, and UI5 model view controller (MVC) concepts. In a plain UI5 or a freestyle UI5 app, all the views and controllers are part of your project. In contrast, in an FE app most of the code is outside of the project, managed centrally by the FE team. The code inside your project only references these central components. They take care of creating the UI according to the latest SAP Fiori design guidelines and cover all the controller logic for you out of the box. The UI can be influenced by OData annotations. They determine, for example, which properties of an OData service make up the columns of a table that displays the content of the service.</p>
 <h2 id="generate-the-ui-with-an-sap-fiori-elements-template">Generate the UI with an SAP Fiori Elements Template</h2>
 <ol>
 <li>
@@ -651,11 +651,11 @@
 </li>
 <li>
 <p>In the next dialog, choose <strong>Use a Local CAP Node.js Project</strong> and point to the folder of your current <strong>cpapp</strong> project.</p>
-<details class="error"><summary>In case you get the error: <code>Node module @sap/cds isn’t found. Please install it and try again.</code></summary><p>You might get the error <code>Node module @sap/cds is not found. Please install it and try again.</code> after you've chosen your CAP project. This is an issue with the App Generator not finding the corresponding CAP modules, due to different repositories. This should be a temporary issue. For the meantime you can work around this by opening a command line and running the following command:</p>
+<details class="error"><summary>In case you get the error: <code>Node module @sap/cds isn’t found. Please install it and try again.</code></summary><p>You might get the error <code>Node module @sap/cds is not found. Please install it and try again.</code> after you've chosen your CAP project. This is an issue with the App Generator not finding the corresponding CAP modules, due to different repositories. This should be a temporary issue. For the meantime you can work around it by opening a command line and running the following command:</p>
 <div class="highlight"><pre><span></span><code>npm i -g @sap/cds-dk --@sap:registry=https://npmjs.org/
 </code></pre></div>
-<p>For more details see the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">CAP Troubleshooting guide</a> for more details.</p>
 </details>
+<p>For more details see the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">CAP Troubleshooting guide</a>.</p>
 </li>
 <li>
 <p>Select the <strong>RiskService</strong> as the OData service and choose <strong>Next</strong>.</p>
@@ -709,7 +709,6 @@
 </div>
 </li>
 </ol>
-<!-- Different versions of SAPUI5 yield diff versions of the UI. -->
 <p>You’ve now already finished a full blown service and a UI application on top running locally.</p>
 <h2 id="check-the-annotation-files">Check the Annotation Files</h2>
 <p>Let's have a look at the new <code>risk-service-ui.cds</code> file and the annotations in there. At the beginning we see:</p>
@@ -724,7 +723,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>It's referring to the definitions of the earlier cds file that exposes the service and its <code>Risks</code> and <code>Mitigations</code> entities. Then it annotates the <code>Risks</code> entity with a number of texts. These should be in a translatable file normally but for now we keep them here. These texts are used as labels in form fields and column headers by FE.</p>
-<details class="info"><summary>Annotations for value help</summary><p>The following section is needed for the value help of the <strong>Mitigation</strong> field that is visible when you are editing the object page of the <code>Risks</code> app.</p>
+<details class="info"><summary>Annotations for value help</summary><p>The following section is needed for the value help of the <strong>Mitigation</strong> field that is visible when you're editing the object page of the <code>Risks</code> app.</p>
 <div class="highlight"><pre><span></span><code><span class="nx">annotate</span> <span class="nx">RiskService</span><span class="p">.</span><span class="nx">Mitigations</span> <span class="kd">with</span> <span class="p">{</span>
 <span class="nx">ID</span> <span class="err">@</span><span class="p">(</span>
     <span class="nx">UI</span><span class="p">.</span><span class="nx">Hidden</span><span class="p">,</span>
@@ -786,7 +785,6 @@
 <p>The <code>SelectionFields</code> section defines which of the properties are exposed as search fields in the header bar above the list. In this case, <code>prio</code> is the only explicit search field.</p>
 <p>The columns and their order in the work list are derived from the <code>LineItem</code> section. While in most cases the columns are defined by <code>Value:</code> followed by the property name of the entity, in the case of <code>prio</code> and <code>impact</code> there’s also <code>Criticality</code>. It currently adds a diamond icon ( &#x2662; ) on the left in the fields. For now, you can neglect it but keep it in mind in case you go to the later modules.</p>
 <p>Next up is the <code>Facets</code> section. In this case, it defines the content of the object page. It contains only a single facet, a <code>ReferenceFacet</code>, of the field group <code>FieldGroup#Main</code>. This field group just shows up as a form. The properties of the <code>Data</code> array within <code>FieldGroup#Main</code> determine the fields in the form:</p>
-<p><strong>TODO:</strong> I don't see the facet in the UI. Is this a sideffect of fixating the UI5 version?</p>
 <p><img alt="Fiori elements Object Page" src="../markdown/images/feappobjectpage.png" title="Fiori elements Object Page" /></p>
 <p>The result of these steps can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/fiori-elements-app">here</a>.</p>
                 

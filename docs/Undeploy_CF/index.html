@@ -427,8 +427,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -439,8 +439,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -483,45 +483,9 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Undeploy Your Cloud Foundry Application
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         Undeploy Your Cloud Foundry Application
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#undeploy-an-application-deployed-with-cf-push" class="md-nav__link">
-    Undeploy an Application Deployed with cf push
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#undeploy-a-multiapps-mta-application" class="md-nav__link">
-    Undeploy a MultiApps (MTA) Application
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -566,28 +530,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#undeploy-an-application-deployed-with-cf-push" class="md-nav__link">
-    Undeploy an Application Deployed with cf push
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#undeploy-a-multiapps-mta-application" class="md-nav__link">
-    Undeploy a MultiApps (MTA) Application
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -604,29 +546,32 @@
                 
                 
                 <h1 id="undeploy-your-cloud-foundry-application">Undeploy Your Cloud Foundry Application</h1>
-<p>There are two different options to undeploy your application, depending on how you did the deployment.</p>
-<h2 id="undeploy-an-application-deployed-with-cf-push">Undeploy an Application Deployed with <code>cf push</code></h2>
-<p>You need to delete all created applications and services. First, delete the applications. This will delete their service bindings as well. Then, you can delete the services.</p>
-<p>These are the steps to undeploy an application that was deployed by following the instructions in the <a href="../CF_Push_Deployment/">Deploy Your Application Using <code>cf push</code></a> module:</p>
-<ol>
-<li>
-<p>Delete applications:</p>
-<div class="highlight"><pre><span></span><code>cf delete cpapp-app -f
+<!--
+## Undeploy an Application Deployed with `cf push`
+
+You need to delete all created applications and services. First, delete the applications. This will delete their service bindings as well. Then, you can delete the services.
+
+These are the steps to undeploy an application that was deployed by following the instructions in the [Deploy Your Application Using `cf push`](CF_Push_Deployment.md) module:
+
+1. Delete applications:
+
+    <div class="highlight"><pre><span></span><code>cf delete cpapp-app -f
 cf delete cpapp-srv -f
 cf delete cpapp-db-deployer -f
 </code></pre></div>
-</li>
-<li>
-<p>Delete service instances:</p>
-<div class="admonition warning">
-<p class="admonition-title">Deleting the <code>cpapp-db</code> service instance deletes all data stored in the application.</p>
-</div>
-<div class="highlight"><pre><span></span><code>cf delete-service cpapp-db -f
+
+2. Delete service instances:
+
+    !!! warning "Deleting the `cpapp-db` service instance deletes all data stored in the application."
+
+    <div class="highlight"><pre><span></span><code>cf delete-service cpapp-db -f
 cf delete-service cpapp-uaa -f
 </code></pre></div>
-</li>
-</ol>
-<h2 id="undeploy-a-multiapps-mta-application">Undeploy a MultiApps (MTA) Application</h2>
+
+## Undeploy a MultiApps (MTA) Application
+
+-->
+
 <p>To undeploy (delete) an <code>mtar</code>, you don't need to delete the apps and the services individually. The deploy service on Cloud Foundry keeps track on the deployed <code>mtar</code> and its resources.</p>
 <p>You can either undeploy the applications or undeploy the applications and their service instances. Undeploying the applications and their service instances will also delete the data stored in these instances (for example, database content).</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Delete applications</label><div class="tabbed-content">

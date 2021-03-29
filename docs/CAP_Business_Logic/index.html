@@ -472,8 +472,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -484,8 +484,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -645,11 +645,11 @@
 </code></pre></div>
 <p>Because your file is called <code>risk-service.js</code> and, therefore, has the same name as your service definition file <code>risk-service.cds</code>, CAP automatically treats it as a handler file for the service defined in there. CAP exposes several <a href="https://cap.cloud.sap/docs/node.js/requests">events</a> and you can easily write handlers like the above.</p>
 <p>In this case, the event <code>after</code> is triggered after a <code>READ</code> was carried out for our <code>Risks</code> entity. In your custom handler, you get all the data (in this case, all the risks) that was read according to the query. You can loop over each of them and, if needed, adjust the data of the response. In this case, you change the value of the <code>criticality</code> when the <code>impact</code> is bigger than 100000. The new values for <code>criticality</code> are then part of the response to the read request.</p>
-<p>So, this affects the service's response, but how does this translate into a changed UI? For this, you've to go back to the annotations you created in <a href="../CAP_Service">Create a CAP-Based service</a> where you find your <code>srv/risks-service-ui.cds</code> file. There you had the two columns <code>prio</code> and <code>impact</code> annotated with an additional <code>Criticality</code> annotation. This annotation points to the <code>criticality</code> property of your service.</p>
+<p>So, this affects the service's response, but how does it translate into a changed UI? For this, you've got to go back to the annotations you created in <a href="../CAP_Service">Create a CAP-Based service</a> where you find your <code>srv/risks-service-ui.cds</code> file. There, you had the two columns <code>prio</code> and <code>impact</code> annotated with an additional <code>Criticality</code> annotation. This annotation points to the <code>criticality</code> property of your service.</p>
 <div class="admonition info">
 <p class="admonition-title"><code>Criticality</code> with an upper case <code>C</code> is the annotation, while the property name <code>criticality</code> could also be called different opposed to the annotation.</p>
 </div>
-<p>As you now set different values in your custom handler for <code>criticality</code>, the FE app translates these into icons and colors, which you can see in the UI.</p>
+<p>As you now set different values in your custom handler for <code>criticality</code>, the FE app translates them into icons and colors, which you can see in the UI.</p>
 <!-- cpes-file srv/risk-service-ui.cds -->
 <div class="highlight"><pre><span></span><code><span class="nx">annotate</span> <span class="nx">RiskService</span><span class="p">.</span><span class="nx">Risks</span> <span class="kd">with</span> <span class="err">@</span><span class="p">(</span>
     <span class="nx">UI</span><span class="o">:</span> <span class="p">{</span>

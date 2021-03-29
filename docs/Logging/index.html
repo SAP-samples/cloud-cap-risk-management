@@ -427,8 +427,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -439,8 +439,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -685,7 +685,7 @@
                 
                 <h1 id="add-the-application-logging-service">Add the Application Logging Service</h1>
 <details class="note"><summary>Additional Documentation</summary><ul>
-<li><a href="https://help.sap.com/viewer/ee8e8a203e024bbb8c8c2d03fce527dc/Cloud/en-US/68454d44ad41458788959485a24305e2.html">Application Logging for the Cloud Foundry Environment (SAP Help)</a></li>
+<li><a href="https://help.sap.com/viewer/ee8e8a203e024bbb8c8c2d03fce527dc/Cloud/en-US/68454d44ad41458788959485a24305e2.html">Application Logging for the Cloud Foundry Environment</a></li>
 </ul>
 </details>
 <h2 id="access-logs">Access Logs</h2>
@@ -704,7 +704,7 @@
 <li>Choose your space.</li>
 <li>Choose on the application whose logs you want to access.</li>
 <li>
-<p>Choose <strong>Logs</strong>. <!-- @TODO: add screenshot --></p>
+<p>Choose <strong>Logs</strong>.</p>
 <p><img alt="AppRouter Logs" src="../markdown/images/cpapp-approuter-logs.png" /></p>
 </li>
 </ol>
@@ -722,7 +722,7 @@
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Kibana shows all logs</p>
-<p>Although the <em>Open Kibana Dashboard</em> link is placed on the logs view of a particular application, it will give you access to the logs of all spaces where you have the required permission.</p>
+<p>Although the <strong>Open Kibana Dashboard</strong> link is placed on the logs view of a particular application, it will give you access to the logs of all spaces where you have the required permission.</p>
 </div>
 <h2 id="logging-service">Logging Service</h2>
 <p>Logs are only kept for a short period and won't be visible in Kibana without the Logging Service. By binding the Logging Service to your application, logs will be kept for longer and will be available for further analysis via Kibana.</p>

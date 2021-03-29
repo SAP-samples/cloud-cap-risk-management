@@ -486,8 +486,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -498,8 +498,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -637,8 +637,8 @@
 </ul>
 </details>
 <details class="note"><summary>Additional Documentation</summary><ul>
-<li><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b69c3392aab741e0b0ec4d5c53b2cad5.html">Maintenance of Application Security (SAP Help)</a></li>
-<li><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/517895a9612241259d6941dbf9ad81cb.html">Application Security Descriptor Configuration Syntax (SAP Help)</a></li>
+<li><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b69c3392aab741e0b0ec4d5c53b2cad5.html">Maintenance of Application Security</a></li>
+<li><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/517895a9612241259d6941dbf9ad81cb.html">Application Security Descriptor Configuration Syntax</a></li>
 </ul>
 </details>
 <h2 id="enable-authentication-support">Enable Authentication Support</h2>
@@ -646,7 +646,7 @@
 <div class="highlight"><pre><span></span><code>npm i --save  @sap/xssec  @sap/xsenv
 </code></pre></div>
 <h2 id="add-uaa-service">Add UAA Service</h2>
-<p>We need to tell CAP that XSUAA is used. For this open the <code>package.json</code> folder in your <code>cpapp</code> project and add the following lines:</p>
+<p>We need to tell CAP that XSUAA is used. For this open the <code>package.json</code> folder in your <code>cpapp</code> project and add the following lines: <!-- @TODO: feedback from René: // We should include here the hdbtable config from the HANA chapter, as this is missing and it took me some time have a valid json afterwards. --></p>
 <!-- cpes-file package.json:$.cds.requires -->
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
@@ -654,7 +654,7 @@
   <span class="nt">&quot;cds&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;requires&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="nt">&quot;db&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span> <span class="err">//</span> <span class="err">We</span> <span class="err">should</span> <span class="err">include</span> <span class="err">here</span> <span class="err">the</span> <span class="err">hdbtable</span> <span class="err">config</span> <span class="err">from</span> <span class="err">the</span> <span class="err">HANA</span> <span class="err">chapter</span><span class="p">,</span> <span class="err">as</span> <span class="err">this</span> <span class="err">is</span> <span class="err">missing</span> <span class="err">and</span> <span class="err">it</span> <span class="err">took</span> <span class="err">me</span> <span class="err">some</span> <span class="err">time</span> <span class="err">have</span> <span class="err">a</span> <span class="err">valid</span> <span class="err">json</span> <span class="err">afterwards.</span>
+        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span> 
 <span class="hll">      <span class="p">},</span>
 </span><span class="hll">      <span class="nt">&quot;uaa&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;xsuaa&quot;</span><span class="p">,</span>
@@ -751,13 +751,13 @@
         </a>
       
       
-        <a href="../CF_Push_Deployment/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../CAP_MTA_Deployment/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Deploy Your Application Using `cf push`
+              Deploy Your Multi-Target Application (MTA)
             </div>
           </div>
           <div class="md-footer__button md-icon">

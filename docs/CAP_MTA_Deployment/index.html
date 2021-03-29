@@ -1,0 +1,1064 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/CAP_MTA_Deployment/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.7">
+    
+    
+      
+        <title>Deploy Your Multi-Target Application (MTA) - SAP BTP Application Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.c772ddf0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../styles/additonal.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.4.8/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="blue">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-your-multi-target-application-mta" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SAP BTP Application Development" class="md-header__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SAP BTP Application Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploy Your Multi-Target Application (MTA)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SAP BTP Application Development" class="md-nav__button md-logo" aria-label="SAP BTP Application Development" data-md-component="logo">
+      
+  <img src="../markdown/images/sap.svg" alt="logo">
+
+    </a>
+    SAP BTP Application Development
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/SAP-samples/cloud-cap-risk-management/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sources/" class="md-nav__link">
+        Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorial_Overview/" class="md-nav__link">
+        Tutorial Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Create a CAP Service and SAP Fiori UI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Create a CAP Service and SAP Fiori UI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Create a CAP Service and SAP Fiori UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Service/" class="md-nav__link">
+        Create a CAP-Based Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FE/" class="md-nav__link">
+        Create an SAP Fiori Elements-Based Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CAP_Business_Logic/" class="md-nav__link">
+        Add Business Logic to Your Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Freestyle_UI5/" class="md-nav__link">
+        Create a Freestyle UI5 Application
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Launchpage/" class="md-nav__link">
+        Add More Than One Application to the Launch Page
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Roles_CAP/" class="md-nav__link">
+        Implement Roles and Authorization Checks in CAP
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_SAP_CP_and_CF/" class="md-nav__link">
+        Prepare SAP BTP and Cloud Foundry
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HANA_Setup/" class="md-nav__link">
+        Set Up the SAP HANA Cloud Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prepare_XSUAA/" class="md-nav__link">
+        Prepare User Authentication and Authorization (XSUAA) Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Deploy Your Multi-Target Application (MTA)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Deploy Your Multi-Target Application (MTA)
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-and-deploy-using-mta" class="md-nav__link">
+    Build and Deploy Using MTA
+  </a>
+  
+    <nav class="md-nav" aria-label="Build and Deploy Using MTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-the-mta-build-tool-mbt" class="md-nav__link">
+    Install the MTA Build Tool mbt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-make-tool" class="md-nav__link">
+    Install make Tool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-multiapps-cloud-foundry-cli-plugin" class="md-nav__link">
+    Install the MultiApps Cloud Foundry CLI Plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-mta-deployment-descriptor-mtayaml" class="md-nav__link">
+    Generate MTA Deployment Descriptor (mta.yaml)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensure-the-right-service-plan-for-hdi-container" class="md-nav__link">
+    Ensure the Right Service Plan for HDI Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude-csv-files-from-deployment" class="md-nav__link">
+    Exclude CSV Files from Deployment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-authorization-and-trust-management-service-xsuaa" class="md-nav__link">
+    Add Authorization and Trust Management Service (XSUAA)
+  </a>
+  
+    <nav class="md-nav" aria-label="Add Authorization and Trust Management Service (XSUAA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-deploy-and-test-mtar-file" class="md-nav__link">
+    Build, Deploy, and Test mtar File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SAP_CP_Role_Assignment/" class="md-nav__link">
+        Assign a Role Collection to a User
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logging/" class="md-nav__link">
+        Add the Application Logging Service
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Undeploy_CF/" class="md-nav__link">
+        Undeploy Your Cloud Foundry Application
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kyma/" class="md-nav__link">
+        Run a CAP Application on Kyma
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-and-deploy-using-mta" class="md-nav__link">
+    Build and Deploy Using MTA
+  </a>
+  
+    <nav class="md-nav" aria-label="Build and Deploy Using MTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-the-mta-build-tool-mbt" class="md-nav__link">
+    Install the MTA Build Tool mbt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-make-tool" class="md-nav__link">
+    Install make Tool
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-multiapps-cloud-foundry-cli-plugin" class="md-nav__link">
+    Install the MultiApps Cloud Foundry CLI Plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-mta-deployment-descriptor-mtayaml" class="md-nav__link">
+    Generate MTA Deployment Descriptor (mta.yaml)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensure-the-right-service-plan-for-hdi-container" class="md-nav__link">
+    Ensure the Right Service Plan for HDI Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exclude-csv-files-from-deployment" class="md-nav__link">
+    Exclude CSV Files from Deployment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-authorization-and-trust-management-service-xsuaa" class="md-nav__link">
+    Add Authorization and Trust Management Service (XSUAA)
+  </a>
+  
+    <nav class="md-nav" aria-label="Add Authorization and Trust Management Service (XSUAA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-deploy-and-test-mtar-file" class="md-nav__link">
+    Build, Deploy, and Test mtar File
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/CAP_MTA_Deployment.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="deploy-your-multi-target-application-mta">Deploy Your Multi-Target Application (MTA)</h1>
+<details class="note"><summary>Additional Documentation</summary><ul>
+<li><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/d04fc0e2ad894545aebfd7126384307c.html">Multi-target Applications in the Cloud Foundry Environment</a></li>
+<li><a href="https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/latest/en-US/ebb42efc880c4276a5f2294063fae0c3.html">Create the Multi-target Application (MTA) Description Files</a></li>
+</ul>
+</details>
+<p>As a result of this tutorial, you have a running CAP service in the cloud based on SAP HANA. You will deploy the user interface in the tutorial <a href="../Launchpad_Service/">Launchpad Service</a>.</p>
+<p>The deployment is based on MTA (<em>Multi-Target Application</em> sometimes also called <em>MultiApps</em>) technology. The MTA is a SAP-proprietary way to do deployments consisting of multiple modules that can be implemented in different technologies. Advantages compared to the <code>cf push</code> method are a build tool, automatically created service instances, service keys, destinations, content deployment (HTML5, workflow, ...), and blue-green deployment.</p>
+<h2 id="build-and-deploy-using-mta">Build and Deploy Using MTA</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<h4 id="install-the-mta-build-tool-mbt">Install the MTA Build Tool <code>mbt</code></h4>
+<ol>
+<li>
+<p>Check if you have already installed the <a href="https://sap.github.io/cloud-mta-build-tool/">Cloud MTA Build Tool (MBT)</a>: </p>
+<div class="highlight"><pre><span></span><code>mbt --version
+</code></pre></div>
+</li>
+<li>
+<p>If you don't get back a version number, install the <strong>MultiApps Archive Builder</strong>:</p>
+<div class="highlight"><pre><span></span><code>npm install -g mbt
+</code></pre></div>
+</li>
+</ol>
+<h4 id="install-make-tool">Install <code>make</code> Tool</h4>
+<div class="admonition info">
+<p class="admonition-title">Linux and macOS are already shipped with <code>make</code>. This is only relevant for Windows users.</p>
+</div>
+<p>The <code>make</code> tool is required by the <code>mbt</code> tool. You can download it from the GNU Make site:</p>
+<ol>
+<li>Go to <a href="http://gnuwin32.sourceforge.net/packages/make.htm">http://gnuwin32.sourceforge.net/packages/make.htm</a>.</li>
+<li>Choose the download with the description <strong>Complete package, except sources</strong>.</li>
+<li>Run the installer.</li>
+<li>Enter <strong>Systems Environment Variables</strong> in the Windows search box (Windows icon in the task bar).</li>
+<li>Choose <strong>Environment Variables...</strong>.</li>
+<li>Add GNU make to your <code>PATH</code> env variable (usually <code>C:\Program Files (x86)\GnuWin32\bin</code>).</li>
+<li>Restart VS Code to make the change effective.</li>
+</ol>
+<h4 id="install-the-multiapps-cloud-foundry-cli-plugin">Install the <code>MultiApps</code> Cloud Foundry CLI Plugin</h4>
+<p>The <a href="https://github.com/cloudfoundry-incubator/multiapps-cli-plugin/blob/master/README.md"><code>MultiApps</code> plugin</a> is required to deploy an MTA archive. It needs to be available in your Cloud Foundry landscape's Cloud Foundry plugin repository. Therefore you need to log on to your Cloud Foundry landscape.</p>
+<p>If you don't know whether you’re logged on to Cloud Foundry or if you're wondering to which Cloud Foundry org and space are you logged on, you can always use <code>cf target</code> in a terminal to find out. If you aren't logged on already, go to your SAP BTP Cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Trial</label><div class="tabbed-content">
+<p><a href="https://cockpit.hanatrial.ondemand.com/">https://cockpit.hanatrial.ondemand.com/</a></p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">AWS Live EU 10</label><div class="tabbed-content">
+<p><a href="https://account.hana.ondemand.com/">https://account.hana.ondemand.com/</a></p>
+</div>
+</div>
+<ol>
+<li>
+<p>Select your <strong>Global Account</strong> and then the <strong>Subaccount</strong> to which you want to deploy your service and application.</p>
+</li>
+<li>
+<p>On the subaccount page, gather all the data to log in to Cloud Foundry (CF):</p>
+<ul>
+<li>the <code>API Endpoint</code></li>
+<li>the <code>Org Name</code></li>
+<li>the <code>Space Name</code></li>
+</ul>
+<p><img alt="CF Data in BTP Cockpit" src="../markdown/images/cfdatacloudcockpit.png" title="CF Data in BTP Cockpit" /></p>
+<p>For your convenience, these are the API Endpoints for the different landscapes:</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Trial</label><div class="tabbed-content">
+<p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com</a></p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">AWS Live EU 10</label><div class="tabbed-content">
+<p><a href="https://api.cf.eu10.hana.ondemand.com">https://api.cf.eu10.hana.ondemand.com </a></p>
+</div>
+</div>
+</li>
+<li>
+<p>Open up a terminal.</p>
+</li>
+<li>
+<p>Set the Cloud Foundry API endpoint:</p>
+<div class="highlight"><pre><span></span><code>cf api &lt;API Endpoint of your landscape&gt;
+</code></pre></div>
+</li>
+<li>
+<p>Log in to your Cloud Foundry account, using your SAP BTP credentials:</p>
+<div class="highlight"><pre><span></span><code>cf login
+</code></pre></div>
+</li>
+<li>
+<p>Check if the <code>MultiApps</code> plugin is already installed:</p>
+<div class="highlight"><pre><span></span><code>cf plugins
+</code></pre></div>
+</li>
+<li>
+<p>If the <code>MultiApps</code> plugin isn’t installed, install it now:</p>
+<div class="highlight"><pre><span></span><code>cf install-plugin multiapps
+</code></pre></div>
+<p>If the installation fails, do it manually as described <a href="https://github.com/cloudfoundry-incubator/multiapps-cli-plugin#manual-installation">here</a>.</p>
+</li>
+</ol>
+<h3 id="generate-mta-deployment-descriptor-mtayaml">Generate MTA Deployment Descriptor (<code>mta.yaml</code>)</h3>
+<p>The MTA deployment is described in the MTA Deployment Descriptor, a file called  <code>mta.yaml</code>.
+As the first step, you let CAP generate an initial <code>mta.yaml</code> file. Run the following command from the project root folder:</p>
+<div class="highlight"><pre><span></span><code>cds add mta
+</code></pre></div>
+<p>The <code>cds</code> CLI has generated the file based on your previously created settings in the <code>package.json</code> file.</p>
+<p>The <code>mta.yaml</code> file consists of different modules, that are Cloud Foundry apps, and resources, that are Cloud Foundry services.</p>
+<p><em>Modules:</em></p>
+<ul>
+<li><code>cpapp-srv</code> - OData service</li>
+<li><code>cpapp-db-deployer</code> - Deploy CAP schema and data (CSV files) to database</li>
+</ul>
+<p><em>Resources:</em></p>
+<p>The resources are generated from the <code>requires</code> section of <code>cds</code> in the <code>package.json</code>.</p>
+<ul>
+<li><code>cpapp-db</code> - SAP HANA DB HDMI container</li>
+<li><code>cpapp-uaa</code> - XSUAA service</li>
+</ul>
+<p>The resources are Cloud Foundry service instances, that are automatically created and updated during the MTA deployment.</p>
+<h3 id="ensure-the-right-service-plan-for-hdi-container">Ensure the Right Service Plan for HDI Container</h3>
+<p>Different service plans are required for Trial and productive SAP BTP accounts. Make sure that the right plan is set in the <code>mta.yaml</code> file:</p>
+<details class="warning"><summary>@TODO: (Sveto) Check if this is true for Trial when using SAP HANA Cloud</summary></details>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Trial</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="nn">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
+  <span class="c1"># ------------------------------------------------------------</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">com.sap.xs.hdi-container</span>
+      <span class="nt">parameters</span><span class="p">:</span>
+<span class="hll">        <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hanatrial</span>
+</span>        <span class="nt">service-plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hdi-shared</span>
+      <span class="nt">properties</span><span class="p">:</span>
+        <span class="nt">hdi-service-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${service-name}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Other</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="nn">...</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
+  <span class="c1"># ------------------------------------------------------------</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">com.sap.xs.hdi-container</span>
+      <span class="nt">parameters</span><span class="p">:</span>
+<span class="hll">        <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hana</span>
+</span>        <span class="nt">service-plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hdi-shared</span>
+      <span class="nt">properties</span><span class="p">:</span>
+        <span class="nt">hdi-service-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${service-name}</span>
+</code></pre></div>
+</div>
+</div>
+<h3 id="exclude-csv-files-from-deployment">Exclude CSV Files from Deployment</h3>
+<p>In one of the first steps creating the CAP application, you have added two CSV files with test data. These files are required to pre-fill local testing with the SQLite memory. Without the files, the database would be empty after each restart.</p>
+<div class="admonition warning">
+<p class="admonition-title">Test files should never be deployed to an SAP HANA database as table data.</p>
+<p>This can cause the deletion of all files of the affected database table with a change of a data file, even if the data file for the affected table has been removed before. SAP HANA remembers all data files that have ever been deployed to the table and might restore it. Only data files that contain data, which are defined by the application developer and can't be changed by the application should be delivered in this way. Delivering files for tables with customer data already caused data loss in productive scenarios! <!-- @todo: (Iwona) link to capire? <a href="https://cap.cloud.sap/docs/guides/databases#providing-initial-data">Providing Initial Data</a> --></p>
+</div>
+<p>To avoid any loss of data, you change the MTA build to remove all the <code>csv</code> files and the <code>hdbtabledata</code> that are generated by the CAP build.</p>
+<p>For example, if you saved the <code>csv</code> files to <code>db/data</code>, you can remove them from their build result <code>gen/db/src/gen/data</code>:</p>
+<!-- snippet mta.yaml build-parameters -->
+<div class="highlight"><pre><span></span><code><span class="nt">build-parameters</span><span class="p">:</span>
+  <span class="nt">before-all</span><span class="p">:</span>
+   <span class="p p-Indicator">-</span> <span class="nt">builder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">custom</span>
+     <span class="nt">commands</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npm install --production</span>
+<span class="hll">      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npx cds build --production</span>
+</span><span class="hll">      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npx rimraf &quot;gen/db/src/gen/data&quot;</span>
+</span></code></pre></div>
+<h2 id="add-authorization-and-trust-management-service-xsuaa">Add Authorization and Trust Management Service (XSUAA)</h2>
+<p>The next step is to add the Authorization and Trust Management service to <code>mta.yaml</code> allow user login, authorization, and authentication checks.</p>
+<!-- snippet mta.yaml resources: cpapp-uaa -->
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+   <span class="l l-Scalar l-Scalar-Plain">...</span>
+ <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-uaa</span>
+<span class="c1"># ------------------------------------------------------------</span>
+   <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">org.cloudfoundry.managed-service</span>
+   <span class="nt">parameters</span><span class="p">:</span>
+     <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">xsuaa</span>
+<span class="hll">     <span class="nt">service-plan</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">application</span>
+</span><span class="hll">     <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./xs-security.json</span>
+</span>     <span class="nt">config</span><span class="p">:</span>
+       <span class="nt">xsappname</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-${space}</span>    <span class="c1">#  name + space dependency</span>
+       <span class="nt">tenant-mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dedicated</span>
+<span class="hll">       <span class="nt">role-collections</span><span class="p">:</span>
+</span><span class="hll">         <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;RiskManager-${space}&#39;</span>
+</span><span class="hll">           <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Manage Risks</span>
+</span><span class="hll">           <span class="nt">role-template-references</span><span class="p">:</span>
+</span><span class="hll">             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$XSAPPNAME.RiskManager</span>
+</span><span class="hll">         <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;RiskViewer-${space}&#39;</span>
+</span><span class="hll">           <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">View Risks</span>
+</span><span class="hll">           <span class="nt">role-template-references</span><span class="p">:</span>
+</span><span class="hll">             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$XSAPPNAME.RiskViewer</span>
+</span></code></pre></div>
+<p>The configuration for XSUAA is read from the <code>xs-security.json</code> file that was created a step before.</p>
+<p>But in the <code>config</code> element, values can be added and overwritten.</p>
+<p>The value <code>xsappname</code> gets overwritten with a space-dependent value. The name has to be unique within a subaccount.</p>
+<p>This allows multiple deployments of this tutorial in different spaces of the same subaccount. For example, different people of a team that want to try it out and don't want to create a new subaccount for each team member.</p>
+<p>For a productive application, the <code>xsappname</code> should be explicitly set to the desired value.</p>
+<p>Further, you can add role collections using the <code>xs-security.json</code> file. Since role collections need to be unique in a Subaccount like the <code>xsappname</code>, you can add it here and use the <code>${space}</code> variable to make them unique like for the <code>xsappname</code>.</p>
+<p>Alternatively, role collections can be manually assigned in the SAP BTP cockpit.</p>
+<details class="note"><summary>Additional Documentation</summary></details>
+<p><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9e1bf57130ef466e8017eab298b40e5e.html">Assigning Role Collections</a></p>
+<h3 id="build-deploy-and-test-mtar-file">Build, Deploy, and Test <code>mtar</code> File</h3>
+<ol>
+<li>
+<p>Build the MTA module from the project root folder:</p>
+<div class="highlight"><pre><span></span><code>mbt build -t ./
+</code></pre></div>
+<p>This creates a <code>mtar</code> file <code>cpapp_1.0.0.mtar</code> in the current folder (option: <code>-t ./</code>).</p>
+</li>
+<li>
+<p>Deploy the module to your current Cloud Foundry space:</p>
+<div class="highlight"><pre><span></span><code>cf deploy cpapp_1.0.0.mtar
+</code></pre></div>
+</li>
+<li>
+<p>After successful deployment, check if all the services have been created:</p>
+<p><div class="highlight"><pre><span></span><code>cf services
+</code></pre></div>
+After successful deployment, you should see the following services in your space:</p>
+<p><img alt="cf services" src="../markdown/images/cap_mta_services.png" /></p>
+</li>
+<li>
+<p>Check if the apps are running:</p>
+<div class="highlight"><pre><span></span><code>cf apps
+</code></pre></div>
+<p><img alt="cf apps" src="../markdown/images/cap_mta_apps.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also deploy a single module using <code>-m &lt;module-name&gt;</code> command line parameter.</p>
+</div>
+</li>
+<li>
+<p>Enter the CAP service URL in your browser using the hostname displayed for <code>cpapp-srv</code> in the previous steps.</p>
+<p>You see the CAP start page, like this:</p>
+<p><img alt="cap service index" src="../markdown/images/cap_mta_index.png" /></p>
+</li>
+<li>
+<p>When you choose the <strong>Risk</strong> or <strong>Mitigation</strong> service entity, you will see an error message:</p>
+<p><img alt="cap 403 error" src="../markdown/images/cap_mta_403_error.png" /></p>
+</li>
+</ol>
+<p>The service expects a so called <code>JWT</code> (JSON Web Token) in the HTTP <code>Authorization</code> header, that contains the required authentication and authorization information to access the service. In the next tutorial, you will deploy the SAP Fiori UIs, so that you can access your UIs from SAP Fiori Launchpad. The Launchpad will trigger the authentication flow to provide the required token to access the service.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../Prepare_XSUAA/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Prepare User Authentication and Authorization (XSUAA) Setup
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../Launchpad_Service/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Add the SAP Launchpad Service
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.65ce87ac.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

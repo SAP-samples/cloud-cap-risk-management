@@ -486,8 +486,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -498,8 +498,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -637,11 +637,8 @@
 <li><a href="../CAP_Service">Create a CAP-Based Service</a></li>
 <li><a href="../FE">Create an SAP Fiori Elements-Based Application</a></li>
 <li><a href="../CAP_Business_Logic">Add Business Logic to Your Application</a></li>
+<li><a href="../Roles_CAP">Implement Roles and Authorization Checks in CAP</a></li>
 <li><a href="../Prepare_SAP_CP_and_CF">Prepare SAP BTP and Cloud Foundry</a></li>
-</ul>
-</details>
-<details class="note"><summary>Additional Documentation</summary><ul>
-<li><strong>TODO</strong></li>
 </ul>
 </details>
 <h2 id="add-sap-hana-client-to-project">Add SAP HANA Client to Project</h2>
@@ -677,9 +674,13 @@
 </ul>
 </li>
 <li>
-<p>Run <code>cds watch</code> and check that your app still works locally as it used to work before.</p>
+<p>Run <code>cds watch</code> and check that your app still works locally as it used to work before at <a href="http://localhost:4004/">http://localhost:4004/</a>..</p>
 </li>
 </ol>
+<p><strong>There are three options to continue:</strong></p>
+<p><strong>Option 1:</strong> You already have an SAP HANA Cloud service instance in your Cloud Foundry space <strong>&rarr;</strong> You're set. Nothing to do.</p>
+<p><strong>Option 2:</strong> You want to use an SAP HANA Cloud service instance from a different Cloud Foundry org or space, but in the same landscape <strong>&rarr;</strong> continue with <a href="#option-2-use-an-existing-sap-hana-cloud-service-instance">Option 2: Use an existing SAP HANA Cloud Service Instance</a>.</p>
+<p><strong>Option 3:</strong> You want to create a new SAP HANA Cloud service instance <strong>&rarr;</strong> continue with <a href="#option-3-create-an-sap-hana-cloud-service-instance">Option 3: Create an SAP HANA Cloud Service Instance</a>.</p>
 <details class="info"><summary>SAP HANA Cloud Documentation</summary><p>Please read the documentation for further information:</p>
 <ul>
 <li><a href="https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/cloud/en-US/d0aa0ec935c1401e8deb3be35d49730b.html">SAP HANA Cloud Getting Started Guide
@@ -688,12 +689,8 @@
   </a></li>
 </ul>
 </details>
-<p><strong>There are three options to continue:</strong></p>
-<p><strong>Option 1:</strong> You already have an SAP HANA Cloud service instance in your Cloud Foundry space <strong>&rarr;</strong> You're set. Nothing to do.</p>
-<p><strong>Option 2:</strong> You want to use an SAP HANA Cloud service instance from a different Cloud Foundry org or space, but in the same landscape <strong>&rarr;</strong> continue with <a href="#option-2-use-an-existing-sap-hana-cloud-service-instance">Option 2: Use an existing SAP HANA Cloud Service Instance</a>.</p>
-<p><strong>Option 3:</strong> You want to create a new SAP HANA Cloud service instance <strong>&rarr;</strong> continue with <a href="#option-3-create-an-sap-hana-cloud-service-instance">Option 3: Create an SAP HANA Cloud Service Instance</a>.</p>
 <h2 id="option-2-use-an-existing-sap-hana-cloud-service-instance">Option 2: Use an Existing SAP HANA Cloud Service Instance</h2>
-<!-- @todo: navigation is different for trial and AWS Live-->
+<!-- @todo: (Sveto & other testers) test if navigation is different for trial and AWS Live? -->
 <ol>
 <li>
 <p>Go to your SAP BTP cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
@@ -715,7 +712,7 @@
 <li>Choose <strong>Manage SAP HANA Cloud</strong> in the upper right corner.</li>
 <li>
 <p>Sign in with your SAP BTP Cockpit username/email. </p>
-<p>The SAP HANA Cloud Central cockpit opens.</p>
+<p>The <strong>SAP HANA Cloud Central</strong> cockpit opens.</p>
 </li>
 <li>
 <p>Choose an organization and again choose the space where you have the SAP HANA Cloud service instance.</p>
@@ -729,6 +726,10 @@
 <li>Choose <strong>Add</strong>.</li>
 </ol>
 <h2 id="option-3-create-an-sap-hana-cloud-service-instance">Option 3: Create an SAP HANA Cloud Service Instance</h2>
+<details class="note"><summary>Additional Documentation</summary><ul>
+<li><a href="https://saphanajourney.com/hana-cloud/learning-article/how-to-create-your-trial-sap-hana-cloud-instance/">How to create your trial SAP HANA Cloud instance</a></li>
+</ul>
+</details>
 <ol>
 <li>
 <p>Go to your SAP BTP cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
@@ -785,12 +786,13 @@
 <div class="admonition info">
 <p class="admonition-title">Don't create a data lake. It's really useful for storing and analyzing high volumes of infrequently updated data, but we don't need it for this tutorial.</p>
 </div>
+<!-- @todo: (Iwona) ask Chrisitian P. why this is included when creating a new SAP HANA Cloud instance? -->
 </li>
 <li>
-<p>Choose <strong>Create Instance</strong>. <!-- @todo: there is a step for <a href="https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/cloud/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html#loiof7febb16072b41f7ac90abf5ea1d4b86__step_datalake_params">Data Lake</a> --></p>
-<p>The creation of the database instance can take some minutes to complete. The final result looks like this in the SAP BTP cockpit:</p>
+<p>Choose <strong>Create Instance</strong>. </p>
+<p>The creation of the database instance can take some minutes to complete. The final result looks like this in SAP BTP cockpit:</p>
 <p><img alt="SAP HANA Cloud Instance Created" src="../markdown/images/hana_cloud_created.png" /></p>
-<details class="info"><summary>SAP HANA Cloud instances are automatically stopped overnight for SAP BTP trials</summary><p>Your SAP HANA Cloud instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day, before you start working with your trial.</p>
+<details class="info"><summary>SAP HANA Cloud instances are automatically stopped overnight for SAP BTP trial.</summary><p>Your SAP HANA Cloud instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day, before you start working with your trial.</p>
 </details>
 </li>
 </ol>

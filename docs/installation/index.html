@@ -587,8 +587,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -599,8 +599,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -841,7 +841,7 @@
 <p>For this tutorial, you have two options:</p>
 <p><strong>Option 1:</strong> <a href="#option-1-using-visual-studio-code-vs-code">Using Visual Studio Code (VS Code)</a></p>
 <p><strong>Option 2:</strong> <a href="#option-2-using-sap-business-application-studio">Using SAP Business Application Studio (SAP BAS)</a> <strong>&rarr;</strong> You benefit from not having to install additional extensions, but you need an SAP BTP account.</p>
-<p>However, this tutorial is using VS Code as an editor and if you want to exactly go along with the tutorial, use <a href="#option-1-using-visual-studio-code-vs-code">VS Code</a>.</p>
+<p>This tutorial is using VS Code as an editor and if you want to exactly go along with the tutorial, use <a href="#option-1-using-visual-studio-code-vs-code">VS Code</a>.</p>
 <h2 id="option-1-using-visual-studio-code-vs-code">Option 1: Using Visual Studio Code (VS Code)</h2>
 <h3 id="command-line-interpreters">Command Line Interpreters</h3>
 <p>This tutorial contains a number of command line snippets that need to be pasted into a terminal. All snippets listed for macOS/Linux or without platform information can be executed in the <code>bash</code> or <code>zsh</code>, which are the default shells for these platforms. The Windows snippets are for the Windows Command Line and not for the PowerShell. Windows users are suggested to use the <code>Git BASH</code> instead, which is part of the Git for Windows installation and contains the basic UNIX command line tools. In the <code>Git BASH</code>, use the <em>macOS/Linux</em> snippets of the tutorial. VS Code supports the use of the <code>Git BASH</code> for the integrated terminal as well.</p>
@@ -948,9 +948,9 @@
 <p>Install CDS development kit globally in a terminal:</p>
 <div class="highlight"><pre><span></span><code>npm i -g @sap/cds-dk
 </code></pre></div>
-<p>This process takes some minutes installing the <code>cds</code> command, which you will use in the next steps.
+<p>This process takes some minutes installing the <code>cds</code> command, which you'll use in the next steps.
 On macOS/Linux, you need to follow the steps as described <a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally">here</a>.</p>
-<p>If there’s an older <code>@sap/cds</code> package already installed on your machine, you have to remove it first; if so, you’ll be instructed to do so. In case of problems, see the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">Troubleshooting guide</a> in the CAP documentation for more details.</p>
+<p>If there’s an older <code>@sap/cds</code> package already installed on your machine, you have to remove it first; if so, you’ll be instructed to do so. If you run into problems, see the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">Troubleshooting guide</a> in the CAP documentation for more details.</p>
 </li>
 <li>
 <p>To verify that the installation was successful, run <code>cds</code> without arguments.</p>
@@ -963,7 +963,8 @@ On macOS/Linux, you need to follow the steps as described <a href="https://docs.
 </li>
 </ol>
 <h3 id="install-vs-code-extensions">Install VS Code Extensions</h3>
-<p>Install the <strong>SAP Language Support</strong> extensions for VS Code, also described <a href="https://developers.sap.com/tutorials/cp-apm-nodejs-create-service.html#04682a9a-07cb-44fa-b81f-f025ecca6b51">here</a>:</p>
+<p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=SAPSE.vscode-cds"><strong>SAP Language Support</strong></a> extensions for VS Code:</p>
+<p><img alt="SAP CDS Language Support" src="../markdown/images/sap_cds_language_support_extension.png" /></p>
 <ol>
 <li>Open VS Code.</li>
 <li>Choose the <strong>Extensions</strong> icon in the left pane.</li>
@@ -972,11 +973,21 @@ On macOS/Linux, you need to follow the steps as described <a href="https://docs.
 <li>Restart VS Code after the installation.</li>
 </ol>
 <p>Now, the extension is installed in VS Code.</p>
-<p>If the extension is already installed and enabled in VS Code, it will be updated automatically. The VS Code extension comes with a welcome page, which shows latest release notes of CAP. It starts automatically once whenever an update arrives for the extension. Later, you can open the page through the command <code>CDS: Show CAP Release Notes</code>.</p>
+<p>If the extension is already installed and enabled in VS Code, it is updated automatically. The VS Code extension comes with a welcome page, which shows latest release notes of CAP. It starts automatically once whenever an update arrives for the extension. Later, you can open the page through the command <code>CDS: Show CAP Release Notes</code>.</p>
 <p>Learn more about the features of the extension in this short <a href="https://www.youtube.com/watch?v=eY7BTzch8w0">demo</a> and see the <a href="https://cap.cloud.sap/docs/get-started/tools#cds-editor">features and commands</a> in the CAP documentation.</p>
 <h3 id="install-sap-fiori-tools-extension-pack">Install SAP Fiori Tools Extension Pack</h3>
-<p>SAP Fiori Tools are a number of extensions for VS Code. They mainly support you in developing SAP Fiori Elements apps. In this tutorial, we use the so-called Application Generator to create an SAP Fiori Elements app, you need this for section <a href="../FE">Create an SAP Fiori elements-based Application</a> of this tutorial.</p>
-<p>Install the <strong>SAP Fiori tools - Extension Pack</strong> including six extensions for VS Code. <!-- @TODO: link to documentation? --></p>
+<p>SAP Fiori Tools are a number of extensions for VS Code. They mainly support you in developing SAP Fiori Elements apps. In this tutorial, we use the so-called SAP Fiori application generator to create an SAP Fiori Elements app, you need this for section <a href="../FE">Create an SAP Fiori elements-based Application</a> of this tutorial.</p>
+<details class="note"><summary>Additional Documentation</summary><ul>
+<li><a href="https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US">SAP Fiori Tools</a></li>
+</ul>
+</details>
+<p>(For macOS only) You need to install the <code>code</code> command in PATH.</p>
+<ol>
+<li>Open the <strong>Command Palette</strong> (<code>⇧⌘P</code>) and type 'shell command' to find the Shell Command: Install 'code' command in PATH.</li>
+</ol>
+<p><img alt="shell command" src="../markdown/images/shell_command.png" /><br />
+2. Restart the terminal for the new <code>$PATH</code> value to take effect.</p>
+<p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack"><strong>SAP Fiori tools - Extension Pack</strong></a> including six extensions for VS Code. </p>
 <p><img alt="SAP Fiori Tools" src="../markdown/images/sap_fiori_tools_extension.png" /></p>
 <ol>
 <li>Open VS Code.</li>
@@ -985,8 +996,8 @@ On macOS/Linux, you need to follow the steps as described <a href="https://docs.
 <li>Choose <strong>Install</strong>.</li>
 <li>Restart VS Code after the installation.</li>
 </ol>
-<p>After a restart of VS Code, you can check for the tools by invoking <strong>View</strong> <strong>&rarr;</strong> <strong>Extensions</strong> and then scrolling through the list of <strong>Enabled</strong> extensions, they all start with <strong>SAP Fiori tools</strong>.</p>
-<p>If the extension is already installed and enabled in VS Code, it will be updated automatically.</p>
+<p>After a restart of VS Code, you can check for the tools by invoking <strong>View</strong> <strong>&rarr;</strong> <strong>Extensions</strong> and then scrolling through the list of <strong>Enabled</strong> extensions. They all start with <strong>SAP Fiori tools</strong>.</p>
+<p>If the extension is already installed and enabled in VS Code, it's updated automatically.</p>
 <h3 id="install-sapui5-freestyle-app-templates-using-yeoman">Install SAPUI5 Freestyle App Templates Using Yeoman</h3>
 <p>SAPUI5 comes with templates that kick start your development for SAPUI5 freestyle app development. You need these if you want to carry out the <a href="../Freestyle_UI5">Create a Freestyle UI5 application</a> section.
 SAPUI5 templates are based on <a href="https://yeoman.io/">Yeoman</a>, a tool for scaffolding web apps. You need to install it first.</p>
@@ -1016,14 +1027,14 @@ SAPUI5 templates are based on <a href="https://yeoman.io/">Yeoman</a>, a tool fo
 <p><img alt="Generator" src="../markdown/images/yeoman_generator.png" /></p>
 <h2 id="option-2-using-sap-business-application-studio">Option 2: Using SAP Business Application Studio</h2>
 <p>As mentioned in the section <a href="#editors">Editors</a>, using SAP BAS is optional and the tutorial uses VS Code as an editor. <a href="https://help.sap.com/viewer/9d1db9835307451daa8c930fbd9ab264/Cloud/en-US">SAP Business Application Studio</a> (SAP BAS) is the successor of the SAP Web IDE. Like the SAP Web IDE, it’s mostly an online IDE but a local version is also available. Many of the so-called extensions (separate, optional software packages that add a certain functionality to the IDE) that are available for <a href="#visual-studio-code">Microsoft's Visual Code</a> are also available for SAP BAS and vice versa.</p>
-<p>If you decide for SAP BAS, your benefits are:</p>
+<p>If you decide to use SAP BAS, your benefits are:</p>
 <ul>
 <li>You don't have to install or update any of the packages below yourself. The all come with your BAS instance.</li>
 <li>In some cases, you've additional productivity features that are available only in SAP BAS but not VS Code.</li>
 </ul>
 <p>However, if you go for SAP BAS, you first have to get access to SAP BTP, it can only be used with a user there. At a later stage of the tutorial, this is required anyway, however, you can easily perform the steps to create a CAP service with its own persistency and access to a remote SAP S/4HANA system, as well as an SAP Fiori Elements and a SAPUI5 application on top of the service without any access the SAP BTP and only develop these parts locally. If you’re looking for a deployment to SCO (obviously), using the SAP Fiori launchpad, develop a multi tenant app as well as using workflow, you need SAP BTP access later anyway.</p>
 <h3 id="set-up-business-application-studio-in-an-sap-btp-trial-account">Set Up Business Application Studio in an SAP BTP Trial Account</h3>
-<p>If you don't have an SAP BTP account already, please see <a href="../Prepare_SAP_CP_and_CF/">here</a> for the choices and how to set it up. After this, you either have a Trial account or a Canary or Live account.</p>
+<p>If you don't have an SAP BTP account already, see <a href="../Prepare_SAP_CP_and_CF/">here</a> for the choices and how to set it up. Afterwards you either have a Trial account or a Canary or Live account.</p>
 <p>If you're using a Canary or Live account, you need to create an <strong>Entitlement</strong> for SAP BAS as well.</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Trial</label><div class="tabbed-content">
 <ol>

@@ -499,8 +499,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -511,8 +511,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -667,15 +667,15 @@
 <p>The results of the previous module <strong>Add Business Logic to Your Application</strong> can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/business-logic">here</a>.</p>
 </details>
 <details class="note"><summary>Additional Documentation</summary><ul>
-<li><em>TODO</em></li>
+<li>@TODO (Iwona)</li>
 </ul>
 </details>
 <p>In this section, you create a Freestyle UI5 app on top of your CAP service.</p>
 <h2 id="sap-fiori-elements-application-vs-freestyle-ui5-application">SAP Fiori Elements Application vs. Freestyle UI5 Application</h2>
-<p>What is the difference to an SAP Fiori elements (FE) based application that you have already built in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section? As mentioned, both the freestyle app and the FE app are based on SAPUI5.</p>
-<p>An FE app can be thought of like a giant player built with SAPUI5 where most of the code resides outside your own development project in central components and where much of its logic comes out of the box and is controlled by metadata from your OData service.</p>
-<p>A freestyle UI5 application, on the other hand, lives mainly in your own project - all the views and controllers are in it. It still comes with all the features of SAPUI5 (super rich SAP Fiori compliant <a href="https://sapui5.hana.ondemand.com/#/controls">set of UI controls</a>, <a href="https://sapui5.hana.ondemand.com/#/topic/e5310932a71f42daa41f3a6143efca9c">data binding</a>, <a href="https://sapui5.hana.ondemand.com/#/topic/91f233476f4d1014b6dd926db0e91070">model view controller</a>, and so on), but if you want to, for example, program a screen where a user can edit data, you’ve to program it yourself. Whereas, in FE it comes already out of the box. With the greater amount of work for standard use cases, however, also comes the greater freedom. In a freestyle app, you can do what you need to do using SAPUI5 or even using third party / open-source components. While there are also options in FE to adjust your application outside of the possibilities given you via metadata (annotations) using the so-called "Flexible Programming Model", in a freestyle UI5 app, the sky is the limit with respect to freedom and optimization.</p>
-<p>Fortunately, also for freestyle UI5, you've a choice of several templates that get your application kick started. They copy the initial code into your project and any change necessary for the app can be done manually by you in the code.</p>
+<p>What is the difference to an SAP Fiori elements (FE) based application that you've already built in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section? As mentioned, both the freestyle app and the FE app are based on SAPUI5.</p>
+<p>An FE app can be thought of like a giant player built with SAPUI5 where most of the code resides outside your own development project in central components. Much of its logic comes out of the box and is controlled by metadata from your OData service.</p>
+<p>A freestyle UI5 application, on the other hand, lives mainly in your own project - all the views and controllers are in it. It still comes with all the features of SAPUI5 (super rich SAP Fiori compliant <a href="https://sapui5.hana.ondemand.com/#/controls">set of UI controls</a>, <a href="https://sapui5.hana.ondemand.com/#/topic/e5310932a71f42daa41f3a6143efca9c">data binding</a>, <a href="https://sapui5.hana.ondemand.com/#/topic/91f233476f4d1014b6dd926db0e91070">model view controller</a>, and so on), but if you want to, for example, program a screen where a user can edit data, you’ve got to program it yourself. In FE, this functionality is available out of the box. With the greater amount of work for standard use cases, however, also comes a greater freedom. In a freestyle app, you can do what you need to do using SAPUI5 or even using third party / open-source components. While there are also options in FE to adjust your application outside of the possibilities given you via metadata (annotations) using the so-called "Flexible Programming Model", in a freestyle UI5 app, the sky is the limit with respect to freedom and optimization.</p>
+<p>Fortunately, you've also got a choice of several templates that get your application kick started for freestyle UI5. They copy the initial code into your project and any change necessary for the app can be done manually by you in the code.</p>
 <h2 id="creating-the-application">Creating the Application</h2>
 <p>In the next steps, you build an application using the <code>mitigations</code> part of our CAP-based service.</p>
 <ol>
@@ -753,9 +753,9 @@ A creation wizard starts.</p>
 <h3 id="summary">Summary</h3>
 <p>What happened here? (You can skip this and carry on with <a href="#starting-the-application">Starting the Application</a> if you aren't keen to know.)</p>
 <p>First, you created a new application from the work list template with a detail page based on a V4 OData service (the CAP service is V4). The result is a similar application layout like the one you've already chosen in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section. There are other templates available (a Worklist Application and a Master Detail one, both for V2 services).</p>
-<p>You choose to be able to run this app standalone, so without necessarily having to have an SAP Fiori launchpad to host it. On a technical level, you choose to send all the OData requests from the app using batches. A batch is a kind of a wrapper for requests. You can wrap multiple requests into one with a batch. Even when there’s only one request, a batch is better for security reasons, as not all the data of the request is exposed in the URL. So, in essence, for performance and security reasons, it's always a good idea to choose batch.</p>
+<p>You chose to be able to run this app standalone, so without necessarily having to have an SAP Fiori launchpad to host it. On a technical level, you chose to send all the OData requests from the app using batches. A batch is a kind of a wrapper for requests. You can wrap multiple requests into one with a batch. Even when there’s only one request, a batch is better for security reasons, as not all the data of the request is exposed in the URL. So, in essence, for performance and security reasons, it's always a good idea to choose batch.</p>
 <p>Then there’s the section about the service base URI and the data source URL. It prepares your project for the optional use of more <a href="https://sap.github.io/ui5-tooling/">SAPUI5 Tooling</a> for development. It ensures that the requests for the OData service from the application (all for our <code>risk</code> service, so starting with <code>/risk</code>) are mapped to the backend service, which is our CAP service, running under <code>http://localhost:4004/service/risk</code>.</p>
-<details class="info"><summary>Why is a mapping needed?</summary><p>You might ask yourself why you've to specify this here, when in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section you didn't. The answer is that the SAP Fiori Elements case was streamlined to a CAP service already (you even told the app generator to get the service from a CAP project). Freestyle SAPUI5 templates don’t have the special treatment of CAP yet and instead make no assumption where the OData service comes from, it could be a remote one based on another framework. To make the connection, the above mapping is needed. SAPUI5 has a so-called middleware that proxies to the remote service. You can see this by opening the <code>ui5.yaml</code> file under <code>cpapp/app/mitigations</code>:</p>
+<details class="info"><summary>Why is a mapping needed?</summary><p>You might ask yourself why you've got to specify this here, when in the <a href="../FE">Create an SAP Fiori Elements-Based Application</a> section you didn't. The answer is that the SAP Fiori Elements case was streamlined to a CAP service already (you even told the app generator to get the service from a CAP project). Freestyle SAPUI5 templates don’t have the special treatment of CAP yet and instead make no assumption where the OData service comes from, it could be a remote one based on another framework. To make the connection, the above mapping is needed. SAPUI5 has a so-called middleware that proxies to the remote service. You can see this by opening the <code>ui5.yaml</code> file under <code>cpapp/app/mitigations</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nn">...</span>
 <span class="nt">server</span><span class="p">:</span>
     <span class="nt">customMiddleware</span><span class="p">:</span>
@@ -878,8 +878,8 @@ A creation wizard starts.</p>
 </ul>
 </li>
 </ul>
-<p>If none of these is of interest to you, you can go on using <code>cds watch</code> and skip the rest of the section.</p>
-<p>You now add the capability of live reloading to the configuration of the SAPUI5 tools. After enabling this, every time you save a file in your <code>mitigations</code> app, the browser window will automatically reload the new sources and show them.</p>
+<p>If these are of interest to you, you can go on using <code>cds watch</code> and skip the rest of the section.</p>
+<p>You now add the capability of live reloading to the configuration of the SAPUI5 tools. After enabling it, every time you save a file in your <code>mitigations</code> app, the browser window will automatically reload the new sources and show them.</p>
 <ol>
 <li>
 <p>Open the <code>package.json</code> file in your <code>cpapp/app/mitigations</code> folder.</p>

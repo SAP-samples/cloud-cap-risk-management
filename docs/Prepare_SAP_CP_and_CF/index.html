@@ -548,8 +548,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -560,8 +560,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -757,11 +757,17 @@
                 
                 <h1 id="prepare-sap-btp-and-cloud-foundry">Prepare SAP BTP and Cloud Foundry</h1>
 <details class="info"><summary>Prerequisites</summary><ul>
+<li><a href="../Sources">Get Started</a></li>
+<li><a href="../CAP_Service">Create a CAP-Based Service</a></li>
+<li><a href="../FE">Create an SAP Fiori Elements-Based Application</a></li>
+<li><a href="../CAP_Business_Logic">Add Business Logic to Your Application</a></li>
+<li><a href="../Roles_CAP">Implement Roles and Authorization Checks in CAP</a></li>
 <li>You have an SAP BTP global account, a subaccount, and a Cloud Foundry space with the required entitlements to deploy the application.</li>
 </ul>
 </details>
 <details class="note"><summary>Additional Documentation</summary><ul>
 <li><a href="https://help.sap.com/viewer/product/BTP/Cloud">Official SAP BTP Documentation</a></li>
+<li><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b328cc89ea14484d9655b8cfb8efb508.html">Getting Started in the Cloud Foundry Environment</a></li>
 </ul>
 </details>
 <h2 id="overview">Overview</h2>
@@ -810,21 +816,21 @@
 <td>MEMORY</td>
 <td>4</td>
 <td>GB</td>
-<td><a href="/MTA_Deployment">MTA Deployment</a></td>
+<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
 </tr>
 <tr>
 <td>Application Logging</td>
 <td>standard</td>
 <td>1</td>
 <td>instances</td>
-<td><a href="/MTA_Deployment">MTA Deployment</a></td>
+<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
 </tr>
 <tr>
 <td>SAP HANA Schemas &amp; HDI Containers</td>
 <td>hdi-shared</td>
 <td>1</td>
 <td>instances</td>
-<td><a href="../MTA_Deployment">MTA Deployment</a></td>
+<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
 </tr>
 <tr>
 <td>SAP HANA Cloud</td>
@@ -832,6 +838,13 @@
 <td>1</td>
 <td>instances</td>
 <td><a href="/HANA_Setup">SAP HANA Cloud Setup</a></td>
+</tr>
+<tr>
+<td>Launchpad Service</td>
+<td>standard</td>
+<td>1</td>
+<td>active users</td>
+<td><a href="/Launchpad+Service">Launchpad Service</a></td>
 </tr>
 </tbody>
 </table>
@@ -850,25 +863,18 @@
 </thead>
 <tbody>
 <tr>
-<td>Connectivity</td>
-<td>lite</td>
-<td>1 *</td>
-<td>instances</td>
-<td><a href="/MTA_Deployment">MTA Deployment</a></td>
-</tr>
-<tr>
-<td>Destination</td>
-<td>lite</td>
-<td>1 *</td>
-<td>instances</td>
-<td><a href="/MTA_Deployment">MTA Deployment</a></td>
+<td>Launchpad Service</td>
+<td>standard</td>
+<td>1</td>
+<td>active users</td>
+<td><a href="/Launchpad+Service">Launchpad Service</a></td>
 </tr>
 <tr>
 <td>Authorization &amp; Trust Management</td>
 <td>application</td>
 <td>1 *</td>
 <td>instances</td>
-<td><a href="/MTA_Deployment">MTA Deployment</a></td>
+<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
 </tr>
 </tbody>
 </table>
@@ -990,8 +996,6 @@
 <li>Choose the <strong>+</strong> or <strong>-</strong> symbol to change the quota for the services according to the <a href="#required-service-entitlements">Service Entitlements</a> table.</li>
 <li>Choose <em>Save</em>.</li>
 </ol>
-<p><em>Example:</em></p>
-<p><img alt="Subaccount Entitlements" src="../markdown/images/sap_cp_subaccount_entitlements.png" /></p>
 <h2 id="create-a-cloud-foundry-space">Create a Cloud Foundry Space</h2>
 <p>Next to Cloud Foundry orgs there are also <a href="https://docs.cloudfoundry.org/concepts/roles.html#spaces">Spaces</a>. Each Cloud Foundry org can have 0 to n spaces, you create just one here.</p>
 <ol>
@@ -1009,7 +1013,7 @@
 <li>(Optional) Add a DL of your CFDeployment technical user as Space Manager if you've one.</li>
 </ol>
 <h2 id="log-on-to-cloud-foundry-from-the-command-line">Log on to Cloud Foundry from the Command Line</h2>
-<p>Prepare for the next steps by logging on to Cloud Foundry and targetting your space in the account.</p>
+<p>Prepare for the next steps by logging on to Cloud Foundry and targeting your space in the account.</p>
 <p>If you don't know whether you’re logged on to Cloud Foundry or if you're wondering to which Cloud Foundry org and space are you logged on, you can always use <code>cf target</code> in a terminal to find out. If you aren't logged on already, go to your SAP BTP Cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Trial</label><div class="tabbed-content">
 <p><a href="https://cockpit.hanatrial.ondemand.com/">https://cockpit.hanatrial.ondemand.com/</a></p>

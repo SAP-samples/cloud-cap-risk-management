@@ -9,3 +9,8 @@
 .md-sidebar {
     width: 15rem;
 }
+
+/* hide edit button */
+a.md-content__button.md-icon {
+    display: none;
+}

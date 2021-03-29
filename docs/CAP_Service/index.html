@@ -472,8 +472,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -484,8 +484,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -706,7 +706,7 @@
   <span class="p">}</span>
 </code></pre></div></p>
 <p>It creates two entities in the namespace <code>sap.ui.riskmanagement</code>: <code>Risks</code> and <code>Mitigations</code>. Each of them has a key called <code>ID</code> and several other properties. A Risk has a mitigation and, therefore, the property <code>miti</code> has an association to exactly one Mitigation. A Mitigation in turn can be used for many Risks, so it has a "to many" association. They key is automatically filled by the CAP server, which is exposed to the user of the service with the annotation <code>@(Core.Computed : true)</code>.</p>
-<p>Notice how the CAP server reacted to dropping the file. It now tells you that it has a model but there are no service definitions yet and, thus, it still can’t serve anything. So, you add a service definition.</p>
+<p>Notice how the CAP server reacted to dropping the file. It now tells you that it has a model but there are no service definitions yet and, thus, it still can’t serve anything. Next, you add a service definition.</p>
 </li>
 <li>
 <p>Copy the file <code>risk-service.cds</code> from <code>templates/cap/create-service/srv</code> to the <code>srv</code> folder of your app.</p>
@@ -733,7 +733,7 @@
 </li>
 <li>
 <p>Choose the <code>$metadata</code> link.</p>
-<p>You see the OData metadata document of your new service. So, with just the two files for the database schema and the service exposure you have added to your project, you have a running OData service!
+<p>You see the OData metadata document of your new service. So, with just the two files for the database schema and the service exposure you added to your project, you've already got a running OData service!
 You might wonder why the service itself is called <code>risk</code> even though in the file it’s called <code>RiskService</code>. This is a convention in CAP, the service suffix is subtracted from the name.</p>
 <p>If you now choose the <code>Risks</code> link, you only get this:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -741,7 +741,7 @@ You might wonder why the service itself is called <code>risk</code> even though 
     <span class="nx">value</span><span class="o">:</span> <span class="p">[</span> <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>So, there’s no data yet. This is of course because so far your model doesn’t contain any data. You add some now.</p>
+<p>So, there’s no data yet. This is because so far, your model doesn’t contain any data. You add some now.</p>
 </li>
 <li>
 <p>Copy the folder <code>data</code> from <code>templates/cap/create-service/db</code> to the <code>db</code> folder of your app. If VS Code asks you whether to copy the folder, confirm.</p>
@@ -750,7 +750,7 @@ You might wonder why the service itself is called <code>risk</code> even though 
 20466922-7d57-4e76-b14c-e53fd97dcb11;2019-10-24;tim.back@sap.com;CFR non-compliance;Fred Fish;3;Recent restructuring might violate CFR code 71;20466921-7d57-4e76-b14c-e53fd97dcb11;10000
 ...
 </code></pre></div>
-<p>The first line contains all the properties from your <code>Risks</code> entity. While the other ones are straight forward, consider the <code>miti_id</code> property. In your entity, you only have a <code>miti</code> property, so where does this come from? <code>miti</code> is an association to <code>Mitigations</code>, as <code>Mitigations</code> could have several key properties, the association on the database needs to point to all of these, therefore the CAP server creates a property <code>&lt;AssociationProperty&gt;_&lt;AssociatedEntityKey&gt;</code> for each key.</p>
+<p>The first line contains all the properties from your <code>Risks</code> entity. While the other ones are straight forward, consider the <code>miti_id</code> property. In your entity, you only have a <code>miti</code> property, so where does it come from? <code>miti</code> is an association to <code>Mitigations</code>, as <code>Mitigations</code> could have several key properties, the association on the database needs to point to all of these, therefore the CAP server creates a property <code>&lt;AssociationProperty&gt;_&lt;AssociatedEntityKey&gt;</code> for each key.</p>
 <p>As always, the CAP server has noticed the change.</p>
 <div class="admonition info">
 <p class="admonition-title">You may have to stop and restart the <code>cds watch</code> command.</p>

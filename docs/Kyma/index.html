@@ -425,8 +425,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF_Push_Deployment/" class="md-nav__link">
-        Deploy Your Application Using `cf push`
+      <a href="../CAP_MTA_Deployment/" class="md-nav__link">
+        Deploy Your Multi-Target Application (MTA)
       </a>
     </li>
   
@@ -437,8 +437,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../MTA_Deployment/" class="md-nav__link">
-        Deploy Your Application Using MultiApps (MTA)
+      <a href="../Launchpad_Service/" class="md-nav__link">
+        Add the SAP Launchpad Service
       </a>
     </li>
   
@@ -547,8 +547,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cap-risk-management-example-application" class="md-nav__link">
-    CAP Risk Management Example Application
+  <a href="#sap-btp-application-development-example" class="md-nav__link">
+    SAP BTP Application Development Example
   </a>
   
 </li>
@@ -561,36 +561,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sap-business-technology-platform-btp-subaccount" class="md-nav__link">
-    SAP Business Technology Platform (BTP) Subaccount
+  <a href="#enable-kyma-in-sap-btp-subaccount" class="md-nav__link">
+    Enable Kyma in SAP BTP Subaccount
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable-kyma" class="md-nav__link">
-    Enable Kyma
-  </a>
-  
-    <nav class="md-nav" aria-label="Enable Kyma">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-your-own-sap-btp-trial-account" class="md-nav__link">
-    Create Your Own SAP BTP Trial Account
+  <a href="#option-1-create-your-own-sap-btp-trial-account" class="md-nav__link">
+    Option 1: Create Your Own SAP BTP Trial Account
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-an-existing-sap-btp-subaccount" class="md-nav__link">
-    Use an Existing SAP BTP Subaccount
+  <a href="#option-2-use-your-existing-sap-btp-subaccount" class="md-nav__link">
+    Option 2: Use Your Existing SAP BTP Subaccount
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -765,8 +752,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#connect-cap-application-to-the-sap-hana-hdi-container" class="md-nav__link">
-    Connect CAP Application to the SAP HANA HDI Container
+  <a href="#connect-the-cap-application-to-the-sap-hana-hdi-container" class="md-nav__link">
+    Connect the CAP Application to the SAP HANA HDI Container
   </a>
   
 </li>
@@ -872,8 +859,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cap-risk-management-example-application" class="md-nav__link">
-    CAP Risk Management Example Application
+  <a href="#sap-btp-application-development-example" class="md-nav__link">
+    SAP BTP Application Development Example
   </a>
   
 </li>
@@ -886,36 +873,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sap-business-technology-platform-btp-subaccount" class="md-nav__link">
-    SAP Business Technology Platform (BTP) Subaccount
+  <a href="#enable-kyma-in-sap-btp-subaccount" class="md-nav__link">
+    Enable Kyma in SAP BTP Subaccount
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#enable-kyma" class="md-nav__link">
-    Enable Kyma
-  </a>
-  
-    <nav class="md-nav" aria-label="Enable Kyma">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-your-own-sap-btp-trial-account" class="md-nav__link">
-    Create Your Own SAP BTP Trial Account
+  <a href="#option-1-create-your-own-sap-btp-trial-account" class="md-nav__link">
+    Option 1: Create Your Own SAP BTP Trial Account
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-an-existing-sap-btp-subaccount" class="md-nav__link">
-    Use an Existing SAP BTP Subaccount
+  <a href="#option-2-use-your-existing-sap-btp-subaccount" class="md-nav__link">
+    Option 2: Use Your Existing SAP BTP Subaccount
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1090,8 +1064,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#connect-cap-application-to-the-sap-hana-hdi-container" class="md-nav__link">
-    Connect CAP Application to the SAP HANA HDI Container
+  <a href="#connect-the-cap-application-to-the-sap-hana-hdi-container" class="md-nav__link">
+    Connect the CAP Application to the SAP HANA HDI Container
   </a>
   
 </li>
@@ -1168,7 +1142,7 @@
 <p>SAP recently released the <a href="https://blogs.sap.com/2020/05/12/get-a-fully-managed-runtime-based-on-kyma-and-kubernetes/">SAP Business Technology Platform, Kyma runtime</a>, a managed Kubernetes offering with Kyma.</p>
 <p>Kyma is much about extending existing applications, but you also get a full-blown Kubernetes cluster including <a href="https://istio.io/latest/docs/concepts/what-is-istio/#what-is-a-service-mesh">Istio service mesh</a> that you can use to build a standalone cloud application.</p>
 <p>In this tutorial, you deploy an application built with the SAP Cloud Application Programming Model (CAP) to an <em>SAP Business Technology Platform, Kyma runtime</em> cluster. The CAP application has an OData service, SAP Fiori UI and uses SAP HANA as a database.</p>
-<p>The <a href="https://github.com/SAP-samples/cloud-cap-risk-management">CAP Risk Management Example</a> is used as starting point.</p>
+<p>The <a href="https://github.com/SAP-samples/cloud-cap-risk-management">SAP BTP Application Development</a> example is used as starting point.</p>
 <p>The tutorial can be also done with any other Kyma installation, but you need an SAP HANA database and an HDI container and you then need to do the part with SAP HANA credentials differently.</p>
 <p>The CAP part is probably the smallest in the tutorial: Frankly speaking, just package it into a docker container and run it. But the tutorial also describes how to get a small docker registry running. If you're experienced with Kubernetes, you can skip some sections.</p>
 <p>Since SAP HANA Cloud isn’t yet available for Kyma, you take it from Cloud Foundry. It's a bit tricky to copy the credentials, but at the end it's just copying and pasting values. Scripts are provided to help you here. So, don't get distracted by this.</p>
@@ -1177,7 +1151,7 @@
 <p>CAP doesn't officially support <em>Kubernetes</em> and <em>Kyma</em> as a platform right now.</p>
 <h2 id="preconditions">Preconditions</h2>
 <p>These are preconditions to do this tutorial:</p>
-<h3 id="cap-risk-management-example-application">CAP Risk Management Example Application</h3>
+<h3 id="sap-btp-application-development-example">SAP BTP Application Development Example</h3>
 <p>You can find the starting point of this tutorial in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/freestyle-ui5-app">cap/freestyle</a> branch:</p>
 <ol>
 <li>
@@ -1190,7 +1164,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Clone the example git repository and checkout the example branch:</p>
+<p>Clone the example GitHub repository and checkout the example branch:</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/SAP-samples/cloud-cap-risk-management
 <span class="nb">cd</span> cloud-cap-risk-management
 git checkout cap/freestyle-ui5-app
@@ -1221,15 +1195,15 @@ code .
 <li><code>kubectl</code> (<a href="https://kubernetes.io/docs/tasks/tools/">Kubernetes Command Line tool</a>), see this <a href="https://developers.sap.com/tutorials/cp-kyma-download-cli.html">tutorial</a> how to install it</li>
 <li><code>helm</code> (<a href="https://helm.sh/docs/intro/install/">Helm Chart Command Line</a>, not needed if you use an existing docker registry)</li>
 <li><code>cf</code> (<a href="https://docs.cloudfoundry.org/cf-cli/install-go-cli.html">Cloud Foundry Command Line Interface (CLI)</a>)</li>
-<li>(For Windows users only): You’ve installed the <a href="https://sqlite.org/download.html">SQLite</a> tools for Windows. Find the steps how to install it in the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#how-do-i-install-sqlite-on-windows">Troubleshooting guide</a> in the CAP documentation.</li>
+<li>(For Windows users only): You have installed the <a href="https://sqlite.org/download.html">SQLite</a> tools for Windows. Find the steps how to install it in the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#how-do-i-install-sqlite-on-windows">Troubleshooting guide</a> in the CAP documentation.</li>
 </ul>
 <p>If you have a Mac, many of the commands can be installed using Homebrew (<code>brew install ...</code>). For Windows, there's a similar offering called Chocolatey. Refer to the binary installers of the components otherwise.</p>
-<h3 id="sap-business-technology-platform-btp-subaccount">SAP Business Technology Platform (BTP) Subaccount</h3>
-<p>You need an SAP BTP Subaccount with consumption-based model (that is, Cloud Credits). Kyma is currently supported on Azure landscapes only, as of September 2020.</p>
-<h3 id="enable-kyma">Enable Kyma</h3>
-<p>Although Kyma is needed at a later point in the tutorial, it’s recommended to start with this step, because the Kyma provisioning can take some time. </p>
-<p>You can either create your own SAP BTP Trial account or add Kyma to an existing Subaccount.</p>
-<h4 id="create-your-own-sap-btp-trial-account">Create Your Own SAP BTP Trial Account</h4>
+<h3 id="enable-kyma-in-sap-btp-subaccount">Enable Kyma in SAP BTP Subaccount</h3>
+<p>You need an SAP BTP Subaccount with consumption-based model (that is, Cloud Credits). Kyma is currently supported on Azure landscapes only, as of September 2020. Although Kyma is needed at a later point in the tutorial, it’s recommended to start with this step, because the Kyma provisioning can take some time. </p>
+<p>For this tutorial you have two options:</p>
+<p><strong>Option 1:</strong> <a href="#option-1-create-your-own-sap-btp-trial-account">Create Your Own SAP BTP Trial Account</a></p>
+<p><strong>Option 2:</strong> <a href="#option-2-use-your-existing-sap-btp-subaccount">Use an Existing SAP BTP Subaccount</a></p>
+<h3 id="option-1-create-your-own-sap-btp-trial-account">Option 1: Create Your Own SAP BTP Trial Account</h3>
 <ol>
 <li>Go to <a href="https://cockpit.eu10.hana.ondemand.com/trial/#/home/trial">SAP BTP Cockpit</a>.</li>
 <li>Choose <strong>Enter Your Trial Account</strong>.</li>
@@ -1239,18 +1213,25 @@ code .
 <li>Choose <strong>trial</strong>.</li>
 <li>Go to <strong>Kyma Environment</strong>.</li>
 <li>Choose <strong>Enable Kyma</strong>.</li>
+<li>Provide a <strong>Cluster Name</strong>.</li>
+<li>Choose <strong>Create</strong>.</li>
 </ol>
 <p>This takes a while. You can start the tutorial in the meantime.</p>
-<h4 id="use-an-existing-sap-btp-subaccount">Use an Existing SAP BTP Subaccount</h4>
-<p>If you already have an older trial account, then you might not see the <strong>Enable Kyma</strong> button. In that case:
-1. Go to <strong>Entitlements</strong>.
-2. Choose <strong>Configure Entitlements</strong>.
-3. Choose <strong>Add Service Plans</strong>. 
-4. Search for and select <strong>Kyma runtime</strong>.
-5. Check the <strong>trial (Environment)</strong> checkbox.
-6. Choose <strong>Add 1 Service Plan</strong>.
-7. Choose <strong>Enable Kyma</strong>.</p>
-<p>SAP BTP’s XSUAA is used for the access to the Kyma runtime. Please follow the steps to assign <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/148ae38b7d6f4e61bbb696bbfb3996b2.html">Roles in the Kyma Environment</a>. In some cases, it will still take 5-10 minutes to get access to Kyma Runtime and you only need to wait. </p>
+<h3 id="option-2-use-your-existing-sap-btp-subaccount">Option 2: Use Your Existing SAP BTP Subaccount</h3>
+<p>If you already have an older trial account, then you might not see the <strong>Enable Kyma</strong> button. In that case:</p>
+<ol>
+<li>Go to <strong>Entitlements</strong>.</li>
+<li>Choose <strong>Configure Entitlements</strong>.</li>
+<li>Choose <strong>Add Service Plans</strong>. </li>
+<li>Search for and select <strong>Kyma runtime</strong>.</li>
+<li>Check the <strong>trial (Environment)</strong> checkbox.</li>
+<li>Choose <strong>Add 1 Service Plan</strong>.</li>
+<li>Choose <strong>Enable Kyma</strong>.</li>
+<li>Provide a <strong>Cluster Name</strong>.</li>
+<li>Choose <strong>Create</strong>.</li>
+</ol>
+<p>This takes a while. You can start the tutorial in the meantime.</p>
+<p>SAP BTP’s XSUAA is used to access the Kyma runtime. Please follow the steps to assign <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/148ae38b7d6f4e61bbb696bbfb3996b2.html">Roles in the Kyma Environment</a>. In some cases, it will still take 5-10 minutes to get access to Kyma Runtime. </p>
 <h3 id="enable-cloud-foundry">Enable Cloud Foundry</h3>
 <p>To use the SAP HANA Cloud service, you can either enable Cloud Foundry for the same subaccount or use a different subaccount, for example, an already existing or trial subaccount.</p>
 <h3 id="install-the-cloud-foundry-cli">Install the Cloud Foundry CLI</h3>
@@ -1304,7 +1285,7 @@ code .
 <li>
 <p>Build the docker image locally:</p>
 <div class="admonition info">
-<p class="admonition-title">Make sure that the docker daemon is running (for example, Docker Desktop for MacOS or Windows)</p>
+<p class="admonition-title">Make sure that the docker daemon is running (for example, Docker Desktop for MacOS or Windows).</p>
 </div>
 <div class="highlight"><pre><span></span><code>docker build -t cpapp .
 </code></pre></div>
@@ -1354,7 +1335,7 @@ manifest.yaml  node_modules  package-lock.json  package.json  srv
 <div class="highlight"><pre><span></span><code>docker run -t cpapp
 </code></pre></div>
 <p>Without specifying the command, it runs the default command, that is <code>npm start</code>.
-You can try to access the service on <a href="http://localhost:4004">http://localhost:4004</a>, but it doesn't work. It shows a similar error message like this:</p>
+You can try to access the service at <a href="http://localhost:4004">http://localhost:4004</a>, but it doesn't work. It shows a similar error message like this:</p>
 <div class="highlight"><pre><span></span><code>This site can’t be reached
 
 localhost refused to connect.
@@ -1410,24 +1391,32 @@ docker build -t cpapp .
 <h2 id="deploy-to-kyma">Deploy to Kyma</h2>
 <p>In this part of the tutorial, you deploy the dockerized CAP application to Kyma.</p>
 <h3 id="log-in-to-kyma-kubernetes-cluster">Log In to Kyma (Kubernetes Cluster)</h3>
-<p>The first step is to log in to Kyma using the <em>Kyma Console</em> and configure the local <code>kubectl</code> command to connect to the Kyma Kubernetes cluster.</p>
+<p>The first step is to log in to Kyma using the <strong>Kyma Console</strong> and configure the local <code>kubectl</code> command to connect to the Kyma Kubernetes cluster.</p>
 <ol>
 <li>Go to <a href="https://cockpit.eu10.hana.ondemand.com/trial/#/home/trial">SAP BTP Cockpit</a>.</li>
 <li>Choose <strong>Enter Your Trial Account</strong>.</li>
 <li>Choose your <strong>Global Account</strong>.</li>
 <li>Choose your <strong>Subaccount</strong>.</li>
 <li>
-<p>On the <strong>Overview</strong> page, under <strong>Kyma Environment</strong>, choose <strong>Link to dashboard</strong>.</p>
-<p><img alt="Kyma Dashboard" src="../markdown/images/kyma_dashboard_link.png" /></p>
+<p>On the <strong>Overview</strong> page, under <strong>Kyma Environment</strong>, choose <strong>Link to dashboard</strong>. </p>
+<p><img alt="Kyma Console" src="../markdown/images/kyma_console_link.png" /></p>
+<p>The Kyma console should open. The console is a web-based administrative UI for Kyma. If not, see the troubleshooting information.</p>
+<details class="info"><summary>Troubleshooting: Not enough permissions to launch the kyma console</summary><p><img alt="response" src="../markdown/images/kyma_console_permissions.png" /></p>
+<p>If you can not launch the kyma console, please follow the steps to get permissions:</p>
+<ol>
+<li>Open your subaccount.</li>
+<li>Navigate to <strong>Security</strong> --› <strong>Role Collections</strong> --› <strong>Trust Configuration</strong> and assign the role collection <em>Kyma_Roles</em> to your user.</li>
+<li>Navigate back to the subaccount overview and launch the kyma console.</li>
+</ol>
+</details>
 </li>
 <li>
-<p>Log in to Kyma.</p>
+<p>Choose the account icon in the upper right corner.</p>
 </li>
-<li>Choose the account icon in the upper right corner.</li>
 <li>
 <p>Choose <strong>Get Kubeconfig</strong> from the dropdown menu.</p>
 <p><img alt="Kubeconfig Download" src="../markdown/images/kubeconfig_download.png" /></p>
-<p>A file download should be triggered. If no download is triggered, see the troubleshooting info.</p>
+<p>A file download should be triggered. If no download is triggered, see the troubleshooting information.</p>
 <details class="info"><summary>Troubleshooting: If no download is triggered</summary><p>It can happen, that no download is triggered. In this case follow these steps:</p>
 <ol>
 <li>Open your browser's developer tools (press <code>F12</code>).</li>
@@ -1537,7 +1526,7 @@ The authentication session will expire after some hours. You then need to downlo
 <div class="highlight"><pre><span></span><code>kubectl port-forward deployment/docker-registry <span class="m">5000</span>:5000 <span class="p">&amp;</span>
 </code></pre></div>
 <p>The <code>&amp;</code> causes the process to run in the background. You need to keep it running until you finished pushing docker images. You may need to start it newly in case the "docker push" doesn't work anymore.</p>
-<p>You should see the following output that tells you that the tunning is established:</p>
+<p>You should see the following output that tells you that the tunneling is established:</p>
 <div class="highlight"><pre><span></span><code>Forwarding from 127.0.0.1:5000 -&gt; 5000
 Forwarding from [::1]:5000 -&gt; 5000
 </code></pre></div>
@@ -1822,7 +1811,7 @@ schema=DE6922EF2F3449E984E2E794456B7CBE
 url=jdbc:sap://1d468818-87ad-4f9a-b762-a642b9070869.hana.eu10.hanacloud.ondemand.com:443?encrypt=true&amp;validateCertificate=true&amp;currentschema=DE6922EF2F3449E984E2E794456B7CBE
 user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 </code></pre></div>
-<p>However, since you need to take the SAP HANA credentials from Cloud Foundry, it’s easier to stick to the <code>VCAP_SERVICES</code> approach for now.</p>
+<p>Since you need to take the SAP HANA credentials from Cloud Foundry, it’s easier to stick to the <code>VCAP_SERVICES</code> approach for now.</p>
 <p>So, let's have a look at the credentials that have been created by <code>cds deploy</code>:</p>
 <div class="highlight"><pre><span></span><code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key
 </code></pre></div>
@@ -1884,7 +1873,7 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 <p>Option A:</p>
 <ol>
 <li>Replace <code>{{CREDENTIALS}}</code> with the JSON output of <code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key</code> (without the initial line).</li>
-<li>Create the secret on Kubernetes</li>
+<li>Create the secret on Kubernetes:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>kubectl apply -f gen/hdi-secret.yaml
 </code></pre></div>
@@ -1916,7 +1905,7 @@ VCAP_SERVICES:  2602 bytes
 </code></pre></div>
 </li>
 </ol>
-<h3 id="connect-cap-application-to-the-sap-hana-hdi-container">Connect CAP Application to the SAP HANA HDI Container</h3>
+<h3 id="connect-the-cap-application-to-the-sap-hana-hdi-container">Connect the CAP Application to the SAP HANA HDI Container</h3>
 <p>Now, you need to inject the secret's value as environment variables into your CAP application.</p>
 <ol>
 <li>
@@ -1967,7 +1956,7 @@ cpapp-66b5cb4876-hx5l6               0/2     Init:0/1   0          2s
 </li>
 <li>
 <p>Open the URL to your application.</p>
-<p>Now, you can create some entries in the Risks application, which are stored in the SAP HANA database.</p>
+<p>Now, you can create some entries in the <strong>Risks</strong> application, which are stored in the SAP HANA database.</p>
 </li>
 </ol>
 <h2 id="summary">Summary</h2>
