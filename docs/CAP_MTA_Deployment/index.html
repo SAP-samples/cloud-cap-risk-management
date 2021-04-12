@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/CAP_MTA_Deployment/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.33e2939f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.9299cb39.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
@@ -757,14 +757,23 @@
 <li><a href="https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/latest/en-US/ebb42efc880c4276a5f2294063fae0c3.html">Create the Multi-target Application (MTA) Description Files</a></li>
 </ul>
 </details>
-<p>As a result of this tutorial, you have a running CAP service in the cloud based on SAP HANA. You will deploy the user interface in the tutorial <a href="../Launchpad_Service/">Launchpad Service</a>.</p>
-<p>The deployment is based on MTA (<em>Multi-Target Application</em> sometimes also called <em>MultiApps</em>) technology. The MTA is a SAP-proprietary way to do deployments consisting of multiple modules that can be implemented in different technologies. Advantages compared to the <code>cf push</code> method are a build tool, automatically created service instances, service keys, destinations, content deployment (HTML5, workflow, ...), and blue-green deployment.</p>
+<p>As a result of this tutorial, you have a running CAP service in the cloud based on SAP HANA. You will deploy the user interface in the tutorial <a href="../Launchpad_Service/">Add the SAP Launchpad Service</a>.</p>
+<p>The deployment is based on MTA (<em>Multi-Target Application</em>, sometimes also called <em>MultiApps</em>) technology. The MTA is a SAP-proprietary way to do deployments consisting of multiple modules that can be implemented in different technologies.</p>
+<details class="info"><summary>Advantages compared to the <code>cf push</code> method</summary><ul>
+<li>a build tool</li>
+<li>automatically created service instances</li>
+<li>service keys</li>
+<li>destinations</li>
+<li>content deployment (HTML5, workflow, ...)</li>
+<li>blue-green deployment</li>
+</ul>
+</details>
 <h2 id="build-and-deploy-using-mta">Build and Deploy Using MTA</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <h4 id="install-the-mta-build-tool-mbt">Install the MTA Build Tool <code>mbt</code></h4>
 <ol>
 <li>
-<p>Check if you have already installed the <a href="https://sap.github.io/cloud-mta-build-tool/">Cloud MTA Build Tool (MBT)</a>: </p>
+<p>Check if you have already installed the <a href="https://sap.github.io/cloud-mta-build-tool/">Cloud MTA Build Tool (MBT)</a>:</p>
 <div class="highlight"><pre><span></span><code>mbt --version
 </code></pre></div>
 </li>
@@ -783,13 +792,15 @@
 <li>Go to <a href="http://gnuwin32.sourceforge.net/packages/make.htm">http://gnuwin32.sourceforge.net/packages/make.htm</a>.</li>
 <li>Choose the download with the description <strong>Complete package, except sources</strong>.</li>
 <li>Run the installer.</li>
-<li>Enter <strong>Systems Environment Variables</strong> in the Windows search box (Windows icon in the task bar).</li>
+<li>Enter <strong>Edit the System Environment Variables</strong> in the Windows search box (Windows icon in the task bar). The <strong>System Properties</strong> dialog is opened.</li>
 <li>Choose <strong>Environment Variables...</strong>.</li>
-<li>Add GNU make to your <code>PATH</code> env variable (usually <code>C:\Program Files (x86)\GnuWin32\bin</code>).</li>
+<li>Choose your <code>Path</code> env variable under <em>User Variables for <code>&lt;your_user_name&gt;</code></em> and choose <strong>Edit</strong>.</li>
+<li>Choose <strong>Browse</strong> and navigate to <em>GNU make</em> (usually <code>C:\Program Files (x86)\GnuWin32\bin</code>).</li>
+<li>Click <strong>OK</strong> to add <em>GNU make</em> to your <code>Path</code> env variable.</li>
 <li>Restart VS Code to make the change effective.</li>
 </ol>
 <h4 id="install-the-multiapps-cloud-foundry-cli-plugin">Install the <code>MultiApps</code> Cloud Foundry CLI Plugin</h4>
-<p>The <a href="https://github.com/cloudfoundry-incubator/multiapps-cli-plugin/blob/master/README.md"><code>MultiApps</code> plugin</a> is required to deploy an MTA archive. It needs to be available in your Cloud Foundry landscape's Cloud Foundry plugin repository. Therefore you need to log on to your Cloud Foundry landscape.</p>
+<p>The <a href="https://github.com/cloudfoundry-incubator/multiapps-cli-plugin/blob/master/README.md"><code>MultiApps</code> plugin</a> is required to deploy an MTA archive. It needs to be available in your Cloud Foundry landscape's Cloud Foundry plugin repository. Therefore, you need to log on to your Cloud Foundry landscape.</p>
 <p>If you don't know whether you’re logged on to Cloud Foundry or if you're wondering to which Cloud Foundry org and space are you logged on, you can always use <code>cf target</code> in a terminal to find out. If you aren't logged on already, go to your SAP BTP Cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Trial</label><div class="tabbed-content">
 <p><a href="https://cockpit.hanatrial.ondemand.com/">https://cockpit.hanatrial.ondemand.com/</a></p>
@@ -846,11 +857,11 @@
 </ol>
 <h3 id="generate-mta-deployment-descriptor-mtayaml">Generate MTA Deployment Descriptor (<code>mta.yaml</code>)</h3>
 <p>The MTA deployment is described in the MTA Deployment Descriptor, a file called  <code>mta.yaml</code>.
-As the first step, you let CAP generate an initial <code>mta.yaml</code> file. Run the following command from the project root folder:</p>
+As the first step, you let the CAP server generate an initial <code>mta.yaml</code> file. Run the following command from the project root folder:</p>
 <div class="highlight"><pre><span></span><code>cds add mta
 </code></pre></div>
-<p>The <code>cds</code> CLI has generated the file based on your previously created settings in the <code>package.json</code> file.</p>
-<p>The <code>mta.yaml</code> file consists of different modules, that are Cloud Foundry apps, and resources, that are Cloud Foundry services.</p>
+<p>The file is generated based on your previously created settings in the <code>package.json</code> file.</p>
+<p>The <code>mta.yaml</code> file consists of different modules (Cloud Foundry apps) and resources (Cloud Foundry services).</p>
 <p><em>Modules:</em></p>
 <ul>
 <li><code>cpapp-srv</code> - OData service</li>
@@ -862,11 +873,11 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 <li><code>cpapp-db</code> - SAP HANA DB HDMI container</li>
 <li><code>cpapp-uaa</code> - XSUAA service</li>
 </ul>
-<p>The resources are Cloud Foundry service instances, that are automatically created and updated during the MTA deployment.</p>
+<p>The resources are Cloud Foundry service instances that are automatically created and updated during the MTA deployment.</p>
 <h3 id="ensure-the-right-service-plan-for-hdi-container">Ensure the Right Service Plan for HDI Container</h3>
-<p>Different service plans are required for Trial and productive SAP BTP accounts. Make sure that the right plan is set in the <code>mta.yaml</code> file:</p>
-<details class="warning"><summary>@TODO: (Sveto) Check if this is true for Trial when using SAP HANA Cloud</summary></details>
+<p>Different service plans are required for trial and productive SAP BTP accounts. Make sure that the right plan is set in the <code>mta.yaml</code> file:</p>
 <div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Trial</label><div class="tabbed-content">
+<p>By default, the <code>service</code> parameter is set to <code>hana</code> in the <code>mta.yaml</code> file. You have to change it to <code>hanatrial</code> if you're working in the trial landscape:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="nn">...</span>
     <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
@@ -878,6 +889,14 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
       <span class="nt">properties</span><span class="p">:</span>
         <span class="nt">hdi-service-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${service-name}</span>
 </code></pre></div>
+<details class="error"><summary>In case you get the error: <code>None of the service offering(s) "[hanatrial, hanatrial]" match with existing service offerings or provide service plan "hdi-shared"</code></summary><p>If you get the error <code>Service operation failed: Service "cpapp-db" could not be created because none of the service offering(s) "[hanatrial, hanatrial]" match with existing service offerings or provide service plan "hdi-shared"</code>, then you have to add a service plan to your entitlements.</p>
+<ol>
+<li>In your subaccount, choose <strong>Entitlements</strong> on the left.</li>
+<li>Choose <strong>Configure Entitlements</strong> <strong>&rarr;</strong> <strong>Add Service Plans</strong>.</li>
+<li>Search for <strong>SAP HANA Schemas &amp; HDI Containers Trial</strong> entitlement.</li>
+<li>Add the service plans included in the entitlement.</li>
+</ol>
+</details>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Other</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
@@ -899,19 +918,18 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 <p class="admonition-title">Test files should never be deployed to an SAP HANA database as table data.</p>
 <p>This can cause the deletion of all files of the affected database table with a change of a data file, even if the data file for the affected table has been removed before. SAP HANA remembers all data files that have ever been deployed to the table and might restore it. Only data files that contain data, which are defined by the application developer and can't be changed by the application should be delivered in this way. Delivering files for tables with customer data already caused data loss in productive scenarios! <!-- @todo: (Iwona) link to capire? <a href="https://cap.cloud.sap/docs/guides/databases#providing-initial-data">Providing Initial Data</a> --></p>
 </div>
-<p>To avoid any loss of data, you change the MTA build to remove all the <code>csv</code> files and the <code>hdbtabledata</code> that are generated by the CAP build.</p>
-<p>For example, if you saved the <code>csv</code> files to <code>db/data</code>, you can remove them from their build result <code>gen/db/src/gen/data</code>:</p>
+<p>To avoid any loss of data, you change the MTA build parameters to remove all the <code>CSV</code> files and the <code>hdbtabledata</code> that is generated by the CAP server out of the <code>CSV</code> files. Add the following line to the <code>mta.yaml</code> file:</p>
 <!-- snippet mta.yaml build-parameters -->
 <div class="highlight"><pre><span></span><code><span class="nt">build-parameters</span><span class="p">:</span>
   <span class="nt">before-all</span><span class="p">:</span>
    <span class="p p-Indicator">-</span> <span class="nt">builder</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">custom</span>
      <span class="nt">commands</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npm install --production</span>
-<span class="hll">      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npx cds build --production</span>
-</span><span class="hll">      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npx rimraf &quot;gen/db/src/gen/data&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npx -p @sap/cds-dk cds build --production</span>
+<span class="hll">      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npx rimraf gen/db/src/gen/data</span>
 </span></code></pre></div>
 <h2 id="add-authorization-and-trust-management-service-xsuaa">Add Authorization and Trust Management Service (XSUAA)</h2>
-<p>The next step is to add the Authorization and Trust Management service to <code>mta.yaml</code> allow user login, authorization, and authentication checks.</p>
+<p>The next step is to add the Authorization and Trust Management service to <code>mta.yaml</code> to allow user login, authorization, and authentication checks.</p>
 <!-- snippet mta.yaml resources: cpapp-uaa -->
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
    <span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -935,15 +953,15 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 </span><span class="hll">           <span class="nt">role-template-references</span><span class="p">:</span>
 </span><span class="hll">             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$XSAPPNAME.RiskViewer</span>
 </span></code></pre></div>
-<p>The configuration for XSUAA is read from the <code>xs-security.json</code> file that was created a step before.</p>
+<p>The configuration for XSUAA is read from the <code>xs-security.json</code> file that was created in <a href="../Prepare_XSUAA#xsuaa-security-configuration">XSUAA Security Configuration</a>.</p>
 <p>But in the <code>config</code> element, values can be added and overwritten.</p>
 <p>The value <code>xsappname</code> gets overwritten with a space-dependent value. The name has to be unique within a subaccount.</p>
 <p>This allows multiple deployments of this tutorial in different spaces of the same subaccount. For example, different people of a team that want to try it out and don't want to create a new subaccount for each team member.</p>
 <p>For a productive application, the <code>xsappname</code> should be explicitly set to the desired value.</p>
-<p>Further, you can add role collections using the <code>xs-security.json</code> file. Since role collections need to be unique in a Subaccount like the <code>xsappname</code>, you can add it here and use the <code>${space}</code> variable to make them unique like for the <code>xsappname</code>.</p>
+<p>Further, you can add role collections using the <code>xs-security.json</code> file. Since role collections need to be unique in a subaccount like the <code>xsappname</code>, you can add it here and use the <code>${space}</code> variable to make them unique like for the <code>xsappname</code>.</p>
 <p>Alternatively, role collections can be manually assigned in the SAP BTP cockpit.</p>
-<details class="note"><summary>Additional Documentation</summary></details>
-<p><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9e1bf57130ef466e8017eab298b40e5e.html">Assigning Role Collections</a></p>
+<details class="note"><summary>Additional Documentation</summary><p><a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9e1bf57130ef466e8017eab298b40e5e.html">Assigning Role Collections</a></p>
+</details>
 <h3 id="build-deploy-and-test-mtar-file">Build, Deploy, and Test <code>mtar</code> File</h3>
 <ol>
 <li>
@@ -959,9 +977,9 @@ As the first step, you let CAP generate an initial <code>mta.yaml</code> file. R
 </li>
 <li>
 <p>After successful deployment, check if all the services have been created:</p>
-<p><div class="highlight"><pre><span></span><code>cf services
+<div class="highlight"><pre><span></span><code>cf services
 </code></pre></div>
-After successful deployment, you should see the following services in your space:</p>
+<p>You should see the following services in your space:</p>
 <p><img alt="cf services" src="../markdown/images/cap_mta_services.png" /></p>
 </li>
 <li>
@@ -970,21 +988,20 @@ After successful deployment, you should see the following services in your space
 </code></pre></div>
 <p><img alt="cf apps" src="../markdown/images/cap_mta_apps.png" /></p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can also deploy a single module using <code>-m &lt;module-name&gt;</code> command line parameter.</p>
+<p class="admonition-title">You can also deploy a single module using <code>-m &lt;module-name&gt;</code> command line parameter.</p>
 </div>
 </li>
 <li>
 <p>Enter the CAP service URL in your browser using the hostname displayed for <code>cpapp-srv</code> in the previous steps.</p>
 <p>You see the CAP start page, like this:</p>
-<p><img alt="cap service index" src="../markdown/images/cap_mta_index.png" /></p>
+<p><img alt="CAP service index" src="../markdown/images/cap_mta_index.png" /></p>
 </li>
 <li>
-<p>When you choose the <strong>Risk</strong> or <strong>Mitigation</strong> service entity, you will see an error message:</p>
-<p><img alt="cap 403 error" src="../markdown/images/cap_mta_403_error.png" /></p>
+<p>When you choose the <strong>Mitigation</strong> or <strong>Risk</strong> service entity, you will see an error message: <!-- @Sveto: I see "401Unauthorized4" --></p>
+<p><img alt="CAP 403 error" src="../markdown/images/cap_mta_403_error.png" /></p>
 </li>
 </ol>
-<p>The service expects a so called <code>JWT</code> (JSON Web Token) in the HTTP <code>Authorization</code> header, that contains the required authentication and authorization information to access the service. In the next tutorial, you will deploy the SAP Fiori UIs, so that you can access your UIs from SAP Fiori Launchpad. The Launchpad will trigger the authentication flow to provide the required token to access the service.</p>
+<p>The service expects a so called <code>JWT</code> (JSON Web Token) in the HTTP <code>Authorization</code> header that contains the required authentication and authorization information to access the service. In the next tutorial, you will deploy the SAP Fiori UIs, so that you can access your UIs from SAP Fiori Launchpad. The Launchpad will trigger the authentication flow to provide the required token to access the service.</p>
                 
               
               
@@ -1056,7 +1073,7 @@ After successful deployment, you should see the following services in your space
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d892486b.min.js"></script>
+      <script src="../assets/javascripts/bundle.7353b375.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
       
