@@ -516,7 +516,7 @@
   
     <li class="md-nav__item">
       <a href="../Roles_CAP/" class="md-nav__link">
-        Implement Roles and Authorization Checks in CAP
+        Implement Roles and Authorization Checks In CAP
       </a>
     </li>
   
@@ -536,13 +536,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       <label class="md-nav__link" for="__nav_7">
-        Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        Deploy Your CAP Service on SAP BTP Cloud Foundry Environment
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment" data-md-level="1">
+      <nav class="md-nav" aria-label="Deploy Your CAP Service on SAP BTP Cloud Foundry Environment" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
-          Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+          Deploy Your CAP Service on SAP BTP Cloud Foundry Environment
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -836,7 +836,7 @@
                 
                 
                 <h1 id="installation">Installation</h1>
-<p>Here's an overview of the tools and software required to get started with this tutorial. This section contains all the installations that you would have to do when starting from scratch on a new computer. It’s likely that some of the software involved is already installed on your computer, so you can just skip those parts.</p>
+<p>Here's an overview of the tools and software required to get started with this tutorial. This section contains all the installations that you would have to do when starting from scratch. It’s likely that you have some of the software involved is already installed, so you can just skip those parts.</p>
 <h2 id="editors">Editors <a name="editors"></a></h2>
 <p>For this tutorial, you have two options:</p>
 <p><strong>Option 1:</strong> <a href="#option-1-using-visual-studio-code-vs-code">Using Visual Studio Code (VS Code)</a></p>
@@ -847,16 +847,16 @@
 <p>This tutorial contains a number of command line snippets that need to be pasted into a terminal. All snippets listed for macOS/Linux or without platform information can be executed in the <code>bash</code> or <code>zsh</code>, which are the default shells for these platforms. The Windows snippets are for the Windows Command Line and not for the PowerShell. Windows users are suggested to use the <code>Git BASH</code> instead, which is part of the Git for Windows installation and contains the basic UNIX command line tools. In the <code>Git BASH</code>, use the <em>macOS/Linux</em> snippets of the tutorial. VS Code supports the use of the <code>Git BASH</code> for the integrated terminal as well.</p>
 <h3 id="install-git">Install Git</h3>
 <p>Git is the version control system that you need to download the files of this tutorial but also to develop anything in collaboration with others really.</p>
-<p>Check whether you already have git installed: Open a terminal and type:</p>
+<p>Check whether you already have git installed by opening a terminal and type:</p>
 <div class="highlight"><pre><span></span><code>git version
 </code></pre></div>
 <p>You should get an output like:</p>
 <div class="highlight"><pre><span></span><code>git version 2.x.x
 </code></pre></div>
-<p>If not, go to <a href="https://git-scm.com/downloads">Git downloads</a>, pick the installer appropriate for the operating system on your computer and install it.</p>
+<p>If not, go to <a href="https://git-scm.com/downloads">Git downloads</a>, pick the installer appropriate for your operating system and install it.</p>
 <h3 id="install-nodejs">Install Node.js</h3>
 <p>Node.js is the JavaScript runtime the CAP backend part of the application runs on and that is needed for some of the tools involved to develop the application.</p>
-<p>In case you don't know whether you've Node.js installed and whether it has the right version (&gt;=12), open a terminal on your computer and type:</p>
+<p>In case you don't know whether you've Node.js installed and whether it has the right version (&gt;=12), open a terminal and type:</p>
 <div class="highlight"><pre><span></span><code>node -v
 </code></pre></div>
 <p>You should get an output like:</p>
@@ -873,7 +873,7 @@
 <li>Downloading <a href="https://developer.apple.com/download/more/">Xcode</a> (a login with your Apple ID and password is required). Search for <code>Command Line Tools for Xcode</code>.</li>
 </ul>
 <h3 id="install-the-ui5-command-line-interface">Install the UI5 Command Line Interface</h3>
-<p>A Node.js version 10 or higher is required to install the SAP UI5 CLI. See <a href="https://sap.github.io/ui5-tooling/pages/CLI/">UI5 CLI</a> for more details.</p>
+<p>A Node.js version 12 or higher is required to install the SAP UI5 CLI. See <a href="https://sap.github.io/ui5-tooling/pages/CLI/">UI5 CLI</a> for more details.</p>
 <ol>
 <li>
 <p>Check in a terminal whether you already have the UI5 CLI installed:</p>
@@ -893,30 +893,30 @@
 </ol>
 <h3 id="install-the-cloud-foundry-command-line-interface-cf-cli">Install the Cloud Foundry Command Line Interface (CF CLI)</h3>
 <p>This is needed if you want to use the services and applications that you create in this tutorial on SAP BTP. In this case, you need the CF CLI to deploy the services and apps to the platform. If you don't intend to deploy the service and apps to SAP BTP, you can skip this installation.</p>
-<p>You can also find more detailed information on the Cloud Foundry CLI installation <a href="https://docs.cloudfoundry.org/cf-cli/install-go-cli.html">here</a>.</p>
+<p>See section <a href="https://docs.cloudfoundry.org/cf-cli/install-go-cli.html">Installing the cf CLI</a> in the Cloud Foundry Documentation for more details.</p>
 <div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">macOS</label><div class="tabbed-content">
 <ol>
 <li>
-<p>Check whether the package manager <code>brew</code> is installed on your machine.</p>
+<p>Check whether the package manager <code>brew</code> is installed on your machine:</p>
 <p><div class="highlight"><pre><span></span><code>brew --version
 </code></pre></div>
-      If there’s an output of a version of <code>brew</code>, you got brew and it's best if you install the CF CLI via:</p>
+      If there’s an output of a version of <code>brew</code>, you got brew and it's best if you install the CF CLI:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">```</span>
 <span class="n">brew</span> <span class="n">install</span> <span class="n">cloudfoundry</span><span class="o">/</span><span class="n">tap</span><span class="o">/</span><span class="n">cf</span><span class="o">-</span><span class="n">cli</span>
 <span class="o">```</span>
 </code></pre></div>
 
-<p>(If you don't have <code>brew</code>, you might want to consider <a href="https://brew.sh/">installing it</a>, because it lets you install many software packages easily even outside the context of this tutorial).
+<p>(If you don't have <code>brew</code>, you might want to consider installing [brew]](<a href="https://brew.sh/">https://brew.sh/</a>), because it lets you install many software packages easily even outside the context of this tutorial).
       If you don't have <code>brew</code>, you've to download a binary installer as described <a href="https://github.com/cloudfoundry/cli#installers-and-compressed-binaries">here</a>.</p>
 </li>
 <li>
-<p>In either case, after the installation, check whether you get the output of a version indicating the installation succeeded:
+<p>In either case, after the installation, check whether you get the output of a version indicating the installation succeeded:</p>
+</li>
+</ol>
 <div class="highlight"><pre><span></span><code>cf --version
-</code></pre></div></p>
-</li>
-<li>
-<p>Follow <a href="https://developers.sap.com/tutorials/cp-cf-download-cli.html#9341c34e-6236-49a6-a54e-ecf32dff2e6d">this tutorial</a> to configure your API endpoint.</p>
-</li>
+</code></pre></div>
+<ol>
+<li>Follow <a href="https://developers.sap.com/tutorials/cp-cf-download-cli.html#9341c34e-6236-49a6-a54e-ecf32dff2e6d">this tutorial</a> to configure your API endpoint.</li>
 </ol>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
@@ -934,7 +934,7 @@
 </div>
 <h3 id="install-vs-code">Install VS Code</h3>
 <p>It’s used to edit the code of the application project and it comes with a couple of so-called extensions from SAP (CAP and SAP Fiori Tools) that are also used here.</p>
-<p>In case you don't have it, go to the <a href="https://code.visualstudio.com/">Visual Studio Code</a> homepage and install the version appropriate for your computer's operating system.</p>
+<p>In case you don't have it, go to the <a href="https://code.visualstudio.com/">Visual Studio Code</a> homepage and install the version appropriate for your operating system.</p>
 <p>If you work on macOS, you’ve to additionally do the following as described <a href="https://stackoverflow.com/questions/29955500/code-not-working-in-command-line-for-visual-studio-code-on-osx-mac">here</a>. To start it like any other application and to start it from the terminal, follow these steps:</p>
 <ol>
 <li>Move VS Code from your <strong>Download</strong> folder to the <strong>Applications</strong> folder.</li>
@@ -942,7 +942,7 @@
 <li>Type <code>Install 'code' command in PATH</code> and choose <strong>Enter</strong>.</li>
 </ol>
 <h3 id="add-cap-tooling">Add CAP Tooling</h3>
-<p>CAP provides you with all the tools to create your data model with entities and your services. It helps you tremendously to get these services running locally during development with an incredible speed and creates the connection to both local databases as well as databases in the cloud (SAP HANA). It comes with different tooling that is used in this tutorial, you can see the details <a href="https://github.wdf.sap.corp/pages/cap/get-started/">here</a>, in short:</p>
+<p>CAP provides you with all the tools to create your data model with entities and your services. It helps you tremendously to get these services running locally during development with an incredible speed and creates the connection to both local databases as well as databases in the cloud (SAP HANA). It comes with different tooling that is used in this tutorial. You can see the details in the <a href="https://cap.cloud.sap/docs/get-started/in-a-nutshell">CAP documentation</a>. In short:</p>
 <ol>
 <li>
 <p>Install CDS development kit globally in a terminal:</p>
@@ -957,7 +957,7 @@ On macOS/Linux, you need to follow the steps as described <a href="https://docs.
 <p>This lists the available <code>cds</code> commands. For example, use <code>cds version</code> to check the version that you’ve installed. To know what is the latest version, see the <a href="https://cap.cloud.sap/docs/releases/">Release Notes</a> for CAP.</p>
 </li>
 <li>
-<p>Check what versions of the cds libraries have been installed:</p>
+<p>Check what versions of the CDS libraries have been installed:</p>
 <div class="highlight"><pre><span></span><code>cds v
 </code></pre></div>
 </li>
@@ -1013,7 +1013,7 @@ SAPUI5 templates are based on <a href="https://yeoman.io/">Yeoman</a>, a tool fo
 </code></pre></div>
 </li>
 <li>
-<p>Now, you can go ahead and install the <a href="https://github.wdf.sap.corp/SAPUI5/generator-sapui5-templates">SAPUI5 templates</a>:</p>
+<p>Now, you can go ahead and install the <a href="https://www.npmjs.com/package/@sapui5/generator-sapui5-templates">SAPUI5 templates</a>:</p>
 <div class="highlight"><pre><span></span><code>npm install -g yo @sapui5/generator-sapui5-templates
 </code></pre></div>
 </li>

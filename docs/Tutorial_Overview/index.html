@@ -363,7 +363,7 @@
   
     <li class="md-nav__item">
       <a href="../Roles_CAP/" class="md-nav__link">
-        Implement Roles and Authorization Checks in CAP
+        Implement Roles and Authorization Checks In CAP
       </a>
     </li>
   
@@ -383,13 +383,13 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       <label class="md-nav__link" for="__nav_7">
-        Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+        Deploy Your CAP Service on SAP BTP Cloud Foundry Environment
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment" data-md-level="1">
+      <nav class="md-nav" aria-label="Deploy Your CAP Service on SAP BTP Cloud Foundry Environment" data-md-level="1">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
-          Deploy Your CAP Service on the SAP BTP Cloud Foundry Environment
+          Deploy Your CAP Service on SAP BTP Cloud Foundry Environment
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -550,23 +550,19 @@
 <div class="admonition info">
 <p class="admonition-title">Click on the boxes to go directly to the first step of the module.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">@TODO: Rework tutorial overview</p>
-</div>
 <div class="mermaid">graph TD
-1[Create a CAP Service and a SAP Fiori Elements Application&lt;br/&gt; with Business Logic] --&gt; 3
+1[Create a CAP Service and SAP Fiori UI] --&gt; 2[Implement Roles and Authorization Checks In CAP]
 click 1 "../CAP_Service"
-3[Create a Freestyle SAP UI5 Application&lt;br/&gt; and Add It to the Launch Page] --&gt; 4[Implement Roles and Authorization Checks In CAP]
-click 3 "../Freestyle_UI5"
-4[Implement Roles and Authorization Checks In CAP] --&gt; 5[Deploy Your CAP Service&lt;br/&gt; on the SAP BTP, Cloud Foundry environment]
-click 4 "../Roles_CAP"
-4[Implement Roles and Authorization Checks In CAP] --&gt; 6[Deploy Your CAP Service&lt;br/&gt; on the SAP BTP, Kyma runtime]
-click 6 "../Kyma"
-click 5 "../Prepare_SAP_CP_and_CF"
+1[Create a CAP Service and SAP Fiori UI] --&gt; 4[Run a CAP Application on Kyma]
+click 4 "../Kyma"
+2[Implement Roles and Authorization Checks In CAP] --&gt; 3[Deploy Your CAP Service&lt;br/&gt; on SAP BTP, Cloud Foundry environment]
+click 2 "../Roles_CAP"
+3[Deploy Your CAP Service&lt;br/&gt; on SAP BTP, Cloud Foundry environment]
+click 3 "../Prepare_SAP_CP_and_CF"
+
 
 %% -- Formatting --
-class 1,2,3,4,5,6,7,8,9,10,11,12,13,14 SAPcolors;
-class 7,14 SAPcolorsOptional;
+class 1,2,3,4 SAPcolors;
 classDef SAPcolors fill:#008FD3,stroke:#008FD3, color:#fff, stroke-width:4px;
 classDef SAPcolorsOptional fill:#CCC,stroke:#000, color:#000, stroke-width:2px, stroke-dasharray: 5 5;</div>
                 
