@@ -613,16 +613,18 @@
 <p>To be able to access the application, your user needs to be assigned to a role collection that provides the requires scopes.</p>
 <ol>
 <li>Open the <strong>SAP BTP Cockpit</strong>.</li>
-<li>Go to the <strong>Subaccount</strong>.</li>
-<li>Choose <strong>Trust Configuration</strong> under <strong>Security</strong> on the left.</li>
+<li>Go to the <strong>Subaccount</strong> where you've deployed your service and application.</li>
+<li>Choose <strong>Security</strong> <strong>&rarr;</strong> <strong>Trust Configuration</strong> on the left.</li>
 <li>Choose <strong>Default identity provider</strong>.</li>
 <li>Enter the <strong>E-Mail Address</strong> of your user.</li>
 <li>Choose <strong>Show Assignments</strong>.</li>
 <li>Choose <strong>Assign Role Collection</strong>.</li>
-<li>Select <code>RiskManager</code> in dropdown <strong>Role Collection</strong>.</li>
+<li>Select <code>RiskManager-&lt;your space&gt;</code> in dropdown <strong>Role Collection</strong>.</li>
 <li>Choose <strong>Assign Role Collection</strong>.</li>
 </ol>
-<p>The role collection <code>RiskManager</code> appears now in the list of your user's role collections.</p>
+<details class="tip"><summary>The name of the role collection includes the name of your space</summary><p>The role collections are created automatically using the <code>xs-security.json</code> file. Hence, the name of the role collection includes the name of your space where you've deployed your service and application. For example, if the space name is <code>dev</code>, then the name of the role collection wil be <code>RiskManager-dev</code>.</p>
+</details>
+<p>The role collection <code>RiskManager-&lt;your space&gt;</code> appears now in the list of your user's role collections.</p>
 <h2 id="test-it">Test It</h2>
 <p>Go to the application and choose the tile <code>Risks</code>. You should be able to see and change the data in the <code>Risks</code> application.</p>
 <p>If not, probably you've signed in before adding the role collection to your user. Sign out and sign in again to get the added roles in your login ticket.</p>
@@ -631,7 +633,7 @@
 <ol>
 <li>Open the <strong>SAP BTP Cockpit</strong>.</li>
 <li>Go to the <strong>Subaccount</strong>.</li>
-<li>Choose <strong>Role Collections</strong>.</li>
+<li>Choose <strong>Security</strong> <strong>&rarr;</strong> <strong>Role Collections</strong> on the left.</li>
 <li>Choose the <strong>+</strong> (new role collection) button.</li>
 <li>Enter <strong>Name</strong> <code>RiskManager</code>.</li>
 <li>Choose <strong>Create</strong>.</li>
@@ -641,14 +643,14 @@
 <li>Choose the <strong>RiskManager</strong> role collection.</li>
 <li>Choose <strong>Edit</strong>.</li>
 <li>
-<p>Open the value help for <strong>Role Name</strong></p>
+<p>Open the value help for <strong>Role Name</strong>.</p>
 <p><img alt="RoleName value help" src="../markdown/images/role_name_value_help.png" /></p>
 </li>
 <li>
 <p>Select <code>cpapp-...!...</code> in <strong>Application Identifier</strong> dropdown.</p>
 <p><img alt="Application Identifier" src="../markdown/images/app_identifier.png" /></p>
 <div class="admonition info">
-<p class="admonition-title">The <strong>App Identifier</strong> is the <strong>XSAPPID</strong> of your application. It consists of the <strong>XSAPPNAME</strong> that has been used to create the xsuaa service followed by an exclamation mark (<code>!</code>) and a landscape-wide unique ID.</p>
+<p class="admonition-title">The <strong>App Identifier</strong> is the <strong>XSAPPID</strong> of your application. It consists of the <strong>XSAPPNAME</strong> that's been used to create the xsuaa service followed by an exclamation mark (<code>!</code>) and a landscape-wide unique ID.</p>
 </div>
 </li>
 <li>

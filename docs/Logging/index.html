@@ -754,7 +754,7 @@
 </div>
 <p>Bind the logging service instance to all <code>modules</code> of the <code>mta.yaml</code>:</p>
 <!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-approuter")] -->
-<div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
+<p><div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
 <span class="nt">modules</span><span class="p">:</span>
   <span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -778,6 +778,8 @@
             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./*</span>
           <span class="nt">target-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resources</span>
 </code></pre></div>
+ <!-- I did not see a module approuter in my mta.yaml. Also, this module is not mentioned in previous steps when the mta.yaml was created based on the package.json file-->
+</p>
 <!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-srv")].requires[?(@.name=="cpapp-logs")] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
