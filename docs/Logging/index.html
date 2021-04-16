@@ -753,33 +753,6 @@
 </div>
 </div>
 <p>Bind the logging service instance to all <code>modules</code> of the <code>mta.yaml</code>:</p>
-<!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-approuter")] -->
-<p><div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
-<span class="nn">...</span>
-<span class="nt">modules</span><span class="p">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">...</span>
-  <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-approuter</span>
-    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nodejs</span>
-    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">approuter</span>
-    <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-uaa</span>
-<span class="hll">      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
-</span>      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">srv-api</span>
-        <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">destinations</span>
-        <span class="nt">properties</span><span class="p">:</span>
-          <span class="nt">forwardAuthToken</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-          <span class="nt">strictSSL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">srv-api</span>
-          <span class="nt">url</span><span class="p">:</span> <span class="s">&#39;~{srv-url}&#39;</span>
-  <span class=" -Error">  </span><span class="nt">build-parameters</span><span class="p">:</span>
-      <span class="nt">requires</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-app</span>
-          <span class="nt">artifacts</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./*</span>
-          <span class="nt">target-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">resources</span>
-</code></pre></div>
- <!-- I did not see a module approuter in my mta.yaml. Also, this module is not mentioned in previous steps when the mta.yaml was created based on the package.json file-->
-</p>
 <!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-srv")].requires[?(@.name=="cpapp-logs")] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
@@ -791,27 +764,23 @@
 </span><span class="hll">      <span class="l l-Scalar l-Scalar-Plain">...</span>
 </span><span class="hll">      <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
 </span></code></pre></div>
-<!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-db-deployer")] -->
+<!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-db-deployer")].requires[?(@.name=="cpapp-logs")] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
 <span class="nn">...</span>
 <span class="nt">modules</span><span class="p">:</span>
   <span class="l l-Scalar l-Scalar-Plain">...</span>
   <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db-deployer</span>
-    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hdb</span>
-    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gen/db</span>
-    <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
-      <span class="nt">buildpack</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nodejs_buildpack</span>
-  <span class=" -Error">  </span><span class="nt">requires</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-db</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-uaa</span>
-<span class="hll">      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
-</span></code></pre></div>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+      <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+</code></pre></div>
 <h3 id="test-it">Test It</h3>
 <ol>
 <li>
 <p>Build the MTAR file and deploy it to your Cloud Foundry space:</p>
 <div class="highlight"><pre><span></span><code>mbt build -t ./
-cf deploy cpapp_1.0.0.mtar 
+cf deploy cpapp_1.0.0.mtar
 </code></pre></div>
 </li>
 <li>
