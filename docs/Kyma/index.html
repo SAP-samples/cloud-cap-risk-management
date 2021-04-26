@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/Kyma/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.0">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.33e2939f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
@@ -499,7 +499,6 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
-      
         
       
       
@@ -514,7 +513,6 @@
       
         
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
   
   
     
@@ -827,7 +825,6 @@
                   <div class="md-sidebar__inner">
                     
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
   
   
     
@@ -1252,7 +1249,7 @@ code .
 </li>
 <li>
 <p>Create a file named <code>Dockerfile</code> and add the following lines to it:</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
 
 <span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
 <span class="k">COPY</span> gen/srv .
@@ -1298,11 +1295,11 @@ code .
 Removing intermediate container 4f451017d70f
 ---&gt; 948523646f60
 Step <span class="m">5</span>/6 : EXPOSE <span class="m">4004</span>
----&gt; Running in 1a2b7a0ec606
+---&gt; Running <span class="k">in</span> 1a2b7a0ec606
 Removing intermediate container 1a2b7a0ec606
 ---&gt; be849ff002e1
 Step <span class="m">6</span>/6 : CMD <span class="o">[</span> <span class="s2">&quot;npm&quot;</span>, <span class="s2">&quot;start&quot;</span> <span class="o">]</span>
----&gt; Running in cb0b32163709
+---&gt; Running <span class="k">in</span> cb0b32163709
 Removing intermediate container cb0b32163709
 ---&gt; 1e0c26b94ac6
 <span class="hll">Successfully built 1e0c26b94ac6
@@ -1363,7 +1360,7 @@ localhost refused to connect.
 <ol>
 <li>
 <p>Add the highlighted lines to the file <code>Dockerfile</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
 
 <span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
 <span class="k">COPY</span> gen/srv .
@@ -1544,9 +1541,9 @@ Forwarding from [::1]:5000 -&gt; 5000
 <div class="highlight"><pre><span></span><code>docker push <span class="m">0</span>.0.0.0:5000/cpapp
 </code></pre></div>
 <p>The output mixes the <code>docker push</code> output with the <code>kubectl port-forward</code> output. It should finish with a line like:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">```</span>
-<span class="n">latest</span><span class="p">:</span> <span class="n">digest</span><span class="p">:</span> <span class="n">sha256</span><span class="p">:</span><span class="mi">4054</span><span class="n">dd60ee4f9889d58aa97295cb3b1430a5c1549e602b6c619d7c4ed7d04ad0</span> <span class="k">size</span><span class="p">:</span> <span class="mi">2412</span>
-<span class="o">```</span>
+<div class="codehilite"><pre><span></span><code>```
+latest: digest: sha256:4054dd60ee4f9889d58aa97295cb3b1430a5c1549e602b6c619d7c4ed7d04ad0 size: 2412
+```
 </code></pre></div>
 
 </li>
@@ -1603,17 +1600,17 @@ Forwarding from [::1]:5000 -&gt; 5000
 <div class="highlight"><pre><span></span><code>kubectl get deployments
 </code></pre></div>
 <p>Initially, it looks like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">```</span>
-<span class="n">NAME</span>              <span class="n">READY</span>   <span class="n">UP</span><span class="o">-</span><span class="k">TO</span><span class="o">-</span><span class="nb">DATE</span>   <span class="n">AVAILABLE</span>   <span class="n">AGE</span>
-<span class="n">cpapp</span>             <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="mi">1</span>            <span class="mi">0</span>           <span class="mi">5</span><span class="n">s</span>
-<span class="o">```</span>
+<div class="codehilite"><pre><span></span><code>```
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+cpapp             0/1     1            0           5s
+```
 </code></pre></div>
 
 <p>If all goes well, it turns to:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">```</span>
-<span class="n">NAME</span>              <span class="n">READY</span>   <span class="n">UP</span><span class="o">-</span><span class="k">TO</span><span class="o">-</span><span class="nb">DATE</span>   <span class="n">AVAILABLE</span>   <span class="n">AGE</span>
-<span class="n">cpapp</span>             <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="mi">1</span>            <span class="mi">1</span>           <span class="mi">14</span><span class="n">m</span>
-<span class="o">```</span>
+<div class="codehilite"><pre><span></span><code>```
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+cpapp             1/1     1            1           14m
+```
 </code></pre></div>
 
 </li>
@@ -1720,7 +1717,7 @@ Forwarding from [::1]:5000 -&gt; 5000
 </li>
 <li>
 <p>You now need to tell the CAP service to run in the productive mode. To do that, edit the <code>Dockerfile</code> and add the highlighted statement:</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
 
 <span class="hll"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production
 </span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
@@ -1785,7 +1782,7 @@ Application can be stopped.
 </ol>
 <h3 id="workaround-use-hdi-deployer-in-docker-container">Workaround: Use HDI Deployer in Docker Container</h3>
 <p>Create a file <code>Dockerfile.hdi-deploy</code> with the following content:</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="s"> node:12-slim AS build</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span> <span class="k">AS</span> <span class="s">build</span>
 
 <span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production
 <span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
@@ -1819,7 +1816,7 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 <div class="highlight"><pre><span></span><code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key
 </code></pre></div>
 <p>The output looks like this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">Getting</span> <span class="err">key</span> <span class="err">`cpapp-kyma-hdi-key`</span> <span class="err">for</span> <span class="err">service</span> <span class="err">instance</span> <span class="err">`cpapp-kyma-hdi`</span> <span class="err">as</span> <span class="err">MySelf...</span>
+<div class="highlight"><pre><span></span><code><span class="err">Ge</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="err">key</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">hdi</span><span class="mi">-</span><span class="err">key`</span> <span class="kc">f</span><span class="err">or</span> <span class="err">service</span> <span class="err">i</span><span class="kc">nstan</span><span class="err">ce</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">hdi`</span> <span class="err">as</span> <span class="err">MySel</span><span class="kc">f</span><span class="err">...</span>
 
 <span class="p">{</span>
  <span class="nt">&quot;certificate&quot;</span><span class="p">:</span> <span class="s2">&quot;-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\nQTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB\nCSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97\nnh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt\n43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P\nT19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4\ngdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO\nBgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR\nTLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw\nDQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr\nhMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg\n06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF\nPnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls\nYSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk\nCAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=\n-----END CERTIFICATE-----&quot;</span><span class="p">,</span>
@@ -1985,7 +1982,7 @@ cpapp-66b5cb4876-hx5l6               0/2     Init:0/1   0          2s
 <div class="highlight"><pre><span></span><code>cf delete-service-key cpapp-kyma-hdi cpapp-kyma-hdi-key  -f
 cf delete-service cpapp-kyma-hdi -f
 
-<span class="k">for</span> i in deployment/*.yaml<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> i <span class="k">in</span> deployment/*.yaml<span class="p">;</span> <span class="k">do</span>
     kubectl delete -f <span class="nv">$i</span>
 <span class="k">done</span>
 
@@ -2050,7 +2047,7 @@ helm uninstall docker-registry
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../assets/javascripts/bundle.d892486b.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js"></script>
       
