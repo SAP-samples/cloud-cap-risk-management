@@ -1454,7 +1454,7 @@ docker build -t cpapp .
 <p>Check if you can access your kubernetes cluster.</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
-<p>The command should run without an error message, but it doesn't output any pods if you've a newly created cluster.</p>
+<p>The command should run without an error message, but it doesn't output any pods if you have a newly created cluster.</p>
 <p>If you want to use <code>kubectl</code> in another shell session, then rerun the <code>export</code> statement.
 The authentication session will expire after some hours. You then need to download the <code>kubeconfig.yml</code> file again and replace the value of the token parameter in your <code>cap-kyma-app-config</code> file with the one from the newly downloaded <code>kubeconfig.yml</code> file.</p>
 </li>
@@ -1615,7 +1615,7 @@ cpapp             1/1     1            1           14m
 
 </li>
 <li>
-<p>Since you'ven't exposed the app to the public internet, you can only access it with a tunnel. So, lets create another tunnel:</p>
+<p>Since you have not exposed the app to the public internet, you can only access it with a tunnel. So, lets create another tunnel:</p>
 <div class="highlight"><pre><span></span><code>kubectl port-forward deployment/cpapp <span class="m">4004</span>:4004
 </code></pre></div>
 </li>

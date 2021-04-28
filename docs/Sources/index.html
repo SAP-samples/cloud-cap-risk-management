@@ -732,8 +732,7 @@
 </li>
 </ol>
 <h2 id="import-github-repository-in-sap-business-application-studio">Import GitHub Repository in SAP Business Application Studio</h2>
-<!-- if this is only relevant for SAP BAS we should profile it. -->
-<p>The following instructions are only relevant, if you want to work with <em>SAP Business Application Studio</em>.</p>
+<p>The following instructions are only relevant, if you want to work with SAP Business Application Studio.</p>
 <ol>
 <li>
 <p>In your GitHub account go to <strong>Settings</strong> <strong>&rarr;</strong> <strong>Developer settings</strong> <strong>&rarr;</strong> <strong>Personal access token</strong>:</p>
@@ -741,11 +740,11 @@
 <p><a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></p>
 </li>
 <li>
-<p>Generate a new <em>Personal access token</em>.</p>
+<p>Generate a new <strong>Personal access token</strong>.</p>
 </li>
-<li>Start your <em>Dev Space</em> of SAP Business Application Studio.</li>
-<li>Choose <em>Clone from Git</em> on the <em>Welcome</em> page.</li>
-<li>Paste the GitHub repository URL in the box and choose <code>Enter</code>.</li>
+<li>Start your <strong>Dev Space</strong> of SAP Business Application Studio.</li>
+<li>Choose <strong>Clone from Git</strong> on the <strong>Welcome</strong> page.</li>
+<li>Paste the GitHub repository URL in the box and choose <strong>Enter</strong>.</li>
 <li>Use your GitHub user name and <em>Personal Access Token</em> as <strong>user</strong> and <strong>password</strong>.</li>
 </ol>
 <h2 id="download-the-tutorial">Download the Tutorial</h2>
@@ -753,6 +752,9 @@
 <ol>
 <li>
 <p>Create a directory <code>&lt;MyTutorialDirectory&gt;</code> where you want to download the tutorial.</p>
+<div class="admonition tip">
+<p class="admonition-title">If you're working with SAP Business Application Studio, you can create <code>&lt;MyTutorialDirectory&gt;</code> within your <code>projects</code> folder.</p>
+</div>
 </li>
 <li>
 <p>Navigate to the previously created directory:</p>
@@ -769,11 +771,12 @@
 <p>If you don't want to start from scratch, but from a specific example of the tutorial, you can clone the example repository and copy the required files in your project. Alternatively, you can fork the project and work on the fork.</p>
 <h3 id="clone-the-example-repository">Clone the Example Repository</h3>
 <ol>
-<li>Change to the parent directory of <code>&lt;MyTutorialDirectory&gt;</code> in a terminal.</li>
-</ol>
-<!-- @TODO: (comment from René) Would that be the _projects_ directory? Can we name it like that? Of course assuming, that one follows the flow here exactly. --->
-
-<ol>
+<li>
+<p>Change to the parent directory of <code>&lt;MyTutorialDirectory&gt;</code> in a terminal.</p>
+<div class="admonition tip">
+<p class="admonition-title">If you're working with SAP Business Application Studio, this would be your <code>projects</code> folder.</p>
+</div>
+</li>
 <li>
 <p>Clone the example GitHub repository in a subfolder:</p>
 <div class="highlight"><pre><span></span><code>git clone https://github.com/SAP-samples/cloud-cap-risk-management cloud-cap-risk-management

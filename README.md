@@ -54,7 +54,7 @@ Check out the documentation for:
 * [CAP aka "capire"](https://cap.cloud.sap/docs/advanced/troubleshooting)
 * [SAP BTP](https://help.sap.com/viewer/product/CP/Cloud/)
 
-In case you've a question, find a bug, or otherwise need support to use SAP products, use:
+In case you have a question, find a bug, or otherwise need support to use SAP products, use:
 
 * [CAP Community](https://answers.sap.com/tags/9f13aee1-834c-4105-8e43-ee442775e5ce)
 * [SAP Community](https://community.sap.com/)

@@ -771,9 +771,9 @@
 </ul>
 </details>
 <h2 id="overview">Overview</h2>
-<p>You need an SAP BTP account to deploy the services and applications. In general, you've a choice of the following options:</p>
+<p>You need an SAP BTP account to deploy the services and applications. In general, you have a choice of the following options:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Trial</label><div class="tabbed-content">
-<p>If you just want to try out things and don’t want to use any of the parts of this tutorial productively, this is probably the best option for you. The usage is free of cost and many of the services that you need are created for you. For example, an SAP HANA instance is already created for you when you set up the trial account. So, there's the least work to do when you want to concentrate on developing the actual application. This comes with some drawbacks, however. Trial accounts have a limited usage time. After a while, you've to refresh the subscription and redo all the work. Also, there are a number of things that you can’t do as opposed to a full account.</p>
+<p>If you just want to try out things and don’t want to use any of the parts of this tutorial productively, this is probably the best option for you. The usage is free of cost and many of the services that you need are created for you. For example, an SAP HANA instance is already created for you when you set up the trial account. So, there's the least work to do when you want to concentrate on developing the actual application. This comes with some drawbacks, however. Trial accounts have a limited usage time. After a while, you have to refresh the subscription and redo all the work. Also, there are a number of things that you can’t do as opposed to a full account.</p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Live</label><div class="tabbed-content">
 <p>There are multiple live landscapes in different data centers around the globe. The live landscapes are intended for live customer usage, but also development projects by customers and partners.</p>
@@ -796,7 +796,7 @@
 <p>Continue with <a href="#log-on-to-cloud-foundry-from-the-command-line"><em>Log On to Cloud Foundry</em></a> at the end of this page.</p>
 <h2 id="option-2-create-live-account">Option 2: Create Live Account</h2>
 <h3 id="required-service-entitlements">Required Service Entitlements</h3>
-<p>If you choose to create an account on Live, you've to select a number of services that you need to subscribe to, for example, an SAP HANA database. For each service, there are so-called <code>entitlements</code>, which are basically the service plans and the number of units that you want from each service, when you create an account you need to provide these also.</p>
+<p>If you choose to create an account on Live, you have to select a number of services that you need to subscribe to, for example, an SAP HANA database. For each service, there are so-called <code>entitlements</code>, which are basically the service plans and the number of units that you want from each service, when you create an account you need to provide these also.</p>
 <p>The following services with their service plans and entitlements are required for the different modules of the tutorial and will be needed to create the global account and subaccount.</p>
 <!-- external version with reduced content according the external scenarios -->
 
@@ -920,7 +920,7 @@
 <ol>
 <li>Enter a global account name.</li>
 <li>Enter a description.</li>
-<li>(Optional) If you've a Service Inventory ID (see <a href="https://jtrack.wdf.sap.corp/browse/SERVICE">https://jtrack.wdf.sap.corp/browse/SERVICE</a>), then choose the radio button <strong>Yes</strong> under the section "Service Provider Account" and enter it.</li>
+<li>(Optional) If you have a <a href="https://jtrack.wdf.sap.corp/browse/SERVICE">Service Inventory ID</a>, then choose the radio button <strong>Yes</strong> under the section "Service Provider Account" and enter it.</li>
 <li>Choose <strong>Next</strong>.</li>
 </ol>
 <p>Enter <em>Business Info:</em></p>
@@ -984,10 +984,10 @@
 <li>Choose <strong>Enable Cloud Foundry</strong>.</li>
 <li>Enter a <strong>Cloud Foundry Org Name</strong> and choose <strong>OK</strong> (suggestion: use <code>SAP_</code> as prefix, for example: <code>SAP_&lt;project name&gt;</code>).</li>
 <li>(Optional) In the left navigation pane under the section <strong>Cloud Foundry</strong>, choose <strong>Org Members</strong> and add users for your new account. Your own user should already be there. You can add other users if needed and assign a role to them.</li>
-<li>On the left-hand pane under <strong>Security</strong>, choose <strong>Administrators</strong> and add the required security administrators. Again, your user should be prefilled. You can add other users if needed.</li>
+<li>On the left-hand pane under <strong>Security</strong>, choose <strong>Administrators</strong> and add the required security administrators. Again, your user should be pre-filled. You can add other users if needed.</li>
 </ol>
 <h3 id="assign-entitlements">Assign Entitlements</h3>
-<p>In this section, you assign a portion of the entitlements that you’ve bought for your global account to the individual subaccounts. In this, you've only one subaccount. If you've 3 subaccounts, for example, and have bought 100 units of the HTML5 service, you could assign 50 units to the first subaccount, 20 to the second, and the remaining 30 to the third subaccount.</p>
+<p>In this section, you assign a portion of the entitlements that you’ve bought for your global account to the individual subaccounts. In this, you have only one subaccount. If you have 3 subaccounts, for example, and have bought 100 units of the HTML5 service, you could assign 50 units to the first subaccount, 20 to the second, and the remaining 30 to the third subaccount.</p>
 <ol>
 <li>In your subaccount, choose <strong>Entitlements</strong> in the left-hand pane.</li>
 <li>Choose <strong>Configure Entitlements</strong>.</li>
@@ -1002,7 +1002,7 @@
 <li>Open the subaccount page in the SAP BTP cockpit.</li>
 <li>Choose <strong>Spaces</strong> in the left pane under the section <strong>Cloud Foundry</strong>.</li>
 <li>Choose <strong>Create Space</strong>.</li>
-<li>Enter a space name (suggestion: If different subprojects exist in the org: <code>&lt;sub project name&gt;-&lt;stage name&gt;</code>, otherwise: <code>&lt;stage name&gt;</code>; where stage name is the release stage, for example: <code>dev</code>, <code>val</code>, <code>prod</code>)</li>
+<li>Enter a space name (suggestion: If different sub projects exist in the org: <code>&lt;sub project name&gt;-&lt;stage name&gt;</code>, otherwise: <code>&lt;stage name&gt;</code>; where stage name is the release stage, for example: <code>dev</code>, <code>val</code>, <code>prod</code>)</li>
 <li>Choose <strong>Create</strong>.</li>
 </ol>
 <h2 id="user-assignment-in-the-cloud-foundry-space">User Assignment in the Cloud Foundry Space</h2>
@@ -1010,7 +1010,7 @@
 <li>Open the space page in the SAP BTP cockpit (you can just choose the tile for the space that was created).</li>
 <li>Choose <strong>Members</strong> in the left navigation pane.</li>
 <li>(Optional) Choose <strong>Add Members</strong> to add all required users, again your own user should already be part of the list.</li>
-<li>(Optional) Add a DL of your CFDeployment technical user as Space Manager if you've one.</li>
+<li>(Optional) Add a DL of your CFDeployment technical user as Space Manager if you have one.</li>
 </ol>
 <h2 id="log-on-to-cloud-foundry-from-the-command-line">Log on to Cloud Foundry from the Command Line</h2>
 <p>Prepare for the next steps by logging on to Cloud Foundry and targeting your space in the account.</p>

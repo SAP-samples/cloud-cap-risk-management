@@ -625,7 +625,7 @@
 <li>
 <p>In the browser, reload the page of the Fiori Elements app.</p>
 <p>It now shows our work list with the columns <code>Priority</code> and <code>Impact</code> with color and an icon, depending on the amount in <code>Impact</code>.</p>
-<p><img alt="Fiori Elements Work List" src="../markdown/images/feappcriticality.png" title="Fiori Elements Work List" /></p>
+<p><img alt="Fiori Elements Work List" src="../markdown/images/feappcriticality.png" /></p>
 </li>
 </ol>
 <h2 id="explanation-of-the-custom-code">Explanation of the Custom Code</h2>
@@ -645,7 +645,7 @@
 </code></pre></div>
 <p>Because your file is called <code>risk-service.js</code> and, therefore, has the same name as your service definition file <code>risk-service.cds</code>, CAP automatically treats it as a handler file for the service defined in there. CAP exposes several <a href="https://cap.cloud.sap/docs/node.js/requests">events</a> and you can easily write handlers like the above.</p>
 <p>In this case, the event <code>after</code> is triggered after a <code>READ</code> was carried out for our <code>Risks</code> entity. In your custom handler, you get all the data (in this case, all the risks) that was read according to the query. You can loop over each of them and, if needed, adjust the data of the response. In this case, you change the value of the <code>criticality</code> when the <code>impact</code> is bigger than 100000. The new values for <code>criticality</code> are then part of the response to the read request.</p>
-<p>So, this affects the service's response, but how does it translate into a changed UI? For this, you've got to go back to the annotations you created in <a href="../CAP_Service">Create a CAP-Based service</a> where you find your <code>srv/risks-service-ui.cds</code> file. There, you had the two columns <code>prio</code> and <code>impact</code> annotated with an additional <code>Criticality</code> annotation. This annotation points to the <code>criticality</code> property of your service.</p>
+<p>So, this affects the service's response, but how does it translate into a changed UI? For this, you have got to go back to the annotations you created in <a href="../CAP_Service">Create a CAP-Based service</a> where you find your <code>srv/risks-service-ui.cds</code> file. There, you had the two columns <code>prio</code> and <code>impact</code> annotated with an additional <code>Criticality</code> annotation. This annotation points to the <code>criticality</code> property of your service.</p>
 <div class="admonition info">
 <p class="admonition-title"><code>Criticality</code> with an upper case <code>C</code> is the annotation, while the property name <code>criticality</code> could also be called different opposed to the annotation.</p>
 </div>

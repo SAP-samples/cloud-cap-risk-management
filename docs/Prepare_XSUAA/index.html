@@ -646,7 +646,7 @@
 <div class="highlight"><pre><span></span><code>npm i --save  @sap/xssec  @sap/xsenv
 </code></pre></div>
 <h2 id="add-uaa-service">Add UAA Service</h2>
-<p>We need to tell CAP that XSUAA is used. For this open the <code>package.json</code> folder in your <code>cpapp</code> project and add the following lines: <!-- @TODO: feedback from René: // We should include here the hdbtable config from the HANA chapter, as this is missing and it took me some time have a valid json afterwards. --></p>
+<p>We need to tell CAP that XSUAA is used. For this open the <code>package.json</code> folder in your <code>cpapp</code> project and add the following lines: </p>
 <!-- cpes-file package.json:$.cds.requires -->
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
@@ -672,7 +672,7 @@
 <div class="highlight"><pre><span></span><code>cds compile srv --to xsuaa &gt;xs-security.json
 </code></pre></div>
 <p>The file contains the configuration of the XSUAA (XS User Authentication and Authorization service).</p>
-<p>The CAP server takes the authorization parts <code>@(restrict ... )</code> from our service definition form (<a href="../Roles_CAP/#adding-cap-role-cf-scope-restrictions-to-entities">Adding Cap Role Restrictions to Entities</a>) and creates scopes and role templates from it.</p>
+<p>The CAP server takes the authorization parts <code>@(restrict ... )</code> from our service definition form (<a href="../Roles_CAP/#adding-cap-role-cf-scope-restrictions-to-entities">Adding CAP Role Restrictions to Entities</a>) and creates scopes and role templates from it.</p>
 <p>For example, it found the roles <code>RiskViewer</code> and <code>RiskManager</code> in the <code>srv/risk-service.cds</code> file:</p>
 <div class="highlight"><pre><span></span><code>  <span class="nx">entity</span> <span class="nx">Risks</span> <span class="err">@</span><span class="p">(</span><span class="nx">restrict</span> <span class="o">:</span> <span class="p">[</span>
             <span class="p">{</span>

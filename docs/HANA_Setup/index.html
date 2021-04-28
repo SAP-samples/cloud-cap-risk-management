@@ -690,7 +690,6 @@
 </ul>
 </details>
 <h2 id="option-2-use-an-existing-sap-hana-cloud-service-instance">Option 2: Use an Existing SAP HANA Cloud Service Instance</h2>
-<!-- @todo: (Sveto & other testers) test if navigation is different for trial and AWS Live? -->
 <ol>
 <li>
 <p>Go to your SAP BTP cockpit by using one of the following links, depending on the landscape you want to deploy to:</p>
@@ -786,19 +785,18 @@
 <div class="admonition info">
 <p class="admonition-title">Don't create a data lake. It's really useful for storing and analyzing high volumes of infrequently updated data, but we don't need it for this tutorial.</p>
 </div>
-<!-- @todo: (Iwona) ask Chrisitian P. why this is included when creating a new SAP HANA Cloud instance? -->
 </li>
 <li>
 <p>Choose <strong>Step 5</strong></p>
 <div class="admonition info">
-<p class="admonition-title">This step includes advanced data lake settings that are only relevant if you've created a data lake at step 4. You can skip this if you haven't created a data lake.</p>
+<p class="admonition-title">This step includes advanced data lake settings that are only relevant if you have created a data lake at step 4. You can skip this if you haven't created a data lake.</p>
 </div>
 </li>
 <li>
 <p>Choose <strong>Create Instance</strong>. </p>
 <p>The creation of the database instance can take some minutes to complete. The final result looks like this in SAP BTP cockpit:</p>
 <p><img alt="SAP HANA Cloud Instance Created" src="../markdown/images/hana_cloud_created.png" /></p>
-<details class="info"><summary>SAP HANA Cloud instances are automatically stopped overnight for SAP BTP trial.</summary><p>Your SAP HANA Cloud instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day, before you start working with your trial.</p>
+<details class="caution"><summary>SAP HANA Cloud instances are automatically stopped overnight for SAP BTP trial.</summary><p>Your SAP HANA Cloud instance will be automatically stopped overnight, according to the server region time zone. That means you need to restart your instance every day, before you start working with your trial.</p>
 </details>
 </li>
 </ol>

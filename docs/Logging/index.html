@@ -516,8 +516,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#analyze-logs-via-kibana" class="md-nav__link">
-    Analyze Logs via Kibana
+  <a href="#analyze-logs-using-kibana" class="md-nav__link">
+    Analyze Logs Using Kibana
   </a>
   
 </li>
@@ -635,8 +635,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#analyze-logs-via-kibana" class="md-nav__link">
-    Analyze Logs via Kibana
+  <a href="#analyze-logs-using-kibana" class="md-nav__link">
+    Analyze Logs Using Kibana
   </a>
   
 </li>
@@ -705,13 +705,13 @@
 <li>Choose on the application whose logs you want to access.</li>
 <li>
 <p>Choose <strong>Logs</strong>.</p>
-<p><img alt="AppRouter Logs" src="../markdown/images/cpapp-approuter-logs.png" /></p>
+<p><img alt="App Logs" src="../markdown/images/cpapp-srv-logs.png" /></p>
 </li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Only the recent logs are displayed.</p>
 </div>
-<h3 id="analyze-logs-via-kibana">Analyze Logs via Kibana</h3>
+<h3 id="analyze-logs-using-kibana">Analyze Logs Using Kibana</h3>
 <ol>
 <li>Go to your subaccount in <strong>SAP BTP cockpit</strong>.</li>
 <li>Choose <strong>Cloud Foundry </strong><strong>&rarr;</strong> <strong>Spaces</strong>.</li>
@@ -760,9 +760,9 @@
   <span class="l l-Scalar l-Scalar-Plain">...</span>
   <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-srv</span>
     <span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="hll">    <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
-</span><span class="hll">      <span class="l l-Scalar l-Scalar-Plain">...</span>
-</span><span class="hll">      <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+    <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="hll">      <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
 </span></code></pre></div>
 <!-- cpes-file mta.yaml:$.modules[?(@.name=="cpapp-db-deployer")].requires[?(@.name=="cpapp-logs")] -->
 <div class="highlight"><pre><span></span><code><span class="nt">_schema-version</span><span class="p">:</span> <span class="s">&#39;3.1&#39;</span>
@@ -773,8 +773,8 @@
     <span class="l l-Scalar l-Scalar-Plain">...</span>
     <span class="l l-Scalar l-Scalar-Plain">requires</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">...</span>
-      <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
-</code></pre></div>
+<span class="hll">      <span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-logs</span>
+</span></code></pre></div>
 <h3 id="test-it">Test It</h3>
 <ol>
 <li>

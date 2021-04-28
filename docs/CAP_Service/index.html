@@ -612,6 +612,7 @@
 <details class="note"><summary>Additional Documentation</summary><ul>
 <li><a href="https://cap.cloud.sap/docs/">Official CAP documentation</a></li>
 <li><a href="https://cap.cloud.sap/docs/get-started/">CAP Getting Started</a></li>
+<li><a href="https://community.sap.com/topics/cloud-application-programming">CAP Community</a></li>
 </ul>
 </details>
 <p>In this section, you create a new CAP-based service, which exposes the OData V4 protocol. To do so, you use CAP's tooling <code>cds init</code> and <code>cds watch</code> in a terminal.</p>
@@ -622,6 +623,9 @@
 </li>
 <li>
 <p>Create a directory <code>&lt;myDirectory&gt;</code> on your computer, where you want to develop the app.</p>
+<div class="admonition tip">
+<p class="admonition-title">If you're working with SAP Business Application Studio, you can create <code>&lt;myDirectory&gt;</code> within your <code>projects</code> folder.</p>
+</div>
 </li>
 <li>
 <p>Navigate to the previously created directory:</p>
@@ -663,7 +667,7 @@
 </code></pre></div></p>
 <p>This will change the script execution policy for your user to <code>Bypass</code> directly from the VS Code terminal. To learn more about execution policies, see <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1">About Execution Policies</a>.</p>
 </details>
-<p>The CAP server serves all the CAP sources from your project. It also "watches" all the files in your projects and conveniently restarts whenever you save a file. Changes you've made will immediately be served without you having to do anything.</p>
+<p>The CAP server serves all the CAP sources from your project. It also "watches" all the files in your projects and conveniently restarts whenever you save a file. Changes you have made will immediately be served without you having to do anything.</p>
 <p>The screen now looks like this:</p>
 <p><img alt="CDS Watch" src="../markdown/images/cdswatch.png" /></p>
 <p>The CAP server tells you that there’s no model yet that it can serve. You add one in the next steps.</p>
@@ -678,10 +682,12 @@
 </div>
 </li>
 <li>
-<p>Open the folder <code>templates</code> and keep it open as you copy a number of files from there. For this part of the tutorial and others, it’s probably best if you place it next to your VS Code instance like this:</p>
+<p>Open the folder <code>templates</code> and keep it open as you copy a number of files from there. For this part of the tutorial and others, it’s probably best if you place it next to your VS Code instance like this: </p>
+</li>
+</ol>
 <p><img alt="Windows" src="../markdown/images/codeandfinder.png" /></p>
 <p>Alternatively, you can open it as a second folder in your VS Code project: <strong>File</strong> <strong>&rarr;</strong> <strong>Add Folder to Workspace...</strong>.</p>
-</li>
+<ol>
 <li>
 <p>Copy the file <code>schema.cds</code> from <code>templates/cap/create-service/db</code> to the <code>db</code> folder of your app.</p>
 <p>This is the code:</p>
@@ -721,7 +727,7 @@
     <span class="nx">annotate</span> <span class="nx">Mitigations</span> <span class="kd">with</span> <span class="err">@</span><span class="nx">odata</span><span class="p">.</span><span class="nx">draft</span><span class="p">.</span><span class="nx">enabled</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p>It creates a new service <code>RiskService</code> in the namespace <code>sap.ui.riskmanagement</code>. This service exposes two entities (again just neglect the commented part for the business partner): <code>Risks</code> and <code>Mitigations</code>, which are exposing the entities of the database schema you’ve created in the step before.</p>
+<p>It creates a new service <code>RiskService</code> in the namespace <code>sap.ui.riskmanagement</code>. This service exposes two entities: <code>Risks</code> and <code>Mitigations</code>, which are exposing the entities of the database schema you’ve created in the step before.</p>
 <p>If you again look at the terminal, you see that the CAP server has noticed the new file and now tells us that it serves something under <a href="http://localhost:4004">http://localhost:4004</a>.</p>
 </li>
 <li>
@@ -733,7 +739,7 @@
 </li>
 <li>
 <p>Choose the <code>$metadata</code> link.</p>
-<p>You see the OData metadata document of your new service. So, with just the two files for the database schema and the service exposure you added to your project, you've already got a running OData service!
+<p>You see the OData metadata document of your new service. So, with just the two files for the database schema and the service exposure you added to your project, you have already got a running OData service!
 You might wonder why the service itself is called <code>risk</code> even though in the file it’s called <code>RiskService</code>. This is a convention in CAP, the service suffix is subtracted from the name.</p>
 <p>If you now choose the <code>Risks</code> link, you only get this:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -747,7 +753,7 @@ You might wonder why the service itself is called <code>risk</code> even though 
 <p>Copy the folder <code>data</code> from <code>templates/cap/create-service/db</code> to the <code>db</code> folder of your app. If VS Code asks you whether to copy the folder, confirm.</p>
 <p>You’ve now added two comma-separated value (CSV) files that contain local data for both the <code>Risks</code> and the <code>Mitigations</code> entities. A quick look into the <code>sap.ui.riskmanagement-Risks.csv</code> (the name consists of your namespace and the name of your database entity from the <code>schema.cds</code> file) file shows data like this:</p>
 <div class="highlight"><pre><span></span><code>ID;createdAt;createdBy;title;prio;descr;miti_id;impact
-20466922-7d57-4e76-b14c-e53fd97dcb11;2019-10-24;tim.back@sap.com;CFR non-compliance;Fred Fish;3;Recent restructuring might violate CFR code 71;20466921-7d57-4e76-b14c-e53fd97dcb11;10000
+20466922-7d57-4e76-b14c-e53fd97dcb11;2021-04-27;max.mustermann@muster.com;CFR non-compliance;Fred Fish;3;Recent restructuring might violate CFR code 71;20466921-7d57-4e76-b14c-e53fd97dcb11;10000
 ...
 </code></pre></div>
 <p>The first line contains all the properties from your <code>Risks</code> entity. While the other ones are straight forward, consider the <code>miti_id</code> property. In your entity, you only have a <code>miti</code> property, so where does it come from? <code>miti</code> is an association to <code>Mitigations</code>, as <code>Mitigations</code> could have several key properties, the association on the database needs to point to all of these, therefore the CAP server creates a property <code>&lt;AssociationProperty&gt;_&lt;AssociatedEntityKey&gt;</code> for each key.</p>
@@ -765,7 +771,7 @@ You might wonder why the service itself is called <code>risk</code> even though 
 <div class="admonition info">
 <p class="admonition-title">The service is completely exposed without any authentication or authorization check. You extend the service later with such checks.</p>
 </div>
-<p>The result of these steps can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/create-service">here</a>.</p>
+<p>The result of these steps can be found in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/create-service"><code>create-service</code></a> branch of the tutorial.</p>
                 
               
               

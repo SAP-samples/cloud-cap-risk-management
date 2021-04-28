@@ -613,7 +613,7 @@
 <p>To be able to access the application, your user needs to be assigned to a role collection that provides the requires scopes.</p>
 <ol>
 <li>Open the <strong>SAP BTP Cockpit</strong>.</li>
-<li>Go to the <strong>Subaccount</strong> where you've deployed your service and application.</li>
+<li>Go to the <strong>Subaccount</strong> where you have deployed your service and application.</li>
 <li>Choose <strong>Security</strong> <strong>&rarr;</strong> <strong>Trust Configuration</strong> on the left.</li>
 <li>Choose <strong>Default identity provider</strong>.</li>
 <li>Enter the <strong>E-Mail Address</strong> of your user.</li>
@@ -622,12 +622,12 @@
 <li>Select <code>RiskManager-&lt;your space&gt;</code> in dropdown <strong>Role Collection</strong>.</li>
 <li>Choose <strong>Assign Role Collection</strong>.</li>
 </ol>
-<details class="tip"><summary>The name of the role collection includes the name of your space</summary><p>The role collections are created automatically using the <code>xs-security.json</code> file. Hence, the name of the role collection includes the name of your space where you've deployed your service and application. For example, if the space name is <code>dev</code>, then the name of the role collection wil be <code>RiskManager-dev</code>.</p>
+<details class="tip"><summary>The name of the role collection includes the name of your space</summary><p>The role collections are created automatically using the <code>xs-security.json</code> file. Hence, the name of the role collection includes the name of your space where you have deployed your service and application. For example, if the space name is <code>dev</code>, then the name of the role collection wil be <code>RiskManager-dev</code>.</p>
 </details>
 <p>The role collection <code>RiskManager-&lt;your space&gt;</code> appears now in the list of your user's role collections.</p>
 <h2 id="test-it">Test It</h2>
 <p>Go to the application and choose the tile <code>Risks</code>. You should be able to see and change the data in the <code>Risks</code> application.</p>
-<p>If not, probably you've signed in before adding the role collection to your user. Sign out and sign in again to get the added roles in your login ticket.</p>
+<p>If not, probably you have signed in before adding the role collection to your user. Sign out and sign in again to get the added roles in your login ticket.</p>
 <h2 id="additional-info-create-a-role-collection-manually">Additional Info: Create a Role Collection Manually</h2>
 <p>Instead of creating the role collection automatically using the <code>xs-security.json</code>, it's also possible to create a role collection manually. For example:</p>
 <ol>

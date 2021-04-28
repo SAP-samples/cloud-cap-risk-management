@@ -836,7 +836,7 @@
                 
                 
                 <h1 id="installation">Installation</h1>
-<p>Here's an overview of the tools and software required to get started with this tutorial. This section contains all the installations that you would have to do when starting from scratch. It’s likely that you have some of the software involved is already installed, so you can just skip those parts.</p>
+<p>Here's an overview of the tools and software required to get started with this tutorial. This section contains all the installations that you would have to do when starting from scratch. It’s likely that you have some of the software already installed, so you can just skip those parts.</p>
 <h2 id="editors">Editors <a name="editors"></a></h2>
 <p>For this tutorial, you have two options:</p>
 <p><strong>Option 1:</strong> <a href="#option-1-using-visual-studio-code-vs-code">Using Visual Studio Code (VS Code)</a></p>
@@ -856,13 +856,13 @@
 <p>If not, go to <a href="https://git-scm.com/downloads">Git downloads</a>, pick the installer appropriate for your operating system and install it.</p>
 <h3 id="install-nodejs">Install Node.js</h3>
 <p>Node.js is the JavaScript runtime the CAP backend part of the application runs on and that is needed for some of the tools involved to develop the application.</p>
-<p>In case you don't know whether you've Node.js installed and whether it has the right version (&gt;=12), open a terminal and type:</p>
+<p>In case you don't know whether you have Node.js installed and whether it has the right version (&gt;=12), open a terminal and type:</p>
 <div class="highlight"><pre><span></span><code>node -v
 </code></pre></div>
 <p>You should get an output like:</p>
 <div class="highlight"><pre><span></span><code>v14.x.x
 </code></pre></div>
-<p>If not, go to <a href="https://nodejs.org/en/download/">Node.js</a> download page, pick the installer appropriate for your operating system and install it.</p>
+<p>If not, go to <a href="https://nodejs.org/en/download/">Node.js</a> download page, pick the installer appropriate for your operating system, and install it.</p>
 <h3 id="install-sqlite-windows-only">Install SQLite (Windows Only)</h3>
 <p>You need to install <a href="https://sqlite.org/download.html">SQLite</a> tools for Windows. Find the steps how to install it in the CAP documentation in section <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#how-do-i-install-sqlite-on-windows">How Do I Install SQLite</a>.</p>
 <h3 id="install-command-line-tools-for-xcode-macos-only">Install Command-Line Tools for Xcode (macOS Only)</h3>
@@ -901,22 +901,19 @@
 <p><div class="highlight"><pre><span></span><code>brew --version
 </code></pre></div>
       If there’s an output of a version of <code>brew</code>, you got brew and it's best if you install the CF CLI:</p>
-<div class="codehilite"><pre><span></span><code>```
-brew install cloudfoundry/tap/cf-cli
-```
+<div class="highlight"><pre><span></span><code>brew install cloudfoundry/tap/cf-cli
 </code></pre></div>
-
-<p>(If you don't have <code>brew</code>, you might want to consider installing [brew]](<a href="https://brew.sh/">https://brew.sh/</a>), because it lets you install many software packages easily even outside the context of this tutorial).
-      If you don't have <code>brew</code>, you've to download a binary installer as described <a href="https://github.com/cloudfoundry/cli#installers-and-compressed-binaries">here</a>.</p>
+<p>(If you don't have <code>brew</code>, you might want to consider installing <a href="https://brew.sh/">brew</a>, because it lets you install many software packages easily even outside the context of this tutorial).
+      If you don't have <code>brew</code>, you have to download a binary installer as described <a href="https://github.com/cloudfoundry/cli#installers-and-compressed-binaries">here</a>.</p>
 </li>
 <li>
 <p>In either case, after the installation, check whether you get the output of a version indicating the installation succeeded:</p>
-</li>
-</ol>
 <div class="highlight"><pre><span></span><code>cf --version
 </code></pre></div>
-<ol>
-<li>Follow <a href="https://developers.sap.com/tutorials/cp-cf-download-cli.html#9341c34e-6236-49a6-a54e-ecf32dff2e6d">this tutorial</a> to configure your API endpoint.</li>
+</li>
+<li>
+<p>Follow <a href="https://developers.sap.com/tutorials/cp-cf-download-cli.html#9341c34e-6236-49a6-a54e-ecf32dff2e6d">this tutorial</a> to configure your API endpoint.</p>
+</li>
 </ol>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Windows</label><div class="tabbed-content">
@@ -942,15 +939,15 @@ brew install cloudfoundry/tap/cf-cli
 <li>Type <code>Install 'code' command in PATH</code> and choose <strong>Enter</strong>.</li>
 </ol>
 <h3 id="add-cap-tooling">Add CAP Tooling</h3>
-<p>CAP provides you with all the tools to create your data model with entities and your services. It helps you tremendously to get these services running locally during development with an incredible speed and creates the connection to both local databases as well as databases in the cloud (SAP HANA). It comes with different tooling that is used in this tutorial. You can see the details in the <a href="https://cap.cloud.sap/docs/get-started/in-a-nutshell">CAP documentation</a>. In short:</p>
+<p>CAP provides you with all the tools to create your data model with entities and your services. It helps you tremendously to get these services running locally during development with an incredible speed. It also creates the connection to both local databases and databases in the cloud (SAP HANA). It comes with different tooling that is used in this tutorial. You can see the details in the <a href="https://cap.cloud.sap/docs/get-started/in-a-nutshell">CAP documentation</a>. In short:</p>
 <ol>
 <li>
 <p>Install CDS development kit globally in a terminal:</p>
 <div class="highlight"><pre><span></span><code>npm i -g @sap/cds-dk
 </code></pre></div>
-<p>This process takes some minutes installing the <code>cds</code> command, which you'll use in the next steps.
+<p>This process takes some minutes installing the <code>cds</code> command that you'll use in the next steps.
 On macOS/Linux, you need to follow the steps as described <a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally">here</a>.</p>
-<p>If there’s an older <code>@sap/cds</code> package already installed on your machine, you have to remove it first; if so, you’ll be instructed to do so. If you run into problems, see the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">Troubleshooting guide</a> in the CAP documentation for more details.</p>
+<p>If there’s an older <code>@sap/cds</code> package already installed on your machine, you have to remove it first. You’ll be instructed to do so. If you run into problems, see the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">Troubleshooting guide</a> in the CAP documentation for more details.</p>
 </li>
 <li>
 <p>To verify that the installation was successful, run <code>cds</code> without arguments.</p>
@@ -973,7 +970,7 @@ On macOS/Linux, you need to follow the steps as described <a href="https://docs.
 <li>Restart VS Code after the installation.</li>
 </ol>
 <p>Now, the extension is installed in VS Code.</p>
-<p>If the extension is already installed and enabled in VS Code, it is updated automatically. The VS Code extension comes with a welcome page, which shows latest release notes of CAP. It starts automatically once whenever an update arrives for the extension. Later, you can open the page through the command <code>CDS: Show CAP Release Notes</code>.</p>
+<p>If the extension is already installed and enabled in VS Code, it is updated automatically. The VS Code extension comes with a welcome page, which shows latest release notes of CAP. It starts automatically whenever an update arrives for the extension. Later, you can open the page through the command <code>CDS: Show CAP Release Notes</code>.</p>
 <p>Learn more about the features of the extension in this short <a href="https://www.youtube.com/watch?v=eY7BTzch8w0">demo</a> and see the <a href="https://cap.cloud.sap/docs/get-started/tools#cds-editor">features and commands</a> in the CAP documentation.</p>
 <h3 id="install-sap-fiori-tools-extension-pack">Install SAP Fiori Tools Extension Pack</h3>
 <p>SAP Fiori Tools are a number of extensions for VS Code. They mainly support you in developing SAP Fiori Elements apps. In this tutorial, we use the so-called SAP Fiori application generator to create an SAP Fiori Elements app, you need this for section <a href="../FE">Create an SAP Fiori elements-based Application</a> of this tutorial.</p>
@@ -983,10 +980,14 @@ On macOS/Linux, you need to follow the steps as described <a href="https://docs.
 </details>
 <p>(For macOS only) You need to install the <code>code</code> command in PATH.</p>
 <ol>
-<li>Open the <strong>Command Palette</strong> (<code>⇧⌘P</code>) and type 'shell command' to find the Shell Command: Install 'code' command in PATH.</li>
+<li>
+<p>Open the <strong>Command Palette</strong> (<code>⇧⌘P</code>) and type <code>shell command</code> to find the Shell Command: <code>Install 'code' command in PATH</code>.</p>
+<p><img alt="shell command" src="../markdown/images/shell_command.png" />  </p>
+</li>
+<li>
+<p>Restart the terminal for the new <code>$PATH</code> value to take effect.</p>
+</li>
 </ol>
-<p><img alt="shell command" src="../markdown/images/shell_command.png" /><br />
-2. Restart the terminal for the new <code>$PATH</code> value to take effect.</p>
 <p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack"><strong>SAP Fiori tools - Extension Pack</strong></a> including six extensions for VS Code. </p>
 <p><img alt="SAP Fiori Tools" src="../markdown/images/sap_fiori_tools_extension.png" /></p>
 <ol>
@@ -1030,7 +1031,7 @@ SAPUI5 templates are based on <a href="https://yeoman.io/">Yeoman</a>, a tool fo
 <p>If you decide to use SAP BAS, your benefits are:</p>
 <ul>
 <li>You don't have to install or update any of the packages below yourself. The all come with your BAS instance.</li>
-<li>In some cases, you've additional productivity features that are available only in SAP BAS but not VS Code.</li>
+<li>In some cases, you have additional productivity features that are available only in SAP BAS but not VS Code.</li>
 </ul>
 <p>However, if you go for SAP BAS, you first have to get access to SAP BTP, it can only be used with a user there. At a later stage of the tutorial, this is required anyway, however, you can easily perform the steps to create a CAP service with its own persistency and access to a remote SAP S/4HANA system, as well as an SAP Fiori Elements and a SAPUI5 application on top of the service without any access the SAP BTP and only develop these parts locally. If you’re looking for a deployment to SCO (obviously), using the SAP Fiori launchpad, develop a multi tenant app as well as using workflow, you need SAP BTP access later anyway.</p>
 <h3 id="set-up-business-application-studio-in-an-sap-btp-trial-account">Set Up Business Application Studio in an SAP BTP Trial Account</h3>
@@ -1072,26 +1073,40 @@ SAPUI5 templates are based on <a href="https://yeoman.io/">Yeoman</a>, a tool fo
 </li>
 <li>Navigate back to your subaccount overview with the breadcrumbs.</li>
 <li>On the left-hand pane, choose <strong>Instances and Subscriptions</strong>.</li>
-<li>Choose <strong>Go to Application</strong> in the <strong>Subscriptions</strong> category for <strong>SAP Business Application Studio</strong> application or choose the <img alt="SAP BAS Application" src="../markdown/images/go_to_bas.png" /> icon.</li>
+<li>
+<p>Choose <strong>Go to Application</strong> in the <strong>Subscriptions</strong> category for <strong>SAP Business Application Studio</strong> application or choose the <img alt="SAP BAS Application" src="../markdown/images/go_to_bas.png" /> icon.</p>
+<p><img alt="SAP BAS Application" src="../markdown/images/bas_go_to_application.png" /></p>
+</li>
+<li>
+<p>Log in with your SAP BTP account user and password.</p>
+</li>
+<li>
+<p>Save the URL in your favorite link list, you'll need this URL again.</p>
+</li>
+<li>
+<p>On the Dev Spaces selection UI, choose <strong>Create Dev Space</strong> and enter <code>cpapp</code> as the Dev Space name.</p>
+</li>
+<li>
+<p>Choose <strong>SAP Cloud Business Application</strong> as the application kind.</p>
+</li>
+<li>
+<p>Choose <strong>Workflow Management</strong> as additional SAP Extensions you want to install.</p>
+</li>
+<li>
+<p>Choose <strong>Create Dev Space</strong>.</p>
+</li>
 </ol>
-<p><img alt="SAP BAS Application" src="../markdown/images/bas_go_to_application.png" />
-12. Log in with your SAP BTP account user and password.
-13. Save the URL in your favorite link list, you need this URL again.
-14. On the Dev Spaces selection UI, choose <strong>Create Dev Space</strong> and enter <code>cpapp</code> as the Dev Space name.
-15. Choose <strong>SAP Cloud Business Application</strong> as the application kind.
-16. Choose <strong>Workflow Management</strong> as additional SAP Extensions you want to install.
-17. Choose <strong>Create Dev Space</strong>.</p>
 <p><img alt="SAP BAS Dev Space" src="../markdown/images/bas_dev_space.png" /></p>
 <p>Wait until the Dev Space has been created. This can take some time.</p>
 <h3 id="open-the-dev-space-in-sap-bas">Open the Dev Space in SAP BAS</h3>
 <ol>
 <li>Open the Dev Space by choosing its name.</li>
 <li>In the opened editor, choose <strong>Open Workspace</strong>.</li>
-<li>Select the <strong>projects</strong> folder in the <em>Open Workspace</em> dialog.</li>
+<li>Select the <code>projects</code> folder in the <strong>Open Workspace</strong> dialog.</li>
 <li>Choose <strong>Open</strong>.</li>
 </ol>
 <p><img alt="SAP BAS Open Workspace" src="../markdown/images/bas_open_projects.png" /></p>
-<p>SAP BAS will refresh and select the <strong>projects</strong> folder as the workspace root.</p>
+<p>SAP BAS will refresh and select the <code>projects</code> folder as the workspace root.</p>
                 
               
               

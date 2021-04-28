@@ -622,10 +622,11 @@
 <li><a href="../Sources">Get Started</a></li>
 <li><a href="../CAP_Service">Create a CAP-Based Service</a></li>
 </ul>
-<p>The results of the previous module <strong>Create a CAP-Based Service</strong> can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/create-service">here</a>.</p>
+<p>The results of the previous module <strong>Create a CAP-Based Service</strong> can be found in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/create-service"><code>create-service</code></a> branch of the tutorial.</p>
 </details>
 <details class="note"><summary>Additional Documentation</summary><ul>
 <li><a href="https://sapui5.hana.ondemand.com/#/topic/c0eec49db81a441e878f528c8f3d28de">Developing Apps with SAP Fiori Elements</a></li>
+<li><a href="https://community.sap.com/topics/fiori-elements">SAP Fiori Elements Community</a></li>
 </ul>
 </details>
 <p>In this section, you create an SAP Fiori Elements (FE) app on top of your previously created CAP service.</p>
@@ -637,46 +638,46 @@
 </li>
 <li>
 <p>Choose <strong>SAP Fiori application</strong>.</p>
-<p><img alt="AppGen" src="../markdown/images/vscappgenerator.png" title="AppGen" /></p>
+<p><img alt="AppGen" src="../markdown/images/vscappgenerator.png" /></p>
 </li>
 <li>
 <p>Choose <strong>Start</strong>.</p>
 </li>
 <li>
 <p>Choose application type <strong>SAP Fiori elements</strong> and floorplan <strong>List Report Object Page</strong>.</p>
-<p><img alt="V4 Template" src="../markdown/images/vscv4template.png" title="V4 Template" /></p>
+<p><img alt="V4 Template" src="../markdown/images/vscv4template.png" /></p>
 </li>
 <li>
 <p>Choose <strong>Next</strong>.</p>
 </li>
 <li>
-<p>In the next dialog, choose <strong>Use a Local CAP Node.js Project</strong> and point to the folder of your current <strong>cpapp</strong> project.</p>
-<details class="error"><summary>In case you get the error: <code>Node module @sap/cds isn’t found. Please install it and try again.</code></summary><p>You might get the error <code>Node module @sap/cds is not found. Please install it and try again.</code> after you've chosen your CAP project. This is an issue with the App Generator not finding the corresponding CAP modules, due to different repositories. This should be a temporary issue. For the meantime you can work around it by opening a command line and running the following command:</p>
+<p>In the next dialog, choose <strong>Use a Local CAP Project</strong> and point to the folder of your current <strong>cpapp</strong> project.</p>
+<details class="error"><summary>In case you get the error: <code>Node module @sap/cds isn’t found. Please install it and try again.</code></summary><p>You might get the error <code>Node module @sap/cds is not found. Please install it and try again.</code> after you have chosen your CAP project. This is an issue with the App Generator not finding the corresponding CAP modules, due to different repositories. This should be a temporary issue. For the meantime you can work around it by opening a command line and running the following command:</p>
 <div class="highlight"><pre><span></span><code>npm i -g @sap/cds-dk --@sap:registry=https://npmjs.org/
 </code></pre></div>
+<p>See the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">CAP Troubleshooting guide</a> for more details.</p>
 </details>
-<p>For more details see the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation">CAP Troubleshooting guide</a>.</p>
 </li>
 <li>
 <p>Select the <strong>RiskService</strong> as the OData service and choose <strong>Next</strong>.</p>
-<p><img alt="CAPpro" src="../markdown/images/datasourceselection.png" title="CAPPro" /></p>
+<p><img alt="CAPpro" src="../markdown/images/datasourceselection.png" /></p>
 </li>
 <li>
 <p>Select <strong>Risks</strong> as the main entity and choose <strong>Next</strong>.</p>
-<p><img alt="entitySelection" src="../markdown/images/entityselection.png" title="entitySelection" /></p>
+<p><img alt="entitySelection" src="../markdown/images/entityselection.png" /></p>
 </li>
 <li>
 <p>Enter <code>risks</code> as the module name and <code>Risks</code> as the application title.</p>
 </li>
 <li>
-<p>Enter "ns" as the namespace and "Risks" as the description for the application.</p>
-<p><img alt="Project Names" src="../markdown/images/vscrfeapp.png" title="Project Names" /></p>
+<p>Enter <code>ns</code> as the namespace and <code>Risks</code> as the description for the application.</p>
+<p><img alt="Project Names" src="../markdown/images/vscrfeapp.png" /></p>
 </li>
 <li>
 <p>Choose <strong>Finish</strong> to generate the application.</p>
 </li>
 </ol>
-<p>The application is now generated and in a few seconds you can see it in the <code>app</code> folder of your project. It contains a <code>risks</code> and a <code>webapp</code> folder with a <code>Component.js</code> file that is characteristic for a UI5 app. However, the code there's minimal and it basically inherits its logic from the <code>sap/fe/core/AppComponent</code>.</p>
+<p>The application is now generated and in a few seconds you can see it in the <code>app</code> folder of your project. It contains a <code>risks</code> and a <code>webapp</code> folder with a <code>Component.js</code> file that is characteristic for an SAP UI5 app. However, the code there's minimal and it basically inherits its logic from the <code>sap/fe/core/AppComponent</code>. The <code>sap/fe/core/AppComponent</code> is the base class for Fiori elements. As mentioned above, this class is managed centrally by the FE team so you don't need to modify it yourself.</p>
 <h2 id="modify-the-ui-with-odata-annotations">Modify the UI with OData Annotations</h2>
 <ol>
 <li>
@@ -690,7 +691,7 @@
 <li>
 <p>On the launch page that now comes up, choose the <strong>Risks</strong> tile.</p>
 <p>You can now see the application without any data.</p>
-<p><img alt="Index HTML Page" src="../markdown/images/feappempty.png" title="Index HTML Page" /></p>
+<p><img alt="Index HTML Page" src="../markdown/images/feappempty.png" /></p>
 <p>The table is empty because the application is currently missing UI annotations. You add them in the next step.</p>
 </li>
 <li>
@@ -703,7 +704,7 @@
 <li>
 <p>Choose <strong>Go</strong>.</p>
 <p>It now shows a work list with some columns and the data from the service.</p>
-<p><img alt="Fiori elements Work List" src="../markdown/images/feappworklist.png" title="Fiori elements Work List" /></p>
+<p><img alt="Fiori elements Work List" src="../markdown/images/feappworklist.png" /></p>
 <div class="admonition error">
 <p class="admonition-title">If the work list doesn't show, you might have to clear your cache.</p>
 </div>
@@ -783,9 +784,9 @@
 </code></pre></div>
 <p>This defines the content of the work list page and the object page that you navigate to when you click on a line in the work list.</p>
 <p>The <code>SelectionFields</code> section defines which of the properties are exposed as search fields in the header bar above the list. In this case, <code>prio</code> is the only explicit search field.</p>
-<p>The columns and their order in the work list are derived from the <code>LineItem</code> section. While in most cases the columns are defined by <code>Value:</code> followed by the property name of the entity, in the case of <code>prio</code> and <code>impact</code> there’s also <code>Criticality</code>. It currently adds a diamond icon ( &#x2662; ) on the left in the fields. For now, you can neglect it but keep it in mind in case you go to the later modules.</p>
+<p>The columns and their order in the work list are derived from the <code>LineItem</code> section. While in most cases the columns are defined by <code>Value:</code> followed by the property name of the entity, in the case of <code>prio</code> and <code>impact</code> there’s also <code>Criticality</code>. For now, you can neglect it but keep it in mind in case you go to the later modules.</p>
 <p>Next up is the <code>Facets</code> section. In this case, it defines the content of the object page. It contains only a single facet, a <code>ReferenceFacet</code>, of the field group <code>FieldGroup#Main</code>. This field group just shows up as a form. The properties of the <code>Data</code> array within <code>FieldGroup#Main</code> determine the fields in the form:</p>
-<p><img alt="Fiori elements Object Page" src="../markdown/images/feappobjectpage.png" title="Fiori elements Object Page" /></p>
+<p><img alt="Fiori elements Object Page" src="../markdown/images/feappobjectpage.png" /></p>
 <p>The result of these steps can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/fiori-elements-app">here</a>.</p>
                 
               
