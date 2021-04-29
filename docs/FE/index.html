@@ -677,7 +677,7 @@
 <p>Choose <strong>Finish</strong> to generate the application.</p>
 </li>
 </ol>
-<p>The application is now generated and in a few seconds you can see it in the <code>app</code> folder of your project. It contains a <code>risks</code> and a <code>webapp</code> folder with a <code>Component.js</code> file that is characteristic for an SAP UI5 app. However, the code there's minimal and it basically inherits its logic from the <code>sap/fe/core/AppComponent</code>. The <code>sap/fe/core/AppComponent</code> is the base class for Fiori elements. As mentioned above, this class is managed centrally by the FE team so you don't need to modify it yourself.</p>
+<p>The application is now generated and in a few seconds you can see it in the <code>app</code> folder of your project. It contains a <code>risks</code> and a <code>webapp</code> folder with a <code>Component.js</code> file that is characteristic for an SAPUI5 app. However, the code there's minimal and it basically inherits its logic from the <code>sap/fe/core/AppComponent</code>. The <code>sap/fe/core/AppComponent</code> is the base class for SAP Fiori elements. As previously mentioned, this class is managed centrally by the FE team so you don't need to modify it yourself.</p>
 <h2 id="modify-the-ui-with-odata-annotations">Modify the UI with OData Annotations</h2>
 <ol>
 <li>
@@ -787,7 +787,7 @@
 <p>The columns and their order in the work list are derived from the <code>LineItem</code> section. While in most cases the columns are defined by <code>Value:</code> followed by the property name of the entity, in the case of <code>prio</code> and <code>impact</code> there’s also <code>Criticality</code>. For now, you can neglect it but keep it in mind in case you go to the later modules.</p>
 <p>Next up is the <code>Facets</code> section. In this case, it defines the content of the object page. It contains only a single facet, a <code>ReferenceFacet</code>, of the field group <code>FieldGroup#Main</code>. This field group just shows up as a form. The properties of the <code>Data</code> array within <code>FieldGroup#Main</code> determine the fields in the form:</p>
 <p><img alt="Fiori elements Object Page" src="../markdown/images/feappobjectpage.png" /></p>
-<p>The result of these steps can be found <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/fiori-elements-app">here</a>.</p>
+<p>The result of these steps can be found in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/fiori-elements-app"><code>fiori-elements-app</code></a> branch of the tutorial.</p>
                 
               
               
