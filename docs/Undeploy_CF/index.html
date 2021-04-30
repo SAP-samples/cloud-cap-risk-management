@@ -546,32 +546,6 @@
                 
                 
                 <h1 id="undeploy-your-cloud-foundry-application">Undeploy Your Cloud Foundry Application</h1>
-<!--
-## Undeploy an Application Deployed with `cf push`
-
-You need to delete all created applications and services. First, delete the applications. This will delete their service bindings as well. Then, you can delete the services.
-
-These are the steps to undeploy an application that was deployed by following the instructions in the [Deploy Your Application Using `cf push`](CF_Push_Deployment.md) module:
-
-1. Delete applications:
-
-    <div class="highlight"><pre><span></span><code>cf delete cpapp-app -f
-cf delete cpapp-srv -f
-cf delete cpapp-db-deployer -f
-</code></pre></div>
-
-2. Delete service instances:
-
-    !!! warning "Deleting the `cpapp-db` service instance deletes all data stored in the application."
-
-    <div class="highlight"><pre><span></span><code>cf delete-service cpapp-db -f
-cf delete-service cpapp-uaa -f
-</code></pre></div>
-
-## Undeploy a MultiApps (MTA) Application
-
--->
-
 <p>To undeploy (delete) an <code>mtar</code>, you don't need to delete the apps and the services individually. The deploy service on Cloud Foundry keeps track on the deployed <code>mtar</code> and its resources.</p>
 <p>You can either undeploy the applications or undeploy the applications and their service instances. Undeploying the applications and their service instances will also delete the data stored in these instances (for example, database content).</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Delete applications</label><div class="tabbed-content">

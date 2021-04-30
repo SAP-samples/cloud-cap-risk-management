@@ -387,8 +387,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sapui5-serve" class="md-nav__link">
-    SAPUI5 Serve
+  <a href="#optional-sapui5-serve" class="md-nav__link">
+    (Optional) SAPUI5 Serve
   </a>
   
 </li>
@@ -634,8 +634,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sapui5-serve" class="md-nav__link">
-    SAPUI5 Serve
+  <a href="#optional-sapui5-serve" class="md-nav__link">
+    (Optional) SAPUI5 Serve
   </a>
   
 </li>
@@ -865,7 +865,7 @@ A creation wizard starts.</p>
 <p><img alt="SAPUI5 App Object" src="../markdown/images/freestyleui5object.png" /></p>
 </li>
 </ol>
-<h2 id="sapui5-serve">SAPUI5 Serve</h2>
+<h2 id="optional-sapui5-serve">(Optional) SAPUI5 Serve</h2>
 <p>While <code>cds watch</code> comes in handy for serving even the SAPUI5 based apps directly in your CAP projects, there’s also an additional alternative, again from the SAPUI5 tools. They also provide a development server that can be used in any pure SAPUI5 project. So, you can use the SAPUI5 development server when there’s no CAP service around and/or the service is provided by a different technology. Here are some advantages of the SAPUI5 development server compared to <code>cds watch</code>, depending on how deep you want to be involved in SAPUI5 freestyle programming.</p>
 <ul>
 <li>You can run multiple servers at a time (<code>cds watch</code> can only run once).</li>
@@ -974,21 +974,6 @@ A creation wizard starts.</p>
 <p><img alt="Mitigations" src="../markdown/images/ui5serve_mitigations.png" /></p>
 </li>
 </ol>
-<!-- ??? info "Prepare deployment on SAP BTP"
-    If you want to deploy your application on the SAP BTP later, it's necessary to build a package of your project for an easier upload.
-
-    1.  Navigate to the `mitigations` folder:
-
-        <div class="highlight"><pre><span></span><code>cd cpapp/app/mitigations
-</code></pre></div>
-
-    2. Build the application:
-
-        <div class="highlight"><pre><span></span><code>ui5 build  --clean-dest --dest ../../gen/app/mitigations
-</code></pre></div>
-
-        You can find the package in the folder `cpapp/gen/app/mitigations`. @TODO; Uwe will clarify if we need this or if we can delete it-->
-
 <p>The result of these steps can be found in the <a href="https://github.com/SAP-samples/cloud-cap-risk-management/tree/cap/freestyle-ui5-app"><code>freestyle-ui5-app</code></a> branch of the tutorial.</p>
                 
               
