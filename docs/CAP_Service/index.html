@@ -693,7 +693,7 @@
 <p>This is the code:</p>
 <p><!-- cpes-file db/schema.cds -->
 <div class="highlight"><pre><span></span><code><span class="nx">namespace</span> <span class="nx">sap</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">riskmanagement</span><span class="p">;</span>
-<span class="nx">using</span> <span class="p">{</span> <span class="nx">managed</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@sap/cds/common&#39;</span><span class="p">;</span>
+<span class="nx">using</span> <span class="p">{</span> <span class="nx">managed</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@sap/cds/common&#39;</span><span class="p">;</span>
   <span class="nx">entity</span> <span class="nx">Risks</span> <span class="o">:</span> <span class="nx">managed</span> <span class="p">{</span>
     <span class="nx">key</span> <span class="nx">ID</span>      <span class="o">:</span> <span class="nx">UUID</span>  <span class="err">@</span><span class="p">(</span><span class="nx">Core</span><span class="p">.</span><span class="nx">Computed</span> <span class="o">:</span> <span class="kc">true</span><span class="p">);</span>
     <span class="nx">title</span>       <span class="o">:</span> <span class="nb">String</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
@@ -718,12 +718,12 @@
 <p>Copy the file <code>risk-service.cds</code> from <code>templates/cap/create-service/srv</code> to the <code>srv</code> folder of your app.</p>
 <p>The content of the file looks like this:</p>
 <p><!-- cpes-file srv/risk-service.cds -->
-<div class="highlight"><pre><span></span><code><span class="nx">using</span> <span class="p">{</span> <span class="nx">sap</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">riskmanagement</span> <span class="nx">as</span> <span class="nx">my</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../db/schema&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="nx">using</span> <span class="p">{</span> <span class="nx">sap</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">riskmanagement</span> <span class="k">as</span> <span class="nx">my</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;../db/schema&#39;</span><span class="p">;</span>
 <span class="err">@</span><span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;service/risk&#39;</span>
 <span class="nx">service</span> <span class="nx">RiskService</span> <span class="p">{</span>
-  <span class="nx">entity</span> <span class="nx">Risks</span> <span class="nx">as</span> <span class="nx">projection</span> <span class="nx">on</span> <span class="nx">my</span><span class="p">.</span><span class="nx">Risks</span><span class="p">;</span>
+  <span class="nx">entity</span> <span class="nx">Risks</span> <span class="k">as</span> <span class="nx">projection</span> <span class="nx">on</span> <span class="nx">my</span><span class="p">.</span><span class="nx">Risks</span><span class="p">;</span>
     <span class="nx">annotate</span> <span class="nx">Risks</span> <span class="kd">with</span> <span class="err">@</span><span class="nx">odata</span><span class="p">.</span><span class="nx">draft</span><span class="p">.</span><span class="nx">enabled</span><span class="p">;</span>
-  <span class="nx">entity</span> <span class="nx">Mitigations</span> <span class="nx">as</span> <span class="nx">projection</span> <span class="nx">on</span> <span class="nx">my</span><span class="p">.</span><span class="nx">Mitigations</span><span class="p">;</span>
+  <span class="nx">entity</span> <span class="nx">Mitigations</span> <span class="k">as</span> <span class="nx">projection</span> <span class="nx">on</span> <span class="nx">my</span><span class="p">.</span><span class="nx">Mitigations</span><span class="p">;</span>
     <span class="nx">annotate</span> <span class="nx">Mitigations</span> <span class="kd">with</span> <span class="err">@</span><span class="nx">odata</span><span class="p">.</span><span class="nx">draft</span><span class="p">.</span><span class="nx">enabled</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
