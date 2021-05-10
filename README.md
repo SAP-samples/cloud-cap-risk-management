@@ -4,35 +4,6 @@ Welcome to this tutorial for application development on SAP Business Technology 
 
 It's planned to provide multiple modules that are built upon each other. You can start the tutorial with the first module, or start in between, because the source code for every tutorial module is provided in this repository.
 
-## Who Is This Tutorial For?
-
-The tutorial is suitable for new or experienced developers on SAP BTP. The purpose of this project is to help application developers get a quick start on development, provide best practices, solve common issues, use common services, identify areas that need to be improved, and have an end-to-end scenario for validation.
-
-## What Topics Are Covered in the Tutorial?
-
-The tutorial covers a variety of topics starting from basic onboarding tasks to creating development pipelines. The tasks are bundled in a step-by-step tutorial that features the following topics:
-
-- Setting up the development environment
-- Creating a service based on CAP
-- Implementing authorization checks
-- Creating a SAP BTP trial account
-- Deployment on SAP BTP, Cloud Foundry or on Kyma environment
-
-Stay tuned for new modules.
-
-## How Can You Work with the Tutorial?
-
-The core of this site is the [Tutorial](Sources.md) page. In the tutorial, you get to know, step by step, the whole development process on SAP BTP. Make sure to do the necessary [Installations](installation.md) first before starting the tutorial. After that, you can follow the tutorial through the different modules.
-
-Check out the provided [Tutorial Overview](Tutorial_Overview.md) to get an overview of what module you need to do and what modules are optional. If you can't complete a certain module, there’s always the possibility of cloning a completed version of the module at the start of the next module. You can find the link in the box called **Prerequisites**.
-
-* The `master` branch contains the [tutorial](http://sap-samples.github.io/cloud-cap-risk-management) that describes how to build the examples and how to deploy it to SAP BTP. <!-- TODO: add link to branches, is this profiled here [Examples](https://pages.github.tools.sap/CPES/CPAppDevelopment/Examples/)? -->
-* All other branches contain the resulting source code of a tutorial module.
-
-## Requirements
-
-The requirements are described in this [tutorial](http://sap-samples.github.io/cloud-cap-risk-management).
-
 ## Download and Installation
 
 If you want to start from a specific tutorial module, get the name of its branch from the [tutorial](http://sap-samples.github.io/cloud-cap-risk-management), download this repository and switch to the desired branch:
