@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/includes/BTP_Entitlements/">
+        <link rel="canonical" href="https://github.com/SAP-samples/cloud-cap-risk-management/includes/Prepare-SAP-BTP-Live-or-Canary/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.0">
     
     
       
-        <title>BTP Entitlements - SAP BTP Application Development</title>
+        <title>Prepare SAP BTP Live or Canary - SAP BTP Application Development</title>
       
     
     
@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#option-2-create-live-account" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -93,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              BTP Entitlements
+              Prepare SAP BTP Live or Canary
             
           </span>
         </div>
@@ -227,121 +232,48 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-create-live-account" class="md-nav__link">
+    Option 2: Create Live Account
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/includes/BTP_Entitlements.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/SAP-samples/cloud-cap-risk-management/edit/master/docs/includes/Prepare-SAP-BTP-Live-or-Canary.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>BTP Entitlements</h1>
+                  <h1>Prepare SAP BTP Live or Canary</h1>
                 
-                <!-- external version with reduced content according the external scenarios -->
-
-<table>
-<thead>
-<tr>
-<th>Service</th>
-<th>Plan</th>
-<th>Amount</th>
-<th>Unit</th>
-<th>Tutorial</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Application Runtime</td>
-<td><code>MEMORY</code></td>
-<td>4</td>
-<td>GB</td>
-<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
-</tr>
-<tr>
-<td>Application Logging</td>
-<td><code>standard</code></td>
-<td>1</td>
-<td>instances</td>
-<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
-</tr>
-<tr>
-<td>SAP HANA Schemas &amp; HDI Containers</td>
-<td><code>hdi-shared</code></td>
-<td>1</td>
-<td>instances</td>
-<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
-</tr>
-<tr>
-<td>SAP HANA Cloud</td>
-<td><code>hana</code></td>
-<td>1</td>
-<td>instances</td>
-<td><a href="/HANA_Setup">SAP HANA Cloud Setup</a></td>
-</tr>
-<tr>
-<td>Launchpad Service</td>
-<td><code>standard</code></td>
-<td>1</td>
-<td>active users</td>
-<td><a href="/Launchpad+Service">Launchpad Service</a></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition info">
-<p class="admonition-title">* - The services mentioned below are Utility Services, no entitlement needed</p>
-</div>
-<table>
-<thead>
-<tr>
-<th>Service</th>
-<th>Plan</th>
-<th>Amount</th>
-<th>Unit</th>
-<th>Tutorial</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Launchpad Service</td>
-<td><code>standard</code></td>
-<td>1</td>
-<td>active users</td>
-<td><a href="/Launchpad+Service">Launchpad Service</a></td>
-</tr>
-<tr>
-<td>Authorization &amp; Trust Management</td>
-<td><code>application</code></td>
-<td>1 *</td>
-<td>instances</td>
-<td><a href="/CAP_MTA_Deployment">MTA Deployment</a></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition info">
-<p class="admonition-title">* - The following mentioned applications are available as Subscriptions, no entitlement needed</p>
-</div>
-<table>
-<thead>
-<tr>
-<th>Application</th>
-<th>Plan</th>
-<th>Amount</th>
-<th>Unit</th>
-<th>Tutorial</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SAP Business Application Studio</td>
-<td><code>standard</code></td>
-<td>1</td>
-<td>?</td>
-<td>numerous</td>
-</tr>
-</tbody>
-</table>
+                <h2 id="option-2-create-live-account">Option 2: Create Live Account</h2>
                 
               
               
