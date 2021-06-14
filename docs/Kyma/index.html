@@ -923,7 +923,7 @@ code .
 </ul>
 <p>If you have a Mac, many of the commands can be installed using Homebrew (<code>brew install ...</code>). For Windows, there's a similar offering called Chocolatey. Refer to the binary installers of the components otherwise.</p>
 <h3 id="enable-kyma-in-sap-btp-subaccount">Enable Kyma in SAP BTP Subaccount</h3>
-<p>You need an SAP BTP Subaccount with consumption-based model (that is, Cloud Credits). Kyma is currently supported on Azure landscapes only, as of September 2020. Although Kyma is needed at a later point in the tutorial, it’s recommended to start with this step, because the Kyma provisioning can take some time. </p>
+<p>You need an SAP BTP Subaccount with consumption-based model (that is, Cloud Credits). Kyma is currently supported on Azure landscapes only, as of September 2020. Although Kyma is needed at a later point in the tutorial, it’s recommended to start with this step, because the Kyma provisioning can take some time.</p>
 <p>For this tutorial you have two options:</p>
 <p><strong>Option 1:</strong> <a href="#option-1-create-your-own-sap-btp-trial-account">Create Your Own SAP BTP Trial Account</a></p>
 <p><strong>Option 2:</strong> <a href="#option-2-use-your-existing-sap-btp-subaccount">Use an Existing SAP BTP Subaccount</a></p>
@@ -946,7 +946,7 @@ code .
 <ol>
 <li>Go to <strong>Entitlements</strong>.</li>
 <li>Choose <strong>Configure Entitlements</strong>.</li>
-<li>Choose <strong>Add Service Plans</strong>. </li>
+<li>Choose <strong>Add Service Plans</strong>.</li>
 <li>Search for and select <strong>Kyma runtime</strong>.</li>
 <li>Check the <strong>trial (Environment)</strong> checkbox.</li>
 <li>Choose <strong>Add 1 Service Plan</strong>.</li>
@@ -955,7 +955,7 @@ code .
 <li>Choose <strong>Create</strong>.</li>
 </ol>
 <p>This takes a while. You can start the tutorial in the meantime.</p>
-<p>SAP BTP’s XSUAA is used to access the Kyma runtime. Please follow the steps to assign <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/148ae38b7d6f4e61bbb696bbfb3996b2.html">Roles in the Kyma Environment</a>. In some cases, it will still take 5-10 minutes to get access to Kyma Runtime. </p>
+<p>SAP BTP’s XSUAA is used to access the Kyma runtime. Please follow the steps to assign <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/148ae38b7d6f4e61bbb696bbfb3996b2.html">Roles in the Kyma Environment</a>. In some cases, it will still take 5-10 minutes to get access to Kyma Runtime.</p>
 <h3 id="enable-cloud-foundry">Enable Cloud Foundry</h3>
 <p>To use the SAP HANA Cloud service, you can either enable Cloud Foundry for the same subaccount or use a different subaccount, for example, an already existing or trial subaccount.</p>
 <h3 id="install-the-cloud-foundry-cli">Install the Cloud Foundry CLI</h3>
@@ -1122,7 +1122,7 @@ docker build -t cpapp .
 <li>Choose your <strong>Global Account</strong>.</li>
 <li>Choose your <strong>Subaccount</strong>.</li>
 <li>
-<p>On the <strong>Overview</strong> page, under <strong>Kyma Environment</strong>, choose <strong>Link to dashboard</strong>. </p>
+<p>On the <strong>Overview</strong> page, under <strong>Kyma Environment</strong>, choose <strong>Link to dashboard</strong>.</p>
 <p><img alt="Kyma Console" src="../markdown/images/kyma_console_link.png" /></p>
 <p>The Kyma console should open. The console is a web-based administrative UI for Kyma. If not, see the troubleshooting information.</p>
 <details class="info"><summary>Troubleshooting: Not enough permissions to launch the kyma console</summary><p><img alt="response" src="../markdown/images/kyma_console_permissions.png" /></p>
@@ -1481,9 +1481,9 @@ docker push 0.0.0.0:5000/cpapp
 </li>
 <li>
 <p>Run the following line to create an HDI container:</p>
-<div class="highlight"><pre><span></span><code>cds deploy --to hana:cpapp-kyma-hdi
+<div class="highlight"><pre><span></span><code>cds deploy --to hana:cpapp-kyma-db
 </code></pre></div>
-<p>The suffix <code>:cpapp-kyma-hdi</code> tells <code>cds deploy</code> to create an HDI container with name <code>cpapp-kyma-hdi</code>. It also creates a service key with the name <code>cpapp-kyma-hdi-key</code> that you use to access the database in the next section.</p>
+<p>The suffix <code>:cpapp-kyma-db</code> tells <code>cds deploy</code> to create an HDI container with name <code>cpapp-kyma-db</code>. It also creates a service key with the name <code>cpapp-kyma-db-key</code> that you use to access the database in the next section.</p>
 <p>Then it deploys the database tables and the test content.</p>
 <p>It should end with something like:</p>
 <div class="highlight"><pre><span></span><code>  Finalizing...
@@ -1520,7 +1520,7 @@ Application can be stopped.
 </code></pre></div>
 <p>Execute the following commands and check if the output gets right this time:</p>
 <div class="highlight"><pre><span></span><code>docker build -t cpapp-hdi-deployer -f Dockerfile.hdi-deploy .
-docker run --env <span class="nv">VCAP_SERVICES</span><span class="o">=</span><span class="s1">&#39;{&quot;hana&quot;:[{&quot;credentials&quot;: &#39;</span><span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key <span class="p">|</span> sed 1d <span class="k">)</span><span class="s2">&quot;</span><span class="s1">&#39;, &quot;name&quot;: &quot;hana&quot;,&quot;label&quot;:&quot;hana&quot;,&quot;plan&quot;:&quot;hdi-shared&quot;,&quot;tags&quot;:[&quot;hana&quot;]}]}&#39;</span> -t cpapp-hdi-deployer
+docker run --env <span class="nv">VCAP_SERVICES</span><span class="o">=</span><span class="s1">&#39;{&quot;hana&quot;:[{&quot;credentials&quot;: &#39;</span><span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-db cpapp-kyma-db-key <span class="p">|</span> sed 1d <span class="k">)</span><span class="s2">&quot;</span><span class="s1">&#39;, &quot;name&quot;: &quot;hana&quot;,&quot;label&quot;:&quot;hana&quot;,&quot;plan&quot;:&quot;hdi-shared&quot;,&quot;tags&quot;:[&quot;hana&quot;]}]}&#39;</span> -t cpapp-hdi-deployer
 </code></pre></div>
 <h3 id="add-sap-hana-hdi-container-credentials">Add SAP HANA HDI Container Credentials</h3>
 <p>You need to somehow inject the SAP HANA credentials into the CAP application. On Cloud Foundry that is done using an environment variable called <code>VCAP_SERVICES</code> that takes the credentials for all bound services. Kubernetes takes a slightly different approach, it uses secrets, that can be injected into applications as environment variables. But as individual environment variables for each value. Luckily, CAP supports both.</p>
@@ -1537,10 +1537,10 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 </code></pre></div>
 <p>Since you need to take the SAP HANA credentials from Cloud Foundry, it’s easier to stick to the <code>VCAP_SERVICES</code> approach for now.</p>
 <p>So, let's have a look at the credentials that have been created by <code>cds deploy</code>:</p>
-<div class="highlight"><pre><span></span><code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key
+<div class="highlight"><pre><span></span><code>cf service-key cpapp-kyma-db cpapp-kyma-db-key
 </code></pre></div>
 <p>The output looks like this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">Ge</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="err">key</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">hdi</span><span class="mi">-</span><span class="err">key`</span> <span class="kc">f</span><span class="err">or</span> <span class="err">service</span> <span class="err">i</span><span class="kc">nstan</span><span class="err">ce</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">hdi`</span> <span class="err">as</span> <span class="err">MySel</span><span class="kc">f</span><span class="err">...</span>
+<div class="highlight"><pre><span></span><code><span class="err">Ge</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="err">key</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">db</span><span class="mi">-</span><span class="err">key`</span> <span class="kc">f</span><span class="err">or</span> <span class="err">service</span> <span class="err">i</span><span class="kc">nstan</span><span class="err">ce</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">db`</span> <span class="err">as</span> <span class="err">MySel</span><span class="kc">f</span><span class="err">...</span>
 
 <span class="p">{</span>
  <span class="nt">&quot;certificate&quot;</span><span class="p">:</span> <span class="s2">&quot;-----BEGIN CERTIFICATE-----\nMIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3\nd3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD\nQTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT\nMRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j\nb20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB\nCSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97\nnh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt\n43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P\nT19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4\ngdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO\nBgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR\nTLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw\nDQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr\nhMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg\n06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF\nPnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls\nYSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk\nCAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=\n-----END CERTIFICATE-----&quot;</span><span class="p">,</span>
@@ -1564,7 +1564,7 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-hdi-secret</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-db-secret</span>
 <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opaque</span>
 <span class="nt">stringData</span><span class="p">:</span>
   <span class="nt">VCAP_SERVICES</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
@@ -1596,7 +1596,7 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 <li>
 <p>Option A:</p>
 <ol>
-<li>Replace <code>{{CREDENTIALS}}</code> with the JSON output of <code>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key</code> (without the initial line).</li>
+<li>Replace <code>{{CREDENTIALS}}</code> with the JSON output of <code>cf service-key cpapp-kyma-db cpapp-kyma-db-key</code> (without the initial line).</li>
 <li>Create the secret on Kubernetes:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>kubectl apply -f gen/hdi-secret.yaml
@@ -1606,18 +1606,18 @@ user=DE6922EF2F3449E984E2E794456B7CBE_0BR49NOHL4VW9DC8NVZFXRN3O_RT
 <p>Option B:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>node -e <span class="s1">&#39;console.log(process.argv[1].replace(&quot;{{CREDENTIALS}}&quot;, process.argv[2]))&#39;</span> <span class="s2">&quot;</span><span class="k">$(</span>cat gen/hdi-secret.yaml<span class="k">)</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-hdi cpapp-kyma-hdi-key <span class="p">|</span> sed 1d <span class="p">|</span> sed <span class="s1">&#39;s/^/    /&#39;</span><span class="k">)</span><span class="s2">&quot;</span> <span class="p">|</span> kubectl apply -f -
+<div class="highlight"><pre><span></span><code>node -e <span class="s1">&#39;console.log(process.argv[1].replace(&quot;{{CREDENTIALS}}&quot;, process.argv[2]))&#39;</span> <span class="s2">&quot;</span><span class="k">$(</span>cat gen/hdi-secret.yaml<span class="k">)</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-db cpapp-kyma-db-key <span class="p">|</span> sed 1d <span class="p">|</span> sed <span class="s1">&#39;s/^/    /&#39;</span><span class="k">)</span><span class="s2">&quot;</span> <span class="p">|</span> kubectl apply -f -
 </code></pre></div>
 </li>
 <li>
 <p>Look at your uploaded secret:</p>
-<div class="highlight"><pre><span></span><code>kubectl describe secret cpapp-kyma-hdi-secret
+<div class="highlight"><pre><span></span><code>kubectl describe secret cpapp-kyma-db-secret
 </code></pre></div>
 <p>It should be similar to the following output:</p>
 <div class="highlight"><pre><span></span><code>NAME                                    TYPE                                  DATA   AGE
 
 
-Name:         cpapp-kyma-hdi-secret
+Name:         cpapp-kyma-db-secret
 Namespace:    docker-registry
 Labels:       &lt;none&gt;
 Annotations:
@@ -1644,7 +1644,7 @@ VCAP_SERVICES:  2602 bytes
         <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
 <span class="hll">        <span class="nt">envFrom</span><span class="p">:</span>
 </span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">secretRef</span><span class="p">:</span>
-</span><span class="hll">              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-hdi-secret</span>
+</span><span class="hll">              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-db-secret</span>
 </span></code></pre></div>
 <p>This adds all name value pairs in the secret, currently only <code>VCAP_SERVICES</code>, as environment variables to the container of the deployment.</p>
 </li>
@@ -1703,14 +1703,14 @@ cpapp-66b5cb4876-hx5l6               0/2     Init:0/1   0          2s
 </code></pre></div>
 <h2 id="teardown">Teardown</h2>
 <p>If want to quickly delete all artifacts created in this tutorial, execute the following commands:</p>
-<div class="highlight"><pre><span></span><code>cf delete-service-key cpapp-kyma-hdi cpapp-kyma-hdi-key  -f
-cf delete-service cpapp-kyma-hdi -f
+<div class="highlight"><pre><span></span><code>cf delete-service-key cpapp-kyma-db cpapp-kyma-db-key  -f
+cf delete-service cpapp-kyma-db -f
 
 <span class="k">for</span> i <span class="k">in</span> deployment/*.yaml<span class="p">;</span> <span class="k">do</span>
     kubectl delete -f <span class="nv">$i</span>
 <span class="k">done</span>
 
-kubectl delete secret cpapp-kyma-hdi-secret
+kubectl delete secret cpapp-kyma-db-secret
 
 helm uninstall docker-registry
 </code></pre></div>

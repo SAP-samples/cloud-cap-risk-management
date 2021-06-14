@@ -25,7 +25,15 @@ annotate RiskService.Risks with @(
 	UI: {
 		HeaderInfo: {
 			TypeName: 'Risk',
-			TypeNamePlural: 'Risks'
+			TypeNamePlural: 'Risks',
+			Title          : {
+                $Type : 'UI.DataField',
+                Value : title
+            },
+			Description : {
+				$Type: 'UI.DataField',
+				Value: descr
+			}
 		},
 		SelectionFields: [prio],
 		LineItem: [
@@ -45,9 +53,7 @@ annotate RiskService.Risks with @(
 		],
 		FieldGroup#Main: {
 			Data: [
-				{Value: title},
 				{Value: miti_ID},
-				{Value: descr},
 				{
 					Value: prio,
 					Criticality: criticality
