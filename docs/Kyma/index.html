@@ -913,12 +913,14 @@ code .
 <p>The following local software is required:</p>
 <ul>
 <li><code>node</code> (<a href="https://nodejs.org/en/download/">Node.js</a> version 12.x or 14.x is recommended)</li>
+<li><code>@sap/cds-dk</code> NPM package (<code>npm install -g @sap/cds-dk</code>)</li>
 <li><code>docker</code> (for example, <a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> for macOS or Windows)</li>
 <li>A source code editor (<a href="https://code.visualstudio.com/">Visual Studio Code</a> is recommended)</li>
 <li><code>bash</code> or <code>zsh</code> shell to run the command snippets on MacOS or Linux, or <a href="https://gitforwindows.org/">Git Bash</a> for Windows, MinGW, or <a href="https://www.cygwin.com/">Cygwin</a>)</li>
 <li><code>kubectl</code> (<a href="https://kubernetes.io/docs/tasks/tools/">Kubernetes Command Line tool</a>), see this <a href="https://developers.sap.com/tutorials/cp-kyma-download-cli.html">tutorial</a> how to install it</li>
 <li><code>helm</code> (<a href="https://helm.sh/docs/intro/install/">Helm Chart Command Line</a>, not needed if you use an existing docker registry)</li>
 <li><code>cf</code> (<a href="https://docs.cloudfoundry.org/cf-cli/install-go-cli.html">Cloud Foundry Command Line Interface (CLI)</a>)</li>
+<li><code>git</code> (<a href="https://git-scm.com/downloads">Git Downloads</a> )</li>
 <li>(For Windows users only): You have installed the <a href="https://sqlite.org/download.html">SQLite</a> tools for Windows. Find the steps how to install it in the <a href="https://cap.cloud.sap/docs/advanced/troubleshooting#how-do-i-install-sqlite-on-windows">Troubleshooting guide</a> in the CAP documentation.</li>
 </ul>
 <p>If you have a Mac, many of the commands can be installed using Homebrew (<code>brew install ...</code>). For Windows, there's a similar offering called Chocolatey. Refer to the binary installers of the components otherwise.</p>
@@ -973,7 +975,7 @@ code .
 </li>
 <li>
 <p>Create a file named <code>Dockerfile</code> and add the following lines to it:</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
 
 <span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
 <span class="k">COPY</span> gen/srv .
@@ -983,10 +985,16 @@ code .
 <span class="k">USER</span><span class="s"> node</span>
 <span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
 </code></pre></div>
-3. Add <code>sqlite3</code> as project dependency, so you can try out the scenario without an external database service:</p>
-<p><div class="highlight"><pre><span></span><code>npm install --save sqlite3
+</li>
+<li>
+<p>Add <code>sqlite3</code> as project dependency, so you can try out the scenario without an external database service:</p>
+<p>First, the dev dependency to <code>sqlite3</code> needs to be removed and then its added again as a runtime dependency.</p>
+<div class="highlight"><pre><span></span><code>npm uninstall sqlite3
+npm install sqlite3
 </code></pre></div>
-4. Add the following snippet to the <code>package.json</code> file:</p>
+</li>
+<li>
+<p>Add the following snippet to the <code>package.json</code> file:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
   <span class="err">...</span>
@@ -1037,7 +1045,7 @@ Removing intermediate container cb0b32163709
 <ol>
 <li>
 <p>You can run the docker container and look inside its contents:</p>
-<div class="highlight"><pre><span></span><code>docker run -i -t cpapp /bin/bash
+<div class="highlight"><pre><span></span><code>docker run --rm -i -t cpapp /bin/bash
 </code></pre></div>
 <p>This starts a docker container with your image (<code>-t cpapp</code>) and starts the bash shell (<code>/bin/bash</code>) that happens to be part of your base image in an interactive (<code>-i</code>) mode.</p>
 </li>
@@ -1056,7 +1064,7 @@ manifest.yaml  node_modules  package-lock.json  package.json  srv
 <ol>
 <li>
 <p>Run the container:</p>
-<div class="highlight"><pre><span></span><code>docker run -t cpapp
+<div class="highlight"><pre><span></span><code>docker run --rm -t cpapp
 </code></pre></div>
 <p>Without specifying the command, it runs the default command, that is <code>npm start</code>.
 You can try to access the service at <a href="http://localhost:4004">http://localhost:4004</a>, but it doesn't work. It shows a similar error message like this:</p>
@@ -1071,7 +1079,7 @@ localhost refused to connect.
 </li>
 <li>
 <p>Run the container again with the publish parameter:</p>
-<div class="highlight"><pre><span></span><code>docker run -p <span class="m">4004</span>:4004 -t cpapp
+<div class="highlight"><pre><span></span><code>docker run --rm -p <span class="m">4004</span>:4004 -t cpapp
 </code></pre></div>
 <p>This tells docker to expose the port <code>4004</code> of the docker container to the port <code>4004</code> of the host. You could also use a different port of the host, but let's keep it simple.</p>
 <p>Now, you can access the CAP service at <a href="http://localhost:4004">http://localhost:4004</a>.</p>
@@ -1105,7 +1113,7 @@ docker build -t cpapp .
 </li>
 <li>
 <p>Run it locally:</p>
-<div class="highlight"><pre><span></span><code>docker run -p <span class="m">4004</span>:4004 -t cpapp
+<div class="highlight"><pre><span></span><code>docker run --rm -p <span class="m">4004</span>:4004 -t cpapp
 </code></pre></div>
 </li>
 <li>
@@ -1168,6 +1176,14 @@ docker build -t cpapp .
 <li>
 <p>Copy the content of the downloaded <code>kubeconfig.yml</code> into the file <code>cap-kyma-app-config</code>.</p>
 </li>
+<li>
+<p>Make sure that only your user can access the content of the file, that contains your login token.</p>
+</li>
+</ol>
+<p>For example, on Mac or Linux, change the file to be only readable and writable by your user using:</p>
+<div class="highlight"><pre><span></span><code>chmod 0600 ~/.kube/cap-kyma-app-config
+</code></pre></div>
+<ol>
 <li>
 <p>Set the new config file for the running shell process:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">KUBECONFIG</span><span class="o">=</span>~/.kube/cap-kyma-app-config
@@ -1520,7 +1536,7 @@ Application can be stopped.
 </code></pre></div>
 <p>Execute the following commands and check if the output gets right this time:</p>
 <div class="highlight"><pre><span></span><code>docker build -t cpapp-hdi-deployer -f Dockerfile.hdi-deploy .
-docker run --env <span class="nv">VCAP_SERVICES</span><span class="o">=</span><span class="s1">&#39;{&quot;hana&quot;:[{&quot;credentials&quot;: &#39;</span><span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-db cpapp-kyma-db-key <span class="p">|</span> sed 1d <span class="k">)</span><span class="s2">&quot;</span><span class="s1">&#39;, &quot;name&quot;: &quot;hana&quot;,&quot;label&quot;:&quot;hana&quot;,&quot;plan&quot;:&quot;hdi-shared&quot;,&quot;tags&quot;:[&quot;hana&quot;]}]}&#39;</span> -t cpapp-hdi-deployer
+docker run --rm --env <span class="nv">VCAP_SERVICES</span><span class="o">=</span><span class="s1">&#39;{&quot;hana&quot;:[{&quot;credentials&quot;: &#39;</span><span class="s2">&quot;</span><span class="k">$(</span>cf service-key cpapp-kyma-db cpapp-kyma-db-key <span class="p">|</span> sed 1d <span class="k">)</span><span class="s2">&quot;</span><span class="s1">&#39;, &quot;name&quot;: &quot;hana&quot;,&quot;label&quot;:&quot;hana&quot;,&quot;plan&quot;:&quot;hdi-shared&quot;,&quot;tags&quot;:[&quot;hana&quot;]}]}&#39;</span> -t cpapp-hdi-deployer
 </code></pre></div>
 <h3 id="add-sap-hana-hdi-container-credentials">Add SAP HANA HDI Container Credentials</h3>
 <p>You need to somehow inject the SAP HANA credentials into the CAP application. On Cloud Foundry that is done using an environment variable called <code>VCAP_SERVICES</code> that takes the credentials for all bound services. Kubernetes takes a slightly different approach, it uses secrets, that can be injected into applications as environment variables. But as individual environment variables for each value. Luckily, CAP supports both.</p>
