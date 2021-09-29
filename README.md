@@ -11,7 +11,7 @@ If you want to start from a specific tutorial module, get the name of its branch
 ```bash
 git clone https://github.com/SAP-samples/cloud-cap-risk-management
 cd cloud-cap-risk-management
-checkout <branch>
+git checkout <branch>
 ```
 
 ## Known Issues
