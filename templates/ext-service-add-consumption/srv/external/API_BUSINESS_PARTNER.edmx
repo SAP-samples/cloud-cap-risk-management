@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
- <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
- </edmx:Reference>
- <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
- </edmx:Reference>
- <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
- </edmx:Reference>
  <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
   <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
- </edmx:Reference>
- <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
- </edmx:Reference>
- <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
  </edmx:Reference>
  <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
   <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
  </edmx:Reference>
+ <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+ </edmx:Reference>
  <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
   <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+ </edmx:Reference>
+ <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
  </edmx:Reference>
  <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
   <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
  </edmx:Reference>
- <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+ <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
  </edmx:Reference>
  <edmx:DataServices m:DataServiceVersion="2.0">
   <Schema Namespace="API_BUSINESS_PARTNER" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+   <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
    <EntityType Name="A_AddressEmailAddressType" sap:label="Email Address" sap:content-version="1">
     <Key>
      <PropertyRef Name="AddressID"/>
@@ -890,6 +891,7 @@
      </Documentation>
     </Property>
     <Property Name="BusinessPartnerBirthplaceName" Type="Edm.String" MaxLength="40" sap:label="Birthplace" sap:quickinfo="Birthplace of business partner"/>
+    <Property Name="BusinessPartnerDeathDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Death date" sap:quickinfo="Date of death of business partner"/>
     <Property Name="BusinessPartnerIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Block for Business Partner">
      <Documentation>
       <Summary>If the business partner is blocked centrally, certain activities cannot be executed.</Summary>
@@ -1626,6 +1628,30 @@
       <LongDescription>To delete this data, you have to run the archiving program for Accounts Receivable or Payable. This program will archive all master records marked for deletion provided that there is no dependent data in them.Deletion flags can also be used in the program for deleting master data. You should, however, run this program only to delete test data prior to production startup.</LongDescription>
      </Documentation>
     </Property>
+    <Property Name="ExpressTrainStationName" Type="Edm.String" MaxLength="25" sap:label="Express station" sap:quickinfo="Express train station">
+     <Documentation>
+      <Summary>The name of the train station that the customer uses to receive express deliveries.</Summary>
+      <LongDescription>The express train station may differ from the station that the customer uses for routine deliveries.</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="TrainStationName" Type="Edm.String" MaxLength="25" sap:label="Train station">
+     <Documentation>
+      <Summary>The name of the train station that the customer uses for receiving routine deliveries.</Summary>
+      <LongDescription>The train station may differ from the station that the customer uses for express deliveries.</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="CityCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="City Code">
+     <Documentation>
+      <Summary>This key is used for classifying cities from a tax point of view. This is a finer sub-division than the county code.</Summary>
+      <LongDescription>Currently the key is used only in the USA for handling city tax.</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="County" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="County Code">
+     <Documentation>
+      <Summary>Key used to classify cities from the point of view of taxes.</Summary>
+      <LongDescription>Currently the county code is used in the USA for handling county tax, and in Denmark to define the municipality number of the employee's first place of residence.</LongDescription>
+     </Documentation>
+    </Property>
     <NavigationProperty Name="to_CustomerCompany" Relationship="API_BUSINESS_PARTNER.assoc_BB9464C0EE976A75A05F937B73A26763" FromRole="FromRole_assoc_BB9464C0EE976A75A05F937B73A26763" ToRole="ToRole_assoc_BB9464C0EE976A75A05F937B73A26763"/>
     <NavigationProperty Name="to_CustomerSalesArea" Relationship="API_BUSINESS_PARTNER.assoc_70A8B5CCADF265E097DC86BC7B699B31" FromRole="FromRole_assoc_70A8B5CCADF265E097DC86BC7B699B31" ToRole="ToRole_assoc_70A8B5CCADF265E097DC86BC7B699B31"/>
     <NavigationProperty Name="to_CustomerTaxGrouping" Relationship="API_BUSINESS_PARTNER.assoc_0DE5F89839F0BD9497F35D85212F05CE" FromRole="FromRole_assoc_0DE5F89839F0BD9497F35D85212F05CE" ToRole="ToRole_assoc_0DE5F89839F0BD9497F35D85212F05CE"/>
@@ -1649,7 +1675,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="APARToleranceGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tolerance group" sap:quickinfo="Tolerance group for the business partner/G/L account">
+    <Property Name="APARToleranceGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tolerance Group" sap:quickinfo="Tolerance Group for Business Partner/G/L Account">
      <Documentation>
       <Summary>Contains settings that control how the system handles differences between the invoice amount and the amount received from a customer or the amount paid to a supplier. A tolerance group is unique within a company code.</Summary>
       <LongDescription/>
@@ -1682,13 +1708,13 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="CollectiveInvoiceVariant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Coll.invoice variant" sap:quickinfo="Collective invoice variant">
+    <Property Name="CollectiveInvoiceVariant" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Coll.Invoice Variant" sap:quickinfo="Collective Invoice Variant">
      <Documentation>
       <Summary>Indicator which specifies at what intervals the collective invoices are to be created for the customer.</Summary>
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="CustomerAccountNote" Type="Edm.String" MaxLength="30" sap:label="Account memo" sap:quickinfo="Memo">
+    <Property Name="CustomerAccountNote" Type="Edm.String" MaxLength="30" sap:label="Account Memo" sap:quickinfo="Memo">
      <Documentation>
       <Summary>Internal memo of the accounting department.</Summary>
       <LongDescription>The memo serves only as information on special features of the customer/vendor.</LongDescription>
@@ -1718,7 +1744,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="InterestCalculationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last key date" sap:quickinfo="Key date of the last interest calculation">
+    <Property Name="InterestCalculationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Key Date" sap:quickinfo="Key Date of Last Interest Calculation">
      <Documentation>
       <Summary>The date in this field displays the last time the interest calculation program processed this account. This is generally the upper limit of the last interest run.</Summary>
       <LongDescription>Generally, this date is automatically maintained by the program (batch input). A manual entry in this field should only be made if an error has occurred or when implementing the interest calculation.</LongDescription>
@@ -1730,13 +1756,13 @@
       <LongDescription>Date of last interest calculation: 3/31.+ 01 month interest calculation frequency= 4/30 upper limit for the current interest runThe calculation period specified as a report parameter determines whether an account is included in an interest run.The upper limit of the interest run is calculated as in the above example and compared with the upper limit of the calculation entered in the interest run (report parameter). If the calculated upper limit is after the calculation period, the account is not included in interest calculation.If you maintain the interest calculation frequency in the account master record, this entry is used to calculate the upper limit. If not, the interest calculation frequency entered for the interest indicator is used.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="IsToBeLocallyProcessed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Local processing" sap:quickinfo="Indicator: Local processing?">
+    <Property Name="IsToBeLocallyProcessed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Local Processing" sap:quickinfo="Indicator: Local Processing?">
      <Documentation>
       <Summary>Indicates that payment transactions and dunning notices are created for the branch.</Summary>
       <LongDescription>Normally automatic payment transactions and dunning notices are created for the head office.NoteSelect this indicator only if this account is a head office account.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="ItemIsToBePaidSeparately" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Individual pmnt" sap:quickinfo="Indicator: Pay all items separately ?">
+    <Property Name="ItemIsToBePaidSeparately" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Individual Payment" sap:quickinfo="Indicator: Pay All Items Separately?">
      <Documentation>
       <Summary>If this indicator is set, every customer/vendor open item is paid separately during automatic payment transactions. This means that open items are not grouped together for payment.</Summary>
       <LongDescription/>
@@ -1748,7 +1774,7 @@
       <LongDescription>The system uses a standard sort sequence for displaying line items. Among other things, it sorts the items according to the content of the Allocation field. This field can be filled either manually or automatically (by the system) when a document line item is entered.For this purpose, the system requires rules that determine which information is to be taken from the document header or from the document line item and placed in the field. The rules can be stored in the master record of an account which enables you to determine the standard sort sequence on an account-specific basis.NoteField information from another document line item cannot be adopted into the field of a particular item.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="PaymentBlockingReason" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment block" sap:quickinfo="Block Key for Payment">
+    <Property Name="PaymentBlockingReason" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Block" sap:quickinfo="Block Key for Payment">
      <Documentation>
       <Summary>Block key (enqueue key) that is used to block an open item or an account to payment transactions.</Summary>
       <LongDescription>You can use the block key as described below.Automatic Payment TransactionsIn automatic payment transactions, the block takes effect when it is entered in the system as follows:In the master recordIn the documentIf you enter the block in the master record then all open items for this account are contained in the exception list.The following block keys have a special meaning in the master record:The block key * has the effect that all items of the account are skipped in automatic payment transactions.The block key + has the effect that all items are skipped in which a payment method was not entered explicitly.The block key A is always set automatically when a down payment is entered. Therefore, you must not delete the block key A or use it for other purposes.Whether a block key can be set or removed in payment proposal processing depends on the attribute Changeable in payment proposal of the block key.Manual PaymentsManual payments are only affected by a block key in the document if you set the attribute Blocked for manual payments in the block key.A block key that was set in the master record does not have any effect on manual payments. You can have the system issue a warning message in that case. To do so, you have to make system settings. Set up message 671 of work area F5 in the configuration step Change Message Control, udter Finance -&gt; Localization -&gt; General Settings.Release for PaymentIf you want to use a block key for payment release in accounting, then you have to set the attribute Not Changeable for the block key. You make this setting in the configuration step Control Payment Block Reasons, under Finance -&gt; Accounts Payable -&gt; General Payment Settings.</LongDescription>
@@ -1784,7 +1810,7 @@
       <LongDescription>For special postings (for example, down payment or bill of exchange), this account is replaced by another account (for example, 'down payments received' instead of 'receivables').The replacement takes place due to the special G/L indicator which you must specify for these types of postings.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="RecordPaymentHistoryIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Record pmnt history" sap:quickinfo="Indicator: Record Payment History ?">
+    <Property Name="RecordPaymentHistoryIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Record Pmnt History" sap:quickinfo="Indicator: Record Payment History ?">
      <Documentation>
       <Summary>Indicator that the payment history of the customer is to be recorded.</Summary>
       <LongDescription>The amount and number of payments are then recorded per calendar month, as well as the average days in arrears.Information about cash discount payments and net payments is recorded separately.The indicator should not be set for one-time accounts and accounts which are paid automatically (bank collection or bank bill in Germany, bill of exchange payment request in France).You can only carry out evaluation of the payment history, for example, with the report for customer evaluation with OI listing, if you have selected this field.</LongDescription>
@@ -1802,19 +1828,19 @@
       <LongDescription>To delete this data, you have to run the archiving program for Accounts Receivable or Payable. This program will archive all master records marked for deletion provided that there is no dependent data in them.This deletion flag cannot be used in the program that deletes master data. You should, however, run this program only to delete test data prior to production startup.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="CashPlanningGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Planning group">
+    <Property Name="CashPlanningGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Planning Group">
      <Documentation>
       <Summary>In cash management, customers and vendors are allocated to planning groups by means of an entry made in the master record.</Summary>
       <LongDescription>You can define these planning groups in Customizing or the Implementation Guide (you will need to ensure that they are all the same length). In order to improve the liquidity forecast display for major customers and vendors, it can be advisable to enter their account number as the planning group.For the planning groups themselves a naming convention should be set up to improve liquidity forecasting. In the following examples, the customer planning groups begin with an "R" for receipts, and the vendor planning groups begin with an "E" for expenses.R1  Customers paying by bank collectionR2  Other domestic customersR3  Customers abroadR4  Affiliated company customersR5  High risk customersR6  Major customersR7  Rental incomeR8  Repayment of loans...E1  Domestic vendorsE2  Vendors abroadE3  Affiliated company vendorsE4  Major vendorsE5  Personnel costsE6  TaxesE7  Investments...</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="KnownOrNegotiatedLeave" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Knwn/negotiat.leave" sap:quickinfo="Short Key for Known/Negotiated Leave">
+    <Property Name="KnownOrNegotiatedLeave" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Known/Negotiat.Leave" sap:quickinfo="Short Key for Known/Negotiated Leave">
      <Documentation>
       <Summary>With the key specified here, you can refer to known/negotiated leave.</Summary>
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="ValueAdjustmentKey" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Value adjustment" sap:quickinfo="Value Adjustment Key">
+    <Property Name="ValueAdjustmentKey" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Value Adjustment" sap:quickinfo="Value Adjustment Key">
      <Documentation>
       <Summary>The value adjustment key controls the way the open items are processed during individual value adjustment.</Summary>
       <LongDescription/>
@@ -1905,7 +1931,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="DunningRecipient" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Dunn.recipient" sap:quickinfo="Account number of the dunning recipient">
+    <Property Name="DunningRecipient" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Dunning Recipient" sap:quickinfo="Account Number of the Dunning Recipient">
      <Documentation>
       <Summary>Account number of the customer who is to be the recipient of the dunning letters.</Summary>
       <LongDescription>The account number is only needed if dunning letters are not sent to the customer who owes the  receivables.</LongDescription>
@@ -1917,13 +1943,13 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="LegDunningProcedureOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Legal dunn.proc.from" sap:quickinfo="Date of the legal dunning proceedings">
+    <Property Name="LegDunningProcedureOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Legal Dunn.Proc.From" sap:quickinfo="Date of the Legal Dunning Proceedings">
      <Documentation>
       <Summary>Date on which a legal dunning procedure was initiated.</Summary>
       <LongDescription>The printing of dunning notices in the legal dunning procedure generates an internal notice about any further account movements. A dunning notice is not created for the customer.If the Legal dunning procedure field in the master record contains a date, this means that the account is involved in a legal dunning procedure. The relationship between this date and the dunning date does not affect how the account is processed.The printing of account movements in the legal dunning procedure differs from the normal printing of dunning notices as follows:You must specify a separate form for your dunning procedure in Customizing. For more information, see Customizing (IMG) under Dunning Forms.The dunning program also displays text element 520 "Legal dunning procedure". This makes it possible to display the date of the legal dunning procedure from the master record.The program also displays the documents blocked for dunning and those with a payment method (automatic debit, bank direct debit).Although dunning notices are printed, the dunning level does not change in the master record or in the items. New dunning level = old dunning level.The program only updates the date of the last dunning run.Enter the date manually.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="DunningClerk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Dunning clerk">
+    <Property Name="DunningClerk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Dunning Clerk">
      <Documentation>
       <Summary>Identification code for the accounting clerk dealing with dunning letters.</Summary>
       <LongDescription>Using this identification code, the accounting clerk whose name is printed on the dunning letters is determined.If this field is not filled, then the entry from the Accounting clerk field is used.</LongDescription>
@@ -2003,7 +2029,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="CustomerABCClassification" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="ABC classification" sap:quickinfo="Customer classification (ABC analysis)"/>
+    <Property Name="CustomerABCClassification" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="ABC Classification" sap:quickinfo="Customer classification (ABC analysis)"/>
     <Property Name="CustomerAccountAssignmentGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Acct Assmt Grp Cust." sap:quickinfo="Account Assignment Group for this Customer">
      <Documentation>
       <Summary>The account assignment group to which the system automatically posts the sales document.</Summary>
@@ -2055,7 +2081,7 @@
     <Property Name="IncotermsLocation2" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 2">
      <Documentation>
       <Summary>Provides additional information for the Incoterms. This field is only available for C-Clauses (if customized appropriately). Note the following for the incoterms versions below:</Summary>
-      <LongDescription>No Version:This field is disabledIncoterm Version 2000This field is disabled as part of standard delivery unless a customer decides to enable it by the way of Customizing for Sales and Distribution under Master Data -&gt; Business Partners -&gt; Customers -&gt; Billing Document -&gt; Incoterms -&gt; Map Incoterms to Versions.Incoterm Version 2010For this version, the field represents:Sea and inland waterway transport - Port of DestinationAny mode of transport - Place of Destination2010 Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description Location 2CPT Carriage Paid To Place of DestinationCIP Carriage &amp; Insurance Paid To Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 2CFR Cost &amp; Freight Port of DestinationCIF Cost Insurance &amp; Freight Port of Destination</LongDescription>
+      <LongDescription>No Version:This field is disabledIncoterm Version 2000This field is disabled as part of standard delivery unless a customer decides to enable it by the way of Customizing for Sales and Distribution under Master Data -&gt; Business Partners -&gt; Customers -&gt; Billing Document -&gt; Incoterms -&gt; Map Incoterms to Versions.Incoterm Version 2010For this version, the field represents:Sea and inland waterway transport - Port of ShipmentAny mode of transport - Place of Delivery2010 Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterm Incoterm Description Location 2CPT Carriage Paid To Place of DeliveryCIP Carriage &amp; Insurance Paid To Place of DeliveryGroup 2: Rules for sea and inland waterwaysIncoterm Incoterm Description Location 2CFR Cost &amp; Freight Port of ShipmentCIF Cost Insurance &amp; Freight Port of Shipment</LongDescription>
      </Documentation>
     </Property>
     <Property Name="IncotermsVersion" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Incoterms Version">
@@ -2067,7 +2093,7 @@
     <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 1">
      <Documentation>
       <Summary>Provides additional information for the primary Incoterm. For Incoterms 2010, this field represents:</Summary>
-      <LongDescription>1. For sea and inland waterway transport - Port of Shipment2. For any mode of transport - Place of Delivery 2010Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description  Location 1 EXW Ex Works  Place of DeliveryFCA Free Carrier  Place of DeliveryCPT Carriage Paid To  Place of DestinationCIP Carriage &amp; Insurance Paid To  Place of DestinationDAF Delivered at Frontier  Place of DeliveryDDP Delivered Duty Paid  Place of DestinationDDU Delivered Duty Unpaid  Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 1 FAS Free Alongside Ship Port of ShipmentFOB Free On Board Port of ShipmentCFR Cost &amp; Freight Port of DestinationCIF Cost Insurance &amp; Freight Port of DestinationDEQ Delivered Eq Quay (Duty Paid) Port of DestinationDES Delivered Ex Ship Port of DestinationIf the primary incoterm is specified as FOB “Free on Board”, the second field provides details of the port from which the delivery leaves, such as FOB Boston.</LongDescription>
+      <LongDescription>1. For sea and inland waterway transport - Port of Shipment or Port of Destination2. For any mode of transport - Place of Delivery 2010 or Place of DestinationFor non-C clauses, both costs and risk are transferred from the seller to the buyer at location 1.For C clauses, the costs are transferred at location 1 and the risk is transferred at location 2.Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterm Incoterm Description  Location 1 EXW Ex Works  Place of DeliveryFCA Free Carrier  Place of DeliveryCPT Carriage Paid To  Place of DestinationCIP Carriage &amp; Insurance Paid To  Place of DestinationDAF Delivered at Frontier  Place of DeliveryDDP Delivered Duty Paid  Place of DestinationDDU Delivered Duty Unpaid  Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterm Incoterm Description Location 1 FAS Free Alongside Ship Port of ShipmentFOB Free On Board Port of ShipmentCFR Cost &amp; Freight Port of DestinationCIF Cost Insurance &amp; Freight Port of DestinationDEQ Delivered Eq Quay (Duty Paid) Port of DestinationDES Delivered Ex Ship Port of DestinationIf the primary incoterm is specified as FOB “Free on Board”, the second field provides details of the port from which the delivery leaves, such as FOB Boston.</LongDescription>
      </Documentation>
     </Property>
     <Property Name="DeletionIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Del.ID SlsArea" sap:quickinfo="Deletion flag for customer (sales level)">
@@ -2316,7 +2342,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="CustomerTaxGroupingCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax category" sap:quickinfo="Category indicator for tax codes">
+    <Property Name="CustomerTaxGroupingCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Tax Category" sap:quickinfo="Category Indicator for Tax Codes">
      <Documentation>
       <Summary>This indicator is used to allocate customers and vendors to different tax categories. The system evaluates this information during document entry to assist users in selecting the tax code.</Summary>
       <LongDescription/>
@@ -2463,20 +2489,20 @@
       <LongDescription>Withholding tax types classify particular features of a withholding tax including:The time at which the withholding tax is postedThe basis on which the base amount is calculatedThe basis for accumulation (if applicable)Withholding tax types are to be distinguished from withholding tax codes, to which are allocated the withholding tax percentage rate example.Whether a withholding tax can be defined as an existing type by means of a new code, or if a new type needs to be defined will depend on the type of transaction (see below).Note that a business transaction can only be assigned one withholding tax code per withholding tax type. If the business transaction is subject to several withholding taxes simultaneously, these must be represented by different types.This is the case in Argentina for example, where up to four kinds of withholding tax per business transaction are possible.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/tax code" sap:quickinfo="Withholding tax code">
+    <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/Tax Code" sap:quickinfo="Withholding Tax Code">
      <Documentation>
       <Summary>One or more "withholding tax codes" are assigned to each withholding tax type. One of the things these codes determine is the various percentage rates for the withholding tax type.</Summary>
       <LongDescription>Note that when processing a business transaction, no more than one withholding tax code can be assigned per withholding tax type. If the business transaction is subject to more than one withholding taxes, these must be represented in the system by defining various withholding tax types.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="WithholdingTaxAgent" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="With/tax agent" sap:quickinfo="Indicator: Withholding tax agent?"/>
-    <Property Name="ObligationDateBegin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="W/tax obligated from" sap:quickinfo="Obligated to withhold tax from">
+    <Property Name="WithholdingTaxAgent" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="WTax Agent" sap:quickinfo="Indicator: Withholding Tax Agent?"/>
+    <Property Name="ObligationDateBegin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="W/Tax Obligated Frm" sap:quickinfo="Obligated to Withhold Tax From">
      <Documentation>
       <Summary>Date from which:</Summary>
       <LongDescription>The company code is obligated to withhold tax for the given withholding tax type.This date must be entered in Customizing under the withholding tax information for the company code.The customer is obligated to withhold tax for the withholding tax type.This date must be defined in the customer master record.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="ObligationDateEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Oblig.to w/tax until" sap:quickinfo="Obligated to withhold tax until">
+    <Property Name="ObligationDateEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Oblig.to W/Tax Until" sap:quickinfo="Obligated to Withhold Tax Until">
      <Documentation>
       <Summary>Date to which:</Summary>
       <LongDescription>The company code is obligated to withhold tax for the withholding tax type.This date must be entered in Customizing under the withholding tax information for the company code.The customer is obigated to withhold tax for the withholding tax type.</LongDescription>
@@ -2488,31 +2514,31 @@
       <LongDescription>This number must be specified in Customizing either:(a) As part of the withholding tax information defined for the company code, or(b) As part of the withholding tax information defined in the customer or vendor master record.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="WithholdingTaxCertificate" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Exemption number" sap:quickinfo="Exemption certificate number">
+    <Property Name="WithholdingTaxCertificate" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Exemption Number" sap:quickinfo="Exemption Certificate Number">
      <Documentation>
       <Summary>Numbered assigned by the relevant authorities for exemption from withholding tax.</Summary>
       <LongDescription>This number must be entered in the system as follows:In the vendor master record in the case of vendorsFor customers, in Customizing under the settings for withholding tax information for the company code per withholding tax type.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="WithholdingTaxExmptPercent" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Exemption rate">
+    <Property Name="WithholdingTaxExmptPercent" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Exemption Rate">
      <Documentation>
       <Summary>Rate of exemption from withholding tax.</Summary>
       <LongDescription>Those persons/activities subject to withholding tax can be exempted from withholding tax up to the percentage rate you enter here. This exemption rate refers to the withholding tax amount itself and not to the whole amount liable to withholding tax (withholding tax base amount).The gross amount of an invoice is 100.00 and the withholding tax base amount is defined as gross. The withholding tax rate is 10% meaning that the withholding tax amount is 10.00. Given an exemption rate of 30%, the withholding tax amount is reduced to 7.00.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="ExemptionDateBegin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption start date" sap:quickinfo="Date on which exemption begins">
+    <Property Name="ExemptionDateBegin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption Start Date" sap:quickinfo="Date on Which Exemption Begins">
      <Documentation>
       <Summary>Date from which withholding tax exemption applies.</Summary>
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="ExemptionDateEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption end date" sap:quickinfo="Date on which exemption ends">
+    <Property Name="ExemptionDateEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption End Date" sap:quickinfo="Date on Which Exemption Ends">
      <Documentation>
       <Summary>Date on which withholding tax exemption expires.</Summary>
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="ExemptionReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Exemption reason" sap:quickinfo="Reason for exemption">
+    <Property Name="ExemptionReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Exemption Reason" sap:quickinfo="Reason for Exemption">
      <Documentation>
       <Summary>Indicator used to classify different types of exemption from liability to a particular withholding tax.</Summary>
       <LongDescription>These indicators can be defined per withholding tax type in the vendor master record.</LongDescription>
@@ -2618,7 +2644,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="AlternativePayeeAccountNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Alternative payee" sap:quickinfo="Account Number of the Alternative Payee">
+    <Property Name="AlternativePayeeAccountNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Alternative Payee" sap:quickinfo="Account Number of the Alternative Payee">
      <Documentation>
       <Summary>The account number of the vendor with whom automatic payment transactions are carried out.</Summary>
       <LongDescription>The field is only needed if payments are not to be made directly to the vendor to whom the payable is owed. The same applies to bank collections of receivables.The specification in this field applies to all company codes. There is a further field in which every company code can enter an alternative payee separately. If both fields are filled, the company code specification has priority.</LongDescription>
@@ -2675,7 +2701,7 @@
       <LongDescription>The VAT registration number is used within the EU for tax-exempt deliveries for the "EC sales list". The check rules are defined for each EU country and cannot be changed.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="BirthDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of birth" sap:quickinfo="Date of birth of the person subject to withholding tax"/>
+    <Property Name="BirthDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Birth" sap:quickinfo="Date of Birth of the Person Subject to Withholding Tax"/>
     <Property Name="ConcatenatedInternationalLocNo" Type="Edm.String" MaxLength="20" sap:label="Int. Location No." sap:quickinfo="Cocatenated International Location Number" sap:creatable="false" sap:updatable="false"/>
     <Property Name="DeletionIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deletion flag" sap:quickinfo="Central Deletion Flag for Master Record">
      <Documentation>
@@ -2831,7 +2857,7 @@
      </Documentation>
     </Property>
     <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Company Name" sap:quickinfo="Name of Company Code or Company" sap:creatable="false" sap:updatable="false"/>
-    <Property Name="PaymentBlockingReason" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment block" sap:quickinfo="Block Key for Payment">
+    <Property Name="PaymentBlockingReason" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Block" sap:quickinfo="Block Key for Payment">
      <Documentation>
       <Summary>Block key (enqueue key) that is used to block an open item or an account to payment transactions.</Summary>
       <LongDescription>You can use the block key as described below.Automatic Payment TransactionsIn automatic payment transactions, the block takes effect when it is entered in the system as follows:In the master recordIn the documentIf you enter the block in the master record then all open items for this account are contained in the exception list.The following block keys have a special meaning in the master record:The block key * has the effect that all items of the account are skipped in automatic payment transactions.The block key + has the effect that all items are skipped in which a payment method was not entered explicitly.The block key A is always set automatically when a down payment is entered. Therefore, you must not delete the block key A or use it for other purposes.Whether a block key can be set or removed in payment proposal processing depends on the attribute Changeable in payment proposal of the block key.Manual PaymentsManual payments are only affected by a block key in the document if you set the attribute Blocked for manual payments in the block key.A block key that was set in the master record does not have any effect on manual payments. You can have the system issue a warning message in that case. To do so, you have to make system settings. Set up message 671 of work area F5 in the configuration step Change Message Control, udter Finance -&gt; Localization -&gt; General Settings.Release for PaymentIf you want to use a block key for payment release in accounting, then you have to set the attribute Not Changeable for the block key. You make this setting in the configuration step Control Payment Block Reasons, under Finance -&gt; Accounts Payable -&gt; General Payment Settings.</LongDescription>
@@ -2876,13 +2902,13 @@
       <LongDescription>To use this function in automatic payment transactions, you have toenter the customer account number in the vendor master record,enter the vendor account number in the customer master record, andselect the "Clearing with vendor" indicator in the customer master record.If this indicator is set, items belonging to the customer account will be included in any dunning run.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="IsToBeLocallyProcessed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Local processing" sap:quickinfo="Indicator: Local processing?">
+    <Property Name="IsToBeLocallyProcessed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Local Processing" sap:quickinfo="Indicator: Local Processing?">
      <Documentation>
       <Summary>Indicates that payment transactions and dunning notices are created for the branch.</Summary>
       <LongDescription>Normally automatic payment transactions and dunning notices are created for the head office.NoteSelect this indicator only if this account is a head office account.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="ItemIsToBePaidSeparately" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Individual pmnt" sap:quickinfo="Indicator: Pay all items separately ?">
+    <Property Name="ItemIsToBePaidSeparately" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Individual Payment" sap:quickinfo="Indicator: Pay All Items Separately?">
      <Documentation>
       <Summary>If this indicator is set, every customer/vendor open item is paid separately during automatic payment transactions. This means that open items are not grouped together for payment.</Summary>
       <LongDescription/>
@@ -2900,7 +2926,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="CheckPaidDurationInDays" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Check cashing time" sap:quickinfo="Probable time until check is paid">
+    <Property Name="CheckPaidDurationInDays" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Check Cashing Time" sap:quickinfo="Probable Time Until Check Is Paid">
      <Documentation>
       <Summary>Number of days which usually pass until the vendor has cashed your check.</Summary>
       <LongDescription>During automatic payment transactions, the system calculates the value date for check payments using this information and stores the date in the line item. The date is calculated as follows:Value date = posting date + check cashing timeIn Cash Management, the value date is used as information about the expected cash outflow.</LongDescription>
@@ -2936,7 +2962,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="InterestCalculationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last key date" sap:quickinfo="Key date of the last interest calculation">
+    <Property Name="InterestCalculationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Key Date" sap:quickinfo="Key Date of Last Interest Calculation">
      <Documentation>
       <Summary>The date in this field displays the last time the interest calculation program processed this account. This is generally the upper limit of the last interest run.</Summary>
       <LongDescription>Generally, this date is automatically maintained by the program (batch input). A manual entry in this field should only be made if an error has occurred or when implementing the interest calculation.</LongDescription>
@@ -2966,19 +2992,19 @@
       <LongDescription>The system uses a standard sort sequence for displaying line items. Among other things, it sorts the items according to the content of the Allocation field. This field can be filled either manually or automatically (by the system) when a document line item is entered.For this purpose, the system requires rules that determine which information is to be taken from the document header or from the document line item and placed in the field. The rules can be stored in the master record of an account which enables you to determine the standard sort sequence on an account-specific basis.NoteField information from another document line item cannot be adopted into the field of a particular item.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="APARToleranceGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tolerance group" sap:quickinfo="Tolerance group for the business partner/G/L account">
+    <Property Name="APARToleranceGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tolerance Group" sap:quickinfo="Tolerance Group for Business Partner/G/L Account">
      <Documentation>
       <Summary>Contains settings that control how the system handles differences between the invoice amount and the amount received from a customer or the amount paid to a supplier. A tolerance group is unique within a company code.</Summary>
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="SupplierCertificationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Certification Date" sap:quickinfo="Certification date">
+    <Property Name="SupplierCertificationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Certification Date">
      <Documentation>
       <Summary>US government requirement.</Summary>
       <LongDescription>Date field in which to enter certification date for small companies run by women or minorities. This certificate must be renewed every two years.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="SupplierAccountNote" Type="Edm.String" MaxLength="30" sap:label="Account memo" sap:quickinfo="Memo">
+    <Property Name="SupplierAccountNote" Type="Edm.String" MaxLength="30" sap:label="Account Memo" sap:quickinfo="Memo">
      <Documentation>
       <Summary>Internal memo of the accounting department.</Summary>
       <LongDescription>The memo serves only as information on special features of the customer/vendor.</LongDescription>
@@ -2996,19 +3022,19 @@
       <LongDescription>To delete this data, you have to run the archiving program for Accounts Receivable or Payable. This program will archive all master records marked for deletion provided that there is no dependent data in them.This deletion flag cannot be used in the program that deletes master data. You should, however, run this program only to delete test data prior to production startup.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="CashPlanningGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Planning group">
+    <Property Name="CashPlanningGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Planning Group">
      <Documentation>
       <Summary>In cash management, customers and vendors are allocated to planning groups by means of an entry made in the master record.</Summary>
       <LongDescription>You can define these planning groups in Customizing or the Implementation Guide (you will need to ensure that they are all the same length). In order to improve the liquidity forecast display for major customers and vendors, it can be advisable to enter their account number as the planning group.For the planning groups themselves a naming convention should be set up to improve liquidity forecasting. In the following examples, the customer planning groups begin with an "R" for receipts, and the vendor planning groups begin with an "E" for expenses.R1  Customers paying by bank collectionR2  Other domestic customersR3  Customers abroadR4  Affiliated company customersR5  High risk customersR6  Major customersR7  Rental incomeR8  Repayment of loans...E1  Domestic vendorsE2  Vendors abroadE3  Affiliated company vendorsE4  Major vendorsE5  Personnel costsE6  TaxesE7  Investments...</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="IsToBeCheckedForDuplicates" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Check double invoice" sap:quickinfo="Check Flag for Double Invoices or Credit Memos">
+    <Property Name="IsToBeCheckedForDuplicates" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Check Double Invoice" sap:quickinfo="Check Flag for Double Invoices or Credit Memos">
      <Documentation>
       <Summary>When incoming invoices are entered or when memos are entered in Financial Accounting (FI), the system checks whether an invoice or credit memo has already been entered for the same date.</Summary>
       <LongDescription>Checking Logistics DocumentsThe system checks whether the invoice documents have already been entered in the Logistics invoice verification. For this, the system checks invoices that have been held or parked or that contain errors, or invoices that were entered for invoice verification in the background. The check is performed only if you specify the reference document number when you enter the invoices.When checking for duplicate invoices, the system compares the following specified characteristics:VendorCurrencyCompany CodeGross Invoice AmountReference Document NumberInvoice Document DateIf all of these characteristics are the same, the system issues a message for which you can change the message type in Customizing.When you enter credit memos or subsequent adjustments, the system does not check for duplicate invoices.Exception: For Argentina, invoices and credit memos are checked for duplicates.No message is issued if you enter a document that has previously been reversed.In Customizing for Logistics Invoice Verification under Incoming Invoice -&gt; Set Check for Duplicate Invoices, you can specify that the following characteristics are not checked:Reference Document NumberInvoice Document DateCompany CodeHaving fewer attributes to check increases the likelihood that the system will find a duplicate invoice.Example:The following document has already been entered and posted:Reference Document Number 333Invoice Date: 4/28/2000Gross Invoice Amount 100.00Currency: EURVendor: SpencerCompany Code: ChicagoYou have set up the check for duplicate invoices as follows in Customizing:The characteristics Reference Document Number and Company Code are not activated. Consequently, these characteristics are not checked.Now you enter the following invoice:Reference Document Number 334Invoice Date: 4/28/2000Gross Invoice Amount 100.00Currency: EURVendor: SpencerCompany Code: FlagstaffResultBecause you entered a reference document when you entered the invoice, the system checks for duplicate invoices. Compared against the invoice entered earlier, the invoice just entered has different values in the characteristics Reference and Company Code. However, these characteristics are not checked due to the settings that you have made in Customizing. All other characteristics are the same. The system issues a message telling you that an invoice has been entered twice.If the characteristic "Reference Document Number" had been selected in Customizing, the system would have checked the reference document number and established that it was different from the invoice entered earlier, and it consequently would not have issued a message.Checking FI DocumentsThe system checks whether there are FI documents that were posted or parked with the Logistics invoice verification or with an FI invoice transaction. Depending on the entry in the Reference field, one of the following checks is performed:If a reference number was specified in the sequential invoice/credit memo, the system checks whether an invoice/credit memo has already been posted for which all the following attributes agree:Company CodeVendorCurrencyDocument DateReference NumberIf no reference number was specified in the sequential invoice/credit memo, the system checks whether an invoice/credit memo has already been posted for which all the following attributes agree:Company CodeVendorCurrencyDocument DateAmount in Document CurrencyIn Materials Management, the system applies the check for duplicate invoices for invoices only, not for credit memos.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="MinorityGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Minority indicator" sap:quickinfo="Minority Indicators"/>
+    <Property Name="MinorityGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Minority Indicator"/>
     <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account Group" sap:quickinfo="Supplier Account Group">
      <Documentation>
       <Summary>The account group is a classifying feature within vendor master records. The account group determines:</Summary>
@@ -3027,8 +3053,18 @@
      <PropertyRef Name="Language"/>
      <PropertyRef Name="LongTextID"/>
     </Key>
-    <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"/>
-    <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4"/>
+    <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier" sap:creatable="false" sap:updatable="false">
+     <Documentation>
+      <Summary>Specifies an alphanumeric key that uniquely identifies the supplier in the SAP system.</Summary>
+      <LongDescription/>
+     </Documentation>
+    </Property>
+    <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Company Code">
+     <Documentation>
+      <Summary>The company code is an organizational unit within financial accounting.</Summary>
+      <LongDescription/>
+     </Documentation>
+    </Property>
     <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Language" sap:quickinfo="Language key">
      <Documentation>
       <Summary>The language key is an abbreviation for the language of the object being processed (for example, standard text, form, style).</Summary>
@@ -3097,13 +3133,13 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="LegDunningProcedureOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Legal dunn.proc.from" sap:quickinfo="Date of the legal dunning proceedings">
+    <Property Name="LegDunningProcedureOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Legal Dunn.Proc.From" sap:quickinfo="Date of the Legal Dunning Proceedings">
      <Documentation>
       <Summary>Date on which a legal dunning procedure was initiated.</Summary>
       <LongDescription>The printing of dunning notices in the legal dunning procedure generates an internal notice about any further account movements. A dunning notice is not created for the customer.If the Legal dunning procedure field in the master record contains a date, this means that the account is involved in a legal dunning procedure. The relationship between this date and the dunning date does not affect how the account is processed.The printing of account movements in the legal dunning procedure differs from the normal printing of dunning notices as follows:You must specify a separate form for your dunning procedure in Customizing. For more information, see Customizing (IMG) under Dunning Forms.The dunning program also displays text element 520 "Legal dunning procedure". This makes it possible to display the date of the legal dunning procedure from the master record.The program also displays the documents blocked for dunning and those with a payment method (automatic debit, bank direct debit).Although dunning notices are printed, the dunning level does not change in the master record or in the items. New dunning level = old dunning level.The program only updates the date of the last dunning run.Enter the date manually.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="DunningClerk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Dunning clerk">
+    <Property Name="DunningClerk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Dunning Clerk">
      <Documentation>
       <Summary>Identification code for the accounting clerk dealing with dunning letters.</Summary>
       <LongDescription>Using this identification code, the accounting clerk whose name is printed on the dunning letters is determined.If this field is not filled, then the entry from the Accounting clerk field is used.</LongDescription>
@@ -3174,7 +3210,7 @@
      </Documentation>
     </Property>
     <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Date on Which Record Was Created" sap:creatable="false" sap:updatable="false"/>
-    <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Who Created Object" sap:creatable="false" sap:updatable="false"/>
+    <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object" sap:creatable="false" sap:updatable="false"/>
     <Property Name="ReferenceSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ref. to vendor" sap:quickinfo="Reference to other vendor"/>
     <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group">
      <Documentation>
@@ -3233,13 +3269,13 @@
     <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 1">
      <Documentation>
       <Summary>Provides additional information for the primary Incoterm. For Incoterms 2010, this field represents:</Summary>
-      <LongDescription>1. For sea and inland waterway transport - Port of Shipment2. For any mode of transport - Place of Delivery 2010Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description  Location 1 EXW Ex Works  Place of DeliveryFCA Free Carrier  Place of DeliveryCPT Carriage Paid To  Place of DestinationCIP Carriage &amp; Insurance Paid To  Place of DestinationDAF Delivered at Frontier  Place of DeliveryDDP Delivered Duty Paid  Place of DestinationDDU Delivered Duty Unpaid  Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 1 FAS Free Alongside Ship Port of ShipmentFOB Free On Board Port of ShipmentCFR Cost &amp; Freight Port of DestinationCIF Cost Insurance &amp; Freight Port of DestinationDEQ Delivered Eq Quay (Duty Paid) Port of DestinationDES Delivered Ex Ship Port of DestinationIf the primary incoterm is specified as FOB “Free on Board”, the second field provides details of the port from which the delivery leaves, such as FOB Boston.</LongDescription>
+      <LongDescription>1. For sea and inland waterway transport - Port of Shipment or Port of Destination2. For any mode of transport - Place of Delivery 2010 or Place of DestinationFor non-C clauses, both costs and risk are transferred from the seller to the buyer at location 1.For C clauses, the costs are transferred at location 1 and the risk is transferred at location 2.Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterm Incoterm Description  Location 1 EXW Ex Works  Place of DeliveryFCA Free Carrier  Place of DeliveryCPT Carriage Paid To  Place of DestinationCIP Carriage &amp; Insurance Paid To  Place of DestinationDAF Delivered at Frontier  Place of DeliveryDDP Delivered Duty Paid  Place of DestinationDDU Delivered Duty Unpaid  Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterm Incoterm Description Location 1 FAS Free Alongside Ship Port of ShipmentFOB Free On Board Port of ShipmentCFR Cost &amp; Freight Port of DestinationCIF Cost Insurance &amp; Freight Port of DestinationDEQ Delivered Eq Quay (Duty Paid) Port of DestinationDES Delivered Ex Ship Port of DestinationIf the primary incoterm is specified as FOB “Free on Board”, the second field provides details of the port from which the delivery leaves, such as FOB Boston.</LongDescription>
      </Documentation>
     </Property>
     <Property Name="IncotermsLocation2" Type="Edm.String" MaxLength="70" sap:label="Incoterms Location 2">
      <Documentation>
       <Summary>Provides additional information for the Incoterms. This field is only available for C-Clauses (if customized appropriately). Note the following for the incoterms versions below:</Summary>
-      <LongDescription>No Version:This field is disabledIncoterm Version 2000This field is disabled as part of standard delivery unless a customer decides to enable it by the way of Customizing for Sales and Distribution under Master Data -&gt; Business Partners -&gt; Customers -&gt; Billing Document -&gt; Incoterms -&gt; Map Incoterms to Versions.Incoterm Version 2010For this version, the field represents:Sea and inland waterway transport - Port of DestinationAny mode of transport - Place of Destination2010 Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterms Incoterms Description Location 2CPT Carriage Paid To Place of DestinationCIP Carriage &amp; Insurance Paid To Place of DestinationGroup 2: Rules for sea and inland waterwaysIncoterms Incoterms Description Location 2CFR Cost &amp; Freight Port of DestinationCIF Cost Insurance &amp; Freight Port of Destination</LongDescription>
+      <LongDescription>No Version:This field is disabledIncoterm Version 2000This field is disabled as part of standard delivery unless a customer decides to enable it by the way of Customizing for Sales and Distribution under Master Data -&gt; Business Partners -&gt; Customers -&gt; Billing Document -&gt; Incoterms -&gt; Map Incoterms to Versions.Incoterm Version 2010For this version, the field represents:Sea and inland waterway transport - Port of ShipmentAny mode of transport - Place of Delivery2010 Incoterms are divided as follows:Group 1: Rules for any mode or modes of transport (including by vessel)Incoterm Incoterm Description Location 2CPT Carriage Paid To Place of DeliveryCIP Carriage &amp; Insurance Paid To Place of DeliveryGroup 2: Rules for sea and inland waterwaysIncoterm Incoterm Description Location 2CFR Cost &amp; Freight Port of ShipmentCIF Cost Insurance &amp; Freight Port of Shipment</LongDescription>
      </Documentation>
     </Property>
     <Property Name="InvoiceIsGoodsReceiptBased" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="GR-Based Inv. Verif." sap:quickinfo="Indicator: GR-Based Invoice Verification">
@@ -3420,44 +3456,44 @@
       <LongDescription>Withholding tax types classify particular features of a withholding tax including:The time at which the withholding tax is postedThe basis on which the base amount is calculatedThe basis for accumulation (if applicable)Withholding tax types are to be distinguished from withholding tax codes, to which are allocated the withholding tax percentage rate example.Whether a withholding tax can be defined as an existing type by means of a new code, or if a new type needs to be defined will depend on the type of transaction (see below).Note that a business transaction can only be assigned one withholding tax code per withholding tax type. If the business transaction is subject to several withholding taxes simultaneously, these must be represented by different types.This is the case in Argentina for example, where up to four kinds of withholding tax per business transaction are possible.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="ExemptionDateBegin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption start date" sap:quickinfo="Date on which exemption begins">
+    <Property Name="ExemptionDateBegin" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption Start Date" sap:quickinfo="Date on Which Exemption Begins">
      <Documentation>
       <Summary>Date from which withholding tax exemption applies.</Summary>
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="ExemptionDateEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption end date" sap:quickinfo="Date on which exemption ends">
+    <Property Name="ExemptionDateEnd" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Exemption End Date" sap:quickinfo="Date on Which Exemption Ends">
      <Documentation>
       <Summary>Date on which withholding tax exemption expires.</Summary>
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="ExemptionReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Exemption reason" sap:quickinfo="Reason for exemption">
+    <Property Name="ExemptionReason" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Exemption Reason" sap:quickinfo="Reason for Exemption">
      <Documentation>
       <Summary>Indicator used to classify different types of exemption from liability to a particular withholding tax.</Summary>
       <LongDescription>These indicators can be defined per withholding tax type in the vendor master record.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="IsWithholdingTaxSubject" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Subject to w/tx" sap:quickinfo="Indicator: Subject to withholding tax?"/>
-    <Property Name="RecipientType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Recipient type" sap:quickinfo="Type of recipient">
+    <Property Name="IsWithholdingTaxSubject" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Subject to W/Tx" sap:quickinfo="Indicator: Subject to Withholding Tax?"/>
+    <Property Name="RecipientType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Recipient Type" sap:quickinfo="Type of Recipient">
      <Documentation>
       <Summary>The type of recipient can be defined in the vendor master record.</Summary>
       <LongDescription>It is used to group vendors together according to particular characteristics such as occupations that may be subject to the same withholding tax type, but which are required to pay different percentage rates (as defined by the withholding tax code).Application in ThailandThis corresponds to the official Thai form number (Phaw.Ngor.Daw) and is used to determine the sequential numbering of a withholding tax certificate. The form number is defined in the vendor master record.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="WithholdingTaxCertificate" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Exemption number" sap:quickinfo="Exemption certificate number">
+    <Property Name="WithholdingTaxCertificate" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Exemption Number" sap:quickinfo="Exemption Certificate Number">
      <Documentation>
       <Summary>Numbered assigned by the relevant authorities for exemption from withholding tax.</Summary>
       <LongDescription>This number must be entered in the system as follows:In the vendor master record in the case of vendorsFor customers, in Customizing under the settings for withholding tax information for the company code per withholding tax type.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/tax code" sap:quickinfo="Withholding tax code">
+    <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="W/Tax Code" sap:quickinfo="Withholding Tax Code">
      <Documentation>
       <Summary>One or more "withholding tax codes" are assigned to each withholding tax type. One of the things these codes determine is the various percentage rates for the withholding tax type.</Summary>
       <LongDescription>Note that when processing a business transaction, no more than one withholding tax code can be assigned per withholding tax type. If the business transaction is subject to more than one withholding taxes, these must be represented in the system by defining various withholding tax types.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="WithholdingTaxExmptPercent" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Exemption rate">
+    <Property Name="WithholdingTaxExmptPercent" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Exemption Rate">
      <Documentation>
       <Summary>Rate of exemption from withholding tax.</Summary>
       <LongDescription>Those persons/activities subject to withholding tax can be exempted from withholding tax up to the percentage rate you enter here. This exemption rate refers to the withholding tax amount itself and not to the whole amount liable to withholding tax (withholding tax base amount).The gross amount of an invoice is 100.00 and the withholding tax base amount is defined as gross. The withholding tax rate is 10% meaning that the withholding tax amount is 10.00. Given an exemption rate of 30%, the withholding tax amount is reduced to 7.00.</LongDescription>
@@ -3852,18 +3888,6 @@
    </EntityContainer>
    <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
     <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
-    <Annotation Term="Aggregation.ApplySupported">
-     <Record>
-      <PropertyValue Property="Transformations">
-       <Collection>
-        <String>aggregate</String>
-        <String>groupby</String>
-        <String>filter</String>
-       </Collection>
-      </PropertyValue>
-      <PropertyValue Property="Rollup" EnumMember="None"/>
-     </Record>
-    </Annotation>
    </Annotations>
    <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerCompanyText" xmlns="http://docs.oasis-open.org/odata/ns/edm">
     <Annotation Term="Capabilities.FilterRestrictions">
@@ -4216,6 +4240,82 @@
      <Record>
       <PropertyValue Property="Description" String="Deletes tax number data linked to a business partner."/>
       <PropertyValue Property="LongDescription" String="Deletes tax number data identified by key fields such as business partner number and tax type."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusPartAddrDepdntTaxNmbr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.ReadRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Retrieves address dependent business partner tax number data."/>
+      <PropertyValue Property="LongDescription" String="Retrieves address dependent tax number data of all the available records linked to business partners in the system."/>
+      <PropertyValue Property="ReadByKeyRestrictions">
+       <Record>
+        <PropertyValue Property="Description" String="Retrieves address dependent business partner tax number data by using key fields."/>
+        <PropertyValue Property="LongDescription" String="Retrieves address dependent tax number data by using the key fields business partner number, address ID  and tax type."/>
+       </Record>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusPartAddrDepdntTaxNmbr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.InsertRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Creates new address dependent tax number data."/>
+      <PropertyValue Property="LongDescription" String="Creates new address dependent tax number data linked to an existing business partner."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusPartAddrDepdntTaxNmbr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.UpdateRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Updates address dependent tax number data linked to a business partner."/>
+      <PropertyValue Property="LongDescription" String="Updates address dependent tax number data identified by key fields business partner number, address ID and tax type."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusPartAddrDepdntTaxNmbr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.DeleteRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Deletes address dependent tax number data linked to a business partner."/>
+      <PropertyValue Property="LongDescription" String="Deletes address dependent tax number data identified by key fields such as business partner number and tax type."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustAddrDepdntInformation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.ReadRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Retrieves address dependent customer data."/>
+      <PropertyValue Property="LongDescription" String="Retrieves address dependent customer data fields of all the available records in the system."/>
+      <PropertyValue Property="ReadByKeyRestrictions">
+       <Record>
+        <PropertyValue Property="Description" String="Retrieves address dependent customer data by using key fields."/>
+        <PropertyValue Property="LongDescription" String="Retrieves address dependent customer data by using the key fields customer number and address ID."/>
+       </Record>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustAddrDepdntInformation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.InsertRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Creates new address dependent customer data."/>
+      <PropertyValue Property="LongDescription" String="Creates new address dependent customer data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustAddrDepdntInformation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.UpdateRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Updates address dependent customer data."/>
+      <PropertyValue Property="LongDescription" String="Updates address dependent customer data identified by key fields customer number and address ID."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustAddrDepdntInformation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.DeleteRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Deletes address dependent customer data."/>
+      <PropertyValue Property="LongDescription" String="Deletes address dependent customer data identified by key fields customer number and address ID."/>
      </Record>
     </Annotation>
    </Annotations>
@@ -4610,6 +4710,120 @@
      <Record>
       <PropertyValue Property="Description" String="Deletes customer unloading point record by key fields."/>
       <PropertyValue Property="LongDescription" String="Deletes unloading point data linked to customer by key fields such as Customer,UnloadingPointName."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.ReadRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Retrieves address dependent customer sales area data."/>
+      <PropertyValue Property="LongDescription" String="Retrieves address dependent customer sales area data fields of all the available records in the system."/>
+      <PropertyValue Property="ReadByKeyRestrictions">
+       <Record>
+        <PropertyValue Property="Description" String="Retrieves address dependent customer sales area data by using key fields."/>
+        <PropertyValue Property="LongDescription" String="Retrieves address dependent customer sales area data by using key fields."/>
+       </Record>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.InsertRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Creates new address dependent customer sales area data."/>
+      <PropertyValue Property="LongDescription" String="Creates new address dependent customer sales area data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.UpdateRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Updates address dependent customer sales area data."/>
+      <PropertyValue Property="LongDescription" String="Updates address dependent customer sales area data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.DeleteRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Deletes address dependent customer sales area data."/>
+      <PropertyValue Property="LongDescription" String="Deletes address dependent customer sales area data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntTaxInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.ReadRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Retrieves address dependent customer sales area tax data."/>
+      <PropertyValue Property="LongDescription" String="Retrieves address dependent customer sales area tax data fields of all the available records in the system."/>
+      <PropertyValue Property="ReadByKeyRestrictions">
+       <Record>
+        <PropertyValue Property="Description" String="Retrieves address dependent customer sales area tax data by using key fields."/>
+        <PropertyValue Property="LongDescription" String="Retrieves address dependent customer sales area tax data by using key fields."/>
+       </Record>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntTaxInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.InsertRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Creates new address dependent customer sales area tax data."/>
+      <PropertyValue Property="LongDescription" String="Creates new address dependent customer sales area tax data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntTaxInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.UpdateRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Updates address dependent customer sales area tax data."/>
+      <PropertyValue Property="LongDescription" String="Updates address dependent customer sales area tax data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustSlsAreaAddrDepdntTaxInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.DeleteRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Deletes address dependent customer sales area tax data."/>
+      <PropertyValue Property="LongDescription" String="Deletes address dependent customer sales area tax data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustUnldgPtAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.ReadRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Retrieves address dependent customer unloading point data."/>
+      <PropertyValue Property="LongDescription" String="Retrieves address dependent customer unloading point data fields of all the available records in the system."/>
+      <PropertyValue Property="ReadByKeyRestrictions">
+       <Record>
+        <PropertyValue Property="Description" String="Retrieves address dependent customer unloading point data by using key fields."/>
+        <PropertyValue Property="LongDescription" String="Retrieves address dependent customer unloading point data by using the key fields customer number, address ID, unloading point name."/>
+       </Record>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustUnldgPtAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.InsertRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Creates new address dependent customer unloading point data."/>
+      <PropertyValue Property="LongDescription" String="Creates new address dependent customer unloading point data."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustUnldgPtAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.UpdateRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Updates address dependent customer unloading point data."/>
+      <PropertyValue Property="LongDescription" String="Updates address dependent customer unloading point data by using the key fields customer number, address ID, unloading point name."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustUnldgPtAddrDepdntInfo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.DeleteRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Deletes address dependent customer unloading point data."/>
+      <PropertyValue Property="LongDescription" String="Deletes address dependent customer unloading point data by using the key fields customer number, address ID, unloading point name."/>
      </Record>
     </Annotation>
    </Annotations>
@@ -5575,6 +5789,82 @@
      </Record>
     </Annotation>
    </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusinessPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusPartAddrDepdntTaxNmbr"/>
+         <PropertyValue Property="ReadRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Retrieves address dependent business partner tax number data."/>
+           <PropertyValue Property="LongDescription" String="Retrieves address dependent tax number data of all the available records linked to business partners in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusinessPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusPartAddrDepdntTaxNmbr"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Creates new address dependent tax number data."/>
+           <PropertyValue Property="LongDescription" String="Creates new address dependent tax number data linked to an existing business partner."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustAddrDepdntInformation"/>
+         <PropertyValue Property="ReadRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Retrieves address dependent customer data."/>
+           <PropertyValue Property="LongDescription" String="Retrieves address dependent customer data fields of all the available records in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustAddrDepdntInformation"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Creates new address dependent customer data."/>
+           <PropertyValue Property="LongDescription" String="Creates new address dependent customer data."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
    <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
     <Annotation Term="Capabilities.NavigationRestrictions">
      <Record>
@@ -5708,6 +5998,82 @@
      </Record>
     </Annotation>
    </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerUnloadingPoint"/>
+         <PropertyValue Property="ReadRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Retrieves customer unloading point data."/>
+           <PropertyValue Property="LongDescription" String="Retrieves all unloading point data attached to a customer in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerUnloadingPoint"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Creates new customer unloading point record."/>
+           <PropertyValue Property="LongDescription" String="Creates customer unloading point record linked to customer."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustUnldgPtAddrDepdntInfo"/>
+         <PropertyValue Property="ReadRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Retrieves address dependent customer unloading point data."/>
+           <PropertyValue Property="LongDescription" String="Retrieves address dependent customer unloading point data fields of all the available records in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustUnldgPtAddrDepdntInfo"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Creates new address dependent customer unloading point data."/>
+           <PropertyValue Property="LongDescription" String="Creates new address dependent customer unloading point data."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
    <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerSalesArea" xmlns="http://docs.oasis-open.org/odata/ns/edm">
     <Annotation Term="Capabilities.NavigationRestrictions">
      <Record>
@@ -5822,6 +6188,82 @@
      </Record>
     </Annotation>
    </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerSalesArea" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SlsAreaAddrDepdntInfo"/>
+         <PropertyValue Property="ReadRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Retrieves address dependent customer sales area data."/>
+           <PropertyValue Property="LongDescription" String="Retrieves address dependent customer sales area data fields of all the available records in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerSalesArea" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SlsAreaAddrDepdntInfo"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Creates new address dependent customer sales area data."/>
+           <PropertyValue Property="LongDescription" String="Creates new address dependent customer sales area data."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerSalesAreaTax" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SlsAreaAddrDepdntTax"/>
+         <PropertyValue Property="ReadRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Retrieves address dependent customer sales area tax data."/>
+           <PropertyValue Property="LongDescription" String="Retrieves address dependent customer sales area tax data fields of all the available records in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerSalesAreaTax" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SlsAreaAddrDepdntTax"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Creates new address dependent customer sales area tax data."/>
+           <PropertyValue Property="LongDescription" String="Creates new address dependent customer sales area tax data."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
    <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerCompany" xmlns="http://docs.oasis-open.org/odata/ns/edm">
     <Annotation Term="Capabilities.NavigationRestrictions">
      <Record>
@@ -5909,44 +6351,6 @@
           <Record>
            <PropertyValue Property="Description" String="Retrieves customer company text records attached to company data."/>
            <PropertyValue Property="LongDescription" String="Retrieves all the customer company text records attached to customer company in the system."/>
-          </Record>
-         </PropertyValue>
-        </Record>
-       </Collection>
-      </PropertyValue>
-     </Record>
-    </Annotation>
-   </Annotations>
-   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-    <Annotation Term="Capabilities.NavigationRestrictions">
-     <Record>
-      <PropertyValue Property="RestrictedProperties">
-       <Collection>
-        <Record>
-         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerUnloadingPoint"/>
-         <PropertyValue Property="ReadRestrictions">
-          <Record>
-           <PropertyValue Property="Description" String="Retrieves customer unloading point data."/>
-           <PropertyValue Property="LongDescription" String="Retrieves all unloading point data attached to a customer in the system."/>
-          </Record>
-         </PropertyValue>
-        </Record>
-       </Collection>
-      </PropertyValue>
-     </Record>
-    </Annotation>
-   </Annotations>
-   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-    <Annotation Term="Capabilities.NavigationRestrictions">
-     <Record>
-      <PropertyValue Property="RestrictedProperties">
-       <Collection>
-        <Record>
-         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerUnloadingPoint"/>
-         <PropertyValue Property="InsertRestrictions">
-          <Record>
-           <PropertyValue Property="Description" String="Creates new customer unloading point record."/>
-           <PropertyValue Property="LongDescription" String="Creates customer unloading point record linked to customer."/>
           </Record>
          </PropertyValue>
         </Record>
@@ -6750,25 +7154,6 @@
         </Record>
        </Collection>
       </PropertyValue>
-     </Record>
-    </Annotation>
-   </Annotations>
-   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-    <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
-     <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
-      <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
-     </Record>
-    </Annotation>
-    <Annotation Term="SAP__CodeList.CurrencyCodes">
-     <Record>
-      <PropertyValue Property="Url" String="../../iwbep/common;v=0001;o=LOCAL/$metadata"/>
-      <PropertyValue Property="CollectionPath" String="Currencies"/>
-     </Record>
-    </Annotation>
-    <Annotation Term="SAP__CodeList.UnitsOfMeasure">
-     <Record>
-      <PropertyValue Property="Url" String="../../iwbep/common;v=0001;o=LOCAL/$metadata"/>
-      <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
      </Record>
     </Annotation>
    </Annotations>
