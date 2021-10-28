@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cpapp
+  labels:
+    app: cpapp
+    service: cpapp
+spec:
+  ports:
+  - port: 4004
+    name: http
+  selector:
+    app: cpapp
+---
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
+metadata:
+  labels:
+    app: cpapp
+  name: cpapp
+spec:
+  service:
+    host: cpapp
+    name: cpapp
+    port: 4004
+  gateway: kyma-gateway.kyma-system.svc.cluster.local
+  rules:
+    - path: /.*
+      methods: ["GET", "PUT", "POST", "HEAD", "PATCH", "DELETE" ]
+      accessStrategies:
+        - handler: noop
+      mutators: []

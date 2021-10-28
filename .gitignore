@@ -1,0 +1,34 @@
+# CAP CPAppDevelopment-app
+_out
+*.db
+connection.properties
+default-*.json
+gen/
+node_modules/
+target/
+
+# Web IDE, App Studio
+.che/
+.gen/
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+
+# Other
+.DS_Store
+*.orig
+*.log
+
+# Source folder of SAP Fiori Tools generated project
+app/risks/src
+*.iml
+*.flattened-pom.xml
+
+# IDEs
+# .vscode
+# .idea
+# Do not lock packages in the tutorial
+
+package-lock.json

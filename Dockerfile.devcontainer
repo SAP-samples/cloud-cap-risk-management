@@ -1,0 +1,48 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
+
+# Utils
+RUN apt-get update
+RUN apt-get install -y curl gnupg jq software-properties-common
+
+# add NodeJS source
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+
+# add docker source
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+RUN add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+# add cf CLI source
+RUN curl -eq https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
+RUN echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+
+# add kubectl source
+RUN apt-get update && apt-get install -y apt-transport-https gnupg2
+RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list
+
+# add helm source
+RUN curl https://helm.baltorepo.com/organization/signing.asc | apt-key add -
+RUN apt-get install apt-transport-https --yes
+RUN echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+# install packages
+RUN apt-get update
+RUN apt-get install -y gcc g++ make
+RUN apt-get install -y docker-ce docker-ce-cli containerd.io
+RUN apt-get install -y nodejs cf-cli kubectl helm
+
+
+# yaml2json
+RUN curl -Lo /usr/local/bin/yaml2json https://github.com/wakeful/yaml2json/releases/latest/download/yaml2json-linux-amd64 && chmod +x /usr/local/bin/yaml2json
+
+# SAP npm packages
+#RUN npm install -g @sap/cds-dk
+
+CMD [ "/bin/bash" ]
