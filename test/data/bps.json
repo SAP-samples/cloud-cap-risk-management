@@ -1,0 +1,20 @@
+{
+  "@odata.context": "$metadata#A_BusinessPartner(BusinessPartner,BusinessPartnerFullName,BusinessPartnerIsBlocked)",
+  "value": [
+    {
+      "BusinessPartner": "1000038",
+      "BusinessPartnerFullName": "Williams Electric Drives",
+      "BusinessPartnerIsBlocked": false
+    },
+    {
+      "BusinessPartner": "1000040",
+      "BusinessPartnerFullName": "Smith Batteries Ltd",
+      "BusinessPartnerIsBlocked": false
+    },
+    {
+      "BusinessPartner": "1000042",
+      "BusinessPartnerFullName": "Johnson Automotive Supplies",
+      "BusinessPartnerIsBlocked": true
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "BusinessPartner": "11",
+    "BusinessPartnerFullName": "Cust15 Cust15",
+    "to_BusinessPartnerAddress": [
+      {
+        "AddressID": "27512",
+        "ValidityStartDate": "2018-05-25T00:00:00.000Z",
+        "CityName": "",
+        "Country": "DE"
+      }
+    ]
+  },
+  {
+    "BusinessPartner": "202",
+    "BusinessPartnerFullName": "Nue tech inc",
+    "to_BusinessPartnerAddress": [
+      {
+        "AddressID": "35418",
+        "ValidityStartDate": "2020-09-18T00:00:00.000Z",
+        "CityName": "Atlanta",
+        "Country": "US"
+      }
+    ]
+  },
+  {
+    "BusinessPartner": "203",
+    "BusinessPartnerFullName": "Expo technologies Plc",
+    "to_BusinessPartnerAddress": [
+      {
+        "AddressID": "35420",
+        "ValidityStartDate": "2020-09-18T00:00:00.000Z",
+        "CityName": "gladstone",
+        "Country": "US"
+      }
+    ]
+  },
+  {
+    "BusinessPartner": "1018",
+    "BusinessPartnerFullName": "Bechtle AG Kriek street",
+    "to_BusinessPartnerAddress": [
+      {
+        "AddressID": "30662",
+        "ValidityStartDate": "2018-10-29T00:00:00.000Z",
+        "CityName": "Neckarsulm",
+        "Country": "DE"
+      }
+    ]
+  },
+  {
+    "BusinessPartner": "1000000",
+    "BusinessPartnerFullName": "BANK5115",
+    "to_BusinessPartnerAddress": []
+  },
+  {
+    "BusinessPartner": "1000001",
+    "BusinessPartnerFullName": "BANK ICS",
+    "to_BusinessPartnerAddress": []
+  },
+  {
+    "BusinessPartner": "1000002",
+    "BusinessPartnerFullName": "BNK1189",
+    "to_BusinessPartnerAddress": []
+  },
+  {
+    "BusinessPartner": "1000010",
+    "BusinessPartnerFullName": "Bank5",
+    "to_BusinessPartnerAddress": []
+  },
+  {
+    "BusinessPartner": "1000020",
+    "BusinessPartnerFullName": "Fast Bikes Inc.",
+    "to_BusinessPartnerAddress": []
+  },
+  {
+    "BusinessPartner": "1000021",
+    "BusinessPartnerFullName": "Bikes Pro Inc.",
+    "to_BusinessPartnerAddress": [
+      {
+        "AddressID": "24134",
+        "ValidityStartDate": "2016-10-25T00:00:00.000Z",
+        "CityName": "Palo Alto",
+        "Country": "US"
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "@odata.context": "$metadata#Risks(ID,title,prio,impact,supplier_ID,IsActiveEntity,supplier())",
+  "value": [
+    {
+      "ID": "20466922-7d57-4e76-b14c-e53fd97dcb11",
+      "title": "CFR non-compliance",
+      "prio": "3",
+      "impact": 10000,
+      "supplier_ID": "1000038",
+      "IsActiveEntity": true,
+      "supplier": {
+        "ID": "1000038",
+        "fullName": "Williams Electric Drives",
+        "isBlocked": false
+      },
+      "criticality": 2
+    },
+    {
+      "ID": "20466922-7d57-4e76-b14c-e53fd97dcb12",
+      "title": "SLA violation with possible termination cause",
+      "prio": "2",
+      "impact": 90000,
+      "supplier_ID": "1000040",
+      "IsActiveEntity": true,
+      "supplier": {
+        "ID": "1000040",
+        "fullName": "Smith Batteries Ltd",
+        "isBlocked": false
+      },
+      "criticality": 2
+    },
+    {
+      "ID": "20466922-7d57-4e76-b14c-e53fd97dcb13",
+      "title": "Shipment violating export control",
+      "prio": "1",
+      "impact": 200000,
+      "supplier_ID": "1000042",
+      "IsActiveEntity": true,
+      "supplier": {
+        "ID": "1000042",
+        "fullName": "Johnson Automotive Supplies",
+        "isBlocked": true
+      },
+      "criticality": 1
+    }
+  ]
+}

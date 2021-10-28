@@ -1,0 +1,20 @@
+{
+  "@odata.context": "$metadata#Suppliers",
+  "value": [
+    {
+      "ID": "1000038",
+      "fullName": "Williams Electric Drives",
+      "isBlocked": false
+    },
+    {
+      "ID": "1000040",
+      "fullName": "Smith Batteries Ltd",
+      "isBlocked": false
+    },
+    {
+      "ID": "1000042",
+      "fullName": "Johnson Automotive Supplies",
+      "isBlocked": true
+    }
+  ]
+}

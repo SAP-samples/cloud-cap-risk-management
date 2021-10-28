@@ -1,0 +1,82 @@
+[
+  {
+    "BusinessPartner": "11",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "Cust15 Cust15",
+    "BusinessPartnerUUID": "00163e37-bedf-1ed8-9883-fe15a0b5fc9e",
+    "CreatedByUser": "CB9980000753",
+    "CreationDate": "2018-05-25"
+  },
+  {
+    "BusinessPartner": "202",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "Nue tech inc",
+    "BusinessPartnerUUID": "fa163e6c-c3e1-1eea-beb3-d6841a58ddb7",
+    "CreatedByUser": "CB9980000065",
+    "CreationDate": "2020-09-18"
+  },
+  {
+    "BusinessPartner": "203",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "Expo technologies Plc",
+    "BusinessPartnerUUID": "fa163e6c-c3e1-1eea-beb4-57e556b55ee9",
+    "CreatedByUser": "CB9980000065",
+    "CreationDate": "2020-09-18"
+  },
+  {
+    "BusinessPartner": "1018",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "Bechtle AG Kriek street",
+    "BusinessPartnerUUID": "00163e37-bedf-1ee8-b6e7-c2f79da743a9",
+    "CreatedByUser": "CB9980000295",
+    "CreationDate": "2018-10-29"
+  },
+  {
+    "BusinessPartner": "1000000",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "BANK5115",
+    "BusinessPartnerUUID": "00163e19-8846-1ed6-9d9e-0830195e0c2c",
+    "CreatedByUser": "CB9980000083",
+    "CreationDate": "2016-09-07"
+  },
+  {
+    "BusinessPartner": "1000001",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "BANK ICS",
+    "BusinessPartnerUUID": "00163e19-8846-1ed6-9d9e-48b6db69ccd1",
+    "CreatedByUser": "CB9980000083",
+    "CreationDate": "2016-09-07"
+  },
+  {
+    "BusinessPartner": "1000002",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "BNK1189",
+    "BusinessPartnerUUID": "00163e19-8846-1ed6-9db5-99ba98160d75",
+    "CreatedByUser": "CB9980000083",
+    "CreationDate": "2016-09-08"
+  },
+  {
+    "BusinessPartner": "1000010",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "Bank5",
+    "BusinessPartnerUUID": "00163e19-8846-1ee6-9ecf-1e510e1fcedd",
+    "CreatedByUser": "CB9980000083",
+    "CreationDate": "2016-09-14"
+  },
+  {
+    "BusinessPartner": "1000020",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "Fast Bikes Inc.",
+    "BusinessPartnerUUID": "00163e19-8846-1ed6-a6ba-a9305dba1b20",
+    "CreatedByUser": "CB9980000172",
+    "CreationDate": "2016-10-24"
+  },
+  {
+    "BusinessPartner": "1000021",
+    "BusinessPartnerCategory": "2",
+    "BusinessPartnerFullName": "Bikes Pro Inc.",
+    "BusinessPartnerUUID": "00163e19-8846-1ed6-a6cf-7b541e621558",
+    "CreatedByUser": "CB9980000173",
+    "CreationDate": "2016-10-25"
+  }
+]

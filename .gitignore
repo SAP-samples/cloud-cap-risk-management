@@ -1,0 +1,39 @@
+# CAP CPAppDevelopment-app
+_out
+*.db
+connection.properties
+gen/
+node_modules/
+target/
+
+# Web IDE, App Studio
+.che/
+.gen/
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+
+# Other
+.DS_Store
+*.orig
+*.log
+
+*.iml
+*.flattened-pom.xml
+
+# IDEs
+# .vscode
+# .idea
+# Do not lock packages in the tutorial
+
+package-lock.json
+
+# SAP Fiori build files
+dist/
+resources/
+app/*/package-lock.json
+.env
+# added by cds bind
+.cdsrc-private.json

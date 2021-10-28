@@ -1,0 +1,15 @@
+### Get risks
+
+GET http://localhost:4004/service/risk/Risks?$top=11
+Authorization: Basic risk.manager@tester.sap.com:initial
+
+### Get mitigations
+
+GET http://localhost:4004/service/risk/Mitigations?$top=11
+Authorization: Basic risk.manager@tester.sap.com:initial
+
+### Get suppliers
+
+GET http://localhost:4004/service/risk/Suppliers?$top=11
+Authorization: Basic risk.manager@tester.sap.com:initial
+
