@@ -1,0 +1,162 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "ns.suppliers",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "dataSources": {
+            "mainService": {
+                "uri": "/service/risk/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        },
+        "offline": false,
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "ui5template.fiorielements.v4.lrop",
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "dependencies": {
+            "minUI5Version": "1.76.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "SuppliersList",
+                    "target": "SuppliersList"
+                },
+                {
+                    "pattern": "Suppliers({key}):?query:",
+                    "name": "SuppliersObjectPage",
+                    "target": "SuppliersObjectPage"
+                },
+                {
+                    "pattern": "Suppliers({key})/risks({key2}):?query:",
+                    "name": "RisksObjectPage",
+                    "target": "RisksObjectPage"
+                }
+            ],
+            "targets": {
+                "SuppliersList": {
+                    "type": "Component",
+                    "id": "SuppliersList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Suppliers",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "Suppliers": {
+                                    "detail": {
+                                        "route": "SuppliersObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "SuppliersObjectPage": {
+                    "type": "Component",
+                    "id": "SuppliersObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Suppliers",
+                            "navigation": {
+                                "risks": {
+                                    "detail": {
+                                        "route": "RisksObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "RisksObjectPage": {
+                    "type": "Component",
+                    "id": "RisksObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Risks"
+                        }
+                    }
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.platform.abap": {
+        "_version": "1.1.0",
+        "uri": ""
+    },
+    "sap.platform.hcp": {
+        "_version": "1.1.0",
+        "uri": ""
+    },
+    "sap.fiori": {
+        "_version": "1.1.0",
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "cpapp.service"
+    }
+}

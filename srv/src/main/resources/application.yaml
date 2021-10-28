@@ -1,0 +1,95 @@
+---
+cds:
+  odata-v4.endpoint.path: "/"
+  datasource:
+    csv-paths:
+    - "db/data/**"
+    - "../db/data/**"
+    - "srv/external/data/**"
+    - "../srv/external/data/**"
+
+---
+spring:
+  config.activate.on-profile: mocked
+cds:
+  application.services:
+  - name: API_BUSINESS_PARTNER-mocked
+    model: API_BUSINESS_PARTNER
+    serve.path: API_BUSINESS_PARTNER
+  remote.services:
+  - name: API_BUSINESS_PARTNER
+    destination:
+      name: "s4-business-partner-api-mocked"
+
+---
+spring:
+  config.activate.on-profile: local
+  sql.init.schema-locations:
+  - "classpath:schema-nomocks.sql"
+cds:
+  remote.services:
+    API_BUSINESS_PARTNER:
+      destination:
+        service: "api-business-partner"
+        properties:
+          url: http://localhost:5001
+        headers:
+          my-header: my-value
+        queries:
+          my-query: my-value
+
+---
+spring:
+  config.activate.on-profile: cloud
+  sql.init.schema-locations:
+  - "classpath:schema-nomocks.sql"
+cds:
+  remote.services:
+  - name: API_BUSINESS_PARTNER
+    destination:
+      name: "cpapp-bupa"
+      suffix: "/sap/opu/odata/sap"
+      type: "odata-v2"
+
+---
+spring:
+  config.activate.on-profile: sandbox
+  sql.init.schema-locations:
+  - "classpath:schema-nomocks.sql"
+cds:
+  remote.services:
+  - name: API_BUSINESS_PARTNER
+    destination:
+      name: "cpapp-bupa-sandbox"
+      suffix: "/sap/opu/odata/sap"
+      type: "odata-v2"
+s4:
+  apikey: "" # Place API Key from SAP API Business Hub here or use environment variable S4_APIKEY
+
+---
+spring:
+  config.activate.on-profile: local
+  web.resources.static-locations: "file:./app"
+cds:
+  datasource:
+    auto-config.enabled: false
+
+
+---
+cds:
+  security:
+    mock:
+      users:
+        - name: risk.viewer@tester.sap.com
+          password: initial
+          roles:
+            - RiskViewer
+          additional:
+            email: risk.viewer@tester.sap.com
+
+        - name: risk.manager@tester.sap.com
+          password: initial
+          roles:
+            - RiskManager
+          additional:
+            email: risk.manager@tester.sap.com
