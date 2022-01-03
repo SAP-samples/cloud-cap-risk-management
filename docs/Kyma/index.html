@@ -975,15 +975,15 @@ code .
 </li>
 <li>
 <p>Create a file named <code>Dockerfile</code> and add the following lines to it:</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:12-slim</span>
 
-<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
-<span class="k">COPY</span> gen/srv .
-<span class="k">RUN</span> npm install
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span>
+<span class="k">COPY</span><span class="w"> </span>gen/srv .
+<span class="k">RUN</span><span class="w"> </span>npm install
 
-<span class="k">EXPOSE</span><span class="s"> 4004</span>
-<span class="k">USER</span><span class="s"> node</span>
-<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">4004</span>
+<span class="k">USER</span><span class="w"> </span><span class="s">node</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 </li>
 <li>
@@ -995,17 +995,17 @@ npm install sqlite3
 </li>
 <li>
 <p>Add the following snippet to the <code>package.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
-  <span class="err">...</span>
-<span class="hll">  <span class="nt">&quot;cds&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;requires&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">      <span class="nt">&quot;db&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span>
-</span><span class="hll">      <span class="p">}</span>
-</span><span class="hll">    <span class="p">}</span>
-</span><span class="hll">  <span class="p">}</span>
-</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cpapp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;cds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;requires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&quot;db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sql&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="p">}</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>This tells CAP to use SQLite in dev and SAP HANA in productive mode.</p>
 </li>
@@ -1092,17 +1092,17 @@ localhost refused to connect.
 <ol>
 <li>
 <p>Add the highlighted lines to the file <code>Dockerfile</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:12-slim</span>
 
-<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
-<span class="k">COPY</span> gen/srv .
-<span class="k">RUN</span> npm install
-<span class="hll"><span class="k">COPY</span> app app/
-</span><span class="hll"><span class="k">RUN</span> find app -name <span class="s1">&#39;*.cds&#39;</span> <span class="p">|</span> xargs rm -f
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span>
+<span class="k">COPY</span><span class="w"> </span>gen/srv .
+<span class="k">RUN</span><span class="w"> </span>npm install
+<span class="hll"><span class="k">COPY</span><span class="w"> </span>app app/
+</span><span class="hll"><span class="k">RUN</span><span class="w"> </span>find app -name <span class="s1">&#39;*.cds&#39;</span> <span class="p">|</span> xargs rm -f
 </span>
-<span class="k">EXPOSE</span><span class="s"> 4004</span>
-<span class="k">USER</span><span class="s"> node</span>
-<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">4004</span>
+<span class="k">USER</span><span class="w"> </span><span class="s">node</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 </li>
 <li>
@@ -1246,10 +1246,10 @@ The authentication session will expire after some hours. You then need to downlo
 <li>Choose <strong>Docker Engine</strong>.</li>
 <li>
 <p>Add the following line:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="err">...</span>
-<span class="hll">  <span class="nt">&quot;insecure-registries&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0.0.0.0:5000&quot;</span><span class="p">]</span>
-</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;insecure-registries&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0.0.0.0:5000&quot;</span><span class="p">]</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -1298,31 +1298,31 @@ latest: digest: sha256:4054dd60ee4f9889d58aa97295cb3b1430a5c1549e602b6c619d7c4ed
 </li>
 <li>
 <p>Create a file <code>deployment/deployment.yaml</code> with the following contents:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-  <span class="nt">labels</span><span class="p">:</span>
-    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-    <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">replicas</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-  <span class="nt">selector</span><span class="p">:</span>
-    <span class="nt">matchLabels</span><span class="p">:</span>
-      <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-      <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
-  <span class="nt">template</span><span class="p">:</span>
-    <span class="nt">metadata</span><span class="p">:</span>
-      <span class="nt">labels</span><span class="p">:</span>
-        <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-        <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
-    <span class="nt">spec</span><span class="p">:</span>
-      <span class="nt">containers</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker-registry.{{CLUSTER_DOMAIN}}/cpapp</span>
-        <span class="nt">imagePullPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Always</span>
-        <span class="nt">ports</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-registry.{{CLUSTER_DOMAIN}}/cpapp</span><span class="w"></span>
+<span class="w">        </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4004</span><span class="w"></span>
 </code></pre></div>
 <p>The file contains a placeholder <code>{{CLUSER_DOMAIN}}</code> that you need to replace with your cluster's domain. Either in the file or replacing it when applying the file.</p>
 <p>You can find your cluster's domain, for example, for the URL of the Kyma Console. If your console URL is for example <code>https://console.c-abcd123.kyma.shoot.live.k8s-hana.ondemand.com/</code>, the cluster's domain is <code>c-abcd123.kyma.shoot.live.k8s-hana.ondemand.com</code>, just without the leading <code>console.</code></p>
@@ -1371,38 +1371,38 @@ cpapp             1/1     1            1           14m
 <ol>
 <li>
 <p>Create a new file <code>deployment/apirule.yaml</code> with following content:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
-<span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-  <span class="nt">labels</span><span class="p">:</span>
-    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-    <span class="nt">service</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-<span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">ports</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
-    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
-  <span class="nt">selector</span><span class="p">:</span>
-    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-<span class="nn">---</span>
-<span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gateway.kyma-project.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">APIRule</span>
-<span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">labels</span><span class="p">:</span>
-    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-<span class="nt">spec</span><span class="p">:</span>
-  <span class="nt">service</span><span class="p">:</span>
-    <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
-  <span class="nt">gateway</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kyma-gateway.kyma-system.svc.cluster.local</span>
-  <span class="nt">rules</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/.*</span>
-      <span class="nt">methods</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PUT&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;POST&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;HEAD&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;PATCH&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;DELETE&quot;</span> <span class="p p-Indicator">]</span>
-      <span class="nt">accessStrategies</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="nt">handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">noop</span>
-      <span class="nt">mutators</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">    </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4004</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.kyma-project.io/v1alpha1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">APIRule</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4004</span><span class="w"></span>
+<span class="w">  </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kyma-gateway.kyma-system.svc.cluster.local</span><span class="w"></span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/.*</span><span class="w"></span>
+<span class="w">      </span><span class="nt">methods</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PUT&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;POST&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;HEAD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;PATCH&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;DELETE&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">accessStrategies</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noop</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mutators</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -1437,38 +1437,38 @@ cpapp             1/1     1            1           14m
 </li>
 <li>
 <p>Add the following snippet for SAP HANA:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cpapp&quot;</span><span class="p">,</span>
-  <span class="err">...</span>
-  <span class="nt">&quot;cds&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;requires&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;db&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;sql&quot;</span>
-      <span class="p">}</span>
-<span class="hll">    <span class="p">},</span>
-</span><span class="hll">    <span class="nt">&quot;hana&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">      <span class="nt">&quot;deploy-format&quot;</span><span class="p">:</span> <span class="s2">&quot;hdbtable&quot;</span>
-</span><span class="hll">    <span class="p">}</span>
-</span><span class="hll">  <span class="p">}</span>
-</span><span class="hll">  <span class="err">...</span>
-</span><span class="hll"><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cpapp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;cds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;requires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;db&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sql&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="p">},</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;hana&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&quot;deploy-format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hdbtable&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="err">...</span><span class="w"></span>
+</span><span class="hll"><span class="p">}</span><span class="w"></span>
 </span></code></pre></div>
 <p>With <code>requires.db.kind</code>: <code>sql</code> you tell CAP to use SQLite in development and SAP HANA in productive mode. The setting <code>hana.deploy-format</code>: <code>hdbtable</code> is required for SAP HANA Cloud since it supports only the <code>hdbtable</code> and <code>hdbview</code> files for deployment.</p>
 </li>
 <li>
 <p>You now need to tell the CAP service to run in the productive mode. To do that, edit the <code>Dockerfile</code> and add the highlighted statement:</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:12-slim</span>
 
-<span class="hll"><span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production
-</span><span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
-<span class="k">COPY</span> gen/srv .
-<span class="k">RUN</span> npm install
-<span class="k">COPY</span> app app/
-<span class="k">RUN</span> find app -name <span class="s1">&#39;*.cds&#39;</span> <span class="p">|</span> xargs rm -f
+<span class="hll"><span class="k">ENV</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
+</span><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span>
+<span class="k">COPY</span><span class="w"> </span>gen/srv .
+<span class="k">RUN</span><span class="w"> </span>npm install
+<span class="k">COPY</span><span class="w"> </span>app app/
+<span class="k">RUN</span><span class="w"> </span>find app -name <span class="s1">&#39;*.cds&#39;</span> <span class="p">|</span> xargs rm -f
 
-<span class="k">EXPOSE</span><span class="s"> 4004</span>
-<span class="k">USER</span><span class="s"> node</span>
-<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span> <span class="p">]</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">4004</span>
+<span class="k">USER</span><span class="w"> </span><span class="s">node</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 </li>
 <li>
@@ -1522,17 +1522,17 @@ Application can be stopped.
 </ol>
 <h3 id="workaround-use-hdi-deployer-in-docker-container">Workaround: Use HDI Deployer in Docker Container</h3>
 <p>Create a file <code>Dockerfile.hdi-deploy</code> with the following content:</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="s">node:12-slim</span> <span class="k">AS</span> <span class="s">build</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:12-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">build</span>
 
-<span class="k">ENV</span> <span class="nv">NODE_ENV</span><span class="o">=</span>production
-<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
-<span class="k">RUN</span> apt-get update
-<span class="k">RUN</span> apt-get install -y openssl python make g++
-<span class="k">COPY</span> gen/db/package.json .
-<span class="k">RUN</span> npm install
-<span class="k">COPY</span> gen/db .
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/src/app</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get update
+<span class="k">RUN</span><span class="w"> </span>apt-get install -y openssl python make g++
+<span class="k">COPY</span><span class="w"> </span>gen/db/package.json .
+<span class="k">RUN</span><span class="w"> </span>npm install
+<span class="k">COPY</span><span class="w"> </span>gen/db .
 
-<span class="k">CMD</span> <span class="p">[</span> <span class="s2">&quot;npm&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;--exit&quot;</span> <span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;npm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--exit&quot;</span><span class="w"> </span><span class="p">]</span>
 </code></pre></div>
 <p>Execute the following commands and check if the output gets right this time:</p>
 <div class="highlight"><pre><span></span><code>docker build -t cpapp-hdi-deployer -f Dockerfile.hdi-deploy .
@@ -1556,20 +1556,20 @@ user=F6E3F7F06E5345EAA96685FA44022DC8_RT
 <div class="highlight"><pre><span></span><code>cf service-key cpapp-kyma-db cpapp-kyma-db-key
 </code></pre></div>
 <p>The output looks like this:</p>
-<div class="highlight"><pre><span></span><code><span class="err">Ge</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="err">key</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">db</span><span class="mi">-</span><span class="err">key`</span> <span class="kc">f</span><span class="err">or</span> <span class="err">service</span> <span class="err">i</span><span class="kc">nstan</span><span class="err">ce</span> <span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">db`</span> <span class="err">as</span> <span class="err">MySel</span><span class="kc">f</span><span class="err">...</span>
+<div class="highlight"><pre><span></span><code><span class="err">Ge</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">key</span><span class="w"> </span><span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">db</span><span class="mi">-</span><span class="err">key`</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">service</span><span class="w"> </span><span class="err">i</span><span class="kc">nstan</span><span class="err">ce</span><span class="w"> </span><span class="err">`cpapp</span><span class="mi">-</span><span class="err">kyma</span><span class="mi">-</span><span class="err">db`</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">MySel</span><span class="kc">f</span><span class="err">...</span><span class="w"></span>
 
-<span class="p">{</span>
- <span class="nt">&quot;certificate&quot;</span><span class="p">:</span> <span class="s2">&quot;-----BEGIN CERTIFICATE-----\n...\n...\n...\n-----END CERTIFICATE-----&quot;</span><span class="p">,</span>
- <span class="nt">&quot;driver&quot;</span><span class="p">:</span> <span class="s2">&quot;com.sap.db.jdbc.Driver&quot;</span><span class="p">,</span>
- <span class="nt">&quot;hdi_password&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
- <span class="nt">&quot;hdi_user&quot;</span><span class="p">:</span> <span class="s2">&quot;F6E3F7F06E5345EAA96685FA44022DC8_RT&quot;</span><span class="p">,</span>
- <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com&quot;</span><span class="p">,</span>
- <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
- <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
- <span class="nt">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span>
- <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;jdbc:sap://b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com:443?encrypt=true\u0026validateCertificate=true\u0026currentschema=C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span>
- <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;F6E3F7F06E5345EAA96685FA44022DC8_RT&quot;</span>
-<span class="p">}</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;certificate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN CERTIFICATE-----\n...\n...\n...\n-----END CERTIFICATE-----&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.sap.db.jdbc.Driver&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;hdi_password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;hdi_user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;F6E3F7F06E5345EAA96685FA44022DC8_RT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdbc:sap://b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com:443?encrypt=true\u0026validateCertificate=true\u0026currentschema=C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;F6E3F7F06E5345EAA96685FA44022DC8_RT&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="create-a-secret-for-sap-hana-hdi-container-credentials">Create a Secret for SAP HANA HDI Container Credentials</h2>
 <p>As a first step, you need to upload the SAP HANA HDI container credentials from the Cloud Foundry service key to a Kubernetes secret.</p>
@@ -1577,33 +1577,33 @@ user=F6E3F7F06E5345EAA96685FA44022DC8_RT
 <ol>
 <li>
 <p>Create the file <code>gen/hdi-secret.yaml</code> with the following content:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="nt">metadata</span><span class="p">:</span>
-  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-db-secret</span>
-<span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opaque</span>
-<span class="nt">stringData</span><span class="p">:</span>
-  <span class="nt">VCAP_SERVICES</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-    <span class="no">{</span>
-        <span class="no">&quot;hana&quot;: [</span>
-            <span class="no">{</span>
-            <span class="no">&quot;binding_name&quot;: null,</span>
-            <span class="no">&quot;credentials&quot;: {{CREDENTIALS}},</span>
-            <span class="no">&quot;instance_name&quot;: &quot;hana&quot;,</span>
-            <span class="no">&quot;label&quot;: &quot;hana&quot;,</span>
-            <span class="no">&quot;name&quot;: &quot;hana&quot;,</span>
-            <span class="no">&quot;plan&quot;: &quot;hdi-shared&quot;,</span>
-            <span class="no">&quot;provider&quot;: null,</span>
-            <span class="no">&quot;syslog_drain_url&quot;: null,</span>
-            <span class="no">&quot;tags&quot;: [</span>
-              <span class="no">&quot;hana&quot;,</span>
-              <span class="no">&quot;database&quot;,</span>
-              <span class="no">&quot;relational&quot;</span>
-            <span class="no">],</span>
-            <span class="no">&quot;volume_mounts&quot;: []</span>
-            <span class="no">}</span>
-        <span class="no">]</span>
-    <span class="no">}</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-db-secret</span><span class="w"></span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opaque</span><span class="w"></span>
+<span class="nt">stringData</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">VCAP_SERVICES</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="no">{</span><span class="w"></span>
+<span class="w">        </span><span class="no">&quot;hana&quot;: [</span><span class="w"></span>
+<span class="w">            </span><span class="no">{</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;binding_name&quot;: null,</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;credentials&quot;: {{CREDENTIALS}},</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;instance_name&quot;: &quot;hana&quot;,</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;label&quot;: &quot;hana&quot;,</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;name&quot;: &quot;hana&quot;,</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;plan&quot;: &quot;hdi-shared&quot;,</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;provider&quot;: null,</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;syslog_drain_url&quot;: null,</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;tags&quot;: [</span><span class="w"></span>
+<span class="w">              </span><span class="no">&quot;hana&quot;,</span><span class="w"></span>
+<span class="w">              </span><span class="no">&quot;database&quot;,</span><span class="w"></span>
+<span class="w">              </span><span class="no">&quot;relational&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="no">],</span><span class="w"></span>
+<span class="w">            </span><span class="no">&quot;volume_mounts&quot;: []</span><span class="w"></span>
+<span class="w">            </span><span class="no">}</span><span class="w"></span>
+<span class="w">        </span><span class="no">]</span><span class="w"></span>
+<span class="w">    </span><span class="no">}</span><span class="w"></span>
 </code></pre></div>
 </li>
 <li>
@@ -1650,17 +1650,17 @@ VCAP_SERVICES:  2602 bytes
 <ol>
 <li>
 <p>Add the highlighted lines to your <code>deployment/deployment.yaml</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="nn">...</span>
-    <span class="nt">spec</span><span class="p">:</span>
-      <span class="nt">containers</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp</span>
-        <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">docker-registry.{{CLUSTER_DOMAIN}}/cpapp</span>
-        <span class="nt">imagePullPolicy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Always</span>
-        <span class="nt">ports</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="nt">containerPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4004</span>
-<span class="hll">        <span class="nt">envFrom</span><span class="p">:</span>
-</span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">secretRef</span><span class="p">:</span>
-</span><span class="hll">              <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-db-secret</span>
+<div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp</span><span class="w"></span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-registry.{{CLUSTER_DOMAIN}}/cpapp</span><span class="w"></span>
+<span class="w">        </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4004</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">envFrom</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpapp-kyma-db-secret</span><span class="w"></span>
 </span></code></pre></div>
 <p>This adds all name value pairs in the secret, currently only <code>VCAP_SERVICES</code>, as environment variables to the container of the deployment.</p>
 </li>
