@@ -1543,13 +1543,13 @@ docker run --rm --env <span class="nv">VCAP_SERVICES</span><span class="o">=</sp
 <p>On Kyma the service credentials for SAP HANA would look like this:</p>
 <div class="highlight"><pre><span></span><code>driver=com.sap.db.jdbc.Driver
 hdi_password=...
-hdi_user=F6E3F7F06E5345EAA96685FA44022DC8_RT
-host=b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com
+hdi_user=...
+host=...hana.eu10.hanacloud.ondemand.com
 password=...
 port=443
 schema=DE6922EF2F3449E984E2E794456B7CBE
-url=jdbc:sap://b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com:443?encrypt=true&amp;validateCertificate=true&amp;currentschema=DE6922EF2F3449E984E2E794456B7CBE
-user=F6E3F7F06E5345EAA96685FA44022DC8_RT
+url=jdbc:sap://...hana.eu10.hanacloud.ondemand.com:443?encrypt=true&amp;validateCertificate=true&amp;currentschema=DE6922EF2F3449E984E2E794456B7CBE
+user=...
 </code></pre></div>
 <p>Since you need to take the SAP HANA credentials from Cloud Foundry, it’s easier to stick to the <code>VCAP_SERVICES</code> approach for now.</p>
 <p>So, let's have a look at the credentials that have been created by <code>cds deploy</code>:</p>
@@ -1562,13 +1562,13 @@ user=F6E3F7F06E5345EAA96685FA44022DC8_RT
 <span class="w"> </span><span class="nt">&quot;certificate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN CERTIFICATE-----\n...\n...\n...\n-----END CERTIFICATE-----&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w"> </span><span class="nt">&quot;driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.sap.db.jdbc.Driver&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w"> </span><span class="nt">&quot;hdi_password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w"> </span><span class="nt">&quot;hdi_user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;F6E3F7F06E5345EAA96685FA44022DC8_RT&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w"> </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;hdi_user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...hana.eu10.hanacloud.ondemand.com&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w"> </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w"> </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w"> </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w"> </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdbc:sap://b236b164-dae8-49c6-914b-ca1d19d0f254.hana.eu10.hanacloud.ondemand.com:443?encrypt=true\u0026validateCertificate=true\u0026currentschema=C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w"> </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;F6E3F7F06E5345EAA96685FA44022DC8_RT&quot;</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdbc:sap://...hana.eu10.hanacloud.ondemand.com:443?encrypt=true\u0026validateCertificate=true\u0026currentschema=C5DF44CB9C08482D821F5BC3BE344FCF&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="create-a-secret-for-sap-hana-hdi-container-credentials">Create a Secret for SAP HANA HDI Container Credentials</h2>
