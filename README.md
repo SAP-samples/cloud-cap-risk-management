@@ -35,7 +35,7 @@ If you face a problem with the example application or the description, feel free
 
 ## Contributing
 
-If you have suggestions on how to improve the tutorial, you're welcome to provide your input [here](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
+If you have suggestions on how to improve the tutorial, you are welcome to provide your input [here](https://github.com/SAP-samples/cloud-cap-risk-management/issues).
 
 ## License
 
