@@ -868,7 +868,7 @@
 <p>In this tutorial, you deploy an application built with the SAP Cloud Application Programming Model (CAP) to an <em>SAP Business Technology Platform, Kyma runtime</em> cluster. The CAP application has an OData service, SAP Fiori UI and uses SAP HANA as a database.</p>
 <p>The <a href="https://github.com/SAP-samples/cloud-cap-risk-management">SAP BTP Application Development</a> example is used as starting point.</p>
 <p>The tutorial can be also done with any other Kyma installation, but you need an SAP HANA database and an HDI container and you then need to do the part with SAP HANA credentials differently.</p>
-<p>The CAP part is probably the smallest in the tutorial: Frankly speaking, just package it into a docker container and run it. But the tutorial also describes how to get a small docker registry running. If you're experienced with Kubernetes, you can skip some sections.</p>
+<p>The CAP part is probably the smallest in the tutorial: Frankly speaking, just package it into a docker container and run it. But the tutorial also describes how to get a small docker registry running. If you are experienced with Kubernetes, you can skip some sections.</p>
 <p>Since SAP HANA Cloud isn’t yet available for Kyma, you take it from Cloud Foundry. It's a bit tricky to copy the credentials, but at the end it's just copying and pasting values. Scripts are provided to help you here. So, don't get distracted by this.</p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>Note, that this tutorial is intended to give an introduction in the topic and not for deploying productive applications.</p>
@@ -1482,7 +1482,7 @@ docker push 0.0.0.0:5000/cpapp
 </ol>
 <h3 id="create-and-deploy-sap-hana-hdi-container">Create and Deploy SAP HANA HDI Container</h3>
 <p>You use the <code>cds deploy</code> command to create an HDI container on Cloud Foundry and deploy the database schema to the container.</p>
-<p>Make sure that you're logged in to a Cloud Foundry account where an SAP HANA Cloud instance and entitlement for the service plan <code>hana</code> <code>hdi-shared</code> is available or you use an SAP BTP Trial account, run:</p>
+<p>Make sure that you are logged in to a Cloud Foundry account where an SAP HANA Cloud instance and entitlement for the service plan <code>hana</code> <code>hdi-shared</code> is available or you use an SAP BTP Trial account, run:</p>
 <ol>
 <li>
 <p>Set the Cloud Foundry API endpoint:</p>
