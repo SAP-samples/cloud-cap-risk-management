@@ -10,7 +10,7 @@
   <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
  </edmx:Reference>
  <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+  <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
  </edmx:Reference>
  <edmx:Reference Uri="https://host:port/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
   <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
@@ -32,7 +32,7 @@
  </edmx:Reference>
  <edmx:DataServices m:DataServiceVersion="2.0">
   <Schema Namespace="API_BUSINESS_PARTNER" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-   <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+   <Annotation Term="Core.SchemaVersion" String="1.2.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
    <EntityType Name="A_AddressEmailAddressType" sap:label="Email Address" sap:content-version="1">
     <Key>
      <PropertyRef Name="AddressID"/>
@@ -103,7 +103,7 @@
       <LongDescription>This specification is used to determine the correct country/region code. A normalized form of the telephone number or fax number is then derived and stored in a field for a program-driven search.In most cases, the telephone number or fax number refers directly to an address.If this is the case, when a new number is created, the country/region of the address is proposed.If this is not the case (for example, with address-independent communication data for a business partner), the country/region from the user parameter LND is proposed (if it is maintained).If the user parameter LND is not maintained, the country/region of the company address assigned in the user master data is proposed.If the country/region of the address changes, the country/region of the corresponding telephone number and fax address is not changed automatically.Example: A business partner moves abroad.If the telephone number is for a permanent connection, the telephone number also changes when the business partner moves and has to be maintained again in the system.If the telephone number is for a mobile telephone and the number is retained, the original country/region for this telephone number also has to be retained and must not be changed automatically to the new country/region of the address.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax" sap:quickinfo="Fax number: dialling code+number">
+    <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax" sap:quickinfo="Fax Number: Dialing Code+Number">
      <Documentation>
       <Summary>Fax number, consisting of dialling code and number, but without country dialling code.</Summary>
       <LongDescription>If the fax number consists of a company number and an extension, the extension must be entered in the field extension.Fax number, as it is to be dialled from within the same country.Enter the following for the number "01234/567-0":Fax: 01234/567Extension: 0Enter the following for the number "01234/567-891":Fax: 01234/567Extension: 891For the number "012-345-678" (678 as extension) enter the following:Fax: 012-345Extension: 678In the following cases, enter the complete number (without country dialing code) in the field Fax:No part of the number can be considered as an extension.You are not sure which part of the number can be considered as an extension.</LongDescription>
@@ -115,7 +115,7 @@
       <LongDescription>If the fax number consists of a company number and an extension, the extension must be entered here.Enter the extensionThe following rules apply for the format of telephone and fax numbers:The length of the entries in the field Telephone and Extension (Fax and Extension) cannot be more than 24 characters in total.Leading spaces are not allowed in the field Telephone or Fax or in the field Extension.Valid characters are:Numbers (0123456789)Letters (ABCDEFGHIJKLMNOPQRSTUVWXYZ)Following other characters:  /, (, ), - *, # and " " (space), but not as a leading space.If an + is entered as the first character, the system checks whether the specified number starts with a country code. If so, a warning message is displayed because the country code is automatically determined by the system and should not be stored in the Telephone number (Fax number) field.If an &amp; is entered as the first character, the automatic check and formatting of the telephone number (fax number), as well as the determination of the country code, is suppressed.Enter the following for the number "01234/567-0":Fax: 01234/567Extension: 0Enter the following for the number "01234/567-891":Fax: 01234/567Extension: 891For the number "012-345-678" (678 as extension) enter the following:Fax: 012-345Extension: 678In the following cases, enter the complete number (without country dialing code) in the field Fax:No part of the number can be considered as an extension.You are not sure which part of the number can be considered as an extension.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="InternationalFaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax Number" sap:quickinfo="Complete Number: Dialling Code+Number+Extension">
+    <Property Name="InternationalFaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax Number" sap:quickinfo="Complete Number: Dialing Code+Number+Extension">
      <Documentation>
       <Summary>The content of this field is automatically calculated by the system based on fax number and country code components.</Summary>
       <LongDescription>This field is therefore not to be filled when Business Address Services function modules are called.</LongDescription>
@@ -192,7 +192,7 @@
       <LongDescription>The standard address is used for the following functions:When sending using the  SMTP nodein SAPconnect, the home address of the communication type used is the one set as the sender address. The recipient can see this address in the sender information and can also reply directly to this address. The standard address is also transferred and can be used for incoming status notifications, for example.When sending using an RFC node in SAPconnect, the standard address of the communication type used is the one set as the sender address. The structure defined in the case of the RFC does not permit another address to be transferred, so the standard address is used for incoming status notifications too.The SAP users have the addresses of their exchange P.O. boxes in their standard communication type 'Internet Mail' as the home address and their Internet address in the SAP system as their standard address. Example:Home address: Bernard.Brown@Company.comStandard address: Bernard.Brown@System.Company.comSending using an SMTP nodeThe home address of the communication type 'Internet Mail' (Bernard.Brown@Company.com) is used as the sender address. If a reply is sent to this address the user receives directly in the exchange postbox.Sending using the RFC nodeThe standard address of the communication type 'Internet Mail' (Bernard.Brown@System.Company.com) is used as the sender address. If a reply is sent to this address, it arrives back to the SAP system.Example using a mail system groupThe users should get all messages in their Microsoft Exchange postboxes. In the SAP system the mail system group is activated for this using the setting "Send Messages to the Home Address".The address settings of the SAP users remain unchanged:Home address: Bernard.Brown@Company.comStandard address: Bernard.Brown@System.Company.comSending using an SMTP nodeThe home address of the communication type 'Internet Mail' (Bernard.Brown@Company.com) is used as the sender address. If a reply is sent to this address the user receives directly in the exchange postbox.Sending using the RFC nodeThe standard address of the communication type 'Internet Mail' (Bernard.Brown@System.Company.com) is used as the sender address. If a reply is sent to this address it arrives back in the SAP system. It is then forwarded using the mail system group to the home address and the user gets it in the exchange postbox.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone no.: dialling code+number">
+    <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number">
      <Documentation>
       <Summary>Telephone number, consisting of dialling code and number, but without country dialling code.</Summary>
       <LongDescription>If the telephone number consists of a company number and an extension, the extension must be entered in the field extension.Telephone number, as it is dialled from within the country.For the number "01234/567-0" enter the following:Telephone: 01234/567Estension: 0For the number "01234/567-891" enter the following:Telephone: 01234/567Extension: 891For the number "012-345-678" (678 as extension) enter the following:Telepone: 012-345Extension: 678In the following cases enter the complete number (without country dialling code) in the field Telephone:No part of the number can be regarded as an extension.You are not sure which part of the number can be regarded as an extension.</LongDescription>
@@ -204,7 +204,7 @@
       <LongDescription>If the telephone number consists of a company number and an extension, the extension should be entered here.Enter the extension.The following rules apply for the format of telephone and fax numbers:The length of the entries in the field Telephone and Extension (Fax and Extension) cannot be more than 24 characters in total.Leading spaces are not allowed in the field Telephone or Fax or in the field Extension.Valid characters are:Numbers (0123456789)Letters (ABCDEFGHIJKLMNOPQRSTUVWXYZ)Following other characters:  /, (, ), - *, # and " " (space), but not as a leading space.If an + is entered as the first character, the system checks whether the specified number starts with a country code. If so, a warning message is displayed because the country code is automatically determined by the system and should not be stored in the Telephone number (Fax number) field.If an &amp; is entered as the first character, the automatic check and formatting of the telephone number (fax number), as well as the determination of the country code, is suppressed.For the number "01234/567-0" enter the following:Telephone: 01234/567Estension: 0For the number "01234/567-891" enter the following:Telephone: 01234/567Extension: 891For the number "012-345-678" (678 as extension) enter the following:Telepone: 012-345Extension: 678In the following cases enter the complete number (without country dialling code) in the field Telephone:No part of the number can be regarded as an extension.You are not sure which part of the number can be regarded as an extension.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="InternationalPhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone Number" sap:quickinfo="Complete Number: Dialling Code+Number+Extension">
+    <Property Name="InternationalPhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone Number" sap:quickinfo="Complete Number: Dialing Code+Number+Extension">
      <Documentation>
       <Summary>The content of this field is automatically calculated by the system based on the telephone number and country code components.</Summary>
       <LongDescription>This field is therefore not to be filled when Business Address Services function modules are called.</LongDescription>
@@ -549,7 +549,7 @@
       <LongDescription>The name given by the business partner to this particular department may differ from the name that you use. You can enter the name given by the business partner in the field company department.This is a contact person attribute that you can define in Customizing.For your purposes, the department name is "Sales". The business partner names the same department "Sales South".</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone no.: dialling code+number">
+    <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telephone" sap:quickinfo="Telephone No.: Dialing Code + Number">
      <Documentation>
       <Summary>Telephone number, consisting of dialling code and number, but without country dialling code.</Summary>
       <LongDescription>If the telephone number consists of a company number and an extension, the extension must be entered in the field extension.Telephone number, as it is dialled from within the country.For the number "01234/567-0" enter the following:Telephone: 01234/567Estension: 0For the number "01234/567-891" enter the following:Telephone: 01234/567Extension: 891For the number "012-345-678" (678 as extension) enter the following:Telepone: 012-345Extension: 678In the following cases enter the complete number (without country dialling code) in the field Telephone:No part of the number can be regarded as an extension.You are not sure which part of the number can be regarded as an extension.</LongDescription>
@@ -561,7 +561,7 @@
       <LongDescription>If the telephone number consists of a company number and an extension, the extension should be entered here.Enter the extension.The following rules apply for the format of telephone and fax numbers:The length of the entries in the field Telephone and Extension (Fax and Extension) cannot be more than 24 characters in total.Leading spaces are not allowed in the field Telephone or Fax or in the field Extension.Valid characters are:Numbers (0123456789)Letters (ABCDEFGHIJKLMNOPQRSTUVWXYZ)Following other characters:  /, (, ), - *, # and " " (space), but not as a leading space.If an + is entered as the first character, the system checks whether the specified number starts with a country code. If so, a warning message is displayed because the country code is automatically determined by the system and should not be stored in the Telephone number (Fax number) field.If an &amp; is entered as the first character, the automatic check and formatting of the telephone number (fax number), as well as the determination of the country code, is suppressed.For the number "01234/567-0" enter the following:Telephone: 01234/567Estension: 0For the number "01234/567-891" enter the following:Telephone: 01234/567Extension: 891For the number "012-345-678" (678 as extension) enter the following:Telepone: 012-345Extension: 678In the following cases enter the complete number (without country dialling code) in the field Telephone:No part of the number can be regarded as an extension.You are not sure which part of the number can be regarded as an extension.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax" sap:quickinfo="Fax number: dialling code+number">
+    <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax" sap:quickinfo="Fax Number: Dialing Code+Number">
      <Documentation>
       <Summary>Fax number, consisting of dialling code and number, but without country dialling code.</Summary>
       <LongDescription>If the fax number consists of a company number and an extension, the extension must be entered in the field extension.Fax number, as it is to be dialled from within the same country.Enter the following for the number "01234/567-0":Fax: 01234/567Extension: 0Enter the following for the number "01234/567-891":Fax: 01234/567Extension: 891For the number "012-345-678" (678 as extension) enter the following:Fax: 012-345Extension: 678In the following cases, enter the complete number (without country dialing code) in the field Fax:No part of the number can be considered as an extension.You are not sure which part of the number can be considered as an extension.</LongDescription>
@@ -781,9 +781,9 @@
      </Documentation>
     </Property>
     <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="User who created the object" sap:creatable="false" sap:updatable="false"/>
-    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the object was created" sap:creatable="false" sap:updatable="false"/>
+    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Date on which the object was created" sap:creatable="false" sap:updatable="false"/>
     <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Created at" sap:quickinfo="Time at which the object was created" sap:creatable="false" sap:updatable="false"/>
-    <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First Name of Business Partner (Person)"/>
+    <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
     <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Title" sap:quickinfo="Form-of-Address Key">
      <Documentation>
       <Summary>Key for form of address text.</Summary>
@@ -827,7 +827,7 @@
     <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on" sap:quickinfo="Date when object was last changed" sap:creatable="false" sap:updatable="false"/>
     <Property Name="LastChangeTime" Type="Edm.Time" Precision="0" sap:label="Changed at" sap:quickinfo="Time at which object was last changed" sap:creatable="false" sap:updatable="false"/>
     <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Last user to change object" sap:creatable="false" sap:updatable="false"/>
-    <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last Name of Business Partner (Person)"/>
+    <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
     <Property Name="LegalForm" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Legal form" sap:quickinfo="BP: Legal form of organization">
      <Documentation>
       <Summary>Denotes certain legal norms that are of significance for the organization of a company.</Summary>
@@ -966,6 +966,41 @@
       <LongDescription>If the current business partner is known under a different number in an external system, you can store this number here for information purposes.Direct input gives you the option of maintaining a business partner by specifying the external business partner number. If you maintain business partner data in your legacy system, you can transmit changes made to business partners to the SAP system without having to know the SAP business partner number in the legacy system.</LongDescription>
      </Documentation>
     </Property>
+    <Property Name="BusinessPartnerPrintFormat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Print Format" sap:quickinfo="Business Partner Print Format">
+     <Documentation>
+      <Summary>Attribute that determines the format for printing correspondence with a business partner.</Summary>
+      <LongDescription>The values you choose using the input help are used in subsequent processes. You can choose how the data should be printed or sent:In BrailleIn large print</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="BusinessPartnerOccupation" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Occupation" sap:quickinfo="Occupation/group">
+     <Documentation>
+      <Summary>You can assign an occupation to business partners in the category "Person". This is for information purposes only.</Summary>
+      <LongDescription>InstallerTeacher</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="BusPartMaritalStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Marital Status" sap:quickinfo="Marital Status of Business Partner">
+     <Documentation>
+      <Summary>For business partners in the category 'Person', you can state the marital status. This is for information purposes only.</Summary>
+      <LongDescription>SingleMarriedDivorced</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="BusPartNationality" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Nationality"/>
+    <Property Name="BusinessPartnerBirthName" Type="Edm.String" MaxLength="40" sap:label="Name at Birth" sap:quickinfo="Name at birth of business partner"/>
+    <Property Name="BusinessPartnerSupplementName" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Name Supplement" sap:quickinfo="Name supplement, e.g. noble title (key)">
+     <Documentation>
+      <Summary>Key for name prefix.</Summary>
+      <LongDescription>You can define a key for the name prefix in Customizing.</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="NaturalPersonEmployerName" Type="Edm.String" MaxLength="35" sap:label="Employer" sap:quickinfo="Name of Employer of a Natural Person"/>
+    <Property Name="LastNamePrefix" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Prefix 1" sap:quickinfo="Name Prefix (Key)">
+     <Documentation>
+      <Summary>Key for name prefix.</Summary>
+      <LongDescription>You can define a key for the name prefix in Customizing.</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="LastNameSecondPrefix" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="2nd prefix" sap:quickinfo="2nd name prefix (key)"/>
+    <Property Name="Initials" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Initials" sap:quickinfo="&quot;Middle Initial&quot; or personal initials"/>
     <Property Name="TradingPartner" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Trading Partner No." sap:quickinfo="Company ID of Trading Partner">
      <Documentation>
       <Summary>Company ID standard for the whole group.</Summary>
@@ -1249,7 +1284,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="BankIdentification" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Bank details ID">
+    <Property Name="BankIdentification" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Bank Details ID">
      <Documentation>
       <Summary>Key identifying a business partner's bank details.</Summary>
       <LongDescription>Enter a bank details ID for each separate set of bank details for a business partner.Business Partner: H. MillerBD-ID Fin.institution   Acct no. 0001 Chemical Bank, NYC 56234560002 Chemical Bank, NYC 56231220003 First Bank of Pittsburgh ...Business partner: T.Wolsey and Co.BD-ID Fin.institution   Acct no.GIR0 Citibank, Charleston ...GIR1 Chemical Bank, NYC ...</LongDescription>
@@ -1261,7 +1296,7 @@
       <LongDescription>The country/region key determines according to which rules the remaining bank data (for example, bank number and bank account number) is checked.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="BankName" Type="Edm.String" MaxLength="60" sap:label="Bank Name" sap:quickinfo="Name of Bank" sap:creatable="false" sap:updatable="false">
+    <Property Name="BankName" Type="Edm.String" MaxLength="60" sap:label="Bank Name" sap:quickinfo="Name of Financial Institution" sap:creatable="false" sap:updatable="false">
      <Documentation>
       <Summary>The name under which the bank operates.</Summary>
       <LongDescription/>
@@ -1423,7 +1458,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="BPTaxLongNumber" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Tax Number" sap:quickinfo="Business Partner Tax Number">
+    <Property Name="BPTaxLongNumber" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Tax Number Long" sap:quickinfo="Business Partner Tax Number">
      <Documentation>
       <Summary>Specifies the tax number.</Summary>
       <LongDescription>You can enter up to 60 characters in this field.</LongDescription>
@@ -1464,7 +1499,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the Record Was Created" sap:creatable="false" sap:updatable="false">
+    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On" sap:creatable="false" sap:updatable="false">
      <Documentation>
       <Summary>Date on which the master record, or the part of the master record being viewed, was created.</Summary>
       <LongDescription/>
@@ -1574,7 +1609,7 @@
       <LongDescription>By allocating a Nielsen division, you can use the services of the Nielsen Institute to create a market analysis of your customers.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax type">
+    <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Type">
      <Documentation>
       <Summary>Classification of companies according to tax aspects.</Summary>
       <LongDescription/>
@@ -1720,7 +1755,7 @@
       <LongDescription>The memo serves only as information on special features of the customer/vendor.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="CustomerHeadOffice" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Head office" sap:quickinfo="Head office account number (in branch accounts)">
+    <Property Name="CustomerHeadOffice" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Head Office" sap:quickinfo="Head Office Account Number (in branch accounts)">
      <Documentation>
       <Summary>This field contains the account number of the head office.</Summary>
       <LongDescription>This account number is only specified for branch accounts. All postings for which the account number of the branch is specified, are automatically posted to the head office account. The account number of the branch affected is noted in the line items.No line items or balances are managed in the branch account.</LongDescription>
@@ -2023,7 +2058,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:semantics="currency-code">
+    <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:semantics="currency-code">
      <Documentation>
       <Summary>Customer's currency for a sales area. This currency will be used to settle the customer's charges for the given sales organization.</Summary>
       <LongDescription/>
@@ -2662,7 +2697,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the Record Was Created" sap:creatable="false" sap:updatable="false">
+    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On" sap:creatable="false" sap:updatable="false">
      <Documentation>
       <Summary>Date on which the master record, or the part of the master record being viewed, was created.</Summary>
       <LongDescription/>
@@ -2745,7 +2780,7 @@
       <LongDescription>In the following countries, the system needs to know whether the taxpayer is a legal or natural person so that it can check the tax numbers correctly:BrazilBulgariaColombiaCroatiaGreeceItalyMexicoPeruSloveniaThailandUkraineThe flag is also used in conjunction with the Statement of Payments to Natural Persons report, as used in the Czech Republic and in Slovakia. This report only covers customers and vendors for whom you have set this indicator.In South Korea, it is used in conjunction with the Generic Withholding Tax Reporting program.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax type">
+    <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Type">
      <Documentation>
       <Summary>Classification of companies according to tax aspects.</Summary>
       <LongDescription/>
@@ -2827,6 +2862,12 @@
      <Documentation>
       <Summary>Tax calculation for Brazil:</Summary>
       <LongDescription>The IPI tax value is split up for this vendor. 50% of the calculated IPI tax value is posted as deductible input tax, 50% is deducted from the inventory posting or posting to expense account.</LongDescription>
+     </Documentation>
+    </Property>
+    <Property Name="DataExchangeInstructionKey" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Instruction Key" sap:quickinfo="Instruction Key for Data Medium Exchange">
+     <Documentation>
+      <Summary>For automatic payment transactions, this field (along with the house bank country and the payment method determined by the payment program) controls which statements are given to the participating banks when carrying out the payment order. This field is used in countries such as Germany, Austria, the Netherlands, Spain, Norway, Finland, and Japan as well as for the internnational SWIFT format, MT100.</Summary>
+      <LongDescription>Selecting the instruction keyIf data medium exchange is used (as well as in special cases when using document-based payment orders) the instruction key must be maintained in the customer/vendor master record, or in the system configuration for data medium exchange data for the house bank. The following holds regarding the instruction key:If the instruction key is maintained in the master record, then this instruction key is used.If no instruction key exists in the vendor master record, then the default instruction key defined for the house bank is used.Consequently, it is not necessary to provide all business partners with an instruction key; only the exceptions need to be maintained.1If it is necessary to specify an instruction key for a business partner's house bank that differs from the instruction key defined in the master record, this can be done when editing the payment proposal.2The instruction key must be entered in the document for one-time accounts.3The four instruction key fields belonging to the instruction key can be overridden by entering instruction keys in the document (the "Additional Data" screen in the customer or vendor line).</LongDescription>
      </Documentation>
     </Property>
     <NavigationProperty Name="to_SupplierCompany" Relationship="API_BUSINESS_PARTNER.assoc_138939C49DA3F66FEE8C74425F390DD3" FromRole="FromRole_assoc_138939C49DA3F66FEE8C74425F390DD3" ToRole="ToRole_assoc_138939C49DA3F66FEE8C74425F390DD3"/>
@@ -2932,7 +2973,7 @@
       <LongDescription>During automatic payment transactions, the system calculates the value date for check payments using this information and stores the date in the line item. The date is calculated as follows:Value date = posting date + check cashing timeIn Cash Management, the value date is used as information about the expected cash outflow.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code">
+    <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code">
      <Documentation>
       <Summary>Currency key for amounts in the system.</Summary>
       <LongDescription/>
@@ -3209,9 +3250,9 @@
       <LongDescription>When you enter more than one partner for a particular partner function (for example, you define three different ship-to parties), you can select one partner as the default. During sales or purchasing processing, if you have defined multiple partners for a partner function, the system prompts you to choose just one partner. The system presents the default partner as the first choice in the pop-up window.</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Date on Which Record Was Created" sap:creatable="false" sap:updatable="false"/>
+    <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On" sap:creatable="false" sap:updatable="false"/>
     <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object" sap:creatable="false" sap:updatable="false"/>
-    <Property Name="ReferenceSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ref. to vendor" sap:quickinfo="Reference to other vendor"/>
+    <Property Name="ReferenceSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Ref. to suplr" sap:quickinfo="Reference to other supplier"/>
     <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group">
      <Documentation>
       <Summary>The authorization group allows extended authorization protection for particular objects. The authorization groups are freely definable. The authorization groups usually occur in authorization objects together with an activity.</Summary>
@@ -3305,7 +3346,7 @@
     <Property Name="PricingDateControl" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Pricing Date Control" sap:quickinfo="Price Determination (Pricing) Date Control">
      <Documentation>
       <Summary>Determines which date is to be used for price determination (pricing) purposes.</Summary>
-      <LongDescription>Enter the key for the desired date.If you choose the date of goods receipt, for example, a new price will be determined upon the arrival of the goods, causing the item to be revaluated at this time.NoteIf you have chosen the delivery date as the date for price determination and an item contains several delivery dates (i.e. has a delivery schedule), the first delivery date (the delivery date specified in the first schedule line) is taken.</LongDescription>
+      <LongDescription>Enter the key for the desired date.Available keys are maintained in the info record of an item (in the pricing date category field). Keys available are:1  Purchase Order Date (the price determination date = date of purchase order creation)2  Delivery Date (the price determination date = delivery date)3  Current Date (the price determination date = the date of entry in the system)4  Manual (the price determination date = manually entered date)5  GR/Post. Date (the price determination date is the posting date of the goods receipt)6  GR/Doc. Date (the price determination date is the document date. When booking the goods receipt the price determination date can be influenced/controlled with the price determination date control type 6.)If you choose the date of goods receipt, for example, a new price will be determined upon the arrival of the goods, causing the item to be revaluated at this time.NoteIf you have chosen the delivery date as the date for price determination and an item contains several delivery dates (for example, because ofa delivery schedule valid for this item), the first delivery date(the delivery date specified in the first schedule line) is taken.</LongDescription>
      </Documentation>
     </Property>
     <Property Name="PurOrdAutoGenerationIsAllowed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Automatic PO" sap:quickinfo="Automatic Generation of Purchase Order Allowed">
@@ -3314,7 +3355,7 @@
       <LongDescription>If you want to use automatic conversion, note the following additional conditions:In the case of purchase requisitions for materials, you should also select the indicator Autom.purch.ord. in the Purchasing view in the material master record.In the case of purchase requisitions for services, you should also select the indicator Automatic creation of POs for service PReqs in Customizing for Services by choosing:IMG -&gt; MM -&gt; External Services Management -&gt; Source Determination and Default Values- for Client or- for Purchasing Organization</LongDescription>
      </Documentation>
     </Property>
-    <Property Name="PurchaseOrderCurrency" Type="Edm.String" MaxLength="5" sap:label="Order currency" sap:quickinfo="Purchase order currency" sap:semantics="currency-code">
+    <Property Name="PurchaseOrderCurrency" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Order currency" sap:quickinfo="Purchase order currency" sap:semantics="currency-code">
      <Documentation>
       <Summary>Key for the currency on which an order placed with a supplier is based.</Summary>
       <LongDescription/>
@@ -3362,7 +3403,7 @@
       <LongDescription/>
      </Documentation>
     </Property>
-    <Property Name="IsOrderAcknRqd" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Acknowledgment Reqd" sap:quickinfo="Order Acknowledgment Requirement">
+    <Property Name="IsOrderAcknRqd" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Acknowledgment Reqd." sap:quickinfo="Order Acknowledgment Requirement">
      <Documentation>
       <Summary>Determines whether the purchasing document (purchase order, outline purchase agreement, etc.) is to be acknowledged by the supplier.</Summary>
       <LongDescription/>
@@ -3680,7 +3721,7 @@
     <End Type="API_BUSINESS_PARTNER.A_CustomerSalesAreaType" Multiplicity="1" Role="FromRole_assoc_46D370A62F67996B992AE7C09589BEAD"/>
     <End Type="API_BUSINESS_PARTNER.A_CustomerSalesAreaTextType" Multiplicity="*" Role="ToRole_assoc_46D370A62F67996B992AE7C09589BEAD"/>
    </Association>
-   <EntityContainer Name="API_BUSINESS_PARTNER_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+   <EntityContainer Name="API_BUSINESS_PARTNER_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx pdf">
     <EntitySet Name="A_AddressEmailAddress" EntityType="API_BUSINESS_PARTNER.A_AddressEmailAddressType" sap:content-version="1"/>
     <EntitySet Name="A_AddressFaxNumber" EntityType="API_BUSINESS_PARTNER.A_AddressFaxNumberType" sap:content-version="1"/>
     <EntitySet Name="A_AddressHomePageURL" EntityType="API_BUSINESS_PARTNER.A_AddressHomePageURLType" sap:content-version="1"/>
@@ -4058,6 +4099,508 @@
        <Collection>
         <PropertyPath>LongText</PropertyPath>
         <PropertyPath>LongText</PropertyPath>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BPContactToAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_EmailAddress"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_FaxNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_MobilePhoneNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PhoneNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_URLAddress"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusinessPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BuPaIdentification"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BuPaIndustry"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusPartAddrDepdntTaxNmbr"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusinessPartnerAddress"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusinessPartnerBank"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusinessPartnerContact"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusinessPartnerRole"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BusinessPartnerTax"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Customer"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Supplier"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusinessPartnerAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_AddressUsage"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BPAddrDepdntIntlLocNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_EmailAddress"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_FaxNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_MobilePhoneNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PhoneNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_URLAddress"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusinessPartnerContact" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ContactAddress"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ContactRelationship"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustAddrDepdntExtIdentifier"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustAddrDepdntInformation"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustUnldgPtAddrDepdntInfo"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerCompany"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerSalesArea"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerTaxGrouping"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerText"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerUnloadingPoint"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerCompany" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CompanyText"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CustomerDunning"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_WithHoldingTax"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerSalesArea" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PartnerFunction"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SalesAreaTax"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SalesAreaText"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SlsAreaAddrDepdntInfo"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_CustomerSalesAreaTax" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SlsAreaAddrDepdntTax"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_Supplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierCompany"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierPurchasingOrg"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierText"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_SupplierCompany" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CompanyText"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Supplier"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierDunning"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SupplierWithHoldingTax"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_SupplierPurchasingOrg" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PartnerFunction"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_PurchasingOrgText"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+         </PropertyValue>
+        </Record>
        </Collection>
       </PropertyValue>
      </Record>
@@ -5482,6 +6025,44 @@
      <Record>
       <PropertyValue Property="Description" String="Updates contact person department and function data record by key field."/>
       <PropertyValue Property="LongDescription" String="Updates department and function data by RelationshipNumber, BusinessPartnerCompany, BusinessPartnerPerson, and ValidityEndDate."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BPAddrDepdntIntlLocNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.InsertRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Creates new address dependent data for the business partner address."/>
+      <PropertyValue Property="LongDescription" String="Adds new address dependent data for the business partner address."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BPAddrDepdntIntlLocNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.ReadRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Retrieves address dependent data for the business partner address."/>
+      <PropertyValue Property="LongDescription" String="Retrieves address dependent data for the business partner address by using the key fields business partner number and address ID."/>
+      <PropertyValue Property="ReadByKeyRestrictions">
+       <Record>
+        <PropertyValue Property="Description" String=""/>
+        <PropertyValue Property="LongDescription" String=""/>
+       </Record>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BPAddrDepdntIntlLocNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.UpdateRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Updates address dependent data for the business partner address."/>
+      <PropertyValue Property="LongDescription" String="Updates address dependent data for the business partner address by using the key fields business partner number and address ID."/>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BPAddrDepdntIntlLocNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.DeleteRestrictions">
+     <Record>
+      <PropertyValue Property="Description" String="Deletes address dependent data for the business partner address."/>
+      <PropertyValue Property="LongDescription" String="Deletes address dependent data for the business partner address identified by key fields business partner number and address ID."/>
      </Record>
     </Annotation>
    </Annotations>
@@ -7149,6 +7730,44 @@
           <Record>
            <PropertyValue Property="Description" String="Retrieves supplier general data."/>
            <PropertyValue Property="LongDescription" String="Retrieves general data of all the supplier records available in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusinessPartnerAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BPAddrDepdntIntlLocNumber"/>
+         <PropertyValue Property="ReadRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Retrieves address dependent data for the business partner address."/>
+           <PropertyValue Property="LongDescription" String="Retrieves general data of all the supplier records available in the system."/>
+          </Record>
+         </PropertyValue>
+        </Record>
+       </Collection>
+      </PropertyValue>
+     </Record>
+    </Annotation>
+   </Annotations>
+   <Annotations Target="API_BUSINESS_PARTNER.API_BUSINESS_PARTNER_Entities/A_BusinessPartnerAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Annotation Term="Capabilities.NavigationRestrictions">
+     <Record>
+      <PropertyValue Property="RestrictedProperties">
+       <Collection>
+        <Record>
+         <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BPAddrDepdntIntlLocNumber"/>
+         <PropertyValue Property="InsertRestrictions">
+          <Record>
+           <PropertyValue Property="Description" String="Updates address dependent data for the business partner address."/>
+           <PropertyValue Property="LongDescription" String="Updates address dependent data for the business partner address."/>
           </Record>
          </PropertyValue>
         </Record>
