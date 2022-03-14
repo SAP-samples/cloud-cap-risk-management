@@ -1,0 +1,29 @@
+
+{
+    "emname": "cpapp-em",
+    "namespace": "cpapp/eventing/s4hc",
+    "version": "1.1.0",
+    "options": {
+      "management": true,
+      "messagingrest": true,
+      "messaging": true
+    },
+    "rules": {
+      "queueRules": {
+        "publishFilter": [
+          "${namespace}/*"
+        ],
+        "subscribeFilter": [
+          "*"
+        ]
+      },
+      "topicRules": {
+        "publishFilter": [
+          "${namespace}/*"
+        ],
+        "subscribeFilter": [
+          "*"
+        ]
+      }
+    }
+  }
