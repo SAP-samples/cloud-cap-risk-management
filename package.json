@@ -56,8 +56,8 @@
                 "kind": "sql"
             },
             "uaa": {
-              "kind": "xsuaa",
-              "credentials": {}
+                "kind": "xsuaa",
+                "credentials": {}
             }
         },
         "hana": {
