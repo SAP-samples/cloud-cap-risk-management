@@ -8,38 +8,81 @@ module.exports = cds.service.impl(async function() {
 
     const bupa = await cds.connect.to('API_BUSINESS_PARTNER');
 
+    // Risks('...')?$expand=supplier
+    this.on('READ', 'Suppliers', async (req, next) => {
+        const select = req.query.SELECT;
+
+        if (!select.columns) return next();
+        const expandIndex = select.columns.findIndex(
+            ({ expand, ref }) => expand && ref[0] === "risks"
+        );
+
+        if (expandIndex < 0) return next();
+        const expandColumns = select.columns[expandIndex].expand;
+
+        // Remove expand from query
+        req.query.SELECT.columns.splice(expandIndex, 1);
+
+        // Make sure ID will be returned
+        if (expandColumns.indexOf('*') == -1 &&
+            !expandColumns.find(
+                column => column.ref && column.ref.find((ref) => ref == "ID"))
+        ) {
+            expandColumns.push({ ref: ["ID"] });
+        }
+
+        const suppliers = await next();
+        if (Array.isArray(suppliers) && suppliers.length > 0) throw new Error('Expand only allowed when requesting one supplier.');
+        const supplier = Array.isArray(suppliers) ? suppliers[0] : suppliers;
+
+        // Select all risks for a supplier
+        supplier.risks = await this.run(SELECT(expandColumns)
+            .from('RiskService.Risks')
+            .where("supplier_ID = ", supplier.ID)
+            .limit(select.limit?.rows?.val, select.limit?.offset?.val));
+
+        return suppliers;
+    });
+
     // Risks('...')/supplier
     this.on('READ', 'Suppliers', async (req, next) => {
         const select = req.query.SELECT;
 
-        if (select.from.ref.length === 2 &&
-            select.from.ref[0].id === "RiskService.Risks" &&
-            (select.from.ref[1] == "supplier" || select.from.ref[1].id === "supplier")) {
+        if (!(select.from.ref.length == 2 && select.from.ref[0].id == 'RiskService.Risks')) return next();
 
-            // Get supplier ID from risk
-            const { supplier_ID } = await this.run(SELECT.one("supplier_ID").from("Risks").where(select.from.ref[0].where));
+        const risk = await this.run(SELECT.one('supplier_ID')
+            .from('RiskService.Risks')
+            .where(select.from.ref[0].where));
 
-            // Select all risks for a supplier
-            const cql = SELECT(select.columns)
-                .from('RiskService.Suppliers')
-                .where("ID = ", supplier_ID)
-                .limit(select.limit?.rows?.val, select.limit?.offset?.val);
-            cql.SELECT.count = !!select.count;
-            const supplier = await bupa.run(cql);
+        if (!risk) throw new Error(`Risk doesn't exists`);
 
-            return supplier;
+        // Select all risks for a supplier
+        const suppliers = await this.run(SELECT(select.columns)
+            .from('RiskService.Suppliers')
+            .where("ID = ", risk.supplier_ID)
+            .limit(select.limit?.rows?.val, select.limit?.offset?.val));
 
-        } else {
-            return next();
-        }
+        return suppliers;
     });
 
     this.on('READ', 'Suppliers', async req => {
         return bupa.run(req.query);
     });
 
+    this.after('READ', 'Risks', risksData => {
+        const risks = Array.isArray(risksData) ? risksData : [risksData];
+        risks.forEach(risk => {
+            if (risk.impact >= 100000) {
+                risk.criticality = 1;
+            } else {
+                risk.criticality = 2;
+            }
+        });
+    });
+
     // Risks?$expand=supplier
     this.on("READ", 'Risks', async (req, next) => {
+        if (!req.query.SELECT.columns) return next();
         const expandIndex = req.query.SELECT.columns.findIndex(
             ({ expand, ref }) => expand && ref[0] === "supplier"
         );
@@ -49,10 +92,12 @@ module.exports = cds.service.impl(async function() {
         req.query.SELECT.columns.splice(expandIndex, 1);
 
         // Make sure supplier_ID will be returned
-        if (!req.query.SELECT.columns.find(
-                column => column.ref.find((ref) => ref == "supplier_ID"))
-        )
-        req.query.SELECT.columns.push({ ref: ["supplier_ID"] });
+        if (!req.query.SELECT.columns.indexOf('*') >= 0 &&
+            !req.query.SELECT.columns.find(
+                column => column.ref && column.ref.find((ref) => ref == "supplier_ID"))
+        ) {
+            req.query.SELECT.columns.push({ ref: ["supplier_ID"] });
+        }
 
         const risks = await next();
 
@@ -68,47 +113,10 @@ module.exports = cds.service.impl(async function() {
             suppliersMap[supplier.ID] = supplier;
 
         // Add suppliers to result
-        for (const risk of asArray(risks)) {
-            risk.supplier = suppliersMap[risk.supplier_ID];
+        for (const note of asArray(risks)) {
+            note.supplier = suppliersMap[note.supplier_ID];
         }
 
         return risks;
     });
-
-    this.after('READ', 'Risks', risksData => {
-        const risks = Array.isArray(risksData) ? risksData : [risksData];
-        risks.forEach(risk => {
-            if (risk.impact >= 100000) {
-                risk.criticality = 1;
-            } else {
-                risk.criticality = 2;
-            }
-        });
-    });
-
-    // Suppliers('...')/risks
-    this.on('READ', 'Risks', async (req, next) => {
-        const select = req.query.SELECT;
-
-        if (select.from.ref.length === 2 &&
-            select.from.ref[0].id === "RiskService.Suppliers" &&
-            select.from.ref[0].where[0].ref[0] === "ID" &&
-            select.from.ref[0].where[1] === "=" &&
-            select.from.ref[0].where[2].val &&
-            (select.from.ref[1] == "risks" || select.from.ref[1].id === "risks")) {
-
-            // Select all risks for a supplier
-            const cql = SELECT(select.columns)
-                .from('Risks')
-                .where("supplier_ID = ", select.from.ref[0].where[2].val)
-                .limit(select.limit?.rows?.val, select.limit?.offset?.val);
-            cql.SELECT.count = !!select.count;
-            const risks = await this.run(cql);
-            return risks;
-
-        } else {
-            return next();
-        }
-    });
-
 });

@@ -153,20 +153,20 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     service: application-logs
-    service-plan: standard
+    service-plan: lite
 - name: cpapp-bupa
   type: org.cloudfoundry.managed-service
   parameters:
     skip-service-updates:
-      plan: true
-      parameters: true
-      tags: true
+        plan: true
+        parameters: true
+        tags: true
     service: s4-hana-cloud
     service-plan: api-access
     system-name: CPAPP_S4HANA_CLOUD
     path: ./bupa-service-config.json
     config:
-      systemName: CPAPP_S4HANA_CLOUD
+        systemName: CPAPP_S4HANA_CLOUD
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

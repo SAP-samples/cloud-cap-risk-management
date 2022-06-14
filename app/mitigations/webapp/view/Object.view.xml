@@ -32,7 +32,8 @@
                 <ObjectStatus title="Timeline" text="{timeline}"/>
             </l:VerticalLayout>
         </semantic:content>
-		
+
+
 	</semantic:SemanticPage>
 
 </mvc:View>

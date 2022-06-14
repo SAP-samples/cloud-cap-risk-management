@@ -20,23 +20,20 @@ using { managed } from '@sap/cds/common';
     risks        : Association to many Risks on risks.miti = $self;
   }
 
-  // using an external service from
-  using {  API_BUSINESS_PARTNER as bupa } from '../srv/external/API_BUSINESS_PARTNER';
+using {  API_BUSINESS_PARTNER as bupa } from '../srv/external/API_BUSINESS_PARTNER';
 
-  view Suppliers as select from bupa.A_BusinessPartner mixin {
-      risks : association to many Risks on risks.supplier.ID = $projection.ID;
-  } into {
-      key BusinessPartner as ID,
-      BusinessPartnerFullName as fullName,
-      BusinessPartnerIsBlocked as isBlocked,
-      risks,
-      //      to_BusinessPartnerAddress as addresses: redirected to SupplierAddresses
-  };
+    entity Suppliers as projection on bupa.A_BusinessPartner {
+        key BusinessPartner as ID,
+        BusinessPartnerFullName as fullName,
+        BusinessPartnerIsBlocked as isBlocked,
+        risks : Association to many Risks on risks.supplier = $self
+    }
 
-  entity SupplierAddresses as projection on bupa.A_BusinessPartnerAddress {
-    BusinessPartner as bupaID,
-    AddressID as ID,
-    CityName as city,
-    StreetName as street,
-    County as county
-  }
+    entity SupplierAddresses as projection on bupa.A_BusinessPartnerAddress {
+        BusinessPartner as bupaID,
+        AddressID as ID,
+        CityName as city,
+        StreetName as street,
+        County as county
+    }
+

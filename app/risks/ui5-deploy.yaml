@@ -1,10 +1,8 @@
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-specVersion: '1.0'
+specVersion: '2.4'
 metadata:
   name: ns.risks
 type: application
-ui5Version: 
-ui5Theme: sap_fiori_3
 resources:
   configuration:
     propertiesFileSourceEncoding: UTF-8

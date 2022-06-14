@@ -36,9 +36,13 @@
     },
     "sap.fiori": {
         "registrationIds": [
-            "626281b5-108c-46fc-995d-cafa210bd3fd"
+            "20618182-bcc1-43a0-a644-1ab298ff1824"
         ],
         "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "cpapp.service"
     },
     "sap.ui": {
         "technology": "UI5",
@@ -64,7 +68,7 @@
             "id": "app"
         },
         "dependencies": {
-            "minUI5Version": "1.94.0",
+            "minUI5Version": "1.95.0",
             "libs": {
                 "sap.ui.core": {},
                 "sap.m": {},
@@ -146,9 +150,5 @@
                 }
             }
         }
-    },
-    "sap.cloud": {
-        "public": true,
-        "service": "cpapp.service"
     }
 }

@@ -1,5 +1,5 @@
 {
-    "_version": "",
+    "_version": "1.32.0",
     "sap.app": {
         "id": "ns.risks",
         "type": "application",
@@ -59,13 +59,17 @@
             "css": []
         },
         "dependencies": {
-            "minUI5Version": "1.76.0",
+            "minUI5Version": "1.95.0",
             "libs": {
                 "sap.ui.core": {},
                 "sap.fe.templates": {}
             }
         },
         "models": {
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "uri": "i18n/i18n.properties"
@@ -119,6 +123,7 @@
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
+                            "editableHeaderContent": true,
                             "entitySet": "Risks"
                         }
                     }

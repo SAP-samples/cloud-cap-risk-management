@@ -1,7 +1,8 @@
-# CAP CPAppDevelopment-app
+# CAP cpapp
 _out
 *.db
 connection.properties
+default-*.json
 gen/
 node_modules/
 target/
@@ -26,14 +27,9 @@ mta_archives/
 # IDEs
 # .vscode
 # .idea
-# Do not lock packages in the tutorial
 
-package-lock.json
-
-# SAP Fiori build files
 dist/
 resources/
 app/*/package-lock.json
+
 .env
-# added by cds bind
-.cdsrc-private.json
