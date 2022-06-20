@@ -1,0 +1,39 @@
+<mvc:View
+	controllerName="ns.mitigations.controller.Object"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage
+		id="page"
+		headerPinnable="false"
+		toggleHeaderOnTitleClick="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+
+		<semantic:titleHeading>
+			<Title text="{description}" />
+		</semantic:titleHeading>
+
+		<semantic:headerContent>
+			<ObjectNumber
+			/>
+		</semantic:headerContent>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:content>
+            <l:VerticalLayout>
+                <ObjectStatus title="Description" text="{description}"/>
+                <ObjectStatus title="Owner" text="{owner}"/>
+                <ObjectStatus title="Timeline" text="{timeline}"/>
+            </l:VerticalLayout>
+        </semantic:content>
+
+
+	</semantic:SemanticPage>
+
+</mvc:View>
