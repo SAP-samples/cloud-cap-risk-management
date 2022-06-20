@@ -1,0 +1,57 @@
+{{- if .Values.html5_apps_deployer }}
+  {{- if or (not (hasKey .Values.html5_apps_deployer "enabled")) .Values.html5_apps_deployer.enabled }}
+
+{{- $ := merge (dict "root" . "name" "html5-apps-deployer") .Values.html5_apps_deployer . }}
+{{- if $.backendDestinations }}
+  {{- if not (.Values.destinations.parameters.HTML5Runtime_enabled) }}
+    {{- fail "destinations.parameters.HTML5Runtime_enabled must be set to true for use with Launchpad Service" }}
+  {{- end }}
+{{- end }}
+{{- template "cap.expect" (list . "html5_apps_deployer.image.repository") }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-html5-apps-deployer
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "cap.labels" $ | nindent 4 }}
+  annotations:
+    "helm.sh/hook": "post-install,post-upgrade"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  backoffLimit: 4
+  template:
+    metadata:
+      labels:
+        {{- include "cap.labels" $ | nindent 8 }}
+        sidecar.istio.io/inject: "false"
+    spec:
+      {{- include "cap.imagePullSecrets" $ | nindent 6 }}
+      restartPolicy: Never
+      volumes:
+        {{- include "cap.sapcp.bindingsVolumes" $ | nindent 10 }}
+      containers:
+      - name: html5-deployer
+        image: {{ include "cap.image" $ }}
+        imagePullPolicy: {{ include "cap.imagePullPolicy" $ }}
+        volumeMounts:
+          {{- include "cap.sapcp.bindingsVolumeMounts" $ | nindent 10 }}
+        env:
+          - name: CF_NODEJS_LOGGING_LEVEL
+            value: debug
+          - name: DEBUG
+            value: "*"
+          - name: EXIT_PROCESS_AFTER_UPLOAD
+            value: "true"
+          - name: PORT
+            value: "5000"
+            # TODO: cloud service should be configurable in the HTML5 apps
+          - name: SAP_CLOUD_SERVICE
+            value: {{ $.cloudService }}
+            # TODO: destination name should be configurable in the HTML5 apps
+          - name: BACKEND_DESTINATIONS
+            value: >
+              {{ include "cap.backendDestinations" $ }}
+---
+{{ include "cap.sapcp.bindings" $ }}
+  {{- end }}
+{{- end }}

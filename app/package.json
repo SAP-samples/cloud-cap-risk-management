@@ -1,0 +1,14 @@
+{
+    "name": "ui-deployer",
+    "scripts": {
+        "start": "node node_modules/@sap/html5-app-deployer/index.js",
+        "build": "bash build.sh"
+    },
+    "workspaces": [
+        "risks",
+        "mitigations"
+    ],
+    "dependencies": {
+        "@sap/html5-app-deployer": "^4.1.0"
+    }
+}

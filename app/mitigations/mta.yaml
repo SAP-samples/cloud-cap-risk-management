@@ -1,0 +1,109 @@
+_schema-version: "3.1"
+ID: mitigations
+description: Mitigations
+version: 0.0.1
+modules:
+- name: mitigations-srv
+  type: nodejs
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+- name: mitigations-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: mitigations-destination-service
+    parameters:
+      content-target: true
+  - name: mitigations-repo-host
+    parameters:
+      service-key:
+        name: mitigations-repo-host-key
+  - name: mitigations-uaa
+    parameters:
+      service-key:
+        name: mitigations-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: mitigations_html_repo_host
+          ServiceInstanceName: mitigations-html5-srv
+          ServiceKeyName: mitigations-repo-host-key
+          sap.cloud.service: mitigations
+        - Authentication: OAuth2UserTokenExchange
+          Name: mitigations_uaa
+          ServiceInstanceName: mitigations-xsuaa-srv
+          ServiceKeyName: mitigations-uaa-key
+          sap.cloud.service: mitigations
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: mitigations-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: mitigations-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - nsmitigations.zip
+      name: nsmitigations
+      target-path: resources/
+- name: nsmitigations
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: mitigations-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: mitigations-destination-service
+    service-plan: lite
+- name: mitigations-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: mitigations-xsuaa-srv
+    service-plan: application
+- name: mitigations-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: mitigations-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx -p @sap/cds-dk cds build --production
