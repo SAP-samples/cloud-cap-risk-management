@@ -1,62 +1,64 @@
 {
-    "name": "cpapp",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap/cds": "^5",
-        "express": "^4",
-        "passport": "^0.5.0",
-        "hdb": "^0.18.3"
-    },
-    "devDependencies": {
-        "@sap/ux-specification": "^1.90.12",
-        "sqlite3": "^5.0.2"
-    },
-    "scripts": {
-        "start": "cds run",
-        "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4",
-        "watch-mitigations": "cds watch --open mitigations/webapp/index.html#fe-lrop-v4"
-    },
-    "eslintConfig": {
-        "extends": "eslint:recommended",
-        "env": {
-            "es2020": true,
-            "node": true,
-            "jest": true,
-            "mocha": true
-        },
-        "globals": {
-            "SELECT": true,
-            "INSERT": true,
-            "UPDATE": true,
-            "DELETE": true,
-            "CREATE": true,
-            "DROP": true,
-            "CDL": true,
-            "CQL": true,
-            "CXL": true,
-            "cds": true
-        },
-        "rules": {
-            "no-console": "off",
-            "require-atomic-updates": "off"
-        }
-    },
-    "sapux": [
-        "app/risks",
-        "app/mitigations"
-    ],
-    "cds": {
-        "requires": {
-            "db": {
-                "kind": "sql"
-            }
-        },
-        "hana": {
-            "deploy-format": "hdbtable"
-        }
-    }
+  "name": "cpapp",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+      "@sap/cds": "^6",
+      "express": "^4",
+      "passport": "^0.5.0",
+      "hdb": "^0.19.0"
+  },
+  "devDependencies": {
+      "@sap/ux-specification": "^1.90.12",
+      "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+      "start": "cds run",
+      "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4",
+      "watch-mitigations": "cds watch --open mitigations/webapp/index.html#fe-lrop-v4"
+  },
+  "eslintConfig": {
+      "extends": "eslint:recommended",
+      "env": {
+          "es2020": true,
+          "node": true,
+          "jest": true,
+          "mocha": true
+      },
+      "globals": {
+          "SELECT": true,
+          "INSERT": true,
+          "UPDATE": true,
+          "DELETE": true,
+          "CREATE": true,
+          "DROP": true,
+          "CDL": true,
+          "CQL": true,
+          "CXL": true,
+          "cds": true
+      },
+      "rules": {
+          "no-console": "off",
+          "require-atomic-updates": "off"
+      }
+  },
+  "sapux": [
+      "app/risks",
+      "app/mitigations"
+  ],
+  "cds": {
+      "requires": {
+          "[production]": {
+              "db": {
+                  "kind": "hana-cloud"
+              }
+          },
+          "db": {
+              "kind": "sql"
+          }
+      }
+  }
 }
