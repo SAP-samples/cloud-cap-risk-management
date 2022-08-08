@@ -6,11 +6,13 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^5",
+    "@sap-cloud-sdk/http-client": "^2.6.0",
+    "@sap-cloud-sdk/util": "^2.6.0",
+    "@sap/cds": "^6",
     "@sap/xb-msg-amqp-v100": "^0.9.58",
     "@sap/xssec": "^3.2.8",
     "express": "^4",
-    "hdb": "^0.18.3",
+    "hdb": "^0.19.0",
     "passport": "^0.5.0"
   },
   "devDependencies": {
@@ -57,6 +59,14 @@
   ],
   "cds": {
     "requires": {
+      "[production]": {
+        "db": {
+            "kind": "hana-cloud"
+        },
+        "auth": {
+            "kind": "xsuaa"
+        }
+      },
       "db": {
         "kind": "sql"
       },
@@ -88,9 +98,6 @@
               "subscribePrefix": "+/+/+/ce/"
           }
       }
-    },
-    "hana": {
-      "deploy-format": "hdbtable"
     }
   }
 }
