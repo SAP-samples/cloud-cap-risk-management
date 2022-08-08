@@ -28,5 +28,10 @@ mta_archives/
 # .vscode
 # .idea
 
+# local settings
 .cdsrc-private.json
 .values.yaml
+
+# Helm chart not included in example, use "cds add helm" to add it back
+chart/
+!chart/values.yaml
