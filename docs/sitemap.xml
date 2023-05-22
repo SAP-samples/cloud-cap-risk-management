@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://github.com/SAP-samples/cloud-cap-risk-management/</loc>
-         <lastmod>2023-04-18</lastmod>
+         <lastmod>2023-05-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/SAP-samples/cloud-cap-risk-management/CF-Logon/</loc>
-         <lastmod>2023-04-18</lastmod>
+         <lastmod>2023-05-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/SAP-samples/cloud-cap-risk-management/Kyma/</loc>
-         <lastmod>2023-04-18</lastmod>
+         <lastmod>2023-05-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/SAP-samples/cloud-cap-risk-management/Tutorial-Overview/</loc>
-         <lastmod>2023-04-18</lastmod>
+         <lastmod>2023-05-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/SAP-samples/cloud-cap-risk-management/includes/Prepare-SAP-BTP-Live-or-Canary/</loc>
-         <lastmod>2023-04-18</lastmod>
+         <lastmod>2023-05-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/SAP-samples/cloud-cap-risk-management/includes/SAP-BTP-Entitlements/</loc>
-         <lastmod>2023-04-18</lastmod>
+         <lastmod>2023-05-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
