@@ -12,14 +12,14 @@
     "passport": "^0.5.0"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.100.4",
+    "@sap/ux-specification": "^1.108.8",
     "sqlite3": "^5.0.2"
   },
   "scripts": {
     "start": "cds run",
     "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4",
     "watch-mitigations": "cds watch --open mitigations/webapp/index.html#fe-lrop-v4",
-    "watch-risk-analysis": "cds watch --open risk-analysis/webapp/index.html#fe-lrop-v4"
+    "watch-risk-analysis": "cds watch --open risk-analysis/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",

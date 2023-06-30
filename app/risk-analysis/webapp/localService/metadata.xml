@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml">
+        <edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Analytics.xml">
+        <edmx:Include Alias="Analytics" Namespace="com.sap.vocabularies.Analytics.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml">
+        <edmx:Include Alias="HTML5" Namespace="com.sap.vocabularies.HTML5.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="RiskService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="RisksAnalysis" EntityType="RiskService.RisksAnalysis">
+                    <NavigationPropertyBinding Path="miti" Target="Mitigations"/>
+                </EntitySet>
+                <EntitySet Name="Risks" EntityType="RiskService.Risks">
+                    <NavigationPropertyBinding Path="miti" Target="Mitigations"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="Risks"/>
+                </EntitySet>
+                <EntitySet Name="Mitigations" EntityType="RiskService.Mitigations">
+                    <NavigationPropertyBinding Path="risks" Target="Risks"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="Mitigations"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="RisksAnalysis">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.Date"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="100"/>
+                <Property Name="prio" Type="Edm.String" MaxLength="5"/>
+                <Property Name="descr" Type="Edm.String"/>
+                <NavigationProperty Name="miti" Type="RiskService.Mitigations">
+                    <ReferentialConstraint Property="miti_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="miti_ID" Type="Edm.Guid"/>
+                <Property Name="impact" Type="Edm.Int32"/>
+                <Property Name="criticality" Type="Edm.Int32"/>
+                <Property Name="riskyear" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Risks">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="100"/>
+                <Property Name="prio" Type="Edm.String" MaxLength="5"/>
+                <Property Name="descr" Type="Edm.String"/>
+                <NavigationProperty Name="miti" Type="RiskService.Mitigations" Partner="risks">
+                    <ReferentialConstraint Property="miti_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="miti_ID" Type="Edm.Guid"/>
+                <Property Name="impact" Type="Edm.Int32"/>
+                <Property Name="criticality" Type="Edm.Int32"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="RiskService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="RiskService.Risks"/>
+            </EntityType>
+            <EntityType Name="Mitigations">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="owner" Type="Edm.String"/>
+                <Property Name="timeline" Type="Edm.String"/>
+                <NavigationProperty Name="risks" Type="Collection(RiskService.Risks)" Partner="miti"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="RiskService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="RiskService.Mitigations"/>
+            </EntityType>
+            <EntityType Name="DraftAdministrativeData">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+            </EntityType>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="RiskService.Risks"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="RiskService.Risks"/>
+            </Action>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="RiskService.Mitigations"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="RiskService.Mitigations"/>
+            </Action>
+            <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="RiskService.Risks"/>
+                <ReturnType Type="RiskService.Risks"/>
+            </Action>
+            <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="RiskService.Mitigations"/>
+                <ReturnType Type="RiskService.Mitigations"/>
+            </Action>
+            <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="RiskService.Risks"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+                <ReturnType Type="RiskService.Risks"/>
+            </Action>
+            <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="RiskService.Mitigations"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+                <ReturnType Type="RiskService.Mitigations"/>
+            </Action>
+            <Annotations Target="RiskService.RisksAnalysis">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>ID</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="title"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="descr"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="createdAt"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="prio"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="impact"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Chart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Risk Impacts"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>sumImpact</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>riskyear</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="sumImpact"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="riskyear"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="prio"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="pvPrio">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="impact"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#chartPrio</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="svPrio">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="impact"/>
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/GE"/>
+                                                <PropertyValue Property="Low" Int="0"/>
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="chartPrio">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>prio</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="prio"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>sumImpact</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="sumImpact"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#dpPrio"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="dpPrio">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="impact"/>
+                        <PropertyValue Property="Title" String="Impact"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="pvPeriod">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="Text" String="FilterRisksOverPeriodPV"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="createdAt"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#chartPeriod</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="chartPeriod">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Risks Over Period"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>createdAt</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="createdAt"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>countRisk</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="countRisk"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#dpPeriod"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="dpPeriod">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="createdAt"/>
+                        <PropertyValue Property="Title" String="Creation Date"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record Type="Aggregation.ApplySupportedType">
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>topcount</String>
+                                <String>bottomcount</String>
+                                <String>identity</String>
+                                <String>concat</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                                <String>expand</String>
+                                <String>top</String>
+                                <String>skip</String>
+                                <String>orderby</String>
+                                <String>search</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="Aggregation.RollupType/None"/>
+                        <PropertyValue Property="PropertyRestrictions" Bool="true"/>
+                        <PropertyValue Property="GroupableProperties">
+                            <Collection>
+                                <PropertyPath>title</PropertyPath>
+                                <PropertyPath>descr</PropertyPath>
+                                <PropertyPath>createdAt</PropertyPath>
+                                <PropertyPath>impact</PropertyPath>
+                                <PropertyPath>prio</PropertyPath>
+                                <PropertyPath>riskyear</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="AggregatableProperties">
+                            <Collection>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="prio"/>
+                                </Record>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="impact"/>
+                                </Record>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="createdAt"/>
+                                </Record>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="ID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Analytics.AggregatedProperties">
+                    <Collection>
+                        <Record Type="Analytics.AggregatedPropertyType">
+                            <PropertyValue Property="Name" String="minAmount"/>
+                            <PropertyValue Property="AggregationMethod" String="min"/>
+                            <PropertyValue Property="AggregatableProperty" PropertyPath="impact"/>
+                            <Annotation Term="Common.Label" String="Minimal Impact"/>
+                        </Record>
+                        <Record Type="Analytics.AggregatedPropertyType">
+                            <PropertyValue Property="Name" String="maxAmount"/>
+                            <PropertyValue Property="AggregationMethod" String="max"/>
+                            <PropertyValue Property="AggregatableProperty" PropertyPath="impact"/>
+                            <Annotation Term="Common.Label" String="Maximal Impact"/>
+                        </Record>
+                        <Record Type="Analytics.AggregatedPropertyType">
+                            <PropertyValue Property="Name" String="avgAmount"/>
+                            <PropertyValue Property="AggregationMethod" String="average"/>
+                            <PropertyValue Property="AggregatableProperty" PropertyPath="impact"/>
+                            <Annotation Term="Common.Label" String="Average Impact"/>
+                        </Record>
+                        <Record Type="Analytics.AggregatedPropertyType">
+                            <PropertyValue Property="Name" String="sumImpact"/>
+                            <PropertyValue Property="AggregationMethod" String="sum"/>
+                            <PropertyValue Property="AggregatableProperty" PropertyPath="impact"/>
+                            <Annotation Term="Common.Label" String="Total Cost Impact"/>
+                        </Record>
+                        <Record Type="Analytics.AggregatedPropertyType">
+                            <PropertyValue Property="Name" String="countRisk"/>
+                            <PropertyValue Property="AggregationMethod" String="countdistinct"/>
+                            <PropertyValue Property="AggregatableProperty" PropertyPath="ID"/>
+                            <Annotation Term="Common.Label" String="Number of Risks"/>
+                        </Record>
+                        <Record Type="Analytics.AggregatedPropertyType">
+                            <PropertyValue Property="Name" String="countRiskYear"/>
+                            <PropertyValue Property="AggregationMethod" String="countdistinct"/>
+                            <PropertyValue Property="AggregatableProperty" PropertyPath="riskyear"/>
+                            <Annotation Term="Common.Label" String="Number of Risks Per Year"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="RiskService.EntityContainer/RisksAnalysis">
+                <Annotation Term="UI.PresentationVariant" Qualifier="pvPrio">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="impact"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#chartPrio</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="svPrio">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="impact"/>
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/GE"/>
+                                                <PropertyValue Property="Low" Int="0"/>
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="pvPeriod">
+                    <Record Type="UI.PresentationVariantType">
+                        <PropertyValue Property="Text" String="FilterRisksOverPeriodPV"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="createdAt"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#chartPeriod</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record Type="Aggregation.ApplySupportedType">
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>topcount</String>
+                                <String>bottomcount</String>
+                                <String>identity</String>
+                                <String>concat</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                                <String>expand</String>
+                                <String>top</String>
+                                <String>skip</String>
+                                <String>orderby</String>
+                                <String>search</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="Aggregation.RollupType/None"/>
+                        <PropertyValue Property="PropertyRestrictions" Bool="true"/>
+                        <PropertyValue Property="GroupableProperties">
+                            <Collection>
+                                <PropertyPath>title</PropertyPath>
+                                <PropertyPath>descr</PropertyPath>
+                                <PropertyPath>createdAt</PropertyPath>
+                                <PropertyPath>impact</PropertyPath>
+                                <PropertyPath>prio</PropertyPath>
+                                <PropertyPath>riskyear</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="AggregatableProperties">
+                            <Collection>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="prio"/>
+                                </Record>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="impact"/>
+                                </Record>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="createdAt"/>
+                                </Record>
+                                <Record Type="Aggregation.AggregatablePropertyType">
+                                    <PropertyValue Property="Property" PropertyPath="ID"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="RiskService.RisksAnalysis/createdAt">
+                <Annotation Term="Common.ValueList" Qualifier="vlcreatedAt">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="Creation Date"/>
+                        <PropertyValue Property="CollectionPath" String="RisksAnalysis"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="PresentationVariantQualifier" String="pvPeriod"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="createdAt"/>
+                                    <PropertyValue Property="ValueListProperty" String="createdAt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.Label" String="Creation Date"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="RiskService.RisksAnalysis/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                    <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                    </Annotations>
+                    <Annotations Target="RiskService.RisksAnalysis/modifiedAt">
+                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                        <Annotation Term="Core.Computed" Bool="true"/>
+                        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                        </Annotations>
+                        <Annotations Target="RiskService.RisksAnalysis/modifiedBy">
+                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                            <Annotation Term="Core.Computed" Bool="true"/>
+                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                </Annotations>
+                                <Annotations Target="RiskService.RisksAnalysis/ID">
+                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                </Annotations>
+                                <Annotations Target="RiskService.RisksAnalysis/title">
+                                    <Annotation Term="Common.Label" String="Title"/>
+                                </Annotations>
+                                <Annotations Target="RiskService.RisksAnalysis/prio">
+                                    <Annotation Term="Common.ValueList" Qualifier="vlPrio">
+                                        <Record Type="Common.ValueListType">
+                                            <PropertyValue Property="Label" String="Priority"/>
+                                            <PropertyValue Property="CollectionPath" String="RisksAnalysis"/>
+                                            <PropertyValue Property="SearchSupported" Bool="true"/>
+                                            <PropertyValue Property="PresentationVariantQualifier" String="pvPrio"/>
+                                            <PropertyValue Property="SelectionVariantQualifier" String="svPrio"/>
+                                            <PropertyValue Property="Parameters">
+                                                <Collection>
+                                                    <Record Type="Common.ValueListParameterInOut">
+                                                        <PropertyValue Property="LocalDataProperty" PropertyPath="prio"/>
+                                                        <PropertyValue Property="ValueListProperty" String="prio"/>
+                                                    </Record>
+                                                </Collection>
+                                            </PropertyValue>
+                                        </Record>
+                                    </Annotation>
+                                    <Annotation Term="Common.Label" String="Priority"/>
+                                </Annotations>
+                                <Annotations Target="RiskService.RisksAnalysis/descr">
+                                    <Annotation Term="Common.Label" String="Description"/>
+                                </Annotations>
+                                <Annotations Target="RiskService.RisksAnalysis/impact">
+                                    <Annotation Term="Common.Label" String="Impact"/>
+                                </Annotations>
+                                <Annotations Target="RiskService.RisksAnalysis/riskyear">
+                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                    <Annotation Term="Common.Label" String="Year"/>
+                                </Annotations>
+                                <Annotations Target="RiskService.Risks">
+                                    <Annotation Term="UI.HeaderInfo">
+                                        <Record Type="UI.HeaderInfoType">
+                                            <PropertyValue Property="TypeName" String="Risk"/>
+                                            <PropertyValue Property="TypeNamePlural" String="Risks"/>
+                                            <PropertyValue Property="Title">
+                                                <Record Type="UI.DataField">
+                                                    <PropertyValue Property="Value" Path="title"/>
+                                                </Record>
+                                            </PropertyValue>
+                                            <PropertyValue Property="Description">
+                                                <Record Type="UI.DataField">
+                                                    <PropertyValue Property="Value" Path="descr"/>
+                                                </Record>
+                                            </PropertyValue>
+                                        </Record>
+                                    </Annotation>
+                                    <Annotation Term="UI.SelectionFields">
+                                        <Collection>
+                                            <PropertyPath>prio</PropertyPath>
+                                        </Collection>
+                                    </Annotation>
+                                    <Annotation Term="UI.LineItem">
+                                        <Collection>
+                                            <Record Type="UI.DataField">
+                                                <PropertyValue Property="Value" Path="title"/>
+                                            </Record>
+                                            <Record Type="UI.DataField">
+                                                <PropertyValue Property="Value" Path="miti_ID"/>
+                                                <Annotation Term="HTML5.CssDefaults">
+                                                    <Record Type="HTML5.CssDefaultsType">
+                                                        <PropertyValue Property="width" String="100%"/>
+                                                    </Record>
+                                                </Annotation>
+                                            </Record>
+                                            <Record Type="UI.DataField">
+                                                <PropertyValue Property="Value" Path="prio"/>
+                                                <PropertyValue Property="Criticality" Path="criticality"/>
+                                            </Record>
+                                            <Record Type="UI.DataField">
+                                                <PropertyValue Property="Value" Path="impact"/>
+                                                <PropertyValue Property="Criticality" Path="criticality"/>
+                                            </Record>
+                                        </Collection>
+                                    </Annotation>
+                                    <Annotation Term="UI.Facets">
+                                        <Collection>
+                                            <Record Type="UI.ReferenceFacet">
+                                                <PropertyValue Property="Label" String="Main"/>
+                                                <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Main"/>
+                                            </Record>
+                                        </Collection>
+                                    </Annotation>
+                                    <Annotation Term="UI.FieldGroup" Qualifier="Main">
+                                        <Record Type="UI.FieldGroupType">
+                                            <PropertyValue Property="Data">
+                                                <Collection>
+                                                    <Record Type="UI.DataField">
+                                                        <PropertyValue Property="Value" Path="miti_ID"/>
+                                                    </Record>
+                                                    <Record Type="UI.DataField">
+                                                        <PropertyValue Property="Value" Path="prio"/>
+                                                        <PropertyValue Property="Criticality" Path="criticality"/>
+                                                    </Record>
+                                                    <Record Type="UI.DataField">
+                                                        <PropertyValue Property="Value" Path="impact"/>
+                                                        <PropertyValue Property="Criticality" Path="criticality"/>
+                                                    </Record>
+                                                </Collection>
+                                            </PropertyValue>
+                                        </Record>
+                                    </Annotation>
+                                </Annotations>
+                                <Annotations Target="RiskService.EntityContainer/Risks">
+                                    <Annotation Term="Common.DraftRoot">
+                                        <Record Type="Common.DraftRootType">
+                                            <PropertyValue Property="ActivationAction" String="RiskService.draftActivate"/>
+                                            <PropertyValue Property="EditAction" String="RiskService.draftEdit"/>
+                                            <PropertyValue Property="PreparationAction" String="RiskService.draftPrepare"/>
+                                        </Record>
+                                    </Annotation>
+                                </Annotations>
+                                <Annotations Target="RiskService.Risks/createdAt">
+                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                    <Annotation Term="Core.Immutable" Bool="true"/>
+                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                    <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                    </Annotations>
+                                    <Annotations Target="RiskService.Risks/createdBy">
+                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                        <Annotation Term="Core.Immutable" Bool="true"/>
+                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                            <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                            </Annotations>
+                                            <Annotations Target="RiskService.Risks/modifiedAt">
+                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                </Annotations>
+                                                <Annotations Target="RiskService.Risks/modifiedBy">
+                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                        <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/ID">
+                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/title">
+                                                            <Annotation Term="Common.Label" String="Title"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/prio">
+                                                            <Annotation Term="Common.Label" String="Priority"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/descr">
+                                                            <Annotation Term="Common.Label" String="Description"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/miti">
+                                                            <Annotation Term="Common.Label" String="Mitigation"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/miti_ID">
+                                                            <Annotation Term="Common.Text" Path="miti/description">
+                                                                <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextOnly"/>
+                                                            </Annotation>
+                                                            <Annotation Term="Common.ValueList">
+                                                                <Record Type="Common.ValueListType">
+                                                                    <PropertyValue Property="Label" String="Mitigations"/>
+                                                                    <PropertyValue Property="CollectionPath" String="Mitigations"/>
+                                                                    <PropertyValue Property="Parameters">
+                                                                        <Collection>
+                                                                            <Record Type="Common.ValueListParameterInOut">
+                                                                                <PropertyValue Property="LocalDataProperty" PropertyPath="miti_ID"/>
+                                                                                <PropertyValue Property="ValueListProperty" String="ID"/>
+                                                                            </Record>
+                                                                            <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                <PropertyValue Property="ValueListProperty" String="description"/>
+                                                                            </Record>
+                                                                        </Collection>
+                                                                    </PropertyValue>
+                                                                </Record>
+                                                            </Annotation>
+                                                            <Annotation Term="Common.Label" String="Mitigation"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/impact">
+                                                            <Annotation Term="Common.Label" String="Impact"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/IsActiveEntity">
+                                                            <Annotation Term="UI.Hidden" Bool="true"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/HasActiveEntity">
+                                                            <Annotation Term="UI.Hidden" Bool="true"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/HasDraftEntity">
+                                                            <Annotation Term="UI.Hidden" Bool="true"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Risks/DraftAdministrativeData">
+                                                            <Annotation Term="UI.Hidden" Bool="true"/>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.EntityContainer/Mitigations">
+                                                            <Annotation Term="Common.DraftRoot">
+                                                                <Record Type="Common.DraftRootType">
+                                                                    <PropertyValue Property="ActivationAction" String="RiskService.draftActivate"/>
+                                                                    <PropertyValue Property="EditAction" String="RiskService.draftEdit"/>
+                                                                    <PropertyValue Property="PreparationAction" String="RiskService.draftPrepare"/>
+                                                                </Record>
+                                                            </Annotation>
+                                                        </Annotations>
+                                                        <Annotations Target="RiskService.Mitigations/createdAt">
+                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                            <Annotation Term="Core.Immutable" Bool="true"/>
+                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                            <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                            </Annotations>
+                                                            <Annotations Target="RiskService.Mitigations/createdBy">
+                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                    <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                    </Annotations>
+                                                                    <Annotations Target="RiskService.Mitigations/modifiedAt">
+                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                        </Annotations>
+                                                                        <Annotations Target="RiskService.Mitigations/modifiedBy">
+                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/ID">
+                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                    <Annotation Term="Common.Text" Path="description"/>
+                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/description">
+                                                                                    <Annotation Term="Common.Label" String="Description"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/owner">
+                                                                                    <Annotation Term="Common.Label" String="Owner"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/timeline">
+                                                                                    <Annotation Term="Common.Label" String="Timeline"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/risks">
+                                                                                    <Annotation Term="Common.Label" String="Risks"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/IsActiveEntity">
+                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/HasActiveEntity">
+                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/HasDraftEntity">
+                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.Mitigations/DraftAdministrativeData">
+                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                </Annotations>
+                                                                                <Annotations Target="RiskService.DraftAdministrativeData">
+                                                                                    <Annotation Term="Common.Label" String="{i18n>Draft_DraftAdministrativeData}"/>
+                                                                                    </Annotations>
+                                                                                    <Annotations Target="RiskService.DraftAdministrativeData/DraftUUID">
+                                                                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                        <Annotation Term="Common.Label" String="{i18n>Draft_DraftUUID}"/>
+                                                                                        </Annotations>
+                                                                                        <Annotations Target="RiskService.DraftAdministrativeData/CreationDateTime">
+                                                                                            <Annotation Term="Common.Label" String="{i18n>Draft_CreationDateTime}"/>
+                                                                                            </Annotations>
+                                                                                            <Annotations Target="RiskService.DraftAdministrativeData/CreatedByUser">
+                                                                                                <Annotation Term="Common.Label" String="{i18n>Draft_CreatedByUser}"/>
+                                                                                                </Annotations>
+                                                                                                <Annotations Target="RiskService.DraftAdministrativeData/DraftIsCreatedByMe">
+                                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                    <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsCreatedByMe}"/>
+                                                                                                    </Annotations>
+                                                                                                    <Annotations Target="RiskService.DraftAdministrativeData/LastChangeDateTime">
+                                                                                                        <Annotation Term="Common.Label" String="{i18n>Draft_LastChangeDateTime}"/>
+                                                                                                        </Annotations>
+                                                                                                        <Annotations Target="RiskService.DraftAdministrativeData/LastChangedByUser">
+                                                                                                            <Annotation Term="Common.Label" String="{i18n>Draft_LastChangedByUser}"/>
+                                                                                                            </Annotations>
+                                                                                                            <Annotations Target="RiskService.DraftAdministrativeData/InProcessByUser">
+                                                                                                                <Annotation Term="Common.Label" String="{i18n>Draft_InProcessByUser}"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="RiskService.DraftAdministrativeData/DraftIsProcessedByMe">
+                                                                                                                    <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsProcessedByMe}"/>
+                                                                                                                    </Annotations>
+                                                                                                                </Schema>
+                                                                                                            </edmx:DataServices>
+                                                                                                        </edmx:Edmx>

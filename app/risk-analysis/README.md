@@ -1,21 +1,21 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Tue Jun 21 2022 09:44:41 GMT+0200 (Central European Summer Time)|
-|**App Generator**<br>@sap/generator-fiori|
-|**App Generator Version**<br>1.4.5|
-|**Generation Platform**<br>Visual Studio Code|
-|**Floorplan Used**<br>List Report Object Page V4|
+|**Generation Date and Time**<br>Fri Jun 30 2023 12:49:33 GMT+0000 (Coordinated Universal Time)|
+|**App Generator**<br>@sap/generator-fiori-elements|
+|**App Generator Version**<br>1.10.1|
+|**Generation Platform**<br>SAP Business Application Studio|
+|**Template Used**<br>List Report Page V4|
 |**Service Type**<br>Local Cap|
-|**Service URL**<br>/service/risk/
+|**Service URL**<br>http://localhost:4004/service/risk/
 |**Module Name**<br>risk-analysis|
 |**Application Title**<br>Risk Analysis|
 |**Namespace**<br>ns|
-|**UI5 Theme**<br>sap_fiori_3|
-|**UI5 Version**<br>Latest|
+|**UI5 Theme**<br>sap_horizon|
+|**UI5 Version**<br>1.115.1|
 |**Enable Code Assist Libraries**<br>False|
+|**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
-|**Enable Telemetry**<br>True|
 |**Main Entity**<br>RisksAnalysis|
 
 ## risk-analysis
