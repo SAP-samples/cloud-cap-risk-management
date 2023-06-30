@@ -45,20 +45,6 @@ annotate service.RisksAnalysis with @(
 
 annotate service.RisksAnalysis with @(
     Aggregation.ApplySupported : {
-        Transformations          : [
-            'aggregate',
-            'topcount',
-            'bottomcount',
-            'identity',
-            'concat',
-            'groupby',
-            'filter',
-            'expand',
-            'top',
-            'skip',
-            'orderby',
-            'search'
-        ],
         Rollup                   : #None,
         PropertyRestrictions     : true,
         GroupableProperties : [
