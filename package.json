@@ -6,14 +6,14 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^6",
-    "@sap/cds-dk": "^6.1.1",
+    "@sap/cds": "^7",
+    "@sap/cds-dk": "^7.3.2",
     "express": "^4",
-    "passport": "^0.5.0"
+    "passport": "^0.6.0"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.108.8",
-    "sqlite3": "^5.0.2"
+    "@sap/ux-specification": "^1.108.18",
+    "sqlite3": "^5.1.6"
   },
   "scripts": {
     "start": "cds run",
