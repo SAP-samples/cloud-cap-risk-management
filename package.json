@@ -20,7 +20,7 @@
       "node": "^18"
   },
   "scripts": {
-      "start": "cds run",
+      "start": "cds-serve",
       "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4",
       "watch-mitigations": "cds watch --open mitigations/webapp/index.html#fe-lrop-v4",
       "undeploy": "cf undeploy cpapp --delete-services --delete-service-keys"
