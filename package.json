@@ -16,7 +16,7 @@
     "sqlite3": "^5.1.6"
   },
   "scripts": {
-    "start": "cds run",
+    "start": "cds-serve",
     "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4",
     "watch-mitigations": "cds watch --open mitigations/webapp/index.html#fe-lrop-v4",
     "watch-risk-analysis": "cds watch --open risk-analysis/webapp/index.html?sap-ui-xx-viewCache=false"
