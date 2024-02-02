@@ -10,37 +10,12 @@
     "express": "^4"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.90.12",
-    "sqlite3": "^5.0.2"
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.2"
   },
   "scripts": {
-    "start": "cds run",
-    "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "es2020": true,
-      "node": true,
-      "jest": true,
-      "mocha": true
-    },
-    "globals": {
-      "SELECT": true,
-      "INSERT": true,
-      "UPDATE": true,
-      "DELETE": true,
-      "CREATE": true,
-      "DROP": true,
-      "CDL": true,
-      "CQL": true,
-      "CXL": true,
-      "cds": true
-    },
-    "rules": {
-      "no-console": "off",
-      "require-atomic-updates": "off"
-    }
+    "start": "cds-serve",
+    "watch-risks": "cds watch --open risks/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
     "app/risks"
