@@ -1,76 +1,56 @@
-## Generated mta.yaml based on template version 0.4.0
-## appName = cpapp
-## language=nodejs; multitenant=false
-## approuter=
 _schema-version: '3.1'
 ID: cpapp
 version: 1.0.0
 description: "A simple CAP project."
 parameters:
   enable-parallel-deployments: true
-   
 build-parameters:
   before-all:
-   - builder: custom
-     commands:
-      - npm install --production
-      - npx -p @sap/cds-dk cds build --production
-      - npx rimraf gen/db/src/gen/data
-
+    - builder: custom
+      commands:
+        - npm install --production
+        - npx -p @sap/cds-dk cds build --production
+        - npx rimraf gen/db/src/gen/data
 modules:
- # --------------------- SERVER MODULE ------------------------
- - name: cpapp-srv
- # ------------------------------------------------------------
-   type: nodejs
-   path: gen/srv
-   parameters:
-     buildpack: nodejs_buildpack
-   requires:
-    # Resources extracted from CAP configuration
-    - name: cpapp-db
-    - name: cpapp-uaa
-   provides:
-    - name: srv-api      # required by consumers of CAP services (e.g. approuter)
-      properties:
-        srv-url: ${default-url}
+  - name: cpapp-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: cpapp-db
+      - name: cpapp-uaa
 
- # -------------------- SIDECAR MODULE ------------------------
- - name: cpapp-db-deployer
- # ------------------------------------------------------------
-   type: hdb
-   path: gen/db  
-   parameters:
-     buildpack: nodejs_buildpack
-   requires:
-    # 'hana' and 'xsuaa' resources extracted from CAP configuration
-    - name: cpapp-db
-    - name: cpapp-uaa
-
+  - name: cpapp-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: cpapp-db
 
 resources:
- # services extracted from CAP configuration
- # 'service-plan' can be configured via 'cds.requires.<name>.vcap.plan'
-# ------------------------------------------------------------
- - name: cpapp-db
-# ------------------------------------------------------------
-   type: com.sap.xs.hdi-container
-   parameters:
-     service: hana  # or 'hanatrial' on trial landscapes
-     service-plan: hdi-shared
-   properties:
-     hdi-service-name: ${service-name}
-# ------------------------------------------------------------
- - name: cpapp-uaa
-# ------------------------------------------------------------
-   type: org.cloudfoundry.managed-service
-   parameters:
-     service: xsuaa
-     service-plan: application
-     path: ./xs-security.json  
-     config:
-       xsappname: cpapp-${space}    #  name + space dependency
-       tenant-mode: dedicated
-       role-collections:
+  - name: cpapp-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: cpapp-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: cpapp-${org}-${space}
+        tenant-mode: dedicated
+        role-collections:
          - name: 'RiskManager-${space}'
            description: Manage Risks
            role-template-references:
@@ -79,5 +59,3 @@ resources:
            description: View Risks
            role-template-references:
              - $XSAPPNAME.RiskViewer
-
-
