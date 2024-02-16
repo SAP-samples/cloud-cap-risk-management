@@ -1,5 +1,5 @@
 {
-  "_version": "1.49.0",
+  "_version": "1.59.0",
   "sap.app": {
     "id": "ns.riskanalysis",
     "type": "application",
@@ -12,12 +12,12 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
-      "version": "1.10.1",
-      "toolsId": "703d7c7d-ddae-471d-ab9f-ce0878f019e1"
+      "version": "1.11.5",
+      "toolsId": "09308915-3238-4555-a0d8-1fee2ffa4868"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/service/risk",
+        "uri": "/odata/v4/service/risk/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -46,7 +46,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.115.1",
+      "minUI5Version": "1.120.5",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -104,7 +104,7 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "entitySet": "RisksAnalysis",
+              "contextPath": "/RisksAnalysis",
               "variantManagement": "Page",
               "navigation": {
                 "RisksAnalysis": {
@@ -112,53 +112,53 @@
                     "route": "RisksAnalysisObjectPage"
                   }
                 }
-              },
-              "initialLoad": true,
-              "views": {
-                  "paths": [
-                      {
-                          "primary": [
-                              {
-                                  "annotationPath": "@com.sap.vocabularies.UI.v1.Chart"
-                              }
-                          ],
-                          "secondary": [
-                              {
-                                  "annotationPath": "@com.sap.vocabularies.UI.v1.LineItem"
-                              }
-                          ],
-                          "defaultPath": "both"
-                      }
-                  ]
-              },
-              "controlConfiguration": {
-                  "@com.sap.vocabularies.UI.v1.LineItem": {
-                      "tableSettings": {
-                          "type": "AnalyticalTable",
-                          "enableExport": true
-                      }
-                  },
-                  "@com.sap.vocabularies.UI.v1.SelectionFields": {
-                      "layout": "CompactVisual",
-                      "initialLayout": "Visual",
-                      "filterFields": {
-                          "prio": {
-                              "label": "Priority",
-                              "availability": "Default",
-                              "visualFilter": {
-                                  "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlPrio"
-                              }
-                          },
-                          "createdAt": {
-                              "label": "creation Date",
-                              "availability": "Default",
-                              "visualFilter": {
-                                  "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlcreatedAt"
-                                      }
-                                  }
-                              }
-                          }
-                      }
+              }
+              ,"initialLoad": true,
+                "views": {
+                    "paths": [
+                        {
+                            "primary": [
+                                {
+                                    "annotationPath": "@com.sap.vocabularies.UI.v1.Chart"
+                                }
+                            ],
+                            "secondary": [
+                                {
+                                    "annotationPath": "@com.sap.vocabularies.UI.v1.LineItem"
+                                }
+                            ],
+                            "defaultPath": "both"
+                        }
+                    ]
+                },
+                "controlConfiguration": {
+                    "@com.sap.vocabularies.UI.v1.LineItem": {
+                        "tableSettings": {
+                            "type": "AnalyticalTable",
+                            "enableExport": true
+                        }
+                    },
+                    "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                        "layout": "CompactVisual",
+                        "initialLayout": "Visual",
+                        "filterFields": {
+                            "prio": {
+                                "label": "Priority",
+                                "availability": "Default",
+                                "visualFilter": {
+                                    "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlPrio"
+                                }
+                            },
+                            "createdAt": {
+                                "label": "creation Date",
+                                "availability": "Default",
+                                "visualFilter": {
+                                    "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlcreatedAt"
+                                        }
+                                    }
+                                }
+                            }
+                        }
             }
           }
         },
@@ -169,7 +169,7 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "entitySet": "RisksAnalysis"
+              "contextPath": "/RisksAnalysis"
             }
           }
         }

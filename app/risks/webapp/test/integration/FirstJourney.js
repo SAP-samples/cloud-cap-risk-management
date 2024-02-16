@@ -10,7 +10,7 @@ sap.ui.define([
             opaTest("Start application", function (Given, When, Then) {
                 Given.iStartMyApp();
 
-                Then.onTheRisksAnalysisList.iSeeThisPage();
+                Then.onTheRisksList.iSeeThisPage();
 
             });
 
@@ -18,12 +18,12 @@ sap.ui.define([
             opaTest("Navigate to ObjectPage", function (Given, When, Then) {
                 // Note: this test will fail if the ListReport page doesn't show any data
                 
-                When.onTheRisksAnalysisList.onFilterBar().iExecuteSearch();
+                When.onTheRisksList.onFilterBar().iExecuteSearch();
                 
-                Then.onTheRisksAnalysisList.onTable().iCheckRows();
+                Then.onTheRisksList.onTable().iCheckRows();
 
-                When.onTheRisksAnalysisList.onTable().iPressRow(0);
-                Then.onTheRisksAnalysisObjectPage.iSeeThisPage();
+                When.onTheRisksList.onTable().iPressRow(0);
+                Then.onTheRisksObjectPage.iSeeThisPage();
 
             });
 

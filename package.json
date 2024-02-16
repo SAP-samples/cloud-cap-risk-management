@@ -7,48 +7,44 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
-    "@sap/cds-dk": "^7.3.2",
-    "express": "^4",
-    "passport": "^0.6.0"
+    "express": "^4"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.108.18",
-    "sqlite3": "^5.1.6"
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.2"
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4",
-    "watch-mitigations": "cds watch --open mitigations/webapp/index.html#fe-lrop-v4",
+    "watch-risks": "cds watch --open risks/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-risk-analysis": "cds watch --open risk-analysis/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "es2020": true,
-      "node": true,
-      "jest": true,
-      "mocha": true
-    },
-    "globals": {
-      "SELECT": true,
-      "INSERT": true,
-      "UPDATE": true,
-      "DELETE": true,
-      "CREATE": true,
-      "DROP": true,
-      "CDL": true,
-      "CQL": true,
-      "CXL": true,
-      "cds": true
-    },
-    "rules": {
-      "no-console": "off",
-      "require-atomic-updates": "off"
-    }
   },
   "sapux": [
     "app/risks",
-    "app/mitigations",
     "app/risk-analysis"
-  ]
+  ],
+  "cds": {
+    "requires": {
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "risk.viewer@tester.sap.com": {
+              "password": "initial",
+              "ID": "risk.viewer@tester.sap.com",
+              "roles": [
+                "RiskViewer"
+              ]
+            },
+            "risk.manager@tester.sap.com": {
+              "password": "initial",
+              "ID": "risk.manager@tester.sap.com",
+              "roles": [
+                "RiskManager"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
 }

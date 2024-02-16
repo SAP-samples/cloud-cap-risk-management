@@ -8,9 +8,9 @@ sap.ui.define(['sap/fe/test/ListReport'], function(ListReport) {
 
     return new ListReport(
         {
-            appId: 'ns.riskanalysis',
-            componentId: 'RisksAnalysisList',
-            contextPath: '/RisksAnalysis'
+            appId: 'ns.risks',
+            componentId: 'RisksList',
+            contextPath: '/Risks'
         },
         CustomPageDefinitions
     );

@@ -8,9 +8,9 @@ sap.ui.define(['sap/fe/test/ObjectPage'], function(ObjectPage) {
 
     return new ObjectPage(
         {
-            appId: 'ns.riskanalysis',
-            componentId: 'RisksAnalysisObjectPage',
-            contextPath: '/RisksAnalysis'
+            appId: 'ns.risks',
+            componentId: 'RisksObjectPage',
+            contextPath: '/Risks'
         },
         CustomPageDefinitions
     );
