@@ -6,70 +6,50 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-      "@sap/cds": "^7",
-      "@sap/xssec": "^3.2.8",
-      "express": "^4",
-      "passport": "^0.5.0",
-      "hdb": "^0.19.0"
+    "@sap/cds": "^7",
+    "express": "^4",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "passport": "^0"
   },
   "devDependencies": {
-      "@sap/ux-specification": "^1.90.12",
-      "sqlite3": "^5.0.2"
-  },
-  "engines": {
-      "node": "^18"
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.2"
   },
   "scripts": {
-      "start": "cds run",
-      "watch-risks": "cds watch --open risks/webapp/index.html#fe-lrop-v4",
-      "watch-mitigations": "cds watch --open mitigations/webapp/index.html#fe-lrop-v4"
-  },
-  "eslintConfig": {
-      "extends": "eslint:recommended",
-      "env": {
-          "es2020": true,
-          "node": true,
-          "jest": true,
-          "mocha": true
-      },
-      "globals": {
-          "SELECT": true,
-          "INSERT": true,
-          "UPDATE": true,
-          "DELETE": true,
-          "CREATE": true,
-          "DROP": true,
-          "CDL": true,
-          "CQL": true,
-          "CXL": true,
-          "cds": true
-      },
-      "rules": {
-          "no-console": "off",
-          "require-atomic-updates": "off"
-      }
+    "start": "cds-serve",
+    "watch-risks": "cds watch --open risks/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
-      "app/risks",
-      "app/mitigations"
+    "app/risks"
   ],
   "cds": {
-      "requires": {
-          "[production]": {
-              "db": {
-                  "kind": "hana-cloud"
-              },
-              "auth": {
-                  "kind": "xsuaa"
-              }
-          },
-          "db": {
-              "kind": "sql"
-          },
-          "uaa": {
-              "kind": "xsuaa",
-              "credentials": {}
+    "requires": {
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "risk.viewer@tester.sap.com": {
+              "password": "initial",
+              "ID": "risk.viewer@tester.sap.com",
+              "roles": [
+                "RiskViewer"
+              ]
+            },
+            "risk.manager@tester.sap.com": {
+              "password": "initial",
+              "ID": "risk.manager@tester.sap.com",
+              "roles": [
+                "RiskManager"
+              ]
+            }
           }
+        }
+      },
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
       }
+    }
   }
 }
