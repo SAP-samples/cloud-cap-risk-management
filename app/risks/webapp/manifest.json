@@ -1,28 +1,19 @@
 {
-    "_version": "1.32.0",
+    "_version": "1.59.0",
     "sap.app": {
         "id": "ns.risks",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
-            "version": "1.0.0"
+            "version": "0.0.1"
         },
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
-        "dataSources": {
-            "mainService": {
-                "uri": "/service/risk/",
-                "type": "OData",
-                "settings": {
-                    "odataVersion": "4.0"
-                }
-            }
-        },
-        "offline": false,
         "resources": "resources.json",
         "sourceTemplate": {
-            "id": "ui5template.fiorielements.v4.lrop",
-            "version": "1.0.0"
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.12.2",
+            "toolsId": "cefc73fb-a7bd-4312-9779-0d474732632c"
         },
         "crossNavigation": {
             "inbounds": {
@@ -33,6 +24,16 @@
                     },
                     "semanticObject": "Risks",
                     "action": "display"
+                }
+            }
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/odata/v4/service/risk/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
                 }
             }
         }
@@ -54,25 +55,26 @@
         }
     },
     "sap.ui5": {
-        "resources": {
-            "js": [],
-            "css": []
-        },
+        "flexEnabled": true,
         "dependencies": {
-            "minUI5Version": "1.95.0",
+            "minUI5Version": "1.120.4",
             "libs": {
+                "sap.m": {},
                 "sap.ui.core": {},
+                "sap.ushell": {},
                 "sap.fe.templates": {}
             }
         },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
         "models": {
-            "@i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "uri": "i18n/i18n.properties"
-            },
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
-                "uri": "i18n/i18n.properties"
+                "settings": {
+                    "bundleName": "ns.risks.i18n.i18n"
+                }
             },
             "": {
                 "dataSource": "mainService",
@@ -83,7 +85,14 @@
                     "autoExpandSelect": true,
                     "earlyRequests": true
                 }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
             }
+        },
+        "resources": {
+            "css": []
         },
         "routing": {
             "routes": [
@@ -105,7 +114,7 @@
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "Risks",
+                            "contextPath": "/Risks",
                             "variantManagement": "Page",
                             "navigation": {
                                 "Risks": {
@@ -124,27 +133,14 @@
                     "options": {
                         "settings": {
                             "editableHeaderContent": true,
-                            "entitySet": "Risks"
+                            "contextPath": "/Risks"
                         }
                     }
                 }
             }
-        },
-        "contentDensities": {
-            "compact": true,
-            "cozy": true
         }
     },
-    "sap.platform.abap": {
-        "_version": "1.1.0",
-        "uri": ""
-    },
-    "sap.platform.hcp": {
-        "_version": "1.1.0",
-        "uri": ""
-    },
     "sap.fiori": {
-        "_version": "1.1.0",
         "registrationIds": [],
         "archeType": "transactional"
     },

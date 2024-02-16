@@ -1,11 +1,16 @@
 # CAP cpapp
 _out
 *.db
+*.sqlite
 connection.properties
 default-*.json
+.cdsrc-private.json
 gen/
 node_modules/
 target/
+dist/
+resources/
+app/*/package-lock.json
 
 # Web IDE, App Studio
 .che/
@@ -28,6 +33,5 @@ mta_archives/
 # .vscode
 # .idea
 
-dist/
-resources/
-app/*/package-lock.json
+# @cap-js/cds-typer
+@cds-models
