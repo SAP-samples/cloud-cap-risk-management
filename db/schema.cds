@@ -9,6 +9,7 @@ using { managed } from '@sap/cds/common';
     miti        : Association to Mitigations;
     impact      : Integer;
     criticality : Integer;
+    test        : String;
   }
 
   entity Mitigations : managed {
